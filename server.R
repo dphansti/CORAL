@@ -37,44 +37,46 @@ server <- function(input, output) {
       # convert to coral id
       recolordf = convertID (tempdf,recolordf,inputtype=input$branchGroupIDtype)
       
-      # set colors based on group
-      newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = colpalette)
-      tempdf$branch.col = newcolors_and_colormapping[[1]]
-      tempdf$branch.group = newcolors_and_colormapping[[2]]
-      branch.group.colormapping = newcolors_and_colormapping[[3]]
-      
-      # reorder based on branch color 
-      tempdf = tempdf[order(tempdf$branch.group),]
+      if (nrow(recolordf)>0)
+      {
+        # set colors based on group
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = colpalette)
+        tempdf$branch.col = newcolors_and_colormapping[[1]]
+        tempdf$branch.group = newcolors_and_colormapping[[2]]
+        branch.group.colormapping = newcolors_and_colormapping[[3]]
+        
+        # reorder based on branch color 
+        tempdf = tempdf[order(tempdf$branch.group),]
+      }
     }
     
     # color branches by value
     if (input$branchcolortype == "by value")
     {
-      # split into data frame of kinase and value
-      data = unlist(strsplit(input$branchValueBox,"\n"))
+      # read in text area input
+      recolordf = read.text.input(input$branchValueBox)
       
-      if  (length(data) > 0){
+      # convert to coral id
+      recolordf = convertID (tempdf,recolordf,inputtype=input$branchValueIDtype)
+      
+      # convert to numeric
+      recolordf[,2] = as.numeric(recolordf[,2])
+      
+      if (nrow(recolordf)>0)
+      {
+        # establish palette
+        colpalette = colorRampPalette(c(input$col_heat_low, input$col_heat_med, input$col_heat_hi))(100)
         
-        # extract user info
-        recolordf = data.frame(matrix(unlist(strsplit(x=data,split="\\s+")),ncol=2,byrow = T),stringsAsFactors = F)
-        colnames(recolordf) = c("ids","values")
-        recolordf$values = as.numeric(recolordf$values)
+        # set colors based on group
+        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = colpalette, range = c(input$minheat,input$maxheat))
+        tempdf$branch.col = newcolors_and_colormapping[[1]]
+        tempdf$branch.val = newcolors_and_colormapping[[2]]
+        branch.value.colormapping = newcolors_and_colormapping[[3]]
         
-        # convert names
-        if (input$branchValueIDtype != "KinrichID")
-        {
-          recolordf = convertID(df=tempdf,recolordf=recolordf,inputtype = input$branchValueIDtype)
-        }
-        
-        if  (nrow(recolordf) > 0)
-        {
-          # establish palette
-          pal = colorRampPalette(c(input$col_heat_low, input$col_heat_med, input$col_heat_hi))(100)
-          
-          # recolor/order tree
-          tempdf = recolortreebynumber(tempdf, recolordf,pal,heatrange = c(input$minheat,input$maxheat),objecttorecolor="branch")
-        }
+        # reorder based on branch color 
+        tempdf = tempdf[order(abs(tempdf$branch.val)),]
       }
+      
     }
     
     # ------------------ NODE COLOR ------------------ #
@@ -112,11 +114,14 @@ server <- function(input, output) {
       # convert to coral id
       recolordf = convertID (tempdf,recolordf,inputtype=input$nodeGroupIDtype)
       
-      # set colors based on group
-      newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = colpalette)
-      tempdf$node.col = newcolors_and_colormapping[[1]]
-      tempdf$node.group = newcolors_and_colormapping[[2]]
-      node.group.colormapping = newcolors_and_colormapping[[3]]
+      if (nrow(recolordf)>0)
+      {
+        # set colors based on group
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = colpalette)
+        tempdf$node.col = newcolors_and_colormapping[[1]]
+        tempdf$node.group = newcolors_and_colormapping[[2]]
+        node.group.colormapping = newcolors_and_colormapping[[3]]
+      }
     }
     
     

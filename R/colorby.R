@@ -16,7 +16,7 @@ color.by.selected <- function(df,sel,bg.col,sel.col)
 }
 
 
-# Define a function that recolors data frame by group 
+# Define a function creates color vector from group
 color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
 {
   # set background color
@@ -58,4 +58,28 @@ color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
   }
 
   return( list(color.vector,group.vector,groupcolormapping))
+}
+
+
+# Define a function creates color vector from values
+color.by.value <- function(df ,recolordf ,colors  ,range , bg.col="#D3D3D3")
+{
+  # set background color
+  color.vector = rep(bg.col,nrow(df))
+  
+  # kep track of group labels
+  value.vector = rep("0",nrow(df))
+  
+  ##### ENDED HERE ######
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
 }
