@@ -38,7 +38,7 @@ ui <- dashboardPage(
                            # if manual selection
                            conditionalPanel(
                              condition = "input.branchcolortype == 'Manually'",
-                             selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$ids,multiple = TRUE,width = "100%"),
+                             selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
                              fluidRow( width=12,
                                        column(6,colourInput("col_select_bg", "BG Color", "#D3D3D3")),
                                        column(6,colourInput("col_select", "Color", "#2C54F5"))
@@ -49,7 +49,7 @@ ui <- dashboardPage(
                            conditionalPanel(
                              condition = "input.branchcolortype == 'by group'",
                              textAreaInput("branchGroupBox", "Kinases & Group", height = "100px",width = "100%",
-                             value =  paste(apply(data.frame(svginfo$dataframe$ids,svginfo$dataframe$group),1,paste,collapse="\t"),collapse="\n")
+                             value =  paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
                              ),
                              selectInput(inputId = "branchGroupIDtype",label = "Identifier Type",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
@@ -83,10 +83,10 @@ ui <- dashboardPage(
                        # ---- NODE COLOR ---- #
                        
                        box(width=12,title = "Node Color",status = "primary", solidHeader = TRUE,
-                           collapsible = TRUE,collapsed = FALSE,
+                           collapsible = TRUE,collapsed = TRUE,
                            
                            selectInput(inputId = "nodecolortype",label = "Color Node",
-                                       choices = c("None","As one color","Manually","by group","by value"),
+                                       choices = c("None","Same as branches","As one color","Manually","by group","by value"),
                                        multiple = FALSE,selected = "None",width = "100%"),
                            
                            # if single color
@@ -98,18 +98,18 @@ ui <- dashboardPage(
                            # if manual selection
                            conditionalPanel(
                              condition = "input.nodecolortype == 'Manually'",
-                             selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$ids,multiple = TRUE,width = "100%"),
+                             selectInput(inputId = "NodeManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
                              fluidRow( width=12,
                                        column(6,colourInput("col_node_bg", "BG Color", "#D3D3D3")),
-                                       column(6,colourInput("col_snode", "Color", "#2C54F5"))
+                                       column(6,colourInput("col_sel_node", "Color", "#2C54F5"))
                              )
                            ),
                            
                            # if by group
                            conditionalPanel(
                              condition = "input.nodecolortype == 'by group'",
-                             textAreaInput("ndeGroupBox", "Kinases & Group", height = "100px",width = "100%",
-                                           value =  paste(apply(data.frame(svginfo$dataframe$ids,svginfo$dataframe$group),1,paste,collapse="\t"),collapse="\n")
+                             textAreaInput("nodeGroupBox", "Kinases & Group", height = "100px",width = "100%",
+                                           value =  paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
                              ),
                              selectInput(inputId = "nodeGroupIDtype",label = "Identifier Type",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
@@ -141,7 +141,7 @@ ui <- dashboardPage(
                        # ---- NODE SIZE ---- #
                        
                        box(width=12,title = "Node Size",status = "primary", solidHeader = TRUE,
-                           collapsible = TRUE,collapsed = FALSE,
+                           collapsible = TRUE,collapsed = TRUE,
                            
                            selectInput(inputId = "nodesizetype",label = "Size Node",
                                        choices = c("One Size","by value"),

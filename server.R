@@ -15,35 +15,36 @@ server <- function(input, output) {
     # Single branch color
     if (input$branchcolortype == "As one color")
     {
-      tempdf$col_line = input$col_branch_single
+      tempdf$branch.col = input$col_branch_single
     }
     
     # Manually select branches to color
     if (input$branchcolortype == "Manually")
     {
-      tempdf$col_line = input$col_select_bg
+      # set colors based on selected ids 
+      tempdf$branch.col =  color.by.selected(df = tempdf, sel = input$KinasesManual, bg.col  = input$col_select_bg,  sel.col = input$col_select)
       
-      # extract user info
-      selectedkinases = input$KinasesManual
-      
-      if (length(selectedkinases) > 0)
-      {
-        # make a data frame of all kinases and values
-        recolordf = data.frame(ids = selectedkinases,values=rep(1,length(selectedkinases)),stringsAsFactors = F)
-        recolordf$values = as.numeric(recolordf$values)
-        
-        # establish palette
-        pal = colorRampPalette(c(input$col_select_bg, input$col_select))(100)
-        
-        # recolor/order tree
-        tempdf = recolortreebynumber(tempdf, recolordf,pal)
-      }
+      # reorder based on selected ids
+      tempdf = tempdf[order(tempdf$id.kinrich %in% input$KinasesManual, decreasing = FALSE),]
     }
     
     # color branches by group
     if (input$branchcolortype == "by group")
     {
-
+      # read in text area input
+      recolordf = read.text.input(input$branchGroupBox)
+      
+      # convert to coral id
+      recolordf = convertID (tempdf,recolordf,inputtype=input$branchGroupIDtype)
+      
+      # set colors based on group
+      newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = colpalette)
+      tempdf$branch.col = newcolors_and_colormapping[[1]]
+      tempdf$branch.group = newcolors_and_colormapping[[2]]
+      branch.group.colormapping = newcolors_and_colormapping[[3]]
+      
+      # reorder based on branch color 
+      tempdf = tempdf[order(tempdf$branch.group),]
     }
     
     # color branches by value
@@ -79,12 +80,48 @@ server <- function(input, output) {
     # ------------------ NODE COLOR ------------------ #
     
     # color nodes by single color
-    if (input$nodecolortype == "As one color")
+    if (input$nodecolortype == "None")
     {
-      tempdf$nodecol = input$col_node_single
+      tempdf$node.col = "none"
     }
     
-    # color branches by value
+    # color nodes by single color
+    if (input$nodecolortype == "As one color")
+    {
+      tempdf$node.col = input$col_node_single
+    }
+    
+    if (input$nodecolortype == "Same as branches")
+    {
+      tempdf$node.col = tempdf$branch.col
+    }
+    
+    # Manually select nodes to color
+    if (input$nodecolortype == "Manually")
+    {
+      # set colors based on selected ids (!!!! write function !!!!)
+      tempdf$node.col =  color.by.selected(df = tempdf, sel = input$NodeManual, bg.col  = input$col_node_bg,  sel.col = input$col_sel_node)
+    }
+    
+    # color branches by group
+    if (input$nodecolortype == "by group")
+    {
+      # read in text area input
+      recolordf = read.text.input(input$nodeGroupBox)
+      
+      # convert to coral id
+      recolordf = convertID (tempdf,recolordf,inputtype=input$nodeGroupIDtype)
+      
+      # set colors based on group
+      newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = colpalette)
+      tempdf$node.col = newcolors_and_colormapping[[1]]
+      tempdf$node.group = newcolors_and_colormapping[[2]]
+      node.group.colormapping = newcolors_and_colormapping[[3]]
+    }
+    
+    
+    
+    # color nodes by value
     if (input$nodecolortype == "by value")
     {
       # split into data frame of kinase and value
@@ -137,15 +174,9 @@ server <- function(input, output) {
       # should the text be colored
       svginfo$colortext = input$colortextcheckbox
 
-      showcircles = TRUE
-      if (input$nodecolortype == 'None')
-      {
-        showcircles = FALSE
-      }
-      
       # Write SVG file
       outfile <- "Output/kintreeout.svg"
-      writekinasetree(svginfo,destination=outfile,showcircles)
+      writekinasetree(svginfo,destination=outfile)
       svgPanZoom(outfile,viewBox = F,controlIconsEnabled=F)
     })
 
@@ -183,26 +214,26 @@ server <- function(input, output) {
   
   output$KinaseTable <- DT::renderDataTable({
     
-    simpldf = newdf()[,c("ids","family","group","values","col_line")] 
+    simpldf = newdf()[,c("id.kinrich","kinase.family","kinase.group","branch.val","branch.col")] 
     
-    # revers the data frame so that colored kinases appear first
+    # reverse the data frame so that colored kinases appear first
     simpldf<-simpldf[dim(simpldf)[1]:1,]
     
     # add a column of squares
     simpldf$thecolor = 	"&#9608;"	
    
     # convert colors to rgb
-    mycolors <- simpldf$col_line
+    mycolors <- simpldf$branch.col
     rgbcolors <- apply(grDevices::col2rgb(mycolors), 2, 
                        function(rgb) sprintf("rgb(%s)", paste(rgb, collapse=",")))
     
     
     tgt <- sprintf('<span style="color:%s">&#9608;</span>', rgbcolors)
     
-    newdf = data.frame(kinase=simpldf$ids,
-                       family=simpldf$family,
-                       group =simpldf$group,
-                       values=simpldf$values,
+    newdf = data.frame(kinase=simpldf$id.kinrich,
+                       family=simpldf$kinase.family,
+                       group =simpldf$kinase.group,
+                       values=simpldf$branch.val,
                        color=tgt)
 
     datatable(newdf, escape=FALSE)
@@ -219,5 +250,5 @@ server <- function(input, output) {
   output$tableinput <- renderRHandsontable({
     rhandsontable(DF,stretchH = "all")
   })
-  
 }
+

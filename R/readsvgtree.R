@@ -212,6 +212,25 @@ extractinfo <- function(cleansvgdata)
 }
 
 
+# Define a function to add conversion columns
+conversioncolumn <- function(df,convtable,colname)
+{
+  # add conversions
+  converter = read.table(convtable,header = F, sep = "\t")
+  colnames(converter) = c("uniprot","other")
+  newids = converter$other
+  names(newids) = converter$uniprot
+  
+  df$other = ""
+  df$other = as.character(newids[as.character(df$uniprot)])
+  df$other = as.character(df$other)
+  
+  colnames(df)[which(colnames(df) == "other")] = colname
+  
+  return (df)
+}
+
+
 
 # Define a function that build a clean data frame from the kinase tree svg
 readsvgtree <- function(svgtree="~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/CORAL/Data/basetree.svg")
@@ -222,7 +241,7 @@ readsvgtree <- function(svgtree="~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/
   
   # extract the relevant info
   svginfo = extractinfo(cleansvgdata)
-
+  
   # fix header
   svginfo$header =  "<svg xmlns=\"http://www.w3.org/2000/svg\"
   xmlns:xlink=\"http://www.w3.org/1999/xlink\" >"
@@ -236,83 +255,73 @@ readsvgtree <- function(svgtree="~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/
   kinmap = kinmap[which(kinmap$group != "Atypical"),]
   
   # check for similarities with kinmap
-  setdiff(svginfo$dataframe$ids,kinmap$ids)
-  setdiff(kinmap$ids,svginfo$dataframe$ids)
+  setdiff(svginfo$dataframe$id.kinrich,kinmap$ids)
+  setdiff(kinmap$ids,svginfo$dataframe$id.kinrich)
+  
+  # kinmap = kinmap[which(kinmap$ids != "PAN3"),]
   
   # merge with kinmap info
-  svginfo$dataframe = merge(svginfo$dataframe,kinmap[,2:ncol(kinmap)],by = "ids")
-  
-  # recolor
-  pal = colorRampPalette(c("firebrick4","firebrick2","gold","grey","deepskyblue2","dodgerblue2","dodgerblue4"))(100)
-  svginfo$dataframe$col_line = sample(pal,nrow(svginfo$dataframe),replace = TRUE)
-  
-  # write new tree
-  writekinasetree(svginfo)
+  svginfo$dataframe = merge(svginfo$dataframe,kinmap[,2:ncol(kinmap)],by.x = "id.kinrich" ,by.y = "ids")
+
+  # fix uniprot name after merge  
+  svginfo$dataframe = svginfo$dataframe[,names(svginfo$dataframe) !="uniprot.y"]
+  names(svginfo$dataframe)[names(svginfo$dataframe) == "uniprot.x"] = "uniprot"
+
   
   # add new conversion columns
   svginfo$dataframe = conversioncolumn(df=svginfo$dataframe,convtable="~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Mapping/uniprot2ensembl.txt",colname="ensembl")
   svginfo$dataframe = conversioncolumn(df=svginfo$dataframe,convtable="~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Mapping/uniprot2entrez.txt",colname="entrez")
   
-  # write RDS file
-  svginfo$dataframe$col_line = "lightgrey"
-  saveRDS(svginfo,"~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Tree//KinaseTree_Master.RDS")
+  svgallinfoDF = data.frame(
+    
+    # identifiers
+    id.kinrich  = svginfo$dataframe$id.kinrich,
+    id.uniprot  = svginfo$dataframe$uniprot,
+    id.ensembl  = svginfo$dataframe$ensembl,
+    id.entrez   = svginfo$dataframe$entrez,
+    id.HGNC     = svginfo$dataframe$HGNC,
+    id.longname = svginfo$dataframe$name,
+    
+    # phylogeny
+    kinase.group     = svginfo$dataframe$group,
+    kinase.family    = svginfo$dataframe$family,
+    kinase.subfamily = svginfo$dataframe$subfamily,
+    
+    # branch info
+    branch.coords    = svginfo$dataframe$branch.coords,
+    branch.val       = 0,
+    branch.group     = "none",
+    branch.col       = "#D3D3D3",
+    
+    # node info
+    node.x = svginfo$dataframe$node.x,
+    node.y = svginfo$dataframe$node.y,
+    node.group.col = "none",
+    node.val.col = 0,
+    node.val.radius = 0,
+    node.radius = 5,
+    node.col = "#D3D3D3",
+    node.strokewidth = 1,
+    node.strokecol = "black",
+    
+    # text info
+    text.x = svginfo$dataframe$text.x,
+    text.y = svginfo$dataframe$text.y,
+    text.col = "black",
+    text.font = "\'AvenirNext-Bold\'",
+    text.size = 3.25,
+    text.label = svginfo$dataframe$text.label
+    
+  )
+
+  # set the good df to the main one
+  svginfo$dataframe = svgallinfoDF
+  
+  # write new tree
+  writekinasetree(svginfo)
+  
+  # # write RDS file
+  saveRDS(svginfo,"Data/kintree.RDS")
   
 }
 
-
-# make a well formatted svg data frame
-a = orig_svginfo$dataframe
-
-xs = c()
-ys = c()
-for (i in 1:nrow(a))
-{
-  splitline = unlist(strsplit(as.character(a[i,4]),split=" "))
-  x = splitline[length(splitline)-1]
-  y = gsub(pattern = ")\"",replacement = "",x = splitline[length(splitline)])
-  xs = c(xs,x)
-  ys = c(ys,y)
-}
-
-
-
-gooddataframe = data.frame(
-  
-  # identifiers
-  id.kinrich  = a$ids,
-  id.uniprot  = a$uniprot,
-  id.ensembl  = a$ensembl,
-  id.entrez   = a$entrez,
-  id.HGNC     = a$HGNC,
-  id.longname = a$name,
-  
-  # phylogeny
-  kinase.group = a$group,
-  kinase.family = a$family,
-  kinase.subfamily = a$subfamily,
-  
-  # branch info
-  branch.coords = a$d_line,
-  branch.val = a$values,
-  branch.group = "none",
-  branch.col = a$col_line,
-  
-  # node info
-  node.x = xs,
-  node.y = ys,
-  node.group.col = "none",
-  node.val.col = 0,
-  node.val.radius = 0,
-  node.radius = 5,
-  node.col = "#D3D3D3",
-  node.strokewidth = 1,
-  node.strokecol = "black",
-  
-  # text info
-  text.x = xs,
-  text.y = ys,
-  text.col = "black",
-  text.font = "\'AvenirNext-Bold\'",
-  text.size = 3.25,
-  text.label = a$label_text
-)
