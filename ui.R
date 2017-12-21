@@ -180,21 +180,21 @@ ui <- dashboardPage(
                            #colpalette
                            # Group Colors
                            fluidRow( width=12,
-                                     column(2,  colourInput("groupcol1", "1", colpalette[1],showColour = "background")),
-                                     column(2,  colourInput("groupcol2", "2", colpalette[2],showColour = "background")),
-                                     column(2,  colourInput("groupcol3", "3", colpalette[3],showColour = "background")),
-                                     column(2,  colourInput("groupcol4", "4", colpalette[4],showColour = "background")),
-                                     column(2,  colourInput("groupcol5", "5", colpalette[5],showColour = "background")),
-                                     column(2,  colourInput("groupcol6", "6", colpalette[6],showColour = "background"))
+                                     column(2,  colourInput("groupcol1", "1", defaultpalette[1],showColour = "background")),
+                                     column(2,  colourInput("groupcol2", "2", defaultpalette[2],showColour = "background")),
+                                     column(2,  colourInput("groupcol3", "3", defaultpalette[3],showColour = "background")),
+                                     column(2,  colourInput("groupcol4", "4", defaultpalette[4],showColour = "background")),
+                                     column(2,  colourInput("groupcol5", "5", defaultpalette[5],showColour = "background")),
+                                     column(2,  colourInput("groupcol6", "6", defaultpalette[6],showColour = "background"))
                            ),
                            
                            fluidRow( width=12,
-                                     column(2,  colourInput("groupcol7", "7", colpalette[7],showColour = "background")),
-                                     column(2,  colourInput("groupcol8", "8", colpalette[8],showColour = "background")),
-                                     column(2,  colourInput("groupcol9", "9", colpalette[9],showColour = "background")),
-                                     column(2,  colourInput("groupcol10", "10", colpalette[10],showColour = "background")),
-                                     column(2,  colourInput("groupcol11", "11", colpalette[11],showColour = "background")),
-                                     column(2,  colourInput("groupcol12", "12", colpalette[12],showColour = "background"))
+                                     column(2,  colourInput("groupcol7", "7", defaultpalette[7],showColour = "background")),
+                                     column(2,  colourInput("groupcol8", "8", defaultpalette[8],showColour = "background")),
+                                     column(2,  colourInput("groupcol9", "9", defaultpalette[9],showColour = "background")),
+                                     column(2,  colourInput("groupcol10", "10", defaultpalette[10],showColour = "background")),
+                                     column(2,  colourInput("groupcol11", "11", defaultpalette[11],showColour = "background")),
+                                     column(2,  colourInput("groupcol12", "12", defaultpalette[12],showColour = "background"))
                            ) 
 
                        ) #end box

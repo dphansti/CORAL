@@ -65,10 +65,10 @@ server <- function(input, output) {
       if (nrow(recolordf)>0)
       {
         # establish palette
-        colpalette = colorRampPalette(c(input$col_heat_low, input$col_heat_med, input$col_heat_hi))(100)
+        branchcolpalette = colorRampPalette(c(input$col_heat_low, input$col_heat_med, input$col_heat_hi))(100)
 
         # set colors based on group
-        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = colpalette, heatrange = c(input$minheat,input$maxheat))
+        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = branchcolpalette, heatrange = c(input$minheat,input$maxheat))
         tempdf$branch.col = newcolors_and_colormapping[[1]]
         tempdf$branch.val = newcolors_and_colormapping[[2]]
 
@@ -135,6 +135,9 @@ server <- function(input, output) {
       if (nrow(recolordf)>0)
       {
         # establish palette
+        nodecolpalette = colorRampPalette(c(input$col_node_low, input$col_node_med, input$col_node_hi))(100)
+        
+        # establish palette
         colpalette = colorRampPalette(c(input$col_node_low, input$col_node_med, input$col_node_hi))(100)
         
         # set colors based on group
@@ -176,14 +179,6 @@ server <- function(input, output) {
       tempdf$text.col = tempdf$branch.col
     }
     
-    
-    
-    
-    
-    
-    
-    
-
     return(tempdf)
     }) # end reactive
   

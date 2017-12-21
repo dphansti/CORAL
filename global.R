@@ -33,6 +33,9 @@ svginfo = orig_svginfo
 CDKs = grep(pattern = "CDK",svginfo$dataframe$id.kinrich)
 CaMs = grep(pattern = "CaM",svginfo$dataframe$id.kinrich)
 
+defaultpalette = colorRampPalette( c("forestgreen","violet","dodgerblue2","deepskyblue2","lightgrey","gold","orange","firebrick2"))(12)
+
+
 # To upload
 # library(rsconnect)
 # rsconnect::deployApp("~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Project/Kinrich/")
