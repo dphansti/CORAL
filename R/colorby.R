@@ -85,3 +85,47 @@ color.by.value <- function(df ,recolordf ,colors  ,heatrange , bg.col="#D3D3D3")
 
   return (list(color.vector, value.vector))  
 }
+
+
+# Define a function creates radius vector from values
+resizes.by.value <- function(df, resizedf, sizerange )
+{
+  # set background color
+  radius.vector = rep(0,nrow(df))
+  
+  # kep track of group labels
+  value.vector = rep(NA,nrow(df))
+  
+  # convert to numeric
+  resizedf[,2] = as.numeric(resizedf[,2])
+  
+  # (1) get range
+  rangesize = sizerange[2] - sizerange[1]
+  
+  # (2) shift values such that they start at zero
+  radii = resizedf[,2] - min(resizedf[,2])
+  
+  # (3) scale so max = 1
+  radii[which(radii !=0)] = radii[which(radii !=0)] / max(radii)
+  
+  # (3) multiply to fit range
+  radii = radii * rangesize
+  
+  # (4) increase all values to be within range
+  radii = radii+ sizerange[1]
+  
+  resizedf$radii = radii
+  
+  print(resizedf)
+
+  
+  
+  # find indices to recolor
+  dflookup = match(resizedf[,1],df[,1])
+  
+  # update colors and values
+  radius.vector[dflookup] = resizedf$radii
+  value.vector[dflookup] = resizedf[,2]
+  
+  return (list(radius.vector, value.vector))  
+}

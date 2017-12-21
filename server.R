@@ -162,13 +162,18 @@ server <- function(input, output) {
     if (input$nodesizetype == "by value")
     {
       # read in text area input
-      resizedf = read.text.input(input$branchValueBox)
+      resizedf = read.text.input(input$nodesizeValueBox)
       
       # convert to coral id
       resizedf = convertID (tempdf,resizedf,inputtype=input$nodesizeValueIDtype)
-      
-      # write a function to resize based on these values
-      #### ENDED HERE ####print use thes values (input$nodesizeValueslider)
+
+      if (nrow(resizedf)>0)
+      {
+        radii_and_mapping = resizes.by.value(df = tempdf, resizedf = resizedf, sizerange = input$nodesizeValueslider)
+        
+        tempdf$node.radius     = radii_and_mapping[[1]]
+        tempdf$node.val.radius = radii_and_mapping[[2]]
+      }
     }
     
     # ------------------ ADVANCED OPTIONS ------------------ #
@@ -183,6 +188,7 @@ server <- function(input, output) {
     }) # end reactive
   
   
+  # build the manning tree
   output$plot1  <- renderSvgPanZoom ({
       # recolor the official matrix
       svginfo$dataframe = newdf()
@@ -197,37 +203,7 @@ server <- function(input, output) {
     })
 
 
-  # output$plot2  <- renderForceNetwork ({
-    # code to make force
-    # recolor the official matrix
-    # svginfo$dataframe = v$newdf
-    # 
-    # # font size
-    # svginfo$dataframe$fontsize_text = paste(input$fontsize,"px",sep="")
-    # 
-    # force_kinome_tree(svginfo$dataframe)
-  # })
-  
-
-  
-  # output$plot3   <- renderRadialNetwork ({
-  #   # code to make radial
-  # 
-  #   # recolor the official matrix
-  #   svginfo$dataframe = v$newdf
-  # 
-  #   # font size
-  #   svginfo$dataframe$fontsize_text = paste(input$fontsize,"px",sep="")
-  # 
-  #   #using adaptation of networkD3's radialNetwork (more interactivity but limited parameters):
-  #   #library(radialNetworkR)
-  #   
-  #   withProgress(list_kinome_tree(svginfo$dataframe),message = "Loading RadialNetwork layout...",style = "old",value = 0.5)
-  #   
-  #   #Another example with untested parameters:
-  #   #radialNetwork(ToListExplicit(Data_tree(), unname = TRUE ), linkColour = "#ccc",nodeColour = "#fff",nodeStroke = "orange",textColour = "#cccccc")
-  # })
-  
+  # build the table
   output$KinaseTable <- DT::renderDataTable({
     
     simpldf = newdf()[,c("id.kinrich","kinase.family","kinase.group","branch.val","branch.col")] 
