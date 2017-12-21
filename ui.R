@@ -1,7 +1,7 @@
 ## app.R ##
 
 ui <- dashboardPage(
-  dashboardHeader(title = "Kinrich"),
+  dashboardHeader(title = "CORAL"),
   dashboardSidebar
   (
     sidebarMenu(
