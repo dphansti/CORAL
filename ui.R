@@ -59,11 +59,9 @@ ui <- dashboardPage(
                            # if by value
                            conditionalPanel(
                              condition = "input.branchcolortype == 'by value'",
-
-                            
                              textAreaInput("branchValueBox", "Kinases & Value", height = "100px",width = "100%",
-                                           value =  paste(paste(apply(data.frame(svginfo$dataframe$ids[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                                      paste(apply(data.frame(svginfo$dataframe$ids[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+                                           value =  paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                                      paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
                              ),
                              selectInput(inputId = "branchValueIDtype",label = "Identifier Type",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
@@ -120,8 +118,8 @@ ui <- dashboardPage(
                            conditionalPanel(
                              condition = "input.nodecolortype == 'by value'",
                              textAreaInput("nodeValueBox", "Kinases & Value", height = "100px",width = "100%",
-                                           value =  paste(paste(apply(data.frame(svginfo$dataframe$ids[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                                          paste(apply(data.frame(svginfo$dataframe$ids[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+                                           value =  paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                                          paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
                              ),
                              selectInput(inputId = "nodeValueIDtype",label = "Identifier Type",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
@@ -150,20 +148,20 @@ ui <- dashboardPage(
                            # if single color
                            conditionalPanel(
                              condition = "input.nodesizetype == 'One Size'",
-                             sliderInput("size_node_single", "Node Size",value=5,min = 0,max=20)
+                             sliderInput("size_node_single", "Node Size",value=5,min = 0,max=10)
                            ),
                            
                            # if by value
                            conditionalPanel(
                              condition = "input.nodesizetype == 'by value'",
                              textAreaInput("nodesizeValueBox", "Kinases & Value", height = "100px",width = "100%",
-                                           value =  paste(paste(apply(data.frame(svginfo$dataframe$ids[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                                          paste(apply(data.frame(svginfo$dataframe$ids[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+                                           value =  paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                                          paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
                              ),
                              selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
-                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(0,5),min = 0, max = 20)
+                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(0,5),min = 0, max = 10)
                            )
                        ) # end box    
                    ), # end row   

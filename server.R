@@ -7,10 +7,13 @@ server <- function(input, output) {
     # get current values
     tempdf = svginfo$dataframe
     
-    # collect group cols
-    allgroupcols = c(input$groupcol1,input$groupcol2,input$groupcol3,input$groupcol4,input$groupcol5,input$groupcol6,
-                     input$groupcol7,input$groupcol8,input$groupcol9,input$groupcol10,input$groupcol11,input$groupcol12)
+    # default palette for group colors
+    colpalette = c( input$groupcol1,input$groupcol2,input$groupcol3,input$groupcol4,input$groupcol5,input$groupcol6,
+                    input$groupcol7,input$groupcol8,input$groupcol9,input$groupcol10,input$groupcol11,input$groupcol12)
     
+    
+    # get current values
+    tempdf$text.size = input$fontsize
     
     # Single branch color
     if (input$branchcolortype == "As one color")
@@ -55,28 +58,24 @@ server <- function(input, output) {
     {
       # read in text area input
       recolordf = read.text.input(input$branchValueBox)
-      
+
       # convert to coral id
       recolordf = convertID (tempdf,recolordf,inputtype=input$branchValueIDtype)
-      
-      # convert to numeric
-      recolordf[,2] = as.numeric(recolordf[,2])
-      
+
       if (nrow(recolordf)>0)
       {
         # establish palette
         colpalette = colorRampPalette(c(input$col_heat_low, input$col_heat_med, input$col_heat_hi))(100)
-        
+
         # set colors based on group
-        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = colpalette, range = c(input$minheat,input$maxheat))
+        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = colpalette, heatrange = c(input$minheat,input$maxheat))
         tempdf$branch.col = newcolors_and_colormapping[[1]]
         tempdf$branch.val = newcolors_and_colormapping[[2]]
-        branch.value.colormapping = newcolors_and_colormapping[[3]]
-        
-        # reorder based on branch color 
-        tempdf = tempdf[order(abs(tempdf$branch.val)),]
+
+        # reorder based on branch color
+        tempdf = tempdf[order(abs(tempdf$branch.val), decreasing = FALSE,na.last = FALSE),]
       }
-      
+
     }
     
     # ------------------ NODE COLOR ------------------ #
@@ -124,34 +123,27 @@ server <- function(input, output) {
       }
     }
     
-    
-    
     # color nodes by value
     if (input$nodecolortype == "by value")
     {
-      # split into data frame of kinase and value
-      data = unlist(strsplit(input$nodeValueBox,"\n"))
+      # read in text area input
+      recolordf = read.text.input(input$branchValueBox)
       
-      if  (length(data) > 0){
-        # extract user info
-        recolordf = data.frame(matrix(unlist(strsplit(x=data,split="\\s+")),ncol=2,byrow = T),stringsAsFactors = F)
-        colnames(recolordf) = c("ids","values")
-        recolordf$values = as.numeric(recolordf$values)
+      # convert to coral id
+      recolordf = convertID (tempdf,recolordf,inputtype=input$branchValueIDtype)
+      
+      if (nrow(recolordf)>0)
+      {
+        # establish palette
+        colpalette = colorRampPalette(c(input$col_node_low, input$col_node_med, input$col_node_hi))(100)
         
-        # convert names
-        if (input$nodeValueIDtype != "KinrichID")
-        {
-          recolordf = convertID(df=tempdf,recolordf=recolordf,inputtype = input$nodeValueIDtype)
-        }
+        # set colors based on group
+        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = colpalette, heatrange = c(input$nodeminheat,input$nodemaxheat))
+        tempdf$node.col = newcolors_and_colormapping[[1]]
+        tempdf$node.val = newcolors_and_colormapping[[2]]
         
-        if  (nrow(recolordf) > 0)
-        {
-          # establish palette
-          pal = colorRampPalette(c(input$col_node_low, input$col_node_med, input$col_node_hi))(100)
-          
-          # recolor/order tree
-          tempdf = recolortreebynumber(tempdf, recolordf,pal,heatrange = c(input$minheat,input$maxheat),objecttorecolor="node")
-        }
+        # reorder based on branch color
+        tempdf = tempdf[order(abs(tempdf$node.val), decreasing = FALSE,na.last = FALSE),]
       }
     }
     
@@ -160,13 +152,40 @@ server <- function(input, output) {
     # color nodes by single color
     if (input$nodesizetype == "One Size")
     {
-      tempdf$noderad = input$size_node_single
+      tempdf$node.radius = input$size_node_single
     }
-  
+    
+    # color nodes by single color
+    if (input$nodesizetype == "by value")
+    {
+      # read in text area input
+      resizedf = read.text.input(input$branchValueBox)
+      
+      # convert to coral id
+      resizedf = convertID (tempdf,resizedf,inputtype=input$nodesizeValueIDtype)
+      
+      # write a function to resize based on these values
+      #### ENDED HERE ####print use thes values (input$nodesizeValueslider)
+    }
+    
+    # ------------------ ADVANCED OPTIONS ------------------ #
+    
+    # should the text be colored
+    if (input$colortextcheckbox == TRUE)
+    {
+      tempdf$text.col = tempdf$branch.col
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+
     return(tempdf)
     }) # end reactive
-  
-  
   
   
   output$plot1  <- renderSvgPanZoom ({
@@ -175,9 +194,6 @@ server <- function(input, output) {
     
       # font size
       svginfo$dataframe$fontsize_text = paste(input$fontsize,"px",sep="")
-      
-      # should the text be colored
-      svginfo$colortext = input$colortextcheckbox
 
       # Write SVG file
       outfile <- "Output/kintreeout.svg"

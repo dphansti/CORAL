@@ -29,12 +29,9 @@ orig_svginfo = readRDS("Data/kintree.RDS")
 # make svginfo (leaving the original intact)
 svginfo = orig_svginfo
 
-# default palette for group colors
-colpalette = colorRampPalette( c("forestgreen","violet","dodgerblue2","deepskyblue2","lightgrey","gold","orange","firebrick2"))(12)
-
 # Used for Default values
-CDKs = grep(pattern = "CDK",svginfo$dataframe$ids)
-CaMs = grep(pattern = "CaM",svginfo$dataframe$ids)
+CDKs = grep(pattern = "CDK",svginfo$dataframe$id.kinrich)
+CaMs = grep(pattern = "CaM",svginfo$dataframe$id.kinrich)
 
 # To upload
 # library(rsconnect)

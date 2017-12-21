@@ -62,24 +62,26 @@ color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
 
 
 # Define a function creates color vector from values
-color.by.value <- function(df ,recolordf ,colors  ,range , bg.col="#D3D3D3")
+color.by.value <- function(df ,recolordf ,colors  ,heatrange , bg.col="#D3D3D3")
 {
   # set background color
   color.vector = rep(bg.col,nrow(df))
   
   # kep track of group labels
-  value.vector = rep("0",nrow(df))
+  value.vector = rep(NA,nrow(df))
   
-  ##### ENDED HERE ######
+  # convert to numeric
+  recolordf[,2] = as.numeric(recolordf[,2])
   
+  # convert to numeric
+  recolordf$color = map2color(recolordf[,2],pal = colors, limits = heatrange)
   
+  # find indices to recolor
+  dflookup = match(recolordf[,1],df[,1])
   
-  
-  
-  
-  
-  
-  
-  
-  
+  # update colors and values
+  color.vector[dflookup] = recolordf$color
+  value.vector[dflookup] = recolordf[,2]
+
+  return (list(color.vector, value.vector))  
 }
