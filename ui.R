@@ -23,7 +23,7 @@ ui <- dashboardPage(
                    fluidRow( width=12,
                              
                        box(width=12,title = "Branch Color",status = "primary", solidHeader = TRUE,
-                           collapsible = TRUE,collapsed = FALSE,
+                           collapsible = TRUE,collapsed = TRUE,
                            
                            selectInput(inputId = "branchcolortype",label = "Color Branch",
                                        choices = c("As one color","Manually","by group","by value"),
@@ -32,7 +32,7 @@ ui <- dashboardPage(
                            # if single color
                            conditionalPanel(
                              condition = "input.branchcolortype == 'As one color'",
-                             colourInput("col_branch_single", "Branch Color","#D3D3D3")
+                             colourInput("col_branch_single", "Branch Color","#A3A3A3")
                            ),
                            
                            # if manual selection
@@ -40,7 +40,7 @@ ui <- dashboardPage(
                              condition = "input.branchcolortype == 'Manually'",
                              selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
                              fluidRow( width=12,
-                                       column(6,colourInput("col_select_bg", "BG Color", "#D3D3D3")),
+                                       column(6,colourInput("col_select_bg", "BG Color", "#A3A3A3")),
                                        column(6,colourInput("col_select", "Color", "#2C54F5"))
                              )
                            ),
@@ -68,7 +68,7 @@ ui <- dashboardPage(
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                              fluidRow( width=12,
                                        column(4,  colourInput("col_heat_low", "Low", "deepskyblue2",showColour = "background")),
-                                       column(4,                  colourInput("col_heat_med", "Med", "#D3D3D3",showColour = "background")),
+                                       column(4,                  colourInput("col_heat_med", "Med", "#A3A3A3",showColour = "background")),
                                        column(4,                  colourInput("col_heat_hi", "High", "gold",showColour = "background"))
                              ) ,
                              fluidRow( width=12,
@@ -90,7 +90,7 @@ ui <- dashboardPage(
                            # if single color
                            conditionalPanel(
                              condition = "input.nodecolortype == 'As one color'",
-                             colourInput("col_node_single", "Node Color","#D3D3D3")
+                             colourInput("col_node_single", "Node Color","#A3A3A3")
                            ),
                            
                            # if manual selection
@@ -98,7 +98,7 @@ ui <- dashboardPage(
                              condition = "input.nodecolortype == 'Manually'",
                              selectInput(inputId = "NodeManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
                              fluidRow( width=12,
-                                       column(6,colourInput("col_node_bg", "BG Color", "#D3D3D3")),
+                                       column(6,colourInput("col_node_bg", "BG Color", "#A3A3A3")),
                                        column(6,colourInput("col_sel_node", "Color", "#2C54F5"))
                              )
                            ),
@@ -126,7 +126,7 @@ ui <- dashboardPage(
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                              fluidRow( width=12,
                                        column(4,  colourInput("col_node_low", "Low", "deepskyblue2",showColour = "background")),
-                                       column(4,                  colourInput("col_node_med", "Med", "#D3D3D3",showColour = "background")),
+                                       column(4,                  colourInput("col_node_med", "Med", "#A3A3A3",showColour = "background")),
                                        column(4,                  colourInput("col_node_hi", "High", "gold",showColour = "background"))
                              ) ,
                              fluidRow( width=12,
@@ -172,29 +172,38 @@ ui <- dashboardPage(
                            title = tagList(shiny::icon("gear"), "advanced settings"), status = "primary", solidHeader = TRUE,
                            collapsible = TRUE,collapsed = TRUE,
                            # Slider for font size 
-                           sliderInput("fontsize", "Fontsize",min = 0, max = 8,value = 3.25,step = 0.05,ticks=F),
+                           sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 3.25,step = 0.05,ticks=F),
                            
-                           # Color the text?
-                           checkboxInput(inputId="colortextcheckbox",value = TRUE,label = "Color Text"),
+                           selectInput(inputId = "fontcolorselect",label = "Label Color",
+                                       choices = c("Same as Branch","Single Color"),
+                                       multiple = FALSE,selected = "Same as Branch",width = "100%"),
                            
+                           conditionalPanel(condition = "input.fontcolorselect == 'Single Color'",
+                             colourInput("fontcolorchoose", "Label Color","#000000")
+                           ),
+                          
+                           tags$b("Group Colors") ,
                            #colpalette
                            # Group Colors
                            fluidRow( width=12,
-                                     column(2,  colourInput("groupcol1", "1", defaultpalette[1],showColour = "background")),
-                                     column(2,  colourInput("groupcol2", "2", defaultpalette[2],showColour = "background")),
-                                     column(2,  colourInput("groupcol3", "3", defaultpalette[3],showColour = "background")),
-                                     column(2,  colourInput("groupcol4", "4", defaultpalette[4],showColour = "background")),
-                                     column(2,  colourInput("groupcol5", "5", defaultpalette[5],showColour = "background")),
-                                     column(2,  colourInput("groupcol6", "6", defaultpalette[6],showColour = "background"))
+                                     column(width = 3,  colourInput("groupcol1", "1", defaultpalette[1],showColour = "background")),
+                                     column(width = 3,  colourInput("groupcol2", "2", defaultpalette[2],showColour = "background")),
+                                     column(width = 3,  colourInput("groupcol3", "3", defaultpalette[3],showColour = "background")),
+                                     column(width = 3,  colourInput("groupcol4", "4", defaultpalette[4],showColour = "background"))
                            ),
-                           
+   
                            fluidRow( width=12,
-                                     column(2,  colourInput("groupcol7", "7", defaultpalette[7],showColour = "background")),
-                                     column(2,  colourInput("groupcol8", "8", defaultpalette[8],showColour = "background")),
-                                     column(2,  colourInput("groupcol9", "9", defaultpalette[9],showColour = "background")),
-                                     column(2,  colourInput("groupcol10", "10", defaultpalette[10],showColour = "background")),
-                                     column(2,  colourInput("groupcol11", "11", defaultpalette[11],showColour = "background")),
-                                     column(2,  colourInput("groupcol12", "12", defaultpalette[12],showColour = "background"))
+                                     column(width = 3,  colourInput("groupcol5", "5", defaultpalette[5],showColour = "background")),
+                                     column(width = 3,  colourInput("groupcol6", "6", defaultpalette[6],showColour = "background")),
+                                     column(width = 3,  colourInput("groupcol7", "7", defaultpalette[7],showColour = "background")),
+                                     column(width = 3,  colourInput("groupcol8", "8", defaultpalette[8],showColour = "background"))
+                           ),
+                                                   
+                           fluidRow( width=12,
+                                     column(width = 3,  colourInput("groupcol9", "9", defaultpalette[9],showColour = "background")),
+                                     column(width = 3,  colourInput("groupcol10", "10", defaultpalette[10],showColour = "background")),
+                                     column(width = 3,  colourInput("groupcol11", "11", defaultpalette[11],showColour = "background")),
+                                     column(width = 3,  colourInput("groupcol12", "12", defaultpalette[12],showColour = "background"))
                            ) 
 
                        ) #end box
@@ -203,11 +212,11 @@ ui <- dashboardPage(
                        ,
                        
                        tabBox
-                       ( width=9,height="600px",
+                       ( width=9,height="700px",
                          tabPanel
                          ("Manning",
                            width=12,
-                           svgPanZoomOutput('plot1',height="550px")
+                           svgPanZoomOutput('plot1',height="650px")
                          ),
                          tabPanel
                          ("Force",

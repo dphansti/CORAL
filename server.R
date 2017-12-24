@@ -75,7 +75,6 @@ server <- function(input, output) {
         # reorder based on branch color
         tempdf = tempdf[order(abs(tempdf$branch.val), decreasing = FALSE,na.last = FALSE),]
       }
-
     }
     
     # ------------------ NODE COLOR ------------------ #
@@ -177,11 +176,15 @@ server <- function(input, output) {
     }
     
     # ------------------ ADVANCED OPTIONS ------------------ #
-    
-    # should the text be colored
-    if (input$colortextcheckbox == TRUE)
+  
+    # text color
+    if (input$fontcolorselect == "Same as Branch")
     {
       tempdf$text.col = tempdf$branch.col
+    }
+    if (input$fontcolorselect == "Single Color")
+    {
+      tempdf$text.col = input$fontcolorchoose
     }
     
     return(tempdf)
@@ -192,9 +195,6 @@ server <- function(input, output) {
   output$plot1  <- renderSvgPanZoom ({
       # recolor the official matrix
       svginfo$dataframe = newdf()
-    
-      # font size
-      svginfo$dataframe$fontsize_text = paste(input$fontsize,"px",sep="")
 
       # Write SVG file
       outfile <- "Output/kintreeout.svg"
@@ -202,6 +202,11 @@ server <- function(input, output) {
       svgPanZoom(outfile,viewBox = F,controlIconsEnabled=F)
     })
 
+  
+  colnames(svginfo$dataframe)
+  
+  
+  
 
   # build the table
   output$KinaseTable <- DT::renderDataTable({
