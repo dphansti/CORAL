@@ -161,7 +161,7 @@ ui <- dashboardPage(
                              selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
-                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(0,5),min = 0, max = 10)
+                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 10)
                            )
                        ) # end box    
                    ), # end row   
@@ -212,11 +212,11 @@ ui <- dashboardPage(
                        ,
                        
                        tabBox
-                       ( width=9,height="700px",
+                       ( width=9,height="800px",
                          tabPanel
                          ("Manning",
                            width=12,
-                           svgPanZoomOutput('plot1',height="650px")
+                           svgPanZoomOutput('plot1',height="750px")
                          ),
                          tabPanel
                          ("Force",

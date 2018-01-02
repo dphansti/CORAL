@@ -231,11 +231,10 @@ conversioncolumn <- function(df,convtable,colname)
 }
 
 
-
 # Define a function that build a clean data frame from the kinase tree svg
-readsvgtree <- function(svgtree="~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/CORAL/Data/basetree.svg")
+readsvgtree <- function(svgtree,kinmapfile,ensemblfile,entrezfile)
 {
-
+  
   # read in and organize lines
   cleansvgdata = cleansvg(svgtree)
   
@@ -247,7 +246,7 @@ readsvgtree <- function(svgtree="~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/
   xmlns:xlink=\"http://www.w3.org/1999/xlink\" >"
   
   # read in kinmap file
-  kinmap = read.table("~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Data/kinmaplabels.txt",header=F,sep="\t",quote="")
+  kinmap = read.table(kinmapfile,header=F,sep="\t",quote="")
   colnames(kinmap) = kinmap[1,]
   kinmap = kinmap[2:nrow(kinmap),]
   
@@ -266,11 +265,10 @@ readsvgtree <- function(svgtree="~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/
   # fix uniprot name after merge  
   svginfo$dataframe = svginfo$dataframe[,names(svginfo$dataframe) !="uniprot.y"]
   names(svginfo$dataframe)[names(svginfo$dataframe) == "uniprot.x"] = "uniprot"
-
   
   # add new conversion columns
-  svginfo$dataframe = conversioncolumn(df=svginfo$dataframe,convtable="~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Mapping/uniprot2ensembl.txt",colname="ensembl")
-  svginfo$dataframe = conversioncolumn(df=svginfo$dataframe,convtable="~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Mapping/uniprot2entrez.txt",colname="entrez")
+  svginfo$dataframe = conversioncolumn(df=svginfo$dataframe,convtable=ensemblfile,colname="ensembl")
+  svginfo$dataframe = conversioncolumn(df=svginfo$dataframe,convtable=entrezfile,colname="entrez")
   
   svgallinfoDF = data.frame(
     
@@ -324,4 +322,10 @@ readsvgtree <- function(svgtree="~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/
   saveRDS(svginfo,"Data/kintree.RDS")
   
 }
+
+# ensemblfile  = "~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Mapping/uniprot2ensembl.txt"
+# entrezfile  = "~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Mapping/uniprot2entrez.txt"
+# kinmapfile = "~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Data/kinmaplabels.txt"
+# svgtree    = "~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/CORAL/Data/basetree.svg"
+# readsvgtree(svgtree,kinmapfile,ensemblfile,entrezfile)
 

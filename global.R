@@ -38,6 +38,10 @@ defaultpalette = colorRampPalette( c("forestgreen","violet","dodgerblue2","deeps
 # To upload
 # library(rsconnect)
 # rsconnect::deployApp("~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Project/Kinrich/")
+# rsconnect::deployApp()
+# rsconnect::deployApp("~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/CORAL/")
+# rsconnect::setAccountInfo(name='dphansti', token='97CD97745674D398F80301CA4EF52342', secret='08F7iBW64Du4zadfda6qIzrHDAseBmUMtHNSi2u/')
+
 
 # To access
 # https://dphansti.shinyapps.io/kinrich/
