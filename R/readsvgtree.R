@@ -44,28 +44,58 @@ extractsvgline <- function(line,type="path")
   
   if (type == "text")
   {
-    uniprotinfo = strsplit(line,split = ">")[[1]][1]
-    uniprotinfo = strsplit(uniprotinfo,split = "://www.uniprot.org/uniprot/")[[1]][2]
-    uniprotinfo = gsub("\"","",uniprotinfo)
-    listofstuff = c(listofstuff,uniprotinfo)
-    names(listofstuff)[length(listofstuff)] = "uniprot"
+    firsttrimline  = gsub(c("<text |</text>"),"",line)
+    twopartsofline = strsplit(firsttrimline,split = ">")[[1]]
+    trimline = twopartsofline[[1]]
     
-    trimline = strsplit(line,split = ">")[[1]][2]
-    trimline = gsub(c("<text "),"",trimline)
-    text.label = strsplit(strsplit(line,split = ">")[[1]][3],"<")[[1]][1]
-    listofstuff = c(listofstuff,text.label)
+    # get the text.label
+    listofstuff = c(listofstuff,twopartsofline[[2]])
     names(listofstuff)[length(listofstuff)] = "text.label"
+    
+    quotesplit = unlist(strsplit(trimline,split = "\""))
+    
+    # get the x and y coords
+    transform = gsub(c("matrix\\(|)"),"",quotesplit[4])
+    x = unlist(strsplit(transform," "))[5]
+    y = unlist(strsplit(transform," "))[6]
+    
+    listofstuff = c(listofstuff,x)
+    names(listofstuff)[length(listofstuff)] = "x"
+    
+    listofstuff = c(listofstuff,y)
+    names(listofstuff)[length(listofstuff)] = "y"
+    
+    # # get the name
+    listofstuff = c(listofstuff,quotesplit[2])
+    names(listofstuff)[length(listofstuff)] = "id"
+    
+    
+    
+    # uniprotinfo = strsplit(line,split = ">")[[1]][1]
+    # uniprotinfo = strsplit(uniprotinfo,split = "://www.uniprot.org/uniprot/")[[1]][2]
+    # uniprotinfo = gsub("\"","",uniprotinfo)
+    # listofstuff = c(listofstuff,uniprotinfo)
+    # names(listofstuff)[length(listofstuff)] = "uniprot"
+    # 
+    # trimline = strsplit(line,split = ">")[[1]][2]
+    # trimline = gsub(c("<text "),"",trimline)
+    # text.label = strsplit(strsplit(line,split = ">")[[1]][3],"<")[[1]][1]
+    # listofstuff = c(listofstuff,text.label)
+    # names(listofstuff)[length(listofstuff)] = "text.label"
   }  
   
-  subline = unlist(strsplit(trimline," "))
-    
-  for (subin in subline)
+  if (type != "text")
   {
-    items = unlist(strsplit(subin,"="))
-    value = items[2]
-    value =gsub("\"","",value)
-    listofstuff = c(listofstuff,value)
-    names(listofstuff)[length(listofstuff)] = items[1]
+    subline = unlist(strsplit(trimline," "))
+    
+    for (subin in subline)
+    {
+      items = unlist(strsplit(subin,"="))
+      value = items[2]
+      value =gsub("\"","",value)
+      listofstuff = c(listofstuff,value)
+      names(listofstuff)[length(listofstuff)] = items[1]
+    }
   }
   
   return(listofstuff)
@@ -96,22 +126,29 @@ extractinfo <- function(cleansvgdata)
   for (i in 1:length(cleansvgdata))
   {
     line = cleansvgdata[[i]]
-    if (line == "<g id=\"BRANCHES\">")
+    
+    if (line == "<g id=\"LEGEND\">")
+    {
+      section = "legend"
+      next
+    }
+    
+    if (line == "<g id=\"BRANCHES\">" |   line == "<g id=\"ATYPICAL_BRANCHES\">")
     {
       section = "branches"
       next
     }
-    if (line == "<g id=\"LABELS\">")
+    if (line == "<g id=\"LABELS\">" | line == "<g id=\"ATYPICAL_LABELS\">")
     {
       section = "labels"
       next
     }
-    if (line == "<g id=\"CIRCLES\">")
+    if (line == "<g id=\"CIRCLES\">" | line == "<g id=\"ATYPICAL_CIRCLES\">")
     {
       section = "nodes"
       next
     }
-    if (line == "<g id=\"GROUPS\">")
+    if (line == "<g id=\"GROUPS\">" | line == "<g id=\"ATYPICAL_GROUPS\">")
     {
       section = "groups"
       next
@@ -150,7 +187,7 @@ extractinfo <- function(cleansvgdata)
       id= paste(longidsplit[3:length(longidsplit)],collapse="_")
       id = gsub("\"","",id)
       id.kinrich.text = c(id.kinrich.text,id)
-      
+
       text.x = c(text.x,lineitems["x"])
       text.y = c(text.y,lineitems["y"])
       text.label = c(text.label,lineitems["text.label"])
@@ -243,15 +280,22 @@ readsvgtree <- function(svgtree,kinmapfile,ensemblfile,entrezfile)
   
   # fix header
   svginfo$header =  "<svg xmlns=\"http://www.w3.org/2000/svg\"
-  xmlns:xlink=\"http://www.w3.org/1999/xlink\" >"
+  xmlns:xlink=\"http://www.w3.org/1999/xlink\" >
+  <defs>
+    <style type=\"text/css\">
+    @import url('https://fonts.googleapis.com/css?family=Roboto-Bold');
+  text {font-family: \"Roboto-Bold\";
+  }
+  </style>
+    </defs>"
   
   # read in kinmap file
   kinmap = read.table(kinmapfile,header=F,sep="\t",quote="")
   colnames(kinmap) = kinmap[1,]
   kinmap = kinmap[2:nrow(kinmap),]
-  
+
   colnames(kinmap) = c("label","ids","HGNC","name","group","family","subfamily","uniprot")
-  kinmap = kinmap[which(kinmap$group != "Atypical"),]
+  #kinmap = kinmap[which(kinmap$group != "Atypical"),]
   
   # check for similarities with kinmap
   setdiff(svginfo$dataframe$id.kinrich,kinmap$ids)
@@ -263,9 +307,10 @@ readsvgtree <- function(svgtree,kinmapfile,ensemblfile,entrezfile)
   svginfo$dataframe = merge(svginfo$dataframe,kinmap[,2:ncol(kinmap)],by.x = "id.kinrich" ,by.y = "ids")
 
   # fix uniprot name after merge  
+  svginfo$dataframe$uniprot.x = svginfo$dataframe$uniprot.y
   svginfo$dataframe = svginfo$dataframe[,names(svginfo$dataframe) !="uniprot.y"]
   names(svginfo$dataframe)[names(svginfo$dataframe) == "uniprot.x"] = "uniprot"
-  
+
   # add new conversion columns
   svginfo$dataframe = conversioncolumn(df=svginfo$dataframe,convtable=ensemblfile,colname="ensembl")
   svginfo$dataframe = conversioncolumn(df=svginfo$dataframe,convtable=entrezfile,colname="entrez")
@@ -306,7 +351,7 @@ readsvgtree <- function(svgtree,kinmapfile,ensemblfile,entrezfile)
     text.x = svginfo$dataframe$text.x,
     text.y = svginfo$dataframe$text.y,
     text.col = "black",
-    text.font = "\'AvenirNext-Bold\'",
+    text.font = "\'Roboto-Bold\'",
     text.size = 3.25,
     text.label = svginfo$dataframe$text.label
     
@@ -323,9 +368,9 @@ readsvgtree <- function(svgtree,kinmapfile,ensemblfile,entrezfile)
   
 }
 
-# ensemblfile  = "~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Mapping/uniprot2ensembl.txt"
-# entrezfile  = "~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Mapping/uniprot2entrez.txt"
-# kinmapfile = "~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Data/kinmaplabels.txt"
+# ensemblfile  = "~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/CORAL/Data/uniprot2ensembl.txt"
+# entrezfile  = "~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/CORAL/Data/uniprot2entrez.txt"
+# kinmapfile = "~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/CORAL/Data/kinmaplabels.txt"
 # svgtree    = "~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/CORAL/Data/basetree.svg"
 # readsvgtree(svgtree,kinmapfile,ensemblfile,entrezfile)
 

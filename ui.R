@@ -148,7 +148,7 @@ ui <- dashboardPage(
                            # if single color
                            conditionalPanel(
                              condition = "input.nodesizetype == 'One Size'",
-                             sliderInput("size_node_single", "Node Size",value=5,min = 0,max=10)
+                             sliderInput("size_node_single", "Node Size",value=4,min = 0,max=10)
                            ),
                            
                            # if by value

@@ -19,6 +19,7 @@ build.text <- function(l)
                 " font-size=\"",l["text.size"],"px\" ",
                 "fill=\"",l["text.col"],"\" ",
                 "font-family=\"", l["text.font"], "\" ",
+                "letter-spacing=","\".035\"",
                 
                 # # mouse over effects
                 # " \nonmouseover=\"evt.target.setAttribute('font-size', '10');\"",

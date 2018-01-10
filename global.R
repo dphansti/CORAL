@@ -9,10 +9,6 @@ require(svgPanZoom)
 require(rhandsontable)
 require(colourpicker)
 require(DT)
-# require(shinyIncubator)
-
-# load other network libraries
-
 
 # Point to R functions
 source("R/colorby.R")
