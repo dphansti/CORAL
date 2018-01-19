@@ -7,6 +7,8 @@ server <- function(input, output) {
     # get current values
     tempdf = svginfo$dataframe
     
+    legend = c()
+    
     # default palette for group colors
     colpalette = c( input$groupcol1,input$groupcol2,input$groupcol3,input$groupcol4,input$groupcol5,input$groupcol6,
                     input$groupcol7,input$groupcol8,input$groupcol9,input$groupcol10,input$groupcol11,input$groupcol12)
@@ -29,6 +31,35 @@ server <- function(input, output) {
       
       # reorder based on selected ids
       tempdf = tempdf[order(tempdf$id.kinrich %in% input$KinasesManual, decreasing = FALSE),]
+    
+      # yoffset = 79.125
+      # 
+      # legend = c(legend,
+      #                   "<g>",
+      #                   "<text x=\"98.8075\" y=\"87.9701\" font-family=\"'AvenirNext-Bold'\" font-size=\"9px\">Branch Color</text>",
+      #                    "</g>"
+      # )
+      # 
+      # 
+      # ytop - 89.807
+      # legend = c(legend,
+      #            
+      #            
+      #            
+      #            
+      #            # solid bar on left
+      #            "<rect x=\"89.807\" y=\"79.125\" fill=\"#D3D3D3\" width=\"2.333\" height=\"113.451\"/>",
+      #            
+      #             paste("<rect x=\"99.208\" y=\"105.635\" fill=\"",input$col_select_bg,"\" width=\"6.584\" height=\"6.584\"/>",sep=""),
+      #             "<text x=\"110.8889\" y=\"102.2501\" font-family=\"'AvenirNext-Bold'\" font-size=\"5px\">All</text>"
+      #            
+      #            
+      #   # 
+      #   # <rect x="99.208" y="226.848" fill="#2A97D3" width="6.584" height="6.584"/>
+      #   # <text transform="matrix(1 0 0 1 110.8889 218.2256)" font-family="'AvenirNext-Bold'" font-size="5px">TK</text>
+      #   # <text transform="matrix(1 0 0 1 110.8889 231.8603)" font-family="'AvenirNext-Bold'" font-size="5px">TKL</text>
+      # )
+      
     }
     
     # color branches by group
@@ -187,14 +218,18 @@ server <- function(input, output) {
       tempdf$text.col = input$fontcolorchoose
     }
     
-    return(tempdf)
+    
+    return(list(tempdf,legend))
     }) # end reactive
   
   
   # build the manning tree
   output$plot1  <- renderSvgPanZoom ({
+      
       # recolor the official matrix
-      svginfo$dataframe = newdf()
+      dfandlegend = newdf()
+      svginfo$dataframe = dfandlegend[[1]]
+      svginfo$legend = dfandlegend[[2]]
 
       # Write SVG file
       outfile <- "Output/kintreeout.svg"
@@ -202,11 +237,6 @@ server <- function(input, output) {
       svgPanZoom(outfile,viewBox = F,controlIconsEnabled=F)
     })
 
-  
-  colnames(svginfo$dataframe)
-  
-  
-  
 
   # build the table
   output$KinaseTable <- DT::renderDataTable({

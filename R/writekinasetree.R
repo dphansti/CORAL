@@ -56,6 +56,11 @@ writekinasetree <- function(svginfo,destination="Output/kintreeout.svg")
   # add header
   outputlines = c(outputlines,svginfo$header)
   
+  # add legend
+  outputlines = c(outputlines,"<g id=\"LEGEND\">")
+  outputlines = c(outputlines,svginfo$legend)
+  outputlines = c(outputlines,"</g>")
+    
   # add branches
   outputlines = c(outputlines,"<g id=\"BRANCHES\">")
   outputlines = c(outputlines,unlist(apply(svginfo$dataframe,1, build.branch)))

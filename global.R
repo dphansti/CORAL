@@ -20,6 +20,7 @@ source("R/convertID.R")
 
 # read RDS
 orig_svginfo = readRDS("Data/kintree.RDS")
+orig_svginfo$legend = c()
 
 # make svginfo (leaving the original intact)
 svginfo = orig_svginfo
