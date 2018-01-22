@@ -1,0 +1,52 @@
+#diaglayout .node {
+  cursor: pointer;
+  stroke: #3182bd;
+  stroke-width: 1.5px;
+}
+
+#diaglayout .link {
+  fill: none;
+  stroke: #9ecae1;
+  stroke-width: 1.5px;
+}
+
+#diaglayout .node text {
+  font: sans-serif;
+}
+
+#forcelayout .node {
+  cursor: pointer;
+}
+
+#forcelayout .node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+#forcelayout .node text {
+  font: sans-serif;
+}
+
+#forcelayout .link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+
+#circlelayout .node circle {
+  fill: #fff;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+
+#circlelayout .node {
+  font: 6px sans-serif;
+}
+
+#circlelayout .link {
+  fill: none;
+  stroke: #ccc;
+  stroke-width: 1.5px;
+}
+

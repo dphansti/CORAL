@@ -11,6 +11,19 @@ ui <- dashboardPage(
   ),
   dashboardBody(
     
+    tags$head(
+      #adds the d3 library needed to draw the plot
+      tags$script(src="http://d3js.org/d3.v3.min.js"),
+      
+      #the js script holding the code to make the custom output
+      tags$script(src="circleNetwork.js"),
+      tags$script(src="collapsableDiagonalNetwork.js"),
+      tags$script(src="collapsableForceNetwork.js"),
+      
+      #the stylesheet, paste all that was between the <style> tags from your example in the graph_style.css file
+      tags$link(rel = "stylesheet", type = "text/css", href = "styling_layouts.css")
+    ),
+    
     # Fix a bug in the texboxInput funciton that doesn't respect width= "100%"
     tags$style(HTML(".shiny-input-container:not(.shiny-input-container-inline) {width: 100%;}")),
     
@@ -219,14 +232,28 @@ ui <- dashboardPage(
                            svgPanZoomOutput('plot1',height="750px")
                          ),
                          tabPanel
-                         ("Force",
-                           width=12
-                           # forceNetworkOutput('plot2',height = "450px")
+                         ("Radial Cluster Dendrogram",
+                           width=12,
+                           selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json"))),
+                           #this div will hold the final graph
+                           div(id="circlelayout", class="circleNetwork")
                          ),
+                         
                          tabPanel
-                         ("Circle",
-                           width=12
-                           # radialNetworkOutput('plot3',height = "450px")
+                         ("Collapsable Force Network",
+                           width=12,
+                           selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json"))),
+                           #this div will hold the final graph
+                           div(id="forcelayout", class="collapsableForceNetwork")
+                           
+                         ),
+                         
+                         tabPanel
+                         ("Collapsable Diagonal Network",
+                           width=12,
+                           selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json"))),
+                           #this div will hold the final graph
+                           div(id="diaglayout", class="collapsableDiagonalNetwork")
                          )
                        )
               ),

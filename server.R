@@ -237,6 +237,25 @@ server <- function(input, output) {
       svgPanZoom(outfile,viewBox = F,controlIconsEnabled=F)
     })
 
+  #output to the graph div
+  output$forcelayout <- reactive({
+    #get the selected file
+    input$data_files
+  })
+  
+  #output to the graph div
+  output$diaglayout <- reactive({
+    input$data_files
+  })
+  
+  #output to the graph div
+  output$circlelayout <- reactive({
+    input$data_files
+    
+    #Delete above line and display this reactive div by:
+    # calling a function that turns the dataframe into a json file 
+    #   (done in radialNetwork_KinomeTree.R or maybe in forceNetwork_KinomeTree)
+  })
 
   # build the table
   output$KinaseTable <- DT::renderDataTable({
