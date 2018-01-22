@@ -1,5 +1,5 @@
 {
-  "name": ["Groups"],
+  "name": ["Root"],
   "children": [
     {
       "name": [" AGC"],
@@ -320,6 +320,206 @@
             },
             {
               "name": ["    YANK3"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" Atypical"],
+      "children": [
+        {
+          "name": ["  ABC1"],
+          "children": [
+            {
+              "name": ["   ABC1-A"],
+              "children": [
+                {
+                  "name": ["    ADCK3"]
+                },
+                {
+                  "name": ["    ADCK4"]
+                }
+              ]
+            },
+            {
+              "name": ["   ABC1-B"],
+              "children": [
+                {
+                  "name": ["    ADCK1"]
+                }
+              ]
+            },
+            {
+              "name": ["   ABC1-C"],
+              "children": [
+                {
+                  "name": ["    ADCK2"]
+                }
+              ]
+            },
+            {
+              "name": ["   ABC1-D"],
+              "children": [
+                {
+                  "name": ["    ADCK5"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  Alpha"],
+          "children": [
+            {
+              "name": ["    AlphaK1"]
+            },
+            {
+              "name": ["    AlphaK2"]
+            },
+            {
+              "name": ["    AlphaK3"]
+            },
+            {
+              "name": ["   ChaK"],
+              "children": [
+                {
+                  "name": ["    ChaK1"]
+                },
+                {
+                  "name": ["    ChaK2"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  BRD"],
+          "children": [
+            {
+              "name": ["    BRD2"]
+            },
+            {
+              "name": ["    BRD3"]
+            },
+            {
+              "name": ["    BRD4"]
+            },
+            {
+              "name": ["    BRDT"]
+            }
+          ]
+        },
+        {
+          "name": ["  PDHK"],
+          "children": [
+            {
+              "name": ["    BCKDK"]
+            },
+            {
+              "name": ["    PDHK1"]
+            },
+            {
+              "name": ["    PDHK3"]
+            },
+            {
+              "name": ["    PDHK4"]
+            }
+          ]
+        },
+        {
+          "name": ["  PIKK"],
+          "children": [
+            {
+              "name": ["   ATM"],
+              "children": [
+                {
+                  "name": ["    ATM"]
+                }
+              ]
+            },
+            {
+              "name": ["   ATR"],
+              "children": [
+                {
+                  "name": ["    ATR"]
+                }
+              ]
+            },
+            {
+              "name": ["   DNAPK"],
+              "children": [
+                {
+                  "name": ["    DNAPK"]
+                }
+              ]
+            },
+            {
+              "name": ["   FRAP"],
+              "children": [
+                {
+                  "name": ["    FRAP"]
+                }
+              ]
+            },
+            {
+              "name": ["   SMG1"],
+              "children": [
+                {
+                  "name": ["    SMG1"]
+                }
+              ]
+            },
+            {
+              "name": ["   TRRAP"],
+              "children": [
+                {
+                  "name": ["    TRRAP"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  RIO"],
+          "children": [
+            {
+              "name": ["   RIO1"],
+              "children": [
+                {
+                  "name": ["    RIOK1"]
+                }
+              ]
+            },
+            {
+              "name": ["   RIO2"],
+              "children": [
+                {
+                  "name": ["    RIOK2"]
+                }
+              ]
+            },
+            {
+              "name": ["   RIO3"],
+              "children": [
+                {
+                  "name": ["    RIOK3"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  TIF1"],
+          "children": [
+            {
+              "name": ["    TIF1a"]
+            },
+            {
+              "name": ["    TIF1b"]
+            },
+            {
+              "name": ["    TIF1g"]
             }
           ]
         }
@@ -2520,4 +2720,4 @@
       ]
     }
   ]
-} 
+}

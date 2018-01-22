@@ -1,13 +1,3 @@
-# library(networkD3)
-# library(tidyverse)
-# library(data.tree)
-# library(dplyr)
-# library(magrittr)
-# library(radialNetworkR)
-# library('data.tree')
-# library(jsonlite)
-
-# NOTE: THIS IS JUST A VARIATION OF force_kinome_tree FUNCTION IN forceNetwork_KinomeTree.R FILE.
 
 #Auxilary function to produce a data frame that holds the unique names for nodes
 auxfun_unique_names_by_group_number <- function(input_df){
@@ -42,15 +32,16 @@ auxfunc_default_group_coloring <- function(treedf)
 }
 
 
-# Define a function that creates a forceNetwork of the tree
+# Define a function that creates a Radial (circular) Network of the tree
 list_kinome_tree <- function(treedf, color_plan = NULL)
 {
   #treedf = svginfo$dataframe
   # reassing to new variable for absolutely no reason
   newtreedf = treedf
   
-  # Making sure the groups, family, subfamily and ids are not factors before starting
-  smaller_df <- select(newtreedf, c("ids","subfamily","family","group"))
+  # Making sure the ids, family, subfamily and groups are not factors before starting
+  smaller_df <- select(newtreedf, c("id.kinrich","kinase.subfamily","kinase.family","kinase.group"))
+  names(smaller_df) <- c("ids","subfamily","family","group")
   smaller_df$ids = as.character(smaller_df$ids)
   smaller_df$subfamily = as.character(smaller_df$subfamily)
   smaller_df$family = as.character(smaller_df$family)
@@ -172,7 +163,6 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
     }
   }
   
-  #For radialNetwork: 
   # Naming the source -> target dataframe:
   for(i in 1:length(link_df$source)){
     link_df$source[i] <- identified_node_df$name[as.numeric(link_df$source[i])+1]
@@ -182,133 +172,16 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
   # sort 
   link_df = link_df[order(link_df$source,decreasing = FALSE),]
   
+  # reformatting the nodes from the root down based on each source to target pair
   thetree <- FromDataFrameNetwork(link_df)
-  # devtools::install_github("timelyportfolio/radialNetworkR")
   
-  # devtools::install_github( "gluc/data.tree" )
-  # unname = TRUE to get in the proper d3 format
-  
+  # making JSON list from thetree: using unname = TRUE to get in the proper d3 format
   lol <- ToListExplicit(thetree, unname = TRUE)
-
-  #get group colors function: coloring by group (by default)
-  # if(is.null(color_plan)){
-  #   auxfunc_default_group_coloring(svginfo$dataframe)
-  # }
-  return(lol)
   
-  #jsarray <- paste0('["', paste(colorVector, collapse = '", "'), '"]')
-  #nodeStrokeJS <- JS(paste0('function(d, i) { return ', jsarray, '[i]; }'))
-  #networkD3::radialNetwork(lol, width = "3000px",height = "2000px",opacity = 0.9, nodeStroke = nodeStrokeJS)
-  #return(networkD3::radialNetwork(lol, width = "3000px",height = "2000px",opacity = 0.9, nodeStroke = nodeStrokeJS))
-  #return(tree)
-  #return(radialNetworkR::radialNetwork(lol, width = "3000px",height = "2000px"))
+  return(lol)
 }
 
-
-# list_kinome_tree(svginfo$dataframe)
-
-# colorVector <- c("black", "red", "blue", "green", "orange",
-#                  rep("red", 4), rep("blue", 5), rep("green", 5), rep("orange", 5),
-#                  rep("red", 14), rep("blue", 14), rep("green", 14), rep("orange", 14))
-
-
-#View(svginfo$dataframe)
-# diagonalNetwork(lol,width = "1100px",height = "7000px")
-# #Saving the forceNetwork of the Kinome Tree as an HTML file:
-# setwd("../Data/")
-# force_kinome_tree(svginfo$dataframe) %>% saveNetwork(file = 'Net1.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-######
-######
-######
-
-
-# 
-# 
-# ## Data
-# input <- list(number=50)
-# input$number
-# Data_tree <- data.frame(Start="Class",
-#                         Asset = sample(c("FI","Equity","Currency","Commodities"),input$number,replace = TRUE),
-#                         Sub_Asset = sample(c("Asia","Europe","USA","Africa","ME"),input$number,replace = TRUE),
-#                         Ticker = replicate(input$number,paste0(sample(LETTERS,3),collapse=""))) %>% unite(col="pathString",Start,Asset,Sub_Asset,Ticker,sep="-",remove=FALSE) %>% select(-Start) %>% as.Node(pathDelimiter = "-")
-# View(Data_tree)
-# View(ToListExplicit(Data_tree, unname = TRUE ))
-# 
-# ###Assigning colors
-# colorVector <- c("black", "red", "blue", "green", "orange", 
-#                  rep("red", 4), rep("blue", 5), rep("green", 5), rep("orange", 5),
-#                  rep("red", 14), rep("blue", 14), rep("green", 14), rep("orange", 14))
-# 
-# jsarray <- paste0('["', paste(colorVector, collapse = '", "'), '"]')
-# nodeStrokeJS <- JS(paste0('function(d, i) { return ', jsarray, '[i]; }'))
-# ###
-# 
-# #Plotting radialNetwork
-# radialNetwork(ToListExplicit(Data_tree, unname = TRUE ), 
-#               linkColour = "#ccc",
-#               nodeColour = "#fff",
-#               nodeStroke = nodeStrokeJS,
-#               textColour = "#000001")
-# 
-# ?radialNetwork()
-# 
-# library('networkD3')
-# Relationships<- data.frame(Parent=c("earth","earth","forest","forest","ocean","ocean","ocean","ocean"),
-#                            Child=c("ocean","forest","tree","sasquatch","fish","seaweed","mantis shrimp","sea monster"))
-# 
-# View(Relationships)
-# Relationships
-# library('data.tree')
-# tree <- FromDataFrameNetwork(Relationships)
-# tree
-# lol <- ToListExplicit(tree, unname = TRUE)
-# diagonalNetwork(lol)
-# 
-# ?ToListExplicit()
-
-
-
-# sink("/Users/phanstiel2/Research/Ivan/Kinrich/Data/Tree.json")
-# jsonlite::toJSON(lol, pretty = TRUE)
-# sink()
-# 
-
-#default json file in index.html: https://gist.githubusercontent.com/deenar/c16ac22e53165aad50d5/raw/7f5f4cb610ee3f299018c2058362603bb3519d0f/flare.json
-#d3.select(self.frameElement).style("height", radius * 2 + "px");
-
-# d3.select("#generate")
-# .on("click", writeDownloadLink);
-# 
-# function writeDownloadLink(){
-#   try {
-#     var isFileSaverSupported = !new Blob();
-#   } catch (e) {
-#     alert("blob not supported");
-#   }
-#   
-#   var html = d3.select("svg")
-#   .attr("title", "test2")
-#   .attr("version", 1.1)
-#   .attr("xmlns", "http://www.w3.org/2000/svg")
-#   .node().parentNode.innerHTML;
-#   
-#   var blob = new Blob([html], {type: "image/svg+xml"});
-#   saveAs(blob, "myProfile.svg");
-# };
-  
-#<script src="http://eligrey.com/demos/FileSaver.js/Blob.js"></script>
-#<script src="http://eligrey.com/demos/FileSaver.js/FileSaver.js"></script>
-
+#Writing kinome_tree.json based on current dataframe:
+#sink(file = "Desktop/CLASES/UNC/Rotations/Projects/testingCoral.json")
+jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T)
+#sink()

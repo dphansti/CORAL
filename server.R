@@ -239,7 +239,19 @@ server <- function(input, output) {
 
   #output to the graph div
   output$forcelayout <- reactive({
-    #get the selected file
+    
+    # recolor the official matrix
+    dfandlegend = newdf()
+    svginfo$dataframe = dfandlegend[[1]]
+    
+    # Write kinome_tree.json (based on current dataframe)
+    outputjson <- "www/kinome_tree.json"
+    withProgress(
+      writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
+     ,message = "Loading Force Network layout...",style = "old",value = 0.5)
+      
+    
+    # get the selected file
     input$data_files
   })
   
