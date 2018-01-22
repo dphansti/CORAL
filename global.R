@@ -10,6 +10,15 @@ require(rhandsontable)
 require(colourpicker)
 require(DT)
 
+# load other network libraries
+require(data.tree)
+require(radialNetworkR)
+require(networkD3)
+require(igraph)
+require(jsonlite)
+require(rjson)
+require(httr)
+
 # Point to R functions
 source("R/colorby.R")
 source("R/readinput.R")
@@ -17,6 +26,9 @@ source("R/writekinasetree.R")
 
 source("R/map2color.R")
 source("R/convertID.R")
+
+source("R/radialNetwork_KinomeTree.R")
+source("R/forceNetwork_KinomeTree.R")
 
 # read RDS
 orig_svginfo = readRDS("Data/kintree.RDS")
