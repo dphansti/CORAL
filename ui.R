@@ -225,11 +225,11 @@ ui <- dashboardPage(
                        ,
                        
                        tabBox
-                       ( width=9,height="800px",
+                       ( width=9,height="1200px",
                          tabPanel
                          ("Manning",
                            width=12,
-                           svgPanZoomOutput('plot1',height="750px")
+                           svgPanZoomOutput('plot1',height="1060px")
                          ),
                          tabPanel
                          ("Radial Cluster Dendrogram",
