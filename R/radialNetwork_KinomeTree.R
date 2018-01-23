@@ -14,24 +14,6 @@ auxfun_unique_names_by_group_number <- function(input_df){
   return(newdf)
 }
 
-auxfunc_default_group_coloring <- function(treedf)
-{
-  two_column_df <- select(treedf, c("col_line","group"))
-  
-  allgroups <- droplevels(unique(treedf$group))
-  groupnames <- c("Other", "TK", "TKL", "AGC", "CAMK", "RGC", "CMGC", "CK1", "STE")
-  
-  allcolors <- unique(as.character(treedf$col_line))
-  print(allcolors)
-  default_colors <- c("#DBD3A8","#F9800D","#EE2C2C","#228B22","#9983EE","#FAD615","#05A9EE","#198AEE","#FFB800")
-  
-  colorVector <- c("black", "red", "blue", "green", "orange",
-                   rep("red", 4), rep("blue", 5), rep("green", 5), rep("orange", 5),
-                   rep("red", 14), rep("blue", 14), rep("green", 14), rep("orange", 14))
-  return(colorVector)
-}
-
-
 # Define a function that creates a Radial (circular) Network of the tree
 list_kinome_tree <- function(treedf, color_plan = NULL)
 {
