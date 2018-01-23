@@ -11,6 +11,7 @@ require(colourpicker)
 require(DT)
 
 # load other network libraries
+require(dplyr)
 require(data.tree)
 require(radialNetworkR)
 require(networkD3)
@@ -53,5 +54,5 @@ defaultpalette = colorRampPalette( c("forestgreen","violet","dodgerblue2","deeps
 
 
 # To access
-# https://dphansti.shinyapps.io/kinrich/
+# https://dphansti.shinyapps.io/coral/
 
