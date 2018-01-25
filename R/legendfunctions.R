@@ -125,46 +125,41 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
   #drawrect (x,y,fill,width=6.584,height=11.27)
 
   
-  
-  
-  
-  <rect x="99.208" y="105.635" fill="#2A97D3" width="6.584" height="11.27"/>
-    <rect x="105.784" y="105.635" fill="#3C91C2" width="6.584" height="11.27"/>
-    <rect x="112.361" y="105.635" fill="#4E8AB1" width="6.584" height="11.27"/>
-    <rect x="118.937" y="105.635" fill="#61849F" width="6.584" height="11.27"/>
-    <rect x="125.514" y="105.635" fill="#737D8E" width="6.584" height="11.27"/>
-    <rect x="132.09" y="105.635" fill="#85777D" width="6.584" height="11.27"/>
-    <rect x="138.667" y="105.635" fill="#97716C" width="6.584" height="11.27"/>
-    <rect x="145.244" y="105.635" fill="#A96A5B" width="6.584" height="11.27"/>
-    <rect x="151.82" y="105.635" fill="#BC6449" width="6.584" height="11.27"/>
-    <rect x="158.397" y="105.635" fill="#CE5D38" width="6.584" height="11.27"/>
-    <rect x="164.973" y="105.635" fill="#E05727" width="6.584" height="11.27"/>
-    <text transform="matrix(1 0 0 1 98.8075 102.2501)" font-family="'AvenirNext-Bold'" font-size="5px">-5</text>
-    <text transform="matrix(1 0 0 1 133.8944 102.2501)" font-family="'AvenirNext-Bold'" font-size="5px">0</text>
-    <text transform="matrix(1 0 0 1 166.7776 102.2501)" font-family="'AvenirNext-Bold'" font-size="5px">5</text>
-  
-  
-  
-  
-  
+  # 
+  # 
+  # 
+  # <rect x="99.208" y="105.635" fill="#2A97D3" width="6.584" height="11.27"/>
+  #   <rect x="105.784" y="105.635" fill="#3C91C2" width="6.584" height="11.27"/>
+  #   <rect x="112.361" y="105.635" fill="#4E8AB1" width="6.584" height="11.27"/>
+  #   <rect x="118.937" y="105.635" fill="#61849F" width="6.584" height="11.27"/>
+  #   <rect x="125.514" y="105.635" fill="#737D8E" width="6.584" height="11.27"/>
+  #   <rect x="132.09" y="105.635" fill="#85777D" width="6.584" height="11.27"/>
+  #   <rect x="138.667" y="105.635" fill="#97716C" width="6.584" height="11.27"/>
+  #   <rect x="145.244" y="105.635" fill="#A96A5B" width="6.584" height="11.27"/>
+  #   <rect x="151.82" y="105.635" fill="#BC6449" width="6.584" height="11.27"/>
+  #   <rect x="158.397" y="105.635" fill="#CE5D38" width="6.584" height="11.27"/>
+  #   <rect x="164.973" y="105.635" fill="#E05727" width="6.584" height="11.27"/>
+  #   <text transform="matrix(1 0 0 1 98.8075 102.2501)" font-family="'AvenirNext-Bold'" font-size="5px">-5</text>
+  #   <text transform="matrix(1 0 0 1 133.8944 102.2501)" font-family="'AvenirNext-Bold'" font-size="5px">0</text>
+  #   <text transform="matrix(1 0 0 1 166.7776 102.2501)" font-family="'AvenirNext-Bold'" font-size="5px">5</text>
   
 }
 
 
 
 
-# Set initial yoffset
-yoffset = 79.125
-
-# build legend for Branch Color (by group)
-lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("group 1","group 2"),groupcolors=c("#D3D3D3","#3C91C2"),elementtype = "Branch")
-lines = lines_and_offset[[1]]
-yoffset = lines_and_offset[[2]] + 14
-
-# build legend for Node Color (by group)
-lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("group 1","group 2"),groupcolors=c("#D3D3D3","#3C91C2"),elementtype = "Node")
-lines = c(lines,lines_and_offset[[1]])
-yoffset = lines_and_offset[[2]] + 14
-
-writeLines(lines)
+# # Set initial yoffset
+# yoffset = 79.125
+# 
+# # build legend for Branch Color (by group)
+# lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("group 1","group 2"),groupcolors=c("#D3D3D3","#3C91C2"),elementtype = "Branch")
+# lines = lines_and_offset[[1]]
+# yoffset = lines_and_offset[[2]] + 14
+# 
+# # build legend for Node Color (by group)
+# lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("group 1","group 2"),groupcolors=c("#D3D3D3","#3C91C2"),elementtype = "Node")
+# lines = c(lines,lines_and_offset[[1]])
+# yoffset = lines_and_offset[[2]] + 14
+# 
+# writeLines(lines)
 
