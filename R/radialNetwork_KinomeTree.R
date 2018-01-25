@@ -165,5 +165,5 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
 
 #Writing kinome_tree.json based on current dataframe:
 #sink(file = "Desktop/CLASES/UNC/Rotations/Projects/testingCoral.json")
-jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T)
+# jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T)
 #sink()

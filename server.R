@@ -269,10 +269,12 @@ server <- function(input, output) {
     #   (done in radialNetwork_KinomeTree.R or maybe in forceNetwork_KinomeTree)
   })
 
+  
   # build the table
   output$KinaseTable <- DT::renderDataTable({
     
-    simpldf = newdf()[,c("id.kinrich","kinase.family","kinase.group","branch.val","branch.col")] 
+    dfandlegend = newdf()
+    simpldf = dfandlegend[[1]][,c("id.kinrich","kinase.family","kinase.group","branch.val","branch.col")] 
     
     # reverse the data frame so that colored kinases appear first
     simpldf<-simpldf[dim(simpldf)[1]:1,]
@@ -298,15 +300,7 @@ server <- function(input, output) {
 
   })
   
-  
-  output$branchbygroups <- renderUI({
-    thesegroups <- table(output$tableinput$select$c[2])
-    checkboxGroupInput("branchbygroupsgroups", "Choose Groups", thesegroups)
-  })
-  
-  
-  output$tableinput <- renderRHandsontable({
-    rhandsontable(DF,stretchH = "all")
-  })
+
+
 }
 
