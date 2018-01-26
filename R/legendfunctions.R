@@ -151,28 +151,67 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
                maxval,"</text>",
                sep="")
   
+  # assemble output
   output = c(header, greyline, rects, text.min, text.mid, text.max)
   yoffset = yoffset + 41.58
-  
   return(list(output,yoffset))
 }
 
 
-# build.value.legend(yoffset=79,minval=-5,maxval=5, palette=colorRampPalette(c("blue","red")),elementtype = "Branch")
 
 
-# # Set initial yoffset
-# yoffset = 79.125
-# 
-# # build legend for Branch Color (by group)
-# lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("group 1","group 2"),groupcolors=c("#D3D3D3","#3C91C2"),elementtype = "Branch")
-# lines = lines_and_offset[[1]]
-# yoffset = lines_and_offset[[2]] + 14
-# 
-# # build legend for Node Color (by group)
-# lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("group 1","group 2"),groupcolors=c("#D3D3D3","#3C91C2"),elementtype = "Node")
-# lines = c(lines,lines_and_offset[[1]])
-# yoffset = lines_and_offset[[2]] + 14
-# 
-# writeLines(lines)
+
+# Define a function that builds a legend for values
+build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize)
+{
+  # write the header
+  header = paste("<text x=\"98.8075\"",
+                 " y=\"", yoffset + 8.8451, "\"",
+                 " font-family=\"'AvenirNext-Bold'\" ",
+                 " font-size=\"9px\">","Node Size</text>",
+                 sep="")
+
+  # write the grey line
+  greylineheight = 41.58
+  greyline       = paste("<rect x=\"", 89.807,"\"",
+                         " y=\"", yoffset, "\"",
+                         " fill=\"", "#D3D3D3", "\"",
+                         " width=\"", 2.333, "\"",
+                         " height=\"", greylineheight,"\"/>",
+                         sep="")
+  # Make circles
+  circles = c()
+  
+  xs = c(100.266,109.45,120.846,134.454,150.273,168.303)
+  sizes = seq(minsize,maxsize,length.out = length(xs))
+  
+  for (i in 1:length(xs))
+  {
+    circle = paste("<circle cx=\"", xs[i] ,"\"",
+                   " cy=\"", yoffset + 33.932, "\"",
+                   " fill=\"", "#D3D3D3", "\"",
+                   " r=\"", sizes[i], "\"/>",
+                   sep="")
+    circles = c(circles,circle)
+  }
+  
+  # add text labels
+  text.min = paste("<text x=\"",  98.8072,"\"",
+                   " y=\"", yoffset + 23.1251, "\"",
+                   " font-size=\"", "5px", "\"",
+                   " font-family=\"", "'AvenirNext-Bold'","\">",
+                   minval,"</text>",
+                   sep="")
+  text.max = paste("<text x=\"",  166.7776,"\"",
+                   " y=\"", yoffset + 23.1251, "\"",
+                   " font-size=\"", "5px", "\"",
+                   " font-family=\"", "'AvenirNext-Bold'","\">",
+                   maxval,"</text>",
+                   sep="")
+  
+  # asssemble output
+  output = c(header, greyline, circles, text.min, text.max)
+  yoffset = yoffset + 41.58
+  return(list(output,yoffset))
+}
 

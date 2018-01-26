@@ -215,6 +215,14 @@ server <- function(input, output) {
         
         tempdf$node.radius     = radii_and_mapping[[1]]
         tempdf$node.val.radius = radii_and_mapping[[2]]
+        
+        # add legend info
+        lines_and_offset = build.nodesize.legend (yoffset=yoffset,minval=-5,maxval=5,minsize = input$nodesizeValueslider[1] ,maxsize = input$nodesizeValueslider[2])
+        lines = lines_and_offset[[1]]
+        yoffset = lines_and_offset[[2]] + 14
+        legend = c(legend,lines)
+        
+        
       }
     }
     

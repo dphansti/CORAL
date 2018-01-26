@@ -97,7 +97,8 @@ ui <- dashboardPage(
                            collapsible = TRUE,collapsed = TRUE,
                            
                            selectInput(inputId = "nodecolortype",label = "Color Node",
-                                       choices = c("None","Same as branches","As one color","Manually","by group","by value"),
+                                       # choices = c("None","Same as branches","As one color","Manually","by group","by value"),
+                                       choices = c("None","As one color","Manually","by group","by value"),
                                        multiple = FALSE,selected = "None",width = "100%"),
                            
                            # if single color
