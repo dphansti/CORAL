@@ -190,7 +190,7 @@ ui <- dashboardPage(
                            
                            selectInput(inputId = "fontcolorselect",label = "Label Color",
                                        choices = c("Same as Branch","Single Color"),
-                                       multiple = FALSE,selected = "Same as Branch",width = "100%"),
+                                       multiple = FALSE,selected = "Single Color",width = "100%"),
                            
                            conditionalPanel(condition = "input.fontcolorselect == 'Single Color'",
                              colourInput("fontcolorchoose", "Label Color","#000000")

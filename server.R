@@ -293,27 +293,40 @@ server <- function(input, output) {
   output$KinaseTable <- DT::renderDataTable({
     
     dfandlegend = newdf()
-    simpldf = dfandlegend[[1]][,c("id.kinrich","kinase.family","kinase.group","branch.val","branch.col")] 
+    simpldf = dfandlegend[[1]][,c("id.kinrich","kinase.family","kinase.group","branch.val","branch.col","node.col")] 
     
     # reverse the data frame so that colored kinases appear first
     simpldf<-simpldf[dim(simpldf)[1]:1,]
     
-    # add a column of squares
-    simpldf$thecolor = 	"&#9608;"	
-   
-    # convert colors to rgb
+    # convert branch colors to rgb
     mycolors <- simpldf$branch.col
     rgbcolors <- apply(grDevices::col2rgb(mycolors), 2, 
                        function(rgb) sprintf("rgb(%s)", paste(rgb, collapse=",")))
+    tgtbranch <- sprintf('<span style="color:%s">&#9608;</span>', rgbcolors)
     
-    tgt <- sprintf('<span style="color:%s">&#9608;</span>', rgbcolors)
+
+    
     
     newdf = data.frame(kinase=simpldf$id.kinrich,
                        family=simpldf$kinase.family,
                        group =simpldf$kinase.group,
                        values=simpldf$branch.val,
-                       color=tgt)
-
+                       branch_color=tgtbranch
+                       )
+    
+    if ("none" %in% simpldf$node.col == F)
+    {
+    
+      # convert node colors to rgb
+      mycolors <- simpldf$node.col
+      
+      rgbcolors <- apply(grDevices::col2rgb(mycolors), 2, 
+                         function(rgb) sprintf("rgb(%s)", paste(rgb, collapse=",")))
+      tgtnode <- sprintf('<span style="color:%s">&#11044;</span>', rgbcolors)
+      
+      newdf$node_color = tgtnode
+      
+    }
     datatable(newdf, escape=FALSE)
 
   })
