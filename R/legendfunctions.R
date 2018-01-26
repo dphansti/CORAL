@@ -120,32 +120,45 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
                          sep="")
   
   # add the gradient
+  heatrange = seq(minval,maxval,length.out = 11)
+  legcols = map2color(x=heatrange,pal=palette,limits=NULL)
   
-  
-  #drawrect (x,y,fill,width=6.584,height=11.27)
+  # Draw the rectangle
+  rects = c()
+  for (i in 1:11)
+  {
+    rects = c(rects, drawrect (x=92.632 + (6.576 * i), y=yoffset + 26.51 ,fill=legcols[i],width=6.584,height=11.27))
+  }
 
+  text.min = paste("<text x=\"", 98.8075,"\"",
+               " y=\"", yoffset + 23.1251, "\"",
+               " font-size=\"", "5px", "\"",
+               " font-family=\"", "'AvenirNext-Bold'","\">",
+               minval,"</text>",
+               sep="")
   
-  # 
-  # 
-  # 
-  # <rect x="99.208" y="105.635" fill="#2A97D3" width="6.584" height="11.27"/>
-  #   <rect x="105.784" y="105.635" fill="#3C91C2" width="6.584" height="11.27"/>
-  #   <rect x="112.361" y="105.635" fill="#4E8AB1" width="6.584" height="11.27"/>
-  #   <rect x="118.937" y="105.635" fill="#61849F" width="6.584" height="11.27"/>
-  #   <rect x="125.514" y="105.635" fill="#737D8E" width="6.584" height="11.27"/>
-  #   <rect x="132.09" y="105.635" fill="#85777D" width="6.584" height="11.27"/>
-  #   <rect x="138.667" y="105.635" fill="#97716C" width="6.584" height="11.27"/>
-  #   <rect x="145.244" y="105.635" fill="#A96A5B" width="6.584" height="11.27"/>
-  #   <rect x="151.82" y="105.635" fill="#BC6449" width="6.584" height="11.27"/>
-  #   <rect x="158.397" y="105.635" fill="#CE5D38" width="6.584" height="11.27"/>
-  #   <rect x="164.973" y="105.635" fill="#E05727" width="6.584" height="11.27"/>
-  #   <text transform="matrix(1 0 0 1 98.8075 102.2501)" font-family="'AvenirNext-Bold'" font-size="5px">-5</text>
-  #   <text transform="matrix(1 0 0 1 133.8944 102.2501)" font-family="'AvenirNext-Bold'" font-size="5px">0</text>
-  #   <text transform="matrix(1 0 0 1 166.7776 102.2501)" font-family="'AvenirNext-Bold'" font-size="5px">5</text>
+  text.mid = paste("<text x=\"", 133.8944,"\"",
+               " y=\"", yoffset + 23.1251, "\"",
+               " font-size=\"", "5px", "\"",
+               " font-family=\"", "'AvenirNext-Bold'","\">",
+               mean(c(minval , maxval)),"</text>",
+               sep="")
   
+  text.max = paste("<text x=\"", 166.7776,"\"",
+               " y=\"", yoffset + 23.1251, "\"",
+               " font-size=\"", "5px", "\"",
+               " font-family=\"", "'AvenirNext-Bold'","\">",
+               maxval,"</text>",
+               sep="")
+  
+  output = c(header, greyline, rects, text.min, text.mid, text.max)
+  yoffset = yoffset + 41.58
+  
+  return(list(output,yoffset))
 }
 
 
+# build.value.legend(yoffset=79,minval=-5,maxval=5, palette=colorRampPalette(c("blue","red")),elementtype = "Branch")
 
 
 # # Set initial yoffset

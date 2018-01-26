@@ -93,6 +93,12 @@ server <- function(input, output) {
 
         # reorder based on branch color
         tempdf = tempdf[order(abs(tempdf$branch.val), decreasing = FALSE,na.last = FALSE),]
+        
+        # add legend info
+        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$minheat,maxval=input$maxheat, palette=branchcolpalette,elementtype = "Branch")
+        lines = lines_and_offset[[1]]
+        yoffset = lines_and_offset[[2]] + 14
+        legend = c(legend,lines)
       }
     }
     
@@ -150,8 +156,6 @@ server <- function(input, output) {
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
-        
-        
       }
     }
     
@@ -179,6 +183,12 @@ server <- function(input, output) {
         
         # reorder based on branch color
         tempdf = tempdf[order(abs(tempdf$node.val), decreasing = FALSE,na.last = FALSE),]
+        
+        # add legend info
+        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$nodeminheat,maxval=input$nodemaxheat, palette=nodecolpalette,elementtype = "Node")
+        lines = lines_and_offset[[1]]
+        yoffset = lines_and_offset[[2]] + 14
+        legend = c(legend,lines)
       }
     }
     
