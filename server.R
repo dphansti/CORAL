@@ -208,7 +208,7 @@ server <- function(input, output) {
       
       # convert to coral id
       resizedf = convertID (tempdf,resizedf,inputtype=input$nodesizeValueIDtype)
-
+      
       if (nrow(resizedf)>0)
       {
         radii_and_mapping = resizes.by.value(df = tempdf, resizedf = resizedf, sizerange = input$nodesizeValueslider)
@@ -217,7 +217,7 @@ server <- function(input, output) {
         tempdf$node.val.radius = radii_and_mapping[[2]]
         
         # add legend info
-        lines_and_offset = build.nodesize.legend (yoffset=yoffset,minval=-5,maxval=5,minsize = input$nodesizeValueslider[1] ,maxsize = input$nodesizeValueslider[2])
+        lines_and_offset = build.nodesize.legend (yoffset=yoffset,minval=min(as.numeric(resizedf[,2])),maxval=max(as.numeric(resizedf[,2])),minsize = input$nodesizeValueslider[1] ,maxsize = input$nodesizeValueslider[2])
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
