@@ -67,7 +67,7 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
                    auxfun_unique_names_by_group_number(group))
   
   # Creating root node
-  de<-data.frame("Root","1000001")
+  de<-data.frame("Groups","1000001")
   names(de)<-c("name","group_number")
   
   # Adding root node at the end of node_df
