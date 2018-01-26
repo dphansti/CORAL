@@ -97,8 +97,7 @@ ui <- dashboardPage(
                            collapsible = TRUE,collapsed = TRUE,
                            
                            selectInput(inputId = "nodecolortype",label = "Color Node",
-                                       # choices = c("None","Same as branches","As one color","Manually","by group","by value"),
-                                       choices = c("None","As one color","Manually","by group","by value"),
+                                       choices = c("None","Same as branches","As one color","Manually","by group","by value"),
                                        multiple = FALSE,selected = "None",width = "100%"),
                            
                            # if single color
@@ -190,7 +189,7 @@ ui <- dashboardPage(
                            
                            selectInput(inputId = "fontcolorselect",label = "Label Color",
                                        choices = c("Same as Branch","Single Color"),
-                                       multiple = FALSE,selected = "Single Color",width = "100%"),
+                                       multiple = FALSE,selected = "Same as Branch",width = "100%"),
                            
                            conditionalPanel(condition = "input.fontcolorselect == 'Single Color'",
                              colourInput("fontcolorchoose", "Label Color","#000000")
@@ -226,24 +225,29 @@ ui <- dashboardPage(
                        ,
                        
                        tabBox
-                       ( width=9,height="800",
+                       ( width=9,height="1200px",
                          tabPanel
                          ("Manning",
                            width=12,
-                           svgPanZoomOutput('plot1',height="750")
+                           svgPanZoomOutput('plot1',height="1060px")
                          ),
                          tabPanel
                          ("Radial Cluster Dendrogram",
                            width=12,
-                           selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json"))),
+                           shinyjs::useShinyjs(),
+                           shinyjs::hidden(
+                             selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json")))),
                            #this div will hold the final graph
                            div(id="circlelayout", class="circleNetwork")
+                           # actionButton(inputId = "button", label = "show / hide")
                          ),
                          
                          tabPanel
                          ("Collapsable Force Network",
                            width=12,
-                           selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json"))),
+                           shinyjs::useShinyjs(),
+                           shinyjs::hidden(
+                             selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json")))),
                            #this div will hold the final graph
                            div(id="forcelayout", class="collapsableForceNetwork")
                            
@@ -252,7 +256,9 @@ ui <- dashboardPage(
                          tabPanel
                          ("Collapsable Diagonal Network",
                            width=12,
-                           selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json"))),
+                           shinyjs::useShinyjs(),
+                           shinyjs::hidden(
+                             selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json")))),
                            #this div will hold the final graph
                            div(id="diaglayout", class="collapsableDiagonalNetwork")
                          )
