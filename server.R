@@ -127,9 +127,9 @@ server <- function(input, output) {
       # set colors based on selected ids (!!!! write function !!!!)
       tempdf$node.col =  color.by.selected(df = tempdf, sel = input$NodeManual, bg.col  = input$col_node_bg,  sel.col = input$col_sel_node)
       
-      # build legend for Node Color (by group)
+      # # build legend for Node Color (by group)
       lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_node_bg,input$col_sel_node),elementtype = "Node")
-      lines = c(lines,lines_and_offset[[1]])
+      lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
       legend = c(legend,lines)
     }
@@ -316,7 +316,7 @@ server <- function(input, output) {
   output$KinaseTable <- DT::renderDataTable({
     
     dfandlegend = newdf()
-    simpldf = dfandlegend[[1]][,c("id.kinrich","kinase.family","kinase.group","branch.val","branch.col","node.col")] 
+    simpldf = dfandlegend[[1]][,c("id.kinrich","id.longname","kinase.family","kinase.group","branch.val","branch.col","node.col","node.radius")] 
     
     # reverse the data frame so that colored kinases appear first
     simpldf<-simpldf[dim(simpldf)[1]:1,]
@@ -327,16 +327,13 @@ server <- function(input, output) {
                        function(rgb) sprintf("rgb(%s)", paste(rgb, collapse=",")))
     tgtbranch <- sprintf('<span style="color:%s">&#9608;</span>', rgbcolors)
     
-
-    
-    
     newdf = data.frame(kinase=simpldf$id.kinrich,
+                       name=simpldf$id.longname,
                        family=simpldf$kinase.family,
-                       group =simpldf$kinase.group,
-                       values=simpldf$branch.val,
-                       branch_color=tgtbranch
+                       group = simpldf$kinase.group
                        )
     
+    # add node info if present
     if ("none" %in% simpldf$node.col == F)
     {
     
@@ -347,9 +344,13 @@ server <- function(input, output) {
                          function(rgb) sprintf("rgb(%s)", paste(rgb, collapse=",")))
       tgtnode <- sprintf('<span style="color:%s">&#11044;</span>', rgbcolors)
       
+      newdf$node_radius = simpldf$node.radius
       newdf$node_color = tgtnode
-      
     }
+    
+    # add branch color
+    newdf$branch_color=tgtbranch
+    
     datatable(newdf, escape=FALSE)
 
   })
