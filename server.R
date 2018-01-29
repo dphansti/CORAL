@@ -284,7 +284,7 @@ server <- function(input, output) {
     outputjson <- "www/kinome_tree.json"
     withProgress(
       writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
-      ,message = "Loading Diagonal Network layout... ", detail = "(Please choose kinases only under 'Manning'.)",style = "old",value = 0.5)
+      ,message = "Loading Diagonal Network layout... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
     
     
     # get the selected file
@@ -301,7 +301,7 @@ server <- function(input, output) {
     outputjson <- "www/kinome_tree.json"
     withProgress(
       writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
-      ,message = "Loading Radial Network layout... ", detail = "Remember... ONLY pick kinases under 'Manning'.",style = "old",value = 0.5)
+      ,message = "Loading Radial Network layout... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
     
     
     # get the selected file

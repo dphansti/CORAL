@@ -13,7 +13,7 @@ ui <- dashboardPage(
     
     tags$head(
       #adds the d3 library needed to draw the plot
-      tags$script(src="http://d3js.org/d3.v3.min.js"),
+      tags$script(src="d3.v3.min.js"),
       
       #the js script holding the code to make the custom output
       tags$script(src="circleNetwork.js"),
