@@ -12,10 +12,10 @@ binding.renderValue = function(el, data) {
   if(data!=null){
     //////////.JS//////////
 
-    var radius = 1000;
+    var radius = 500;
 
     var cluster = d3.layout.cluster()
-        .size([360, radius - 120]);
+        .size([360, radius - 60]);
 
     var diagonal = d3.svg.diagonal.radial()
       .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
@@ -47,11 +47,11 @@ binding.renderValue = function(el, data) {
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
       node.append("circle")
-          .attr("r", 3.5);
+          .attr("r", 2);
 
       node.append("text")
           .attr("dy", ".31em")
-          .attr("font-size", "10px")
+          .attr("font-size", "4px")
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
           .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
           .text(function(d) { return d.name; });
@@ -66,9 +66,9 @@ binding.renderValue = function(el, data) {
 
     function mouseout() {
       d3.select(this).select("circle").transition()
-          .attr("r", 3.5)
+          .attr("r", 2)
       d3.select(this).select("text").transition()
-          .attr("font-size", "10px");
+          .attr("font-size", "4px");
     }
 
 
