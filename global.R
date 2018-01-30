@@ -19,10 +19,10 @@ require(igraph)
 require(jsonlite)
 require(rjson)
 require(httr)
+require(stringr)
 
 # Point to R functions
 source("R/colorby.R")
-source("R/legendfunctions.R")
 source("R/readinput.R")
 source("R/writekinasetree.R")
 
