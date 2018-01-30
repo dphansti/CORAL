@@ -14,10 +14,45 @@ auxfun_unique_names_by_group_number <- function(input_df){
   return(newdf)
 }
 
+# count = 0
+# for(checking in 1:length(identified_node_df$name)){
+#   if(str_count(node_df$name[checking], ' ') != 0){
+#     count = count+1
+#     print(count)
+#   }
+# }
+# node_df$name
+
+aux_find_node_colors <- function(tree_df,source_target_df){
+  library(stringr)
+  #looping through source_target_df and returning corresponding node color (node.col)
+  storing_node_col <- vector()
+  for(index in 1:length(source_target_df$source)){
+    if(str_count(source_target_df$source[index], ' ') == 1){
+      #group
+    }
+    else if(str_count(source_target_df$source[index], ' ') == 2){
+      #subfamily
+    }
+    else if(str_count(source_target_df$source[index], ' ') == 3){
+      #family
+    }
+    else if(str_count(source_target_df$source[index], ' ') == 4){
+      #kinase
+    }
+    
+    str_count(source_target_df$source[index], ' ')
+    source_target_df$source[index]
+  }
+
+}
+
 # Define a function that creates a Radial (circular) Network of the tree
 list_kinome_tree <- function(treedf, color_plan = NULL)
 {
-  #treedf = svginfo$dataframe
+  # #speeding up this script...
+  # treedf = svginfo$dataframe
+  
   # reassing to new variable for absolutely no reason
   newtreedf = treedf
   
@@ -29,7 +64,7 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
   smaller_df$family = as.character(smaller_df$family)
   smaller_df["group_number"] <- as.numeric(smaller_df$group)
   
-  #NOTE: The nodes will display colors based on which 'group_number' they belong to.
+  #NOTE: The nodes must display colors based on which 'group_number' they belong to (by default).
   
   ##############
   ##### 1. #####
@@ -72,7 +107,7 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
   
   # Adding root node at the end of node_df
   node_df <- rbind(node_df, de)
-  
+
   # Numbering nodes
   rownames(node_df) <- seq(1,length(node_df$name))
   
@@ -81,8 +116,8 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
   node_df$group_number <- as.character(node_df$group_number)
   
   # Problem: Cannot distinguish between kinases and subfamilies that share the same names...
-  # Solution: Concatenating identifiers to kinases,families,subfamilies and groups ('    ','   ','  ',' ')
-  #                                                                                ('k_','f_','s_','g_')
+  # Solution: Concatenating identifiers to kinases,families,subfamilies and groups ('    ' , '   ' , '  ' , ' ')
+  #                                                                                (  k_   ,  f_   ,  s_  , g_)
   kinase_by_group_number$name <- paste0('    ',kinase_by_group_number$name)
   subfamily_by_group_number$name <- paste0('   ',subfamily_by_group_number$name)
   family_by_group_number$name <- paste0('  ',family_by_group_number$name)
@@ -96,7 +131,7 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
   
   # # Adding root node at the end of node_df
   identified_node_df <- rbind(identified_node_df, de)
-  
+  identified_node_df
   #Numbering nodes
   rownames(identified_node_df) <- seq(1,length(identified_node_df$name))
   
@@ -151,17 +186,27 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
     link_df$target[i] <- identified_node_df$name[as.numeric(link_df$target[i])+1]
   }
   
+  # View(link_df)
+  # link_df$node_color <- aux_find_node_colors(newtreedf,link_df)
+  # link_df$branch_color <- 
+  # link_df$text_size <- 
+  # link_df$text_size <- 
+  
   # sort 
   link_df = link_df[order(link_df$source,decreasing = FALSE),]
   
   # reformatting the nodes from the root down based on each source to target pair
   thetree <- FromDataFrameNetwork(link_df)
-  
+
   # making JSON list from thetree: using unname = TRUE to get in the proper d3 format
   lol <- ToListExplicit(thetree, unname = TRUE)
   
   return(lol)
 }
+
+list_kinome_tree(svginfo$dataframe)
+
+
 
 #Writing kinome_tree.json based on current dataframe:
 #sink(file = "Desktop/CLASES/UNC/Rotations/Projects/testingCoral.json")
