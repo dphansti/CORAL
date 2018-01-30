@@ -19,6 +19,8 @@ ui <- dashboardPage(
       tags$script(src="circleNetwork.js"),
       tags$script(src="collapsableDiagonalNetwork.js"),
       tags$script(src="collapsableForceNetwork.js"),
+      # tags$script(src="http://d3js.org/d3.v2.js"),
+      # tags$script(src="testforce.js"),
       
       #the stylesheet, paste all that was between the <style> tags from your example in the graph_style.css file
       tags$link(rel = "stylesheet", type = "text/css", href = "styling_layouts.css")
@@ -263,6 +265,15 @@ ui <- dashboardPage(
                            #this div will hold the final graph
                            div(id="diaglayout", class="collapsableDiagonalNetwork")
                          )
+                         # tabPanel
+                         # ("Test Network",
+                         #   width=12,
+                         #   shinyjs::useShinyjs(),
+                         #   shinyjs::hidden(
+                         #     selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json")))),
+                         #   #this div will hold the final graph
+                         #   div(id="testlayout", class="testforce")
+                         # )
                        )
               ),
               
