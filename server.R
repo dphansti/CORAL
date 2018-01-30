@@ -269,7 +269,6 @@ server <- function(input, output) {
       writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
      ,message = "Loading Force Network layout...", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
       
-    
     # get the selected file
     input$data_files
   })
@@ -285,8 +284,7 @@ server <- function(input, output) {
     withProgress(
       writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
       ,message = "Loading Diagonal Network layout... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
-    
-    
+
     # get the selected file
     input$data_files
   })
@@ -303,14 +301,24 @@ server <- function(input, output) {
       writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
       ,message = "Loading Radial Network layout... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
     
+    # get the selected file
+    input$data_files
+  })
+  
+  output$testlayout <- reactive({
+    # recolor the official matrix
+    dfandlegend = newdf()
+    svginfo$dataframe = dfandlegend[[1]]
+    
+    # Write kinome_tree.json (based on current dataframe)
+    outputjson <- "www/kinome_tree.json"
+    withProgress(
+      writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
+      ,message = "Loading Test Network... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
     
     # get the selected file
     input$data_files
-    #Delete above line and display this reactive div by:
-    # calling a function that turns the dataframe into a json file 
-    #   (done in radialNetwork_KinomeTree.R or maybe in forceNetwork_KinomeTree)
   })
-
   
   # build the table
   output$KinaseTable <- DT::renderDataTable({
