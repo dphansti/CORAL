@@ -19,7 +19,7 @@ require(radialNetworkR)
 require(networkD3)
 require(igraph)
 require(jsonlite)
-require(rjson)
+# require(rjson)
 require(httr)
 require(stringr)
 

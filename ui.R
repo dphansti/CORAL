@@ -242,17 +242,23 @@ ui <- dashboardPage(skin="black",
                             "text/comma-separated-values,text/plain",
                             ".csv")
                     ),
-                    checkboxInput("header", "Header", TRUE),
+                    checkboxInput("header", "csv file contains a header row", TRUE),
                   
-                  bsTooltip(id="q1",title="Provide phosphorylation site and group info in 2 columns.  Data can be uploaded in csv format, pasted into text box, or loaded from example data set",
+                  bsTooltip(id="q1",title="Provide phosphorylation site and group info in 2 columns csv file. Column 1 should be unprot ID and site (e.g. Q01860_S236).  Column 2 should be a group classification (e.g. up, down, static, etc)  ",
                             placement = "bottom", trigger = "hover",
                             options = NULL),
               tags$hr(),
               
-              textAreaInput("Phospepinput", "PO4 Sites & Group", height = "100px",width = "100%"
+              textAreaInput("Phospepinput", 
+                            
+                            label = h4("PO4 Sites & Group",
+                                       tags$style(type = "text/css", "#q2 {vertical-align: top;}"),
+                                       bsButton("q2", label = "", icon = icon("question"), style = "info", size = "extra-small")
+                            ),
+                            "PO4 Sites & Group", height = "100px",width = "100%"
               ),
               
-              checkboxInput("load_example_po4data", "load example", FALSE)
+              checkboxInput("load_example_po4data", "Use example data", FALSE)
               
                   ) # end box
                 ) # end row
