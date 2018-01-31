@@ -1,0 +1,2723 @@
+{
+  "name": ["Groups"],
+  "children": [
+    {
+      "name": [" AGC"],
+      "children": [
+        {
+          "name": ["  Akt"],
+          "children": [
+            {
+              "name": ["    AKT1"]
+            },
+            {
+              "name": ["    AKT2"]
+            },
+            {
+              "name": ["    AKT3"]
+            }
+          ]
+        },
+        {
+          "name": ["  DMPK"],
+          "children": [
+            {
+              "name": ["    CRIK"]
+            },
+            {
+              "name": ["   GEK"],
+              "children": [
+                {
+                  "name": ["    DMPK1"]
+                },
+                {
+                  "name": ["    DMPK2"]
+                },
+                {
+                  "name": ["    MRCKa"]
+                },
+                {
+                  "name": ["    MRCKb"]
+                }
+              ]
+            },
+            {
+              "name": ["   ROCK"],
+              "children": [
+                {
+                  "name": ["    ROCK1"]
+                },
+                {
+                  "name": ["    ROCK2"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  GRK"],
+          "children": [
+            {
+              "name": ["   BARK"],
+              "children": [
+                {
+                  "name": ["    BARK1"]
+                },
+                {
+                  "name": ["    BARK2"]
+                }
+              ]
+            },
+            {
+              "name": ["   GRK"],
+              "children": [
+                {
+                  "name": ["    GPRK4"]
+                },
+                {
+                  "name": ["    GPRK5"]
+                },
+                {
+                  "name": ["    GPRK6"]
+                },
+                {
+                  "name": ["    GPRK7"]
+                },
+                {
+                  "name": ["    RHOK"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  MAST"],
+          "children": [
+            {
+              "name": ["    MAST1"]
+            },
+            {
+              "name": ["    MAST2"]
+            },
+            {
+              "name": ["    MAST3"]
+            },
+            {
+              "name": ["    MAST4"]
+            },
+            {
+              "name": ["    MASTL"]
+            }
+          ]
+        },
+        {
+          "name": ["  NDR"],
+          "children": [
+            {
+              "name": ["    LATS1"]
+            },
+            {
+              "name": ["    LATS2"]
+            },
+            {
+              "name": ["    NDR1"]
+            },
+            {
+              "name": ["    NDR2"]
+            }
+          ]
+        },
+        {
+          "name": ["  PDK1"],
+          "children": [
+            {
+              "name": ["    PDK1"]
+            }
+          ]
+        },
+        {
+          "name": ["  PKA"],
+          "children": [
+            {
+              "name": ["    PKACa"]
+            },
+            {
+              "name": ["    PKACb"]
+            },
+            {
+              "name": ["    PKACg"]
+            },
+            {
+              "name": ["    PRKX"]
+            },
+            {
+              "name": ["    PRKY"]
+            }
+          ]
+        },
+        {
+          "name": ["  PKC"],
+          "children": [
+            {
+              "name": ["   PKCa"],
+              "children": [
+                {
+                  "name": ["    PKCa"]
+                },
+                {
+                  "name": ["    PKCb"]
+                },
+                {
+                  "name": ["    PKCg"]
+                }
+              ]
+            },
+            {
+              "name": ["   PKCd"],
+              "children": [
+                {
+                  "name": ["    PKCd"]
+                },
+                {
+                  "name": ["    PKCt"]
+                }
+              ]
+            },
+            {
+              "name": ["   PKCh"],
+              "children": [
+                {
+                  "name": ["    PKCe"]
+                },
+                {
+                  "name": ["    PKCh"]
+                }
+              ]
+            },
+            {
+              "name": ["   PKCi"],
+              "children": [
+                {
+                  "name": ["    PKCi"]
+                },
+                {
+                  "name": ["    PKCz"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  PKG"],
+          "children": [
+            {
+              "name": ["    PKG1"]
+            },
+            {
+              "name": ["    PKG2"]
+            }
+          ]
+        },
+        {
+          "name": ["  PKN"],
+          "children": [
+            {
+              "name": ["    PKN1"]
+            },
+            {
+              "name": ["    PKN2"]
+            },
+            {
+              "name": ["    PKN3"]
+            }
+          ]
+        },
+        {
+          "name": ["  RSK"],
+          "children": [
+            {
+              "name": ["   MSK"],
+              "children": [
+                {
+                  "name": ["    MSK1"]
+                },
+                {
+                  "name": ["    MSK2"]
+                }
+              ]
+            },
+            {
+              "name": ["   RSKp70"],
+              "children": [
+                {
+                  "name": ["    p70S6K"]
+                },
+                {
+                  "name": ["    p70S6Kb"]
+                }
+              ]
+            },
+            {
+              "name": ["   RSKp90"],
+              "children": [
+                {
+                  "name": ["    RSK1"]
+                },
+                {
+                  "name": ["    RSK2"]
+                },
+                {
+                  "name": ["    RSK3"]
+                },
+                {
+                  "name": ["    RSK4"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  RSKL"],
+          "children": [
+            {
+              "name": ["    RSKL1"]
+            },
+            {
+              "name": ["    RSKL2"]
+            }
+          ]
+        },
+        {
+          "name": ["  RSKR"],
+          "children": [
+            {
+              "name": ["    SgK494"]
+            }
+          ]
+        },
+        {
+          "name": ["  SGK"],
+          "children": [
+            {
+              "name": ["    SGK1"]
+            },
+            {
+              "name": ["    SGK2"]
+            },
+            {
+              "name": ["    SGK3"]
+            }
+          ]
+        },
+        {
+          "name": ["  YANK"],
+          "children": [
+            {
+              "name": ["    YANK1"]
+            },
+            {
+              "name": ["    YANK2"]
+            },
+            {
+              "name": ["    YANK3"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" Atypical"],
+      "children": [
+        {
+          "name": ["  ABC1"],
+          "children": [
+            {
+              "name": ["   ABC1-A"],
+              "children": [
+                {
+                  "name": ["    ADCK3"]
+                },
+                {
+                  "name": ["    ADCK4"]
+                }
+              ]
+            },
+            {
+              "name": ["   ABC1-B"],
+              "children": [
+                {
+                  "name": ["    ADCK1"]
+                }
+              ]
+            },
+            {
+              "name": ["   ABC1-C"],
+              "children": [
+                {
+                  "name": ["    ADCK2"]
+                }
+              ]
+            },
+            {
+              "name": ["   ABC1-D"],
+              "children": [
+                {
+                  "name": ["    ADCK5"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  Alpha"],
+          "children": [
+            {
+              "name": ["    AlphaK1"]
+            },
+            {
+              "name": ["    AlphaK2"]
+            },
+            {
+              "name": ["    AlphaK3"]
+            },
+            {
+              "name": ["   ChaK"],
+              "children": [
+                {
+                  "name": ["    ChaK1"]
+                },
+                {
+                  "name": ["    ChaK2"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  BRD"],
+          "children": [
+            {
+              "name": ["    BRD2"]
+            },
+            {
+              "name": ["    BRD3"]
+            },
+            {
+              "name": ["    BRD4"]
+            },
+            {
+              "name": ["    BRDT"]
+            }
+          ]
+        },
+        {
+          "name": ["  PDHK"],
+          "children": [
+            {
+              "name": ["    BCKDK"]
+            },
+            {
+              "name": ["    PDHK1"]
+            },
+            {
+              "name": ["    PDHK3"]
+            },
+            {
+              "name": ["    PDHK4"]
+            }
+          ]
+        },
+        {
+          "name": ["  PIKK"],
+          "children": [
+            {
+              "name": ["   ATM"],
+              "children": [
+                {
+                  "name": ["    ATM"]
+                }
+              ]
+            },
+            {
+              "name": ["   ATR"],
+              "children": [
+                {
+                  "name": ["    ATR"]
+                }
+              ]
+            },
+            {
+              "name": ["   DNAPK"],
+              "children": [
+                {
+                  "name": ["    DNAPK"]
+                }
+              ]
+            },
+            {
+              "name": ["   FRAP"],
+              "children": [
+                {
+                  "name": ["    FRAP"]
+                }
+              ]
+            },
+            {
+              "name": ["   SMG1"],
+              "children": [
+                {
+                  "name": ["    SMG1"]
+                }
+              ]
+            },
+            {
+              "name": ["   TRRAP"],
+              "children": [
+                {
+                  "name": ["    TRRAP"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  RIO"],
+          "children": [
+            {
+              "name": ["   RIO1"],
+              "children": [
+                {
+                  "name": ["    RIOK1"]
+                }
+              ]
+            },
+            {
+              "name": ["   RIO2"],
+              "children": [
+                {
+                  "name": ["    RIOK2"]
+                }
+              ]
+            },
+            {
+              "name": ["   RIO3"],
+              "children": [
+                {
+                  "name": ["    RIOK3"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  TIF1"],
+          "children": [
+            {
+              "name": ["    TIF1a"]
+            },
+            {
+              "name": ["    TIF1b"]
+            },
+            {
+              "name": ["    TIF1g"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" CAMK"],
+      "children": [
+        {
+          "name": ["  CAMK-Unique"],
+          "children": [
+            {
+              "name": ["    VACAMKL"]
+            }
+          ]
+        },
+        {
+          "name": ["  CAMK1"],
+          "children": [
+            {
+              "name": ["    CaMK1a"]
+            },
+            {
+              "name": ["    CaMK1b"]
+            },
+            {
+              "name": ["    CaMK1d"]
+            },
+            {
+              "name": ["    CaMK1g"]
+            },
+            {
+              "name": ["    CaMK4"]
+            }
+          ]
+        },
+        {
+          "name": ["  CAMK2"],
+          "children": [
+            {
+              "name": ["    CaMK2a"]
+            },
+            {
+              "name": ["    CaMK2b"]
+            },
+            {
+              "name": ["    CaMK2d"]
+            },
+            {
+              "name": ["    CaMK2g"]
+            }
+          ]
+        },
+        {
+          "name": ["  CAMKL"],
+          "children": [
+            {
+              "name": ["   AMPK"],
+              "children": [
+                {
+                  "name": ["    AMPKa1"]
+                },
+                {
+                  "name": ["    AMPKa2"]
+                }
+              ]
+            },
+            {
+              "name": ["   BRSK"],
+              "children": [
+                {
+                  "name": ["    BRSK1"]
+                },
+                {
+                  "name": ["    BRSK2"]
+                }
+              ]
+            },
+            {
+              "name": ["   CHK1"],
+              "children": [
+                {
+                  "name": ["    CHK1"]
+                }
+              ]
+            },
+            {
+              "name": ["   HUNK"],
+              "children": [
+                {
+                  "name": ["    HUNK"]
+                }
+              ]
+            },
+            {
+              "name": ["   LKB"],
+              "children": [
+                {
+                  "name": ["    LKB1"]
+                }
+              ]
+            },
+            {
+              "name": ["   MARK"],
+              "children": [
+                {
+                  "name": ["    MARK1"]
+                },
+                {
+                  "name": ["    MARK2"]
+                },
+                {
+                  "name": ["    MARK3"]
+                },
+                {
+                  "name": ["    MARK4"]
+                }
+              ]
+            },
+            {
+              "name": ["   MELK"],
+              "children": [
+                {
+                  "name": ["    MELK"]
+                }
+              ]
+            },
+            {
+              "name": ["   NIM1"],
+              "children": [
+                {
+                  "name": ["    NIM1"]
+                }
+              ]
+            },
+            {
+              "name": ["   NuaK"],
+              "children": [
+                {
+                  "name": ["    NuaK1"]
+                },
+                {
+                  "name": ["    NuaK2"]
+                }
+              ]
+            },
+            {
+              "name": ["   PASK"],
+              "children": [
+                {
+                  "name": ["    PASK"]
+                }
+              ]
+            },
+            {
+              "name": ["   QIK"],
+              "children": [
+                {
+                  "name": ["    QIK"]
+                },
+                {
+                  "name": ["    QSK"]
+                },
+                {
+                  "name": ["    SIK"]
+                }
+              ]
+            },
+            {
+              "name": ["   SNRK"],
+              "children": [
+                {
+                  "name": ["    SNRK"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  CASK"],
+          "children": [
+            {
+              "name": ["    CASK"]
+            }
+          ]
+        },
+        {
+          "name": ["  DAPK"],
+          "children": [
+            {
+              "name": ["    DAPK1"]
+            },
+            {
+              "name": ["    DAPK2"]
+            },
+            {
+              "name": ["    DAPK3"]
+            },
+            {
+              "name": ["    DRAK1"]
+            },
+            {
+              "name": ["    DRAK2"]
+            }
+          ]
+        },
+        {
+          "name": ["  DCAMKL"],
+          "children": [
+            {
+              "name": ["    DCAMKL1"]
+            },
+            {
+              "name": ["    DCAMKL2"]
+            },
+            {
+              "name": ["    DCAMKL3"]
+            }
+          ]
+        },
+        {
+          "name": ["  MAPKAPK"],
+          "children": [
+            {
+              "name": ["   MK2"],
+              "children": [
+                {
+                  "name": ["    MAPKAPK2"]
+                },
+                {
+                  "name": ["    MAPKAPK3"]
+                }
+              ]
+            },
+            {
+              "name": ["   MK5"],
+              "children": [
+                {
+                  "name": ["    MAPKAPK5"]
+                }
+              ]
+            },
+            {
+              "name": ["   MNK"],
+              "children": [
+                {
+                  "name": ["    MNK1"]
+                },
+                {
+                  "name": ["    MNK2"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  MLCK"],
+          "children": [
+            {
+              "name": ["    caMLCK"]
+            },
+            {
+              "name": ["    SgK085"]
+            },
+            {
+              "name": ["    skMLCK"]
+            },
+            {
+              "name": ["    smMLCK"]
+            },
+            {
+              "name": ["    TTN"]
+            }
+          ]
+        },
+        {
+          "name": ["  PHK"],
+          "children": [
+            {
+              "name": ["    PHKg1"]
+            },
+            {
+              "name": ["    PHKg2"]
+            }
+          ]
+        },
+        {
+          "name": ["  PIM"],
+          "children": [
+            {
+              "name": ["    PIM1"]
+            },
+            {
+              "name": ["    PIM2"]
+            },
+            {
+              "name": ["    PIM3"]
+            }
+          ]
+        },
+        {
+          "name": ["  PKD"],
+          "children": [
+            {
+              "name": ["    PKD1"]
+            },
+            {
+              "name": ["    PKD2"]
+            },
+            {
+              "name": ["    PKD3"]
+            }
+          ]
+        },
+        {
+          "name": ["  PSK"],
+          "children": [
+            {
+              "name": ["    PSKH1"]
+            },
+            {
+              "name": ["    PSKH2"]
+            }
+          ]
+        },
+        {
+          "name": ["  RAD53"],
+          "children": [
+            {
+              "name": ["    CHK2"]
+            }
+          ]
+        },
+        {
+          "name": ["  RSKb"],
+          "children": [
+            {
+              "name": ["   MSKb"],
+              "children": [
+                {
+                  "name": ["    MSK1_b"]
+                },
+                {
+                  "name": ["    MSK2_b"]
+                }
+              ]
+            },
+            {
+              "name": ["   RSKb"],
+              "children": [
+                {
+                  "name": ["    RSK1_b"]
+                },
+                {
+                  "name": ["    RSK2_b"]
+                },
+                {
+                  "name": ["    RSK3_b"]
+                },
+                {
+                  "name": ["    RSK4_b"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  SgK495"],
+          "children": [
+            {
+              "name": ["    SgK495"]
+            }
+          ]
+        },
+        {
+          "name": ["  STK33"],
+          "children": [
+            {
+              "name": ["    STK33"]
+            }
+          ]
+        },
+        {
+          "name": ["  Trbl"],
+          "children": [
+            {
+              "name": ["    Trb1"]
+            },
+            {
+              "name": ["    Trb2"]
+            },
+            {
+              "name": ["    Trb3"]
+            }
+          ]
+        },
+        {
+          "name": ["  Trio"],
+          "children": [
+            {
+              "name": ["    Obscn"]
+            },
+            {
+              "name": ["    Obscn_b"]
+            },
+            {
+              "name": ["    SPEG"]
+            },
+            {
+              "name": ["    SPEG_b"]
+            },
+            {
+              "name": ["    Trad"]
+            },
+            {
+              "name": ["    Trio"]
+            }
+          ]
+        },
+        {
+          "name": ["  TSSK"],
+          "children": [
+            {
+              "name": ["    SSTK"]
+            },
+            {
+              "name": ["    TSSK1"]
+            },
+            {
+              "name": ["    TSSK2"]
+            },
+            {
+              "name": ["    TSSK3"]
+            },
+            {
+              "name": ["    TSSK4"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" CK1"],
+      "children": [
+        {
+          "name": ["  CK1"],
+          "children": [
+            {
+              "name": ["    CK1a"]
+            },
+            {
+              "name": ["    CK1a2"]
+            },
+            {
+              "name": ["    CK1d"]
+            },
+            {
+              "name": ["    CK1e"]
+            },
+            {
+              "name": ["    CK1g1"]
+            },
+            {
+              "name": ["    CK1g2"]
+            },
+            {
+              "name": ["    CK1g3"]
+            }
+          ]
+        },
+        {
+          "name": ["  TTBK"],
+          "children": [
+            {
+              "name": ["    TTBK1"]
+            },
+            {
+              "name": ["    TTBK2"]
+            }
+          ]
+        },
+        {
+          "name": ["  VRK"],
+          "children": [
+            {
+              "name": ["    VRK1"]
+            },
+            {
+              "name": ["    VRK2"]
+            },
+            {
+              "name": ["    VRK3"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" CMGC"],
+      "children": [
+        {
+          "name": ["  CDK"],
+          "children": [
+            {
+              "name": ["    CCRK"]
+            },
+            {
+              "name": ["   CDC2"],
+              "children": [
+                {
+                  "name": ["    CDC2"]
+                }
+              ]
+            },
+            {
+              "name": ["   CDK10"],
+              "children": [
+                {
+                  "name": ["    CDK10"]
+                }
+              ]
+            },
+            {
+              "name": ["   CDK11"],
+              "children": [
+                {
+                  "name": ["    PITSLRE"]
+                }
+              ]
+            },
+            {
+              "name": ["   CDK2"],
+              "children": [
+                {
+                  "name": ["    CDK2"]
+                },
+                {
+                  "name": ["    CDK3"]
+                }
+              ]
+            },
+            {
+              "name": ["   CDK4"],
+              "children": [
+                {
+                  "name": ["    CDK4"]
+                },
+                {
+                  "name": ["    CDK6"]
+                }
+              ]
+            },
+            {
+              "name": ["   CDK5"],
+              "children": [
+                {
+                  "name": ["    CDK5"]
+                }
+              ]
+            },
+            {
+              "name": ["   CDK7"],
+              "children": [
+                {
+                  "name": ["    CDK7"]
+                }
+              ]
+            },
+            {
+              "name": ["   CDK8"],
+              "children": [
+                {
+                  "name": ["    CDK11"]
+                },
+                {
+                  "name": ["    CDK8"]
+                }
+              ]
+            },
+            {
+              "name": ["   CDK9"],
+              "children": [
+                {
+                  "name": ["    CDK9"]
+                }
+              ]
+            },
+            {
+              "name": ["   CRK7"],
+              "children": [
+                {
+                  "name": ["    CHED"]
+                },
+                {
+                  "name": ["    CRK7"]
+                }
+              ]
+            },
+            {
+              "name": ["   PCTAIRE"],
+              "children": [
+                {
+                  "name": ["    PCTAIRE1"]
+                },
+                {
+                  "name": ["    PCTAIRE2"]
+                },
+                {
+                  "name": ["    PCTAIRE3"]
+                }
+              ]
+            },
+            {
+              "name": ["   PFTAIRE"],
+              "children": [
+                {
+                  "name": ["    PFTAIRE1"]
+                },
+                {
+                  "name": ["    PFTAIRE2"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  CDKL"],
+          "children": [
+            {
+              "name": ["    CDKL1"]
+            },
+            {
+              "name": ["    CDKL2"]
+            },
+            {
+              "name": ["    CDKL3"]
+            },
+            {
+              "name": ["    CDKL4"]
+            },
+            {
+              "name": ["    CDKL5"]
+            }
+          ]
+        },
+        {
+          "name": ["  CK2"],
+          "children": [
+            {
+              "name": ["    CK2a1"]
+            },
+            {
+              "name": ["    CK2a2"]
+            }
+          ]
+        },
+        {
+          "name": ["  CLK"],
+          "children": [
+            {
+              "name": ["    CLK1"]
+            },
+            {
+              "name": ["    CLK2"]
+            },
+            {
+              "name": ["    CLK3"]
+            },
+            {
+              "name": ["    CLK4"]
+            }
+          ]
+        },
+        {
+          "name": ["  DYRK"],
+          "children": [
+            {
+              "name": ["   DYRK1"],
+              "children": [
+                {
+                  "name": ["    DYRK1A"]
+                },
+                {
+                  "name": ["    DYRK1B"]
+                }
+              ]
+            },
+            {
+              "name": ["   DYRK2"],
+              "children": [
+                {
+                  "name": ["    DYRK2"]
+                },
+                {
+                  "name": ["    DYRK3"]
+                },
+                {
+                  "name": ["    DYRK4"]
+                }
+              ]
+            },
+            {
+              "name": ["   HIPK"],
+              "children": [
+                {
+                  "name": ["    HIPK1"]
+                },
+                {
+                  "name": ["    HIPK2"]
+                },
+                {
+                  "name": ["    HIPK3"]
+                },
+                {
+                  "name": ["    HIPK4"]
+                }
+              ]
+            },
+            {
+              "name": ["   PRP4"],
+              "children": [
+                {
+                  "name": ["    PRP4"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  GSK"],
+          "children": [
+            {
+              "name": ["    GSK3A"]
+            },
+            {
+              "name": ["    GSK3B"]
+            }
+          ]
+        },
+        {
+          "name": ["  MAPK"],
+          "children": [
+            {
+              "name": ["   ERK1"],
+              "children": [
+                {
+                  "name": ["    Erk1"]
+                },
+                {
+                  "name": ["    Erk2"]
+                }
+              ]
+            },
+            {
+              "name": ["   ERK3"],
+              "children": [
+                {
+                  "name": ["    Erk3"]
+                },
+                {
+                  "name": ["    Erk4"]
+                }
+              ]
+            },
+            {
+              "name": ["   ERK5"],
+              "children": [
+                {
+                  "name": ["    Erk5"]
+                }
+              ]
+            },
+            {
+              "name": ["   ERK7"],
+              "children": [
+                {
+                  "name": ["    Erk7"]
+                }
+              ]
+            },
+            {
+              "name": ["   JNK"],
+              "children": [
+                {
+                  "name": ["    JNK1"]
+                },
+                {
+                  "name": ["    JNK2"]
+                },
+                {
+                  "name": ["    JNK3"]
+                }
+              ]
+            },
+            {
+              "name": ["   nmo"],
+              "children": [
+                {
+                  "name": ["    NLK"]
+                }
+              ]
+            },
+            {
+              "name": ["   p38"],
+              "children": [
+                {
+                  "name": ["    p38a"]
+                },
+                {
+                  "name": ["    p38b"]
+                },
+                {
+                  "name": ["    p38d"]
+                },
+                {
+                  "name": ["    p38g"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  RCK"],
+          "children": [
+            {
+              "name": ["    ICK"]
+            },
+            {
+              "name": ["    MAK"]
+            },
+            {
+              "name": ["    MOK"]
+            }
+          ]
+        },
+        {
+          "name": ["  SRPK"],
+          "children": [
+            {
+              "name": ["    MSSK1"]
+            },
+            {
+              "name": ["    SRPK1"]
+            },
+            {
+              "name": ["    SRPK2"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" Other"],
+      "children": [
+        {
+          "name": ["  Aur"],
+          "children": [
+            {
+              "name": ["    AurA"]
+            },
+            {
+              "name": ["    AurB"]
+            },
+            {
+              "name": ["    AurC"]
+            }
+          ]
+        },
+        {
+          "name": ["  BUB"],
+          "children": [
+            {
+              "name": ["    BUB1"]
+            },
+            {
+              "name": ["    BUBR1"]
+            }
+          ]
+        },
+        {
+          "name": ["  Bud32"],
+          "children": [
+            {
+              "name": ["    PRPK"]
+            }
+          ]
+        },
+        {
+          "name": ["  CAMKK"],
+          "children": [
+            {
+              "name": ["   CAMKK-Meta"],
+              "children": [
+                {
+                  "name": ["    CaMKK1"]
+                },
+                {
+                  "name": ["    CaMKK2"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  CDC7"],
+          "children": [
+            {
+              "name": ["    CDC7"]
+            }
+          ]
+        },
+        {
+          "name": ["  Dusty"],
+          "children": [
+            {
+              "name": ["    SgK496"]
+            }
+          ]
+        },
+        {
+          "name": ["  Haspin"],
+          "children": [
+            {
+              "name": ["    Haspin"]
+            }
+          ]
+        },
+        {
+          "name": ["  IKK"],
+          "children": [
+            {
+              "name": ["    IKKa"]
+            },
+            {
+              "name": ["    IKKb"]
+            },
+            {
+              "name": ["    IKKe"]
+            },
+            {
+              "name": ["    TBK1"]
+            }
+          ]
+        },
+        {
+          "name": ["  IRE"],
+          "children": [
+            {
+              "name": ["    IRE1"]
+            },
+            {
+              "name": ["    IRE2"]
+            }
+          ]
+        },
+        {
+          "name": ["  KIS"],
+          "children": [
+            {
+              "name": ["    KIS"]
+            }
+          ]
+        },
+        {
+          "name": ["  MOS"],
+          "children": [
+            {
+              "name": ["    MOS"]
+            }
+          ]
+        },
+        {
+          "name": ["  NAK"],
+          "children": [
+            {
+              "name": ["    AAK1"]
+            },
+            {
+              "name": ["    BIKE"]
+            },
+            {
+              "name": ["    GAK"]
+            },
+            {
+              "name": ["    MPSK1"]
+            }
+          ]
+        },
+        {
+          "name": ["  NEK"],
+          "children": [
+            {
+              "name": ["    NEK1"]
+            },
+            {
+              "name": ["    NEK10"]
+            },
+            {
+              "name": ["    NEK11"]
+            },
+            {
+              "name": ["    NEK2"]
+            },
+            {
+              "name": ["    NEK3"]
+            },
+            {
+              "name": ["    NEK4"]
+            },
+            {
+              "name": ["    NEK5"]
+            },
+            {
+              "name": ["    NEK6"]
+            },
+            {
+              "name": ["    NEK7"]
+            },
+            {
+              "name": ["    NEK8"]
+            },
+            {
+              "name": ["    NEK9"]
+            }
+          ]
+        },
+        {
+          "name": ["  NKF1"],
+          "children": [
+            {
+              "name": ["    SBK"]
+            },
+            {
+              "name": ["    SgK069"]
+            },
+            {
+              "name": ["    SgK110"]
+            }
+          ]
+        },
+        {
+          "name": ["  NKF2"],
+          "children": [
+            {
+              "name": ["    PINK1"]
+            }
+          ]
+        },
+        {
+          "name": ["  NKF3"],
+          "children": [
+            {
+              "name": ["    SgK223"]
+            },
+            {
+              "name": ["    SgK269"]
+            }
+          ]
+        },
+        {
+          "name": ["  NKF4"],
+          "children": [
+            {
+              "name": ["    CLIK1"]
+            },
+            {
+              "name": ["    CLIK1L"]
+            }
+          ]
+        },
+        {
+          "name": ["  NKF5"],
+          "children": [
+            {
+              "name": ["    SgK307"]
+            },
+            {
+              "name": ["    SgK424"]
+            }
+          ]
+        },
+        {
+          "name": ["  NRBP"],
+          "children": [
+            {
+              "name": ["    NRBP1"]
+            },
+            {
+              "name": ["    NRBP2"]
+            }
+          ]
+        },
+        {
+          "name": ["  Other-Unique"],
+          "children": [
+            {
+              "name": ["    RNAseL"]
+            },
+            {
+              "name": ["    SgK196"]
+            },
+            {
+              "name": ["    SgK396"]
+            }
+          ]
+        },
+        {
+          "name": ["  PEK"],
+          "children": [
+            {
+              "name": ["    HRI"]
+            },
+            {
+              "name": ["    PKR"]
+            },
+            {
+              "name": ["   GCN2"],
+              "children": [
+                {
+                  "name": ["    GCN2"]
+                }
+              ]
+            },
+            {
+              "name": ["   PEK"],
+              "children": [
+                {
+                  "name": ["    PEK"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  PLK"],
+          "children": [
+            {
+              "name": ["    PLK1"]
+            },
+            {
+              "name": ["    PLK2"]
+            },
+            {
+              "name": ["    PLK3"]
+            },
+            {
+              "name": ["    PLK4"]
+            }
+          ]
+        },
+        {
+          "name": ["  SCY1"],
+          "children": [
+            {
+              "name": ["    SCYL1"]
+            },
+            {
+              "name": ["    SCYL2"]
+            },
+            {
+              "name": ["    SCYL3"]
+            }
+          ]
+        },
+        {
+          "name": ["  SgK071"],
+          "children": [
+            {
+              "name": ["    SgK071"]
+            }
+          ]
+        },
+        {
+          "name": ["  SgK493"],
+          "children": [
+            {
+              "name": ["    SgK493"]
+            }
+          ]
+        },
+        {
+          "name": ["  Slob"],
+          "children": [
+            {
+              "name": ["    Slob"]
+            }
+          ]
+        },
+        {
+          "name": ["  TBCK"],
+          "children": [
+            {
+              "name": ["    TBCK"]
+            }
+          ]
+        },
+        {
+          "name": ["  TLK"],
+          "children": [
+            {
+              "name": ["    TLK1"]
+            },
+            {
+              "name": ["    TLK2"]
+            }
+          ]
+        },
+        {
+          "name": ["  TOPK"],
+          "children": [
+            {
+              "name": ["    PBK"]
+            }
+          ]
+        },
+        {
+          "name": ["  TTK"],
+          "children": [
+            {
+              "name": ["    TTK"]
+            }
+          ]
+        },
+        {
+          "name": ["  ULK"],
+          "children": [
+            {
+              "name": ["    Fused"]
+            },
+            {
+              "name": ["    ULK1"]
+            },
+            {
+              "name": ["    ULK2"]
+            },
+            {
+              "name": ["    ULK3"]
+            },
+            {
+              "name": ["    ULK4"]
+            }
+          ]
+        },
+        {
+          "name": ["  VPS15"],
+          "children": [
+            {
+              "name": ["    PIK3R4"]
+            }
+          ]
+        },
+        {
+          "name": ["  WEE"],
+          "children": [
+            {
+              "name": ["    MYT1"]
+            },
+            {
+              "name": ["    Wee1"]
+            },
+            {
+              "name": ["    Wee1B"]
+            }
+          ]
+        },
+        {
+          "name": ["  WNK"],
+          "children": [
+            {
+              "name": ["    Wnk1"]
+            },
+            {
+              "name": ["    Wnk2"]
+            },
+            {
+              "name": ["    Wnk3"]
+            },
+            {
+              "name": ["    Wnk4"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" RGC"],
+      "children": [
+        {
+          "name": ["  RGC"],
+          "children": [
+            {
+              "name": ["    ANPa"]
+            },
+            {
+              "name": ["    ANPb"]
+            },
+            {
+              "name": ["    CYGD"]
+            },
+            {
+              "name": ["    CYGF"]
+            },
+            {
+              "name": ["    HSER"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" STE"],
+      "children": [
+        {
+          "name": ["  STE-Unique"],
+          "children": [
+            {
+              "name": ["    COT"]
+            },
+            {
+              "name": ["    GCN2_b"]
+            },
+            {
+              "name": ["    NIK"]
+            }
+          ]
+        },
+        {
+          "name": ["  STE11"],
+          "children": [
+            {
+              "name": ["    MAP3K1"]
+            },
+            {
+              "name": ["    MAP3K19"]
+            },
+            {
+              "name": ["    MAP3K2"]
+            },
+            {
+              "name": ["    MAP3K3"]
+            },
+            {
+              "name": ["    MAP3K4"]
+            },
+            {
+              "name": ["    MAP3K5"]
+            },
+            {
+              "name": ["    MAP3K6"]
+            },
+            {
+              "name": ["    MAP3K7"]
+            }
+          ]
+        },
+        {
+          "name": ["  STE20"],
+          "children": [
+            {
+              "name": ["   FRAY"],
+              "children": [
+                {
+                  "name": ["    OSR1"]
+                },
+                {
+                  "name": ["    STLK3"]
+                }
+              ]
+            },
+            {
+              "name": ["   KHS"],
+              "children": [
+                {
+                  "name": ["    GCK"]
+                },
+                {
+                  "name": ["    HPK1"]
+                },
+                {
+                  "name": ["    KHS1"]
+                },
+                {
+                  "name": ["    KHS2"]
+                }
+              ]
+            },
+            {
+              "name": ["   MSN"],
+              "children": [
+                {
+                  "name": ["    HGK"]
+                },
+                {
+                  "name": ["    MINK"]
+                },
+                {
+                  "name": ["    NRK"]
+                },
+                {
+                  "name": ["    TNIK"]
+                }
+              ]
+            },
+            {
+              "name": ["   MST"],
+              "children": [
+                {
+                  "name": ["    MST1"]
+                },
+                {
+                  "name": ["    MST2"]
+                }
+              ]
+            },
+            {
+              "name": ["   NinaC"],
+              "children": [
+                {
+                  "name": ["    MYO3A"]
+                },
+                {
+                  "name": ["    MYO3B"]
+                }
+              ]
+            },
+            {
+              "name": ["   PAKA"],
+              "children": [
+                {
+                  "name": ["    PAK1"]
+                },
+                {
+                  "name": ["    PAK2"]
+                },
+                {
+                  "name": ["    PAK3"]
+                }
+              ]
+            },
+            {
+              "name": ["   PAKB"],
+              "children": [
+                {
+                  "name": ["    PAK4"]
+                },
+                {
+                  "name": ["    PAK5"]
+                },
+                {
+                  "name": ["    PAK6"]
+                }
+              ]
+            },
+            {
+              "name": ["   SLK"],
+              "children": [
+                {
+                  "name": ["    LOK"]
+                },
+                {
+                  "name": ["    SLK"]
+                }
+              ]
+            },
+            {
+              "name": ["   STLK"],
+              "children": [
+                {
+                  "name": ["    STLK5"]
+                },
+                {
+                  "name": ["    STLK6"]
+                }
+              ]
+            },
+            {
+              "name": ["   TAO"],
+              "children": [
+                {
+                  "name": ["    TAO1"]
+                },
+                {
+                  "name": ["    TAO2"]
+                },
+                {
+                  "name": ["    TAO3"]
+                }
+              ]
+            },
+            {
+              "name": ["   YSK"],
+              "children": [
+                {
+                  "name": ["    MST3"]
+                },
+                {
+                  "name": ["    MST4"]
+                },
+                {
+                  "name": ["    YSK1"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  STE7"],
+          "children": [
+            {
+              "name": ["    MAP2K1"]
+            },
+            {
+              "name": ["    MAP2K2"]
+            },
+            {
+              "name": ["    MAP2K3"]
+            },
+            {
+              "name": ["    MAP2K4"]
+            },
+            {
+              "name": ["    MAP2K5"]
+            },
+            {
+              "name": ["    MAP2K6"]
+            },
+            {
+              "name": ["    MAP2K7"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" TK"],
+      "children": [
+        {
+          "name": ["  Abl"],
+          "children": [
+            {
+              "name": ["    ABL1"]
+            },
+            {
+              "name": ["    ABL2"]
+            }
+          ]
+        },
+        {
+          "name": ["  Ack"],
+          "children": [
+            {
+              "name": ["    ACK"]
+            },
+            {
+              "name": ["    TNK1"]
+            }
+          ]
+        },
+        {
+          "name": ["  ALK"],
+          "children": [
+            {
+              "name": ["    ALK"]
+            },
+            {
+              "name": ["    LTK"]
+            }
+          ]
+        },
+        {
+          "name": ["  Axl"],
+          "children": [
+            {
+              "name": ["    AXL"]
+            },
+            {
+              "name": ["    MER"]
+            },
+            {
+              "name": ["    TYRO3"]
+            }
+          ]
+        },
+        {
+          "name": ["  CCK4"],
+          "children": [
+            {
+              "name": ["    CCK4"]
+            }
+          ]
+        },
+        {
+          "name": ["  Csk"],
+          "children": [
+            {
+              "name": ["    CSK"]
+            },
+            {
+              "name": ["    CTK"]
+            }
+          ]
+        },
+        {
+          "name": ["  DDR"],
+          "children": [
+            {
+              "name": ["    DDR1"]
+            },
+            {
+              "name": ["    DDR2"]
+            }
+          ]
+        },
+        {
+          "name": ["  EGFR"],
+          "children": [
+            {
+              "name": ["    EGFR"]
+            },
+            {
+              "name": ["    ErbB2"]
+            },
+            {
+              "name": ["    ErbB3"]
+            },
+            {
+              "name": ["    ErbB4"]
+            }
+          ]
+        },
+        {
+          "name": ["  Eph"],
+          "children": [
+            {
+              "name": ["    EphA1"]
+            },
+            {
+              "name": ["    EphA10"]
+            },
+            {
+              "name": ["    EphA2"]
+            },
+            {
+              "name": ["    EphA3"]
+            },
+            {
+              "name": ["    EphA4"]
+            },
+            {
+              "name": ["    EphA5"]
+            },
+            {
+              "name": ["    EphA6"]
+            },
+            {
+              "name": ["    EphA7"]
+            },
+            {
+              "name": ["    EphA8"]
+            },
+            {
+              "name": ["    EphB1"]
+            },
+            {
+              "name": ["    EphB2"]
+            },
+            {
+              "name": ["    EphB3"]
+            },
+            {
+              "name": ["    EphB4"]
+            },
+            {
+              "name": ["    EphB6"]
+            }
+          ]
+        },
+        {
+          "name": ["  FAK"],
+          "children": [
+            {
+              "name": ["    FAK"]
+            },
+            {
+              "name": ["    PYK2"]
+            }
+          ]
+        },
+        {
+          "name": ["  Fer"],
+          "children": [
+            {
+              "name": ["    FER"]
+            },
+            {
+              "name": ["    FES"]
+            }
+          ]
+        },
+        {
+          "name": ["  FGFR"],
+          "children": [
+            {
+              "name": ["    FGFR1"]
+            },
+            {
+              "name": ["    FGFR2"]
+            },
+            {
+              "name": ["    FGFR3"]
+            },
+            {
+              "name": ["    FGFR4"]
+            }
+          ]
+        },
+        {
+          "name": ["  InsR"],
+          "children": [
+            {
+              "name": ["    IGF1R"]
+            },
+            {
+              "name": ["    INSR"]
+            },
+            {
+              "name": ["    IRR"]
+            }
+          ]
+        },
+        {
+          "name": ["  Jak"],
+          "children": [
+            {
+              "name": ["    JAK1"]
+            },
+            {
+              "name": ["    JAK2"]
+            },
+            {
+              "name": ["    JAK3"]
+            },
+            {
+              "name": ["    TYK2"]
+            }
+          ]
+        },
+        {
+          "name": ["  JakB"],
+          "children": [
+            {
+              "name": ["    JAK1_b"]
+            },
+            {
+              "name": ["    JAK2_b"]
+            },
+            {
+              "name": ["    JAK3_b"]
+            },
+            {
+              "name": ["    TYK2_b"]
+            }
+          ]
+        },
+        {
+          "name": ["  Lmr"],
+          "children": [
+            {
+              "name": ["    LMR1"]
+            },
+            {
+              "name": ["    LMR2"]
+            },
+            {
+              "name": ["    LMR3"]
+            }
+          ]
+        },
+        {
+          "name": ["  Met"],
+          "children": [
+            {
+              "name": ["    MET"]
+            },
+            {
+              "name": ["    RON"]
+            }
+          ]
+        },
+        {
+          "name": ["  Musk"],
+          "children": [
+            {
+              "name": ["    MUSK"]
+            }
+          ]
+        },
+        {
+          "name": ["  PDGFR"],
+          "children": [
+            {
+              "name": ["    FLT3"]
+            },
+            {
+              "name": ["    FMS"]
+            },
+            {
+              "name": ["    KIT"]
+            },
+            {
+              "name": ["    PDGFRa"]
+            },
+            {
+              "name": ["    PDGFRb"]
+            }
+          ]
+        },
+        {
+          "name": ["  Ret"],
+          "children": [
+            {
+              "name": ["    RET"]
+            }
+          ]
+        },
+        {
+          "name": ["  Ror"],
+          "children": [
+            {
+              "name": ["    ROR1"]
+            },
+            {
+              "name": ["    ROR2"]
+            }
+          ]
+        },
+        {
+          "name": ["  Ryk"],
+          "children": [
+            {
+              "name": ["    RYK"]
+            }
+          ]
+        },
+        {
+          "name": ["  Sev"],
+          "children": [
+            {
+              "name": ["    ROS"]
+            }
+          ]
+        },
+        {
+          "name": ["  Src"],
+          "children": [
+            {
+              "name": ["    BLK"]
+            },
+            {
+              "name": ["    BRK"]
+            },
+            {
+              "name": ["    FGR"]
+            },
+            {
+              "name": ["    FRK"]
+            },
+            {
+              "name": ["    FYN"]
+            },
+            {
+              "name": ["    HCK"]
+            },
+            {
+              "name": ["    LCK"]
+            },
+            {
+              "name": ["    LYN"]
+            },
+            {
+              "name": ["    SRC"]
+            },
+            {
+              "name": ["    SRM"]
+            },
+            {
+              "name": ["    YES"]
+            }
+          ]
+        },
+        {
+          "name": ["  Syk"],
+          "children": [
+            {
+              "name": ["    SYK"]
+            },
+            {
+              "name": ["    ZAP70"]
+            }
+          ]
+        },
+        {
+          "name": ["  Tec"],
+          "children": [
+            {
+              "name": ["    BMX"]
+            },
+            {
+              "name": ["    BTK"]
+            },
+            {
+              "name": ["    ITK"]
+            },
+            {
+              "name": ["    TEC"]
+            },
+            {
+              "name": ["    TXK"]
+            }
+          ]
+        },
+        {
+          "name": ["  Tie"],
+          "children": [
+            {
+              "name": ["    TIE1"]
+            },
+            {
+              "name": ["    TIE2"]
+            }
+          ]
+        },
+        {
+          "name": ["  TK-Unique"],
+          "children": [
+            {
+              "name": ["    SuRTK106"]
+            }
+          ]
+        },
+        {
+          "name": ["  Trk"],
+          "children": [
+            {
+              "name": ["    TRKA"]
+            },
+            {
+              "name": ["    TRKB"]
+            },
+            {
+              "name": ["    TRKC"]
+            }
+          ]
+        },
+        {
+          "name": ["  VEGFR"],
+          "children": [
+            {
+              "name": ["    FLT1"]
+            },
+            {
+              "name": ["    FLT4"]
+            },
+            {
+              "name": ["    KDR"]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": [" TKL"],
+      "children": [
+        {
+          "name": ["  IRAK"],
+          "children": [
+            {
+              "name": ["    IRAK1"]
+            },
+            {
+              "name": ["    IRAK2"]
+            },
+            {
+              "name": ["    IRAK3"]
+            },
+            {
+              "name": ["    IRAK4"]
+            }
+          ]
+        },
+        {
+          "name": ["  LISK"],
+          "children": [
+            {
+              "name": ["   LIMK"],
+              "children": [
+                {
+                  "name": ["    LIMK1"]
+                },
+                {
+                  "name": ["    LIMK2"]
+                }
+              ]
+            },
+            {
+              "name": ["   TESK"],
+              "children": [
+                {
+                  "name": ["    TESK1"]
+                },
+                {
+                  "name": ["    TESK2"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  LRRK"],
+          "children": [
+            {
+              "name": ["    LRRK1"]
+            },
+            {
+              "name": ["    LRRK2"]
+            }
+          ]
+        },
+        {
+          "name": ["  MLK"],
+          "children": [
+            {
+              "name": ["   HH498"],
+              "children": [
+                {
+                  "name": ["    HH498"]
+                }
+              ]
+            },
+            {
+              "name": ["   ILK"],
+              "children": [
+                {
+                  "name": ["    ILK"]
+                }
+              ]
+            },
+            {
+              "name": ["   LZK"],
+              "children": [
+                {
+                  "name": ["    DLK"]
+                },
+                {
+                  "name": ["    LZK"]
+                }
+              ]
+            },
+            {
+              "name": ["   MLK"],
+              "children": [
+                {
+                  "name": ["    MLK1"]
+                },
+                {
+                  "name": ["    MLK2"]
+                },
+                {
+                  "name": ["    MLK3"]
+                },
+                {
+                  "name": ["    MLK4"]
+                }
+              ]
+            },
+            {
+              "name": ["   TAK1"],
+              "children": [
+                {
+                  "name": ["    TAK1"]
+                }
+              ]
+            },
+            {
+              "name": ["   ZAK"],
+              "children": [
+                {
+                  "name": ["    ZAK"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  RAF"],
+          "children": [
+            {
+              "name": ["    ARAF"]
+            },
+            {
+              "name": ["    BRAF"]
+            },
+            {
+              "name": ["    KSR2"]
+            },
+            {
+              "name": ["    RAF1"]
+            },
+            {
+              "name": ["   KSR"],
+              "children": [
+                {
+                  "name": ["    KSR1"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  RIPK"],
+          "children": [
+            {
+              "name": ["    ANKRD3"]
+            },
+            {
+              "name": ["    RIPK1"]
+            },
+            {
+              "name": ["    RIPK2"]
+            },
+            {
+              "name": ["    RIPK3"]
+            },
+            {
+              "name": ["    SgK288"]
+            }
+          ]
+        },
+        {
+          "name": ["  STKR"],
+          "children": [
+            {
+              "name": ["   STKR1"],
+              "children": [
+                {
+                  "name": ["    ALK1"]
+                },
+                {
+                  "name": ["    ALK2"]
+                },
+                {
+                  "name": ["    ALK4"]
+                },
+                {
+                  "name": ["    ALK7"]
+                },
+                {
+                  "name": ["    BMPR1A"]
+                },
+                {
+                  "name": ["    BMPR1B"]
+                },
+                {
+                  "name": ["    TGFbR1"]
+                }
+              ]
+            },
+            {
+              "name": ["   STKR2"],
+              "children": [
+                {
+                  "name": ["    ACTR2"]
+                },
+                {
+                  "name": ["    ACTR2B"]
+                },
+                {
+                  "name": ["    BMPR2"]
+                },
+                {
+                  "name": ["    MISR2"]
+                },
+                {
+                  "name": ["    TGFbR2"]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": ["  TKL-Unique"],
+          "children": [
+            {
+              "name": ["    MLKL"]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
