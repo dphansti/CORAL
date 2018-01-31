@@ -13,14 +13,14 @@ binding.renderValue = function(el, data) {
   if(data!=null){
 
    
-      var width = 960*1.7,
-          height = 500*2.35,
+      var width = 800,
+          height = 700,
           root;
 
       var force = d3.layout.force()
-          .linkDistance(80)
-          .charge(-50)
-          .gravity(.001)
+          .linkDistance(.25)
+          .charge(-40)
+          .gravity(.2)
           .size([width, height])
           .on("tick", tick);
 
