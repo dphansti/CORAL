@@ -31,7 +31,9 @@ ui <- dashboardPage(skin="black",
     
     # Fix a bug in the texboxInput funciton that doesn't respect width= "100%"
     tags$style(HTML(".shiny-input-container:not(.shiny-input-container-inline) {width: 100%;}")),
-    tags$style(".shiny-input-container {margin-bottom: 0px} #file1_progress { margin-bottom: 0px } .checkbox { margin-top: 0px}"),
+    
+    # remove extra sace under file input
+    tags$style(".shiny-input-container {margin-bottom: 0px} #phospepcsv_progress { margin-bottom: 0px } .checkbox { margin-top: 0px}"),
     
     tabItems(
       # First tab content
@@ -229,29 +231,22 @@ ui <- dashboardPage(skin="black",
               
               box(width=12,title = "Phosphopeptide Analysis",status = "info", solidHeader = TRUE,
                   collapsible = TRUE,collapsed = TRUE,
-                  "Provide phosphorylation site and group info in 2 columns.  Data can be uploaded in csv format, pasted into text box, or loaded from example data set",
                   
-                  # tags$br(),
-                  # tags$br(),
-                  # 
-                  # radioButtons("radio_phospepinputtype","Data Entry",
-                  #              choices = list("Upload csv" = "Upload csv", 
-                  #                             "Paste data" = "Paste data",
-                  #                             "load example" = "load example"),selected = "Upload csv"),
-                  tags$hr(),
-                  
-              # # if by value
-              # conditionalPanel(
-              #   condition = "input.radio_phospepinputtype == 'Upload csv'",
-                  fileInput("file1", "Upload CSV File",
+                  fileInput(inputId="phospepcsv",
+                            label = h4("Upload CSV File",
+                                       tags$style(type = "text/css", "#q1 {vertical-align: top;}"),
+                                       bsButton("q1", label = "", icon = icon("question"), style = "info", size = "extra-small")
+                            ),
                           accept = c(
                             "text/csv",
                             "text/comma-separated-values,text/plain",
                             ".csv")
                     ),
                     checkboxInput("header", "Header", TRUE),
-                  # ), # end conditional
-              
+                  
+                  bsTooltip(id="q1",title="Provide phosphorylation site and group info in 2 columns.  Data can be uploaded in csv format, pasted into text box, or loaded from example data set",
+                            placement = "bottom", trigger = "hover",
+                            options = NULL),
               tags$hr(),
               
               textAreaInput("Phospepinput", "PO4 Sites & Group", height = "100px",width = "100%"

@@ -1,6 +1,8 @@
 # load basic libraries
 require(shiny)
 require(shinydashboard)
+require(shinyBS)
+
 
 # load Manning-related libraries
 require(svgPanZoom)
