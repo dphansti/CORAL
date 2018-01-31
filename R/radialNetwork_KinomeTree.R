@@ -204,7 +204,7 @@ list_kinome_tree <- function(treedf, color_plan = NULL)
   return(lol)
 }
 
-list_kinome_tree(svginfo$dataframe)
+# list_kinome_tree(svginfo$dataframe)
 
 
 
