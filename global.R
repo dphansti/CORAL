@@ -25,6 +25,7 @@ require(stringr)
 source("R/colorby.R")
 source("R/readinput.R")
 source("R/writekinasetree.R")
+source("R/legendfunctions.R")
 
 source("R/map2color.R")
 source("R/convertID.R")
