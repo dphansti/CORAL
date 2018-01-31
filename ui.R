@@ -1,13 +1,16 @@
 ## app.R ##
 
-ui <- dashboardPage(
+ui <- dashboardPage(skin="black",
   dashboardHeader(title = "CORAL"),
+  
   dashboardSidebar
   (
     sidebarMenu(
       menuItem("Kinase Input", tabName = "KinaseInput", icon = icon("dashboard")),
       menuItem("PhosSite Input", tabName = "PhosSiteInput", icon = icon("th"))
-    )
+      
+    ),
+    collapsed = TRUE
   ),
   dashboardBody(
     
@@ -28,6 +31,7 @@ ui <- dashboardPage(
     
     # Fix a bug in the texboxInput funciton that doesn't respect width= "100%"
     tags$style(HTML(".shiny-input-container:not(.shiny-input-container-inline) {width: 100%;}")),
+    tags$style(".shiny-input-container {margin-bottom: 0px} #file1_progress { margin-bottom: 0px } .checkbox { margin-top: 0px}"),
     
     tabItems(
       # First tab content
@@ -179,11 +183,9 @@ ui <- dashboardPage(
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                              sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 10)
                            )
-                       ) # end box    
-                   ), # end row   
+                       ), # end box    
               
-              #end row
-              fluidRow(width=12,
+              # fluidRow(width=12,
                        box(width=12,
                            title = tagList(shiny::icon("gear"), "advanced settings"), status = "primary", solidHeader = TRUE,
                            collapsible = TRUE,collapsed = TRUE,
@@ -222,8 +224,43 @@ ui <- dashboardPage(
                                      column(width = 3,  colourInput("groupcol12", "12", defaultpalette[12],showColour = "background"))
                            ) 
 
-                       ) #end box
-                  ) # end row
+                       ), #end box
+              
+              
+              box(width=12,title = "Phosphopeptide Analysis",status = "info", solidHeader = TRUE,
+                  collapsible = TRUE,collapsed = TRUE,
+                  "Provide phosphorylation site and group info in 2 columns.  Data can be uploaded in csv format, pasted into text box, or loaded from example data set",
+                  
+                  # tags$br(),
+                  # tags$br(),
+                  # 
+                  # radioButtons("radio_phospepinputtype","Data Entry",
+                  #              choices = list("Upload csv" = "Upload csv", 
+                  #                             "Paste data" = "Paste data",
+                  #                             "load example" = "load example"),selected = "Upload csv"),
+                  tags$hr(),
+                  
+              # # if by value
+              # conditionalPanel(
+              #   condition = "input.radio_phospepinputtype == 'Upload csv'",
+                  fileInput("file1", "Upload CSV File",
+                          accept = c(
+                            "text/csv",
+                            "text/comma-separated-values,text/plain",
+                            ".csv")
+                    ),
+                    checkboxInput("header", "Header", TRUE),
+                  # ), # end conditional
+              
+              tags$hr(),
+              
+              textAreaInput("Phospepinput", "PO4 Sites & Group", height = "100px",width = "100%"
+              ),
+              
+              checkboxInput("load_example_po4data", "load example", FALSE)
+              
+                  ) # end box
+                ) # end row
               ) # end column
                        ,
                        
