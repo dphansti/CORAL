@@ -22,6 +22,7 @@ ui <- dashboardPage(skin="black",
       tags$script(src="circleNetwork.js"),
       tags$script(src="collapsableDiagonalNetwork.js"),
       tags$script(src="collapsableForceNetwork.js"),
+      tags$script(src="simpleForceNetwork.js"),
       # tags$script(src="http://d3js.org/d3.v2.js"),
       # tags$script(src="testforce.js"),
       
@@ -244,7 +245,7 @@ ui <- dashboardPage(skin="black",
                     ),
                     checkboxInput("header", "csv file contains a header row", TRUE),
                   
-                  bsTooltip(id="q1",title="Provide phosphorylation site and group info in 2 columns csv file. Column 1 should be unprot ID and site (e.g. Q01860_S236).  Column 2 should be a group classification (e.g. up, down, static, etc)  ",
+                  bsTooltip(id="q1",title="Provide phosphorylation site and group info in 2 columns csv file. Column 1 should be unprot ID and site (e.g. Q01860_S236).  Column 2 should be a group classification (e.g. up, down, static, etc)",
                             placement = "bottom", trigger = "hover",
                             options = NULL),
               tags$hr(),
@@ -258,8 +259,11 @@ ui <- dashboardPage(skin="black",
                             "PO4 Sites & Group", height = "100px",width = "100%"
               ),
               
-              checkboxInput("load_example_po4data", "Use example data", FALSE)
+              bsTooltip(id="q2",title="Provide phosphorylation site and group info in 2 columns separated by a space or tab. Column 1 should be unprot ID and site (e.g. Q01860_S236).  Column 2 should be a group classification (e.g. up, down, static, etc)",
+                        placement = "bottom", trigger = "hover",
+                        options = NULL),
               
+              checkboxInput("load_example_po4data", "Use example data", FALSE)
                   ) # end box
                 ) # end row
               ) # end column
@@ -276,8 +280,7 @@ ui <- dashboardPage(skin="black",
                          ("Radial Cluster Dendrogram",
                            width=12,
                            shinyjs::useShinyjs(),
-                           shinyjs::hidden(
-                             selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json")))),
+                          
                            #this div will hold the final graph
                            div(id="circlelayout", class="circleNetwork")
                            # actionButton(inputId = "button", label = "show / hide")
@@ -287,8 +290,7 @@ ui <- dashboardPage(skin="black",
                          ("Collapsable Force Network",
                            width=12,
                            shinyjs::useShinyjs(),
-                           shinyjs::hidden(
-                             selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json")))),
+                           
                            #this div will hold the final graph
                            div(id="forcelayout", class="collapsableForceNetwork")
                            
@@ -298,26 +300,18 @@ ui <- dashboardPage(skin="black",
                          ("Collapsable Diagonal Network",
                            width=12,
                            shinyjs::useShinyjs(),
-                           shinyjs::hidden(
-                             selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json")))),
                            #this div will hold the final graph
                            div(id="diaglayout", class="collapsableDiagonalNetwork")
                          )
-                         # tabPanel
-                         # ("Test Network",
-                         #   width=12,
-                         #   shinyjs::useShinyjs(),
-                         #   shinyjs::hidden(
-                         #     selectInput("data_files", "JSON files:" ,  as.matrix(list.files(path="www",pattern="json")))),
-                         #   #this div will hold the final graph
-                         #   div(id="testlayout", class="testforce")
-                         # )
                        )
               ),
               
               fluidRow(width=12,
                        box(width=12,
-                           DT::dataTableOutput("KinaseTable")
+                           DT::dataTableOutput("KinaseTable"),
+                           
+                           # We need this line for D3 plots to appear.  Not sure why
+                           shinyjs::hidden(selectInput("data_files",label = "asdf",choices = c("1","2")))
                        )
               )
       ),

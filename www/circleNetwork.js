@@ -46,8 +46,12 @@ binding.renderValue = function(el, data) {
           .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
+          
+          
       node.append("circle")
-          .attr("r", 2);
+          .attr("r", function(d) { return d.noderadius; })
+          .style("fill", function(d) { return d3.rgb(d.branchcol); });
+          
 
       node.append("text")
           .attr("dy", ".31em")

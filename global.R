@@ -2,7 +2,7 @@
 require(shiny)
 require(shinydashboard)
 require(shinyBS)
-
+require(readr)
 
 # load Manning-related libraries
 require(svgPanZoom)
@@ -19,7 +19,7 @@ require(radialNetworkR)
 require(networkD3)
 require(igraph)
 require(jsonlite)
-# require(rjson)
+require(rjson)
 require(httr)
 require(stringr)
 
@@ -32,6 +32,7 @@ source("R/legendfunctions.R")
 source("R/map2color.R")
 source("R/convertID.R")
 
+source("R/makejson.R")
 source("R/radialNetwork_KinomeTree.R")
 source("R/forceNetwork_KinomeTree.R")
 

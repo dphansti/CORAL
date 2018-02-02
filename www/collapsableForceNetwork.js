@@ -40,7 +40,8 @@ binding.renderValue = function(el, data) {
         if (error) throw error;
 
         root = json;
-        update();
+        update();  
+
       });
 
       function update() {
@@ -52,6 +53,7 @@ binding.renderValue = function(el, data) {
             .nodes(nodes)
             .links(links)
             .start();
+        
 
         // Update links.
         link = link.data(links, function(d) { return d.target.id; });
@@ -72,7 +74,7 @@ binding.renderValue = function(el, data) {
             .call(force.drag);
 
         nodeEnter.append("circle")
-            .attr("r", function(d) { return Math.sqrt(d.size) / 7 || 4.5; });
+            .attr("r", function(d) { return Math.sqrt(d.size) / 7 || 5.5; });
 
         nodeEnter.append("text")
             .attr("dy", ".35em")

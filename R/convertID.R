@@ -7,12 +7,18 @@ convertID <- function(df,recolordf,inputtype)
   {
     inputtype = "id.kinrich"
   }
+  if (inputtype != "id.kinrich")
+  {
+    inputtype = paste("id.",inputtype,sep="")
+  }
   
   if (length(which(recolordf[,1] %in% df[,inputtype])) == 0)
   {
     print ("no matches found")
     return(data.frame())
   }
+  
+
   
   print (paste(length(which(recolordf[,1] %in% df[,inputtype])),"matches found"))
   

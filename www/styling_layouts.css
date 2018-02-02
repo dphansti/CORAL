@@ -16,7 +16,7 @@
 
 #forcelayout .node circle {
   cursor: pointer;
-  stroke: #3182bd;
+  stroke: #ffffff;
   stroke-width: 1.5px;
 }
 
@@ -28,7 +28,7 @@
 
 #forcelayout line.link {
   fill: none;
-  stroke: #9ecae1;
+  stroke: #D3D3D3;
   stroke-width: 1.5px;
 }
 

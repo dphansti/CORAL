@@ -51,6 +51,7 @@ server <- function(input, output) {
       recolordf = read.text.input(input$branchGroupBox)
       
       # convert to coral id
+      # print (paste("asdfadsfadsf = ",input$branchGroupIDtype))
       recolordf = convertID (tempdf,recolordf,inputtype=input$branchGroupIDtype)
       
       if (nrow(recolordf)>0)
@@ -255,7 +256,8 @@ server <- function(input, output) {
       writekinasetree(svginfo,destination=outfile)
       svgPanZoom(outfile,viewBox = F,controlIconsEnabled=F)
     })
-
+  
+  
   #output to the graph div
   output$forcelayout <- reactive({
     
@@ -265,11 +267,9 @@ server <- function(input, output) {
     
     # Write kinome_tree.json (based on current dataframe)
     outputjson <- "www/kinome_tree.json"
-    withProgress(
-      writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
-     ,message = "Loading Force Network layout...", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
-      
-    # get the selected file
+    makejson(svginfo$dataframe,tmp="www/subdf.txt",output=outputjson)
+    
+    # Need to call this for plot to show up.  Not sure why
     input$data_files
   })
   
@@ -281,11 +281,9 @@ server <- function(input, output) {
     
     # Write kinome_tree.json (based on current dataframe)
     outputjson <- "www/kinome_tree.json"
-    withProgress(
-      writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
-      ,message = "Loading Diagonal Network layout... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
+    makejson(svginfo$dataframe,tmp="www/subdf.txt",output=outputjson)
 
-    # get the selected file
+    # Need to call this for plot to show up.  Not sure why
     input$data_files
   })
   
@@ -297,24 +295,11 @@ server <- function(input, output) {
     
     # Write kinome_tree.json (based on current dataframe)
     outputjson <- "www/kinome_tree.json"
-    withProgress(
-      writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
-      ,message = "Loading Radial Network layout... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
+    # withProgress(
+    #   writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
+    #   ,message = "Loading Radial Network layout... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
     
-    # get the selected file
-    input$data_files
-  })
-  
-  output$testlayout <- reactive({
-    # recolor the official matrix
-    dfandlegend = newdf()
-    svginfo$dataframe = dfandlegend[[1]]
-    
-    # Write kinome_tree.json (based on current dataframe)
-    outputjson <- "www/kinome_tree.json"
-    withProgress(
-      writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
-      ,message = "Loading Test Network... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
+    makejson(svginfo$dataframe,tmp="www/subdf.txt",output=outputjson)
     
     # get the selected file
     input$data_files
@@ -360,10 +345,6 @@ server <- function(input, output) {
     newdf$branch_color=tgtbranch
     
     datatable(newdf, escape=FALSE)
-
   })
-  
-
-
 }
 
