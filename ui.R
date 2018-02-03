@@ -279,7 +279,7 @@ ui <- dashboardPage(skin="black",
                            shinyjs::useShinyjs(),
                           
                            #this div will hold the final graph
-                           div(id="circlelayout", class="circleNetwork"),
+                           div(id="circlelayout", class="circleNetwork")
                          ),
                          
                          tabPanel
