@@ -20,11 +20,8 @@ ui <- dashboardPage(skin="black",
       
       #the js script holding the code to make the custom output
       tags$script(src="circleNetwork.js"),
-      tags$script(src="collapsableDiagonalNetwork.js"),
       tags$script(src="collapsableForceNetwork.js"),
-      tags$script(src="simpleForceNetwork.js"),
-      # tags$script(src="http://d3js.org/d3.v2.js"),
-      # tags$script(src="testforce.js"),
+      # tags$script(src="collapsableDiagonalNetwork.js"),
       
       #the stylesheet, paste all that was between the <style> tags from your example in the graph_style.css file
       tags$link(rel = "stylesheet", type = "text/css", href = "styling_layouts.css")
@@ -272,46 +269,42 @@ ui <- dashboardPage(skin="black",
                        tabBox
                        ( width=9,height="800px",
                          tabPanel
-                         ("Manning",
+                         ("Tree",
                            width=12,
                            svgPanZoomOutput('plot1',height="750px")
                          ),
                          tabPanel
-                         ("Radial Cluster Dendrogram",
+                         ("Circle",
                            width=12,
                            shinyjs::useShinyjs(),
                           
                            #this div will hold the final graph
-                           div(id="circlelayout", class="circleNetwork")
-                           # actionButton(inputId = "button", label = "show / hide")
+                           div(id="circlelayout", class="circleNetwork"),
                          ),
                          
                          tabPanel
-                         ("Collapsable Force Network",
+                         ("Force",
                            width=12,
                            shinyjs::useShinyjs(),
                            
                            #this div will hold the final graph
                            div(id="forcelayout", class="collapsableForceNetwork")
                            
-                         ),
-                         
-                         tabPanel
-                         ("Collapsable Diagonal Network",
-                           width=12,
-                           shinyjs::useShinyjs(),
-                           #this div will hold the final graph
-                           div(id="diaglayout", class="collapsableDiagonalNetwork")
                          )
+                         
+                         # tabPanel
+                         # ("Collapsable Diagonal Network",
+                         #   width=12,
+                         #   shinyjs::useShinyjs(),
+                         #   #this div will hold the final graph
+                         #   div(id="diaglayout", class="collapsableDiagonalNetwork")
+                         # )
                        )
               ),
               
               fluidRow(width=12,
                        box(width=12,
-                           DT::dataTableOutput("KinaseTable"),
-                           
-                           # We need this line for D3 plots to appear.  Not sure why
-                           shinyjs::hidden(selectInput("data_files",label = "asdf",choices = c("1","2")))
+                           DT::dataTableOutput("KinaseTable")
                        )
               )
       ),

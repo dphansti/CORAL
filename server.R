@@ -265,14 +265,16 @@ server <- function(input, output) {
     dfandlegend = newdf()
     svginfo$dataframe = dfandlegend[[1]]
     
+    # replace none color for D3 plots
+    allnodescoloreddf =  svginfo$dataframe
+    allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
+    
     # Write kinome_tree.json (based on current dataframe)
     outputjson <- "www/kinome_tree.json"
-    makejson(svginfo$dataframe,tmp="www/subdf.txt",output=outputjson)
+    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
     
-    # Need to call this for plot to show up.  Not sure why
-    input$data_files
-    input$branchcolortype
-    input$nodecolortype
+    # Make this reactive to any change in input paramters
+    x <- reactiveValuesToList(input)
   })
   
   #output to the graph div
@@ -281,12 +283,16 @@ server <- function(input, output) {
     dfandlegend = newdf()
     svginfo$dataframe = dfandlegend[[1]]
     
+    # replace none color for D3 plots
+    allnodescoloreddf =  svginfo$dataframe
+    allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
+    
     # Write kinome_tree.json (based on current dataframe)
     outputjson <- "www/kinome_tree.json"
-    makejson(svginfo$dataframe,tmp="www/subdf.txt",output=outputjson)
+    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
 
-    # Need to call this for plot to show up.  Not sure why
-    input$data_files
+    # Make this reactive to any change in input paramters
+    x <- reactiveValuesToList(input)
   })
   
   #output to the graph div
@@ -295,14 +301,16 @@ server <- function(input, output) {
     dfandlegend = newdf()
     svginfo$dataframe = dfandlegend[[1]]
     
+    # replace none color for D3 plots
+    allnodescoloreddf =  svginfo$dataframe
+    allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
+    
     # Write kinome_tree.json (based on current dataframe)
     outputjson <- "www/kinome_tree.json"
-    makejson(svginfo$dataframe,tmp="www/subdf.txt",output=outputjson)
+    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
     
-    # get the selected file
-    input$data_files
-    input$branchcolortype
-    input$nodecolortype
+    # Make this reactive to any change in input paramters
+    x <- reactiveValuesToList(input)
   })
   
   # build the table
