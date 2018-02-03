@@ -271,6 +271,8 @@ server <- function(input, output) {
     
     # Need to call this for plot to show up.  Not sure why
     input$data_files
+    input$branchcolortype
+    input$nodecolortype
   })
   
   #output to the graph div
@@ -295,14 +297,12 @@ server <- function(input, output) {
     
     # Write kinome_tree.json (based on current dataframe)
     outputjson <- "www/kinome_tree.json"
-    # withProgress(
-    #   writeLines(jsonlite::toJSON(list_kinome_tree(svginfo$dataframe), pretty = T),outputjson)
-    #   ,message = "Loading Radial Network layout... ", detail = "Remember: \nONLY pick kinases under 'Manning'",value = 0.5)
-    
     makejson(svginfo$dataframe,tmp="www/subdf.txt",output=outputjson)
     
     # get the selected file
     input$data_files
+    input$branchcolortype
+    input$nodecolortype
   })
   
   # build the table

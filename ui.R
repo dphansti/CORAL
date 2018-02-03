@@ -171,7 +171,7 @@ ui <- dashboardPage(skin="black",
                            # if single color
                            conditionalPanel(
                              condition = "input.nodesizetype == 'One Size'",
-                             sliderInput("size_node_single", "Node Size",value=4,min = 0,max=10)
+                             sliderInput("size_node_single", "Node Size",value=3,min = 0,max=20,step = 0.25)
                            ),
                            
                            # if by value
@@ -184,7 +184,7 @@ ui <- dashboardPage(skin="black",
                              selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
-                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 10)
+                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 20,step = 0.25)
                            )
                        ), # end box    
               

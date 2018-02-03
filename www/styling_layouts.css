@@ -16,8 +16,8 @@
 
 #forcelayout .node circle {
   cursor: pointer;
-  stroke: #ffffff;
-  stroke-width: 1.5px;
+  stroke: white;
+  stroke-width: 1.0px;
 }
 
 #forcelayout .node text {
@@ -34,8 +34,8 @@
 
 #circlelayout .node circle {
   fill: #fff;
-  stroke: steelblue;
-  stroke-width: 1.5px;
+  stroke: white;
+  stroke-width: 0.5px;
 }
 
 #circlelayout .node {

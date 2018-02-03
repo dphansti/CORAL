@@ -47,10 +47,9 @@ binding.renderValue = function(el, data) {
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
           
-          
       node.append("circle")
           .attr("r", function(d) { return d.noderadius; })
-          .style("fill", function(d) { return d3.rgb(d.branchcol); });
+          .style("fill", function(d) { return d3.rgb(d.nodecol); });
           
 
       node.append("text")

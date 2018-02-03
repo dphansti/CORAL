@@ -74,14 +74,15 @@ binding.renderValue = function(el, data) {
             .call(force.drag);
 
         nodeEnter.append("circle")
-            .attr("r", function(d) { return Math.sqrt(d.size) / 7 || 5.5; });
+            .attr("r", function(d) { return (d.noderadius * 2.5); })
+            
 
         nodeEnter.append("text")
             .attr("dy", ".35em")
             .text(function(d) { return d.name; });
 
         node.select("circle")
-            .style("fill", color);
+            .style("fill", function(d) { return d3.rgb(d.nodecol); });
       }
 
       function tick() {
