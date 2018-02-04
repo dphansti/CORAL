@@ -5,7 +5,6 @@ binding.find = function(scope) {
   return $(scope).find(".collapsableForceNetwork");
 };
 
-
 binding.renderValue = function(el, data) {
   //empty the div so that it removes the graph when you change data
   $(el).empty()
@@ -28,7 +27,7 @@ binding.renderValue = function(el, data) {
           .attr("height", height)
           .call(d3.behavior.zoom().on("zoom", redraw));
 
-      var link = svg.selectAll(".link"),
+      var link = svg.selectAll(".link")
           node = svg.selectAll(".node");
 
       d3.json("kinome_tree.json", function(error, json) {
@@ -36,8 +35,25 @@ binding.renderValue = function(el, data) {
 
         root = json;
         update();  
-
+    
       });
+      
+    function mouseover() {
+      d3.select(this).select("circle").transition()
+           .attr("r", function(d) { return (d.noderadius * 10); })
+      d3.select(this).select("text").transition()
+          .attr("font-size", function(d) { return (d.textsize * 10.0 + "px"); })
+      d3.select(this).moveToFront();
+    }
+
+    function mouseout() {
+      d3.select(this).select("circle").transition()
+           .attr("r", function(d) { return (d.noderadius * 2.5); })
+      d3.select(this).select("text").transition()
+          .attr("font-size", function(d) { return (d.textsize * 2.0 + "px"); })
+      d3.select(this).moveToFront();
+    }
+
 
       function update() {
         var nodes = flatten(root),
@@ -65,16 +81,18 @@ binding.renderValue = function(el, data) {
 
         var nodeEnter = node.enter().append("g")
             .attr("class", "node")
-            .on("click", click)
-            .call(force.drag);
+            //.on("click", click)
+            .call(force.drag)
+            .on("mouseover", mouseover)
+            .on("mouseout", mouseout);
 
-        nodeEnter.append("circle")
+        node.append("circle")
             .attr("r", function(d) { return (d.noderadius * 2.5); })
             
-
-        nodeEnter.append("text")
+        node.append("text")
             .attr("dy", ".35em")
-            .text(function(d) { return d.name; });
+            .text(function(d) { return d.name; })
+            .attr("font-size", function(d) { return ((d.textsize * 2) + "px"); });
 
         node.select("circle")
             .style("fill", function(d) { return d3.rgb(d.nodecol); });

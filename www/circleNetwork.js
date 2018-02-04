@@ -52,7 +52,6 @@ binding.renderValue = function(el, data) {
       node.append("circle")
           .attr("r", function(d) { return d.noderadius; })
           .style("fill", function(d) { return d3.rgb(d.nodecol); });
-          
 
       node.append("text")
           .attr("dy", ".31em")

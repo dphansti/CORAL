@@ -21,7 +21,6 @@
 }
 
 #forcelayout .node text {
-  font: 5px sans-serif;
   pointer-events: none;
   text-anchor: middle;
 }
