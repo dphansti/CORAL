@@ -49,7 +49,7 @@ ui <- dashboardPage(skin="black",
                            
                            selectInput(inputId = "branchcolortype",label = "Color Branch",
                                        choices = c("As one color","Manually","by group","by value"),
-                                       multiple = FALSE,selected = "As one color",width = "100%"),
+                                       multiple = FALSE,selected = "by group",width = "100%"),
                            
                            # if single color
                            conditionalPanel(
@@ -108,7 +108,7 @@ ui <- dashboardPage(skin="black",
                            selectInput(inputId = "nodecolortype",label = "Color Node",
                                        #  choices = c("None","Same as branches","As one color","Manually","by group","by value"),
                                        choices = c("None","As one color","Manually","by group","by value"),
-                                       multiple = FALSE,selected = "None",width = "100%"),
+                                       multiple = FALSE,selected = "by group",width = "100%"),
                            
                            # if single color
                            conditionalPanel(
