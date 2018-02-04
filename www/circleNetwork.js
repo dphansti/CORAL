@@ -12,8 +12,10 @@ binding.renderValue = function(el, data) {
   if(data!=null){
     //////////.JS//////////
 
-    var radius = 500;
-
+    var radius = 450
+      width = 940,
+      height = 940;
+  
     var cluster = d3.layout.cluster()
         .size([360, radius - 60]);
 
@@ -21,8 +23,8 @@ binding.renderValue = function(el, data) {
       .projection(function(d) { return [d.y, d.x / 180 * Math.PI]; });
 
     var svg = d3.select("#" + $(el).attr('id')).append("svg")
-      .attr("width", radius * 4)
-      .attr("height", radius * 4)
+      .attr("width", width)
+      .attr("height", height)
       .call(d3.behavior.zoom().on("zoom", function () {
           svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
       }))

@@ -24,7 +24,10 @@ ui <- dashboardPage(skin="black",
       # tags$script(src="collapsableDiagonalNetwork.js"),
       
       #the stylesheet, paste all that was between the <style> tags from your example in the graph_style.css file
-      tags$link(rel = "stylesheet", type = "text/css", href = "styling_layouts.css")
+      tags$link(rel = "stylesheet", type = "text/css", href = "styling_layouts.css"),
+      
+      # try to resize plot according to window size
+      tags$head(tags$style("#plot1{height:100vh;}"))
     ),
     
     # Fix a bug in the texboxInput funciton that doesn't respect width= "100%"
@@ -267,11 +270,11 @@ ui <- dashboardPage(skin="black",
                        ,
                        
                        tabBox
-                       ( width=9,height="800px",
+                       ( width=9,height=940,
                          tabPanel
                          ("Tree",
                            width=12,
-                           svgPanZoomOutput('plot1',height="750px")
+                           svgPanZoomOutput('plot1',height=850)
                          ),
                          tabPanel
                          ("Circle",

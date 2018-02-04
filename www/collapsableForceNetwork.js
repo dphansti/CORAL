@@ -12,8 +12,7 @@ binding.renderValue = function(el, data) {
   
   if(data!=null){
 
-   
-      var width = 1500,
+      var width = 940,
           height = 800,
           root;
 
@@ -25,12 +24,8 @@ binding.renderValue = function(el, data) {
           .on("tick", tick);
 
       var svg = d3.select("#" + $(el).attr('id')).append("svg")
-      .attr({
-        "width": "100%",
-        "height": "100%"
-      })
-          .attr("viewBox", "0 0 " + width + " " + height )
-          .attr("preserveAspectRatio", "xMidYMid meet")
+          .attr("width", width)
+          .attr("height", height)
           .call(d3.behavior.zoom().on("zoom", redraw));
 
       var link = svg.selectAll(".link"),
