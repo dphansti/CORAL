@@ -55,7 +55,7 @@ binding.renderValue = function(el, data) {
 
       node.append("text")
           .attr("dy", ".31em")
-          .attr("font-size", "4px")
+          .attr("font-size",function(d) { return d.textsize; })
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
           .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
           .text(function(d) { return d.name; });
@@ -65,14 +65,14 @@ binding.renderValue = function(el, data) {
       d3.select(this).select("circle").transition()
           .attr("r", 10)
       d3.select(this).select("text").transition()
-          .attr("font-size", "60px");
+          .attr("font-size", "40px");
     }
 
     function mouseout() {
       d3.select(this).select("circle").transition()
-          .attr("r", 2)
+          .attr("r", function(d) { return d.noderadius; })
       d3.select(this).select("text").transition()
-          .attr("font-size", "4px");
+          .attr("font-size", function(d) { return d.textsize; });
     }
 
 
