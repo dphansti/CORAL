@@ -1,5 +1,9 @@
 ## app.R ##
 
+# Define colors
+BG_col1 = "#D3D3D3"
+
+
 ui <- dashboardPage(skin="black",
   dashboardHeader(title = "CORAL"),
   
@@ -62,7 +66,7 @@ ui <- dashboardPage(skin="black",
                              condition = "input.branchcolortype == 'Manually'",
                              selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
                              fluidRow( width=12,
-                                       column(6,colourInput("col_select_bg", "BG Color", "#A3A3A3")),
+                                       column(6,colourInput("col_select_bg", "BG Color", BG_col1)),
                                        column(6,colourInput("col_select", "Color", "#2C54F5"))
                              )
                            ),
@@ -264,8 +268,21 @@ ui <- dashboardPage(skin="black",
                         options = NULL),
               
               checkboxInput("load_example_po4data", "Use example data", FALSE)
-                  ) # end box
-                ) # end row
+                  ), # end box
+              
+              box(width=12,title = "Download",status = "warning", solidHeader = TRUE,
+                  collapsible = TRUE,collapsed = TRUE
+                  
+                  # add select tree circle force
+                  
+                  # radio button for file type
+                  
+                  # download button
+                  
+                  
+                ) # end box
+              ) # end row
+              
               ) # end column
                        ,
                        
