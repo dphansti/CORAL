@@ -58,7 +58,7 @@ ui <- dashboardPage(skin="black",
                            # if single color
                            conditionalPanel(
                              condition = "input.branchcolortype == 'As one color'",
-                             colourInput("col_branch_single", "Branch Color","#A3A3A3")
+                             colourInput("col_branch_single", "Branch Color","#A3A3A3",showColour = "both")
                            ),
                            
                            # if manual selection
@@ -66,8 +66,8 @@ ui <- dashboardPage(skin="black",
                              condition = "input.branchcolortype == 'Manually'",
                              selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
                              fluidRow( width=12,
-                                       column(6,colourInput("col_select_bg", "BG Color", BG_col1)),
-                                       column(6,colourInput("col_select", "Color", "#2C54F5"))
+                                       column(6,colourInput("col_select_bg", "BG Color", BG_col1,showColour = "both")),
+                                       column(6,colourInput("col_select", "Color", "#2C54F5",showColour = "both"))
                              )
                            ),
                            
@@ -93,9 +93,9 @@ ui <- dashboardPage(skin="black",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                              fluidRow( width=12,
-                                       column(4,  colourInput("col_heat_low", "Low", "deepskyblue2",showColour = "background")),
-                                       column(4,                  colourInput("col_heat_med", "Med", "#A3A3A3",showColour = "background")),
-                                       column(4,                  colourInput("col_heat_hi", "High", "gold",showColour = "background"))
+                                       column(4,  colourInput("col_heat_low", "Low", "deepskyblue2",showColour = "both")),
+                                       column(4,                  colourInput("col_heat_med", "Med", "#A3A3A3",showColour = "both")),
+                                       column(4,                  colourInput("col_heat_hi", "High", "gold",showColour = "both"))
                              ) ,
                              fluidRow( width=12,
                                        column(6,                numericInput(inputId = "minheat",label = "min",value = -5 )),
