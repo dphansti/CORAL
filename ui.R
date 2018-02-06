@@ -271,14 +271,17 @@ ui <- dashboardPage(skin="black",
                   ), # end box
               
               box(width=12,title = "Download",status = "warning", solidHeader = TRUE,
-                  collapsible = TRUE,collapsed = TRUE
+                  collapsible = TRUE,collapsed = TRUE,
                   
                   # add select tree circle force
+                  selectInput(inputId =  "downloadtype", label = "File Type",choices = c("pdf","svg"),selected = "pdf"),
                   
                   # radio button for file type
+                  radioButtons(inputId="downloadplot", label = "View to Download", choices = c("Tree","Circle","Force"),inline=TRUE),
+                  tags$hr(),
                   
                   # download button
-                  
+                  downloadButton("downloadData", "Download")
                   
                 ) # end box
               ) # end row

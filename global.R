@@ -3,6 +3,7 @@ require(shiny)
 require(shinydashboard)
 require(shinyBS)
 require(readr)
+require(rsvg)
 
 # load Manning-related libraries
 require(svgPanZoom)

@@ -354,5 +354,17 @@ server <- function(input, output) {
     
     datatable(newdf, escape=FALSE)
   })
+  
+  
+
+  
+  # Downloadable csv of selected dataset ----
+  output$downloadData <- downloadHandler(
+
+    filename <- function(file) { paste("CORAL",".",input$downloadplot,".",input$downloadtype,sep="")},
+    content <- function(file) {rsvg_pdf("Output/kintreeout.svg", file)}
+    
+  )  
+  
 }
 
