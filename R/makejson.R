@@ -55,5 +55,5 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
   }
   
   # write out json file
-  write(toJSON(root), file=output)
+  write(jsonlite::toJSON(root, pretty = TRUE), file=output)
 }
