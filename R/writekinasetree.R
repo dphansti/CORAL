@@ -43,7 +43,7 @@ build.node <- function(l)
                  "\" cy=\"",l["node.y"],
                  "\" r=\"",l["node.radius"],
                  # "\" stroke=\"",l["node.strokecol"],
-                 "\" stroke=\"",l["node.col"],
+                 "\" stroke=\"","white",
                  "\" stroke-width=\"",l["node.strokewidth"],
                  "\" fill=\"",l["node.col"],"\"/>",sep="")
   return(circle)

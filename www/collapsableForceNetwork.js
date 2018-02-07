@@ -40,7 +40,7 @@ binding.renderValue = function(el, data) {
       
     function mouseover() {
       d3.select(this).select("circle").transition()
-           .attr("r", function(d) { return (d.noderadius * 10); })
+           .attr("r", function(d) { return (d.noderadius * 5); })
       d3.select(this).select("text").transition()
           .attr("font-size", function(d) { return (d.textsize * 10.0 + "px"); })
       d3.select(this).moveToFront();
@@ -48,7 +48,7 @@ binding.renderValue = function(el, data) {
 
     function mouseout() {
       d3.select(this).select("circle").transition()
-           .attr("r", function(d) { return (d.noderadius * 2.5); })
+           .attr("r", function(d) { return (d.noderadius * 1.5); })
       d3.select(this).select("text").transition()
           .attr("font-size", function(d) { return (d.textsize * 2.0 + "px"); })
       d3.select(this).moveToFront();
@@ -87,7 +87,7 @@ binding.renderValue = function(el, data) {
             .on("mouseout", mouseout);
 
         node.append("circle")
-            .attr("r", function(d) { return (d.noderadius * 2.5); })
+            .attr("r", function(d) { return (d.noderadius * 1.5); })
             
         node.append("text")
             .attr("dy", ".35em")

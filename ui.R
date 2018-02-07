@@ -175,7 +175,7 @@ ui <- dashboardPage(skin="black",
                            # if single color
                            conditionalPanel(
                              condition = "input.nodesizetype == 'One Size'",
-                             sliderInput("size_node_single", "Node Size",value=3,min = 0,max=20,step = 0.25)
+                             sliderInput("size_node_single", "Node Size",value=6,min = 0,max=20,step = 0.25)
                            ),
                            
                            # if by value
@@ -208,7 +208,7 @@ ui <- dashboardPage(skin="black",
                                      options = NULL),
                            
                            # Slider for font size 
-                           sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 3.25,step = 0.05,ticks=F),
+                           sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 4,step = 0.05,ticks=F),
                            
                            selectInput(inputId = "fontcolorselect",label = "Label Color",
                                        choices = c("Same as Branch","Single Color"),

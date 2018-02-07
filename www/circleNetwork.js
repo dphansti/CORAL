@@ -63,7 +63,7 @@ binding.renderValue = function(el, data) {
 
     function mouseover() {
       d3.select(this).select("circle").transition()
-          .attr("r", 10)
+          .attr("r", 20)
       d3.select(this).select("text").transition()
           .attr("font-size", "40px");
     }
