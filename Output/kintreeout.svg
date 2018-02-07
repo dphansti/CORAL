@@ -1,9 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg"
-  xmlns:xlink="http://www.w3.org/1999/xlink" >
-  <defs>
+<svg viewBox="50 -10 800 640"  preserveAspectRatio="xMidYMid meet"
+
+xmlns="http://www.w3.org/2000/svg"
+
+xmlns:xlink="http://www.w3.org/1999/xlink" >
+
+<defs>
     <style type="text/css">
-    @import url('https://fonts.googleapis.com/css?family=Roboto-Bold');
-  text {font-family: "Roboto-Bold";
+
+@import url('https://fonts.googleapis.com/css?family=Roboto:700');
+
+text {font-family: "Roboto-Bold";
   }
   </style>
     </defs>
