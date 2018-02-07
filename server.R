@@ -250,6 +250,9 @@ server <- function(input, output) {
       dfandlegend = newdf()
       svginfo$dataframe = dfandlegend[[1]]
       svginfo$legend = dfandlegend[[2]]
+      
+      # set title
+      svginfo$title = input$titleinput
 
       # Write SVG file
       outfile <- "Output/kintreeout.svg"

@@ -196,6 +196,17 @@ ui <- dashboardPage(skin="black",
                        box(width=12,
                            title = tagList(shiny::icon("gear"), "advanced settings"), status = "primary", solidHeader = TRUE,
                            collapsible = TRUE,collapsed = TRUE,
+                           
+                           # text box for title
+                           textInput(inputId="titleinput",label = 
+                                       h4("Title",
+                                          tags$style(type = "text/css", "#titletooltip {vertical-align: top;}"),
+                                          bsButton("titletooltip", label = "", icon = icon("question"), style = "primary", size = "extra-small")),
+                                       placeholder = ""),
+                           bsTooltip(id="titletooltip",title="Provide title for top of plot (Only applies to Tree layout)",
+                                     placement = "bottom", trigger = "hover",
+                                     options = NULL),
+                           
                            # Slider for font size 
                            sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 3.25,step = 0.05,ticks=F),
                            
@@ -290,11 +301,11 @@ ui <- dashboardPage(skin="black",
                        ,
                        
                        tabBox
-                       ( width=9,height=940,
+                       ( width=9,height=800,
                          tabPanel
                          ("Tree",
                            width=12,
-                           svgPanZoomOutput('plot1',height=850)
+                           svgPanZoomOutput('plot1',height=750)
                          ),
                          tabPanel
                          ("Circle",

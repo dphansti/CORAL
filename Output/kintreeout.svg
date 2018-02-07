@@ -13,6 +13,9 @@ text {font-family: "Roboto-Bold";
   }
   </style>
     </defs>
+<g id="TITLE">
+<text x="425" y="10" text-anchor="middle" font-family="'AvenirNext-Bold'"  font-size="15px">Test Title</text>
+</g>
 <g id="LEGEND">
 <text x="98.8075" y="87.9701" font-family="'AvenirNext-Bold'"  font-size="9px">Branch Color</text>
 <rect x="89.807" y="79.125" fill="#D3D3D3" width="2.333" height="154"/>

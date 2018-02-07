@@ -39,6 +39,8 @@ source("R/forceNetwork_KinomeTree.R")
 
 # read RDS
 orig_svginfo = readRDS("Data/kintree.RDS")
+
+# add correct header
 orig_svginfo$header = "<svg viewBox=\"50 -10 800 640\"  preserveAspectRatio=\"xMidYMid meet\"\n
 xmlns=\"http://www.w3.org/2000/svg\"\n
 xmlns:xlink=\"http://www.w3.org/1999/xlink\" >\n
@@ -46,6 +48,10 @@ xmlns:xlink=\"http://www.w3.org/1999/xlink\" >\n
 @import url('https://fonts.googleapis.com/css?family=Roboto:700');\n
 text {font-family: \"Roboto-Bold\";\n  }\n  </style>\n    </defs>"
 
+# intitialize title
+orig_svginfo$title = ""
+
+# initilize legend
 orig_svginfo$legend = c()
 
 # make svginfo (leaving the original intact)

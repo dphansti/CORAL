@@ -1,5 +1,10 @@
 makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
 {
+  # reorder so so that groups, families, and subfamilies are properly colored
+  df = df[order(abs(df$node.val.col),decreasing = TRUE),]
+  
+  print (head(df$node.val.col))
+  
   # filter df
   df = df[,c("id.kinrich","kinase.group","kinase.family","kinase.subfamily","branch.col","node.col","node.radius","text.size")]
   
