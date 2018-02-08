@@ -13,7 +13,7 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
 
   # read json file
   data<-read.delim(tmp, stringsAsFactors=F)
-  root<-list("name"=list("    "), "children"=list())
+  root<-list("name"=list("    "), "nodecol"=list("#D3D3De"),"noderadius"=list(6) ,"children"=list())
   i = 1
   
   for(i in 1:nrow(data)) {

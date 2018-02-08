@@ -2,6 +2,12 @@
   "name": [
     ["    "]
   ],
+  "nodecol": [
+    ["#D3D3De"]
+  ],
+  "noderadius": [
+    [6]
+  ],
   "children": [
     {
       "name": [

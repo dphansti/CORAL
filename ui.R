@@ -301,11 +301,11 @@ ui <- dashboardPage(skin="black",
                        ,
                        
                        tabBox
-                       ( width=9,height=800,
+                       ( width=9,height=1000,
                          tabPanel
                          ("Tree",
                            width=12,
-                           svgPanZoomOutput('plot1',height=750)
+                           svgPanZoomOutput('plot1',height=940), class = 'leftAlign'
                          ),
                          tabPanel
                          ("Circle",

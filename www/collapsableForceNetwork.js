@@ -65,7 +65,6 @@ binding.renderValue = function(el, data) {
             .links(links)
             .start();
         
-
         // Update links.
         link = link.data(links, function(d) { return d.target.id; });
 
