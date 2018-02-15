@@ -2,7 +2,9 @@
 
 # Define colors
 BG_col1 = "#D3D3D3"
-
+HM_low = "#F66049"
+HM_med = "#D3D3D3"
+HM_hi = "#07C9DE"
 
 ui <- dashboardPage(skin="black",
   dashboardHeader(title = "CORAL"),
@@ -53,12 +55,12 @@ ui <- dashboardPage(skin="black",
                            
                            selectInput(inputId = "branchcolortype",label = "Color Branch",
                                        choices = c("As one color","Manually","by group","by value"),
-                                       multiple = FALSE,selected = "by group",width = "100%"),
+                                       multiple = FALSE,selected = "As one color",width = "100%"),
                            
                            # if single color
                            conditionalPanel(
                              condition = "input.branchcolortype == 'As one color'",
-                             colourInput("col_branch_single", "Branch Color","#A3A3A3",showColour = "both")
+                             colourInput("col_branch_single", "Branch Color",BG_col1,showColour = "both")
                            ),
                            
                            # if manual selection
@@ -67,7 +69,7 @@ ui <- dashboardPage(skin="black",
                              selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
                              fluidRow( width=12,
                                        column(6,colourInput("col_select_bg", "BG Color", BG_col1,showColour = "both")),
-                                       column(6,colourInput("col_select", "Color", "#2C54F5",showColour = "both"))
+                                       column(6,colourInput("col_select", "Color", HM_hi,showColour = "both"))
                              )
                            ),
                            
@@ -93,9 +95,9 @@ ui <- dashboardPage(skin="black",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                              fluidRow( width=12,
-                                       column(4,  colourInput("col_heat_low", "Low", "deepskyblue2",showColour = "both")),
-                                       column(4,                  colourInput("col_heat_med", "Med", "#A3A3A3",showColour = "both")),
-                                       column(4,                  colourInput("col_heat_hi", "High", "gold",showColour = "both"))
+                                       column(4,  colourInput("col_heat_low", "Low", HM_low,showColour = "both")),
+                                       column(4,                  colourInput("col_heat_med", "Med", HM_med,showColour = "both")),
+                                       column(4,                  colourInput("col_heat_hi", "High", HM_hi,showColour = "both"))
                              ) ,
                              fluidRow( width=12,
                                        column(6,                numericInput(inputId = "minheat",label = "min",value = -5 )),
@@ -112,7 +114,7 @@ ui <- dashboardPage(skin="black",
                            selectInput(inputId = "nodecolortype",label = "Color Node",
                                        #  choices = c("None","Same as branches","As one color","Manually","by group","by value"),
                                        choices = c("None","As one color","Manually","by group","by value"),
-                                       multiple = FALSE,selected = "by group",width = "100%"),
+                                       multiple = FALSE,selected = "None",width = "100%"),
                            
                            # if single color
                            conditionalPanel(
@@ -125,8 +127,8 @@ ui <- dashboardPage(skin="black",
                              condition = "input.nodecolortype == 'Manually'",
                              selectInput(inputId = "NodeManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
                              fluidRow( width=12,
-                                       column(6,colourInput("col_node_bg", "BG Color", "#A3A3A3")),
-                                       column(6,colourInput("col_sel_node", "Color", "#2C54F5"))
+                                       column(6,colourInput("col_node_bg", "BG Color", HM_med)),
+                                       column(6,colourInput("col_sel_node", "Color", HM_hi))
                              )
                            ),
                            
@@ -152,9 +154,9 @@ ui <- dashboardPage(skin="black",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                              fluidRow( width=12,
-                                       column(4,  colourInput("col_node_low", "Low", "deepskyblue2",showColour = "background")),
-                                       column(4,                  colourInput("col_node_med", "Med", "#A3A3A3",showColour = "background")),
-                                       column(4,                  colourInput("col_node_hi", "High", "gold",showColour = "background"))
+                                       column(4,  colourInput("col_node_low", "Low", HM_low,showColour = "background")),
+                                       column(4,                  colourInput("col_node_med", "Med", HM_med,showColour = "background")),
+                                       column(4,                  colourInput("col_node_hi", "High", HM_hi,showColour = "background"))
                              ) ,
                              fluidRow( width=12,
                                        column(6,                numericInput(inputId = "nodeminheat",label = "min",value = -5 )),

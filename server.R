@@ -125,7 +125,7 @@ server <- function(input, output) {
     # Manually select nodes to color
     if (input$nodecolortype == "Manually")
     {
-      # set colors based on selected ids (!!!! write function !!!!)
+      # set colors based on selected ids
       tempdf$node.col =  color.by.selected(df = tempdf, sel = input$NodeManual, bg.col  = input$col_node_bg,  sel.col = input$col_sel_node)
       
       # # build legend for Node Color (by group)
@@ -164,10 +164,10 @@ server <- function(input, output) {
     if (input$nodecolortype == "by value")
     {
       # read in text area input
-      recolordf = read.text.input(input$branchValueBox)
+      recolordf = read.text.input(input$nodeValueBox)
       
       # convert to coral id
-      recolordf = convertID (tempdf,recolordf,inputtype=input$branchValueIDtype)
+      recolordf = convertID (tempdf,recolordf,inputtype=input$nodeValueIDtype)
       
       if (nrow(recolordf)>0)
       {
