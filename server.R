@@ -367,7 +367,7 @@ server <- function(input, output) {
     filename <- function(file) { paste("CORAL",".",input$downloadplot,".",input$downloadtype,sep="")},
     content <- function(file) {
       if (input$downloadtype == 'pdf') {
-        rsvg_pdf("Output/kintreeout.pdf", file)
+        rsvg_pdf("Output/kintreeout.svg", file)
       } else if (input$downloadtype == 'svg') {
         rsvg_svg("Output/kintreeout.svg", file)
       } else {
