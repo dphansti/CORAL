@@ -78,20 +78,20 @@ server <- function(input, output) {
     {
       # read in text area input
       recolordf = read.text.input(input$branchValueBox)
-
+      
       # convert to coral id
       recolordf = convertID (tempdf,recolordf,inputtype=input$branchValueIDtype)
-
+      
       if (nrow(recolordf)>0)
       {
         # establish palette
         branchcolpalette = colorRampPalette(c(input$col_heat_low, input$col_heat_med, input$col_heat_hi))(100)
-
+        
         # set colors based on group
         newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = branchcolpalette, heatrange = c(input$minheat,input$maxheat))
         tempdf$branch.col = newcolors_and_colormapping[[1]]
         tempdf$branch.val = newcolors_and_colormapping[[2]]
-
+        
         # reorder based on branch color
         tempdf = tempdf[order(abs(tempdf$branch.val), decreasing = FALSE,na.last = FALSE),]
         
@@ -228,7 +228,7 @@ server <- function(input, output) {
     }
     
     # ------------------ ADVANCED OPTIONS ------------------ #
-  
+    
     # text color
     if (input$fontcolorselect == "Same as Branch")
     {
@@ -240,25 +240,25 @@ server <- function(input, output) {
     }
     
     return(list(tempdf,legend))
-    }) # end reactive
+  }) # end reactive
   
   
   # build the manning tree
   output$plot1  <- renderSvgPanZoom ({
-      
-      # recolor the official matrix
-      dfandlegend = newdf()
-      svginfo$dataframe = dfandlegend[[1]]
-      svginfo$legend = dfandlegend[[2]]
-      
-      # set title
-      svginfo$title = input$titleinput
-
-      # Write SVG file
-      outfile <- "Output/kintreeout.svg"
-      writekinasetree(svginfo,destination=outfile)
-      svgPanZoom(outfile,viewBox = F,controlIconsEnabled=F)
-    })
+    
+    # recolor the official matrix
+    dfandlegend = newdf()
+    svginfo$dataframe = dfandlegend[[1]]
+    svginfo$legend = dfandlegend[[2]]
+    
+    # set title
+    svginfo$title = input$titleinput
+    
+    # Write SVG file
+    outfile <- "Output/kintreeout.svg"
+    writekinasetree(svginfo,destination=outfile)
+    svgPanZoom(outfile,viewBox = F,controlIconsEnabled=F)
+  })
   
   
   #output to the graph div
@@ -293,7 +293,7 @@ server <- function(input, output) {
     # Write kinome_tree.json (based on current dataframe)
     outputjson <- "www/kinome_tree.json"
     makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
-
+    
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)
   })
@@ -335,12 +335,12 @@ server <- function(input, output) {
                        name=simpldf$id.longname,
                        family=simpldf$kinase.family,
                        group = simpldf$kinase.group
-                       )
+    )
     
     # add node info if present
     if ("none" %in% simpldf$node.col == F)
     {
-    
+      
       # convert node colors to rgb
       mycolors <- simpldf$node.col
       
@@ -359,15 +359,21 @@ server <- function(input, output) {
   })
   
   
-
+  
   
   # Downloadable csv of selected dataset ----
   output$downloadData <- downloadHandler(
-
-    filename <- function(file) { paste("CORAL",".",input$downloadplot,".",input$downloadtype,sep="")},
-    content <- function(file) {rsvg_pdf("Output/kintreeout.svg", file)}
     
-  )  
+    filename <- function(file) { paste("CORAL",".",input$downloadplot,".",input$downloadtype,sep="")},
+    content <- function(file) {
+      if (input$downloadtype == 'pdf') {
+        rsvg_pdf("Output/kintreeout.pdf", file)
+      } else if (input$downloadtype == 'svg') {
+        rsvg_svg("Output/kintreeout.svg", file)
+      } else {
+        showNotification('Unrecognized Output Image Type')
+      }
+    }
+  )
   
 }
-
