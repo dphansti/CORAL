@@ -25,6 +25,7 @@ binding.renderValue = function(el, data) {
     var svg = d3.select("#" + $(el).attr('id')).append("svg")
       .attr("width", width)
       .attr("height", height)
+      .attr("xmlns","http://www.w3.org/2000/svg")
       .call(d3.behavior.zoom().on("zoom", function () {
           svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
       }))
@@ -80,10 +81,12 @@ binding.renderValue = function(el, data) {
     
     // I am trying to add a action to download the image
     // It kind of works but the svg file is a bit broken. Might need at xmlns line
-    d3.select("#downloadcircle").on("click", function(){
-      d3.select(this)
+  
+     d3.select("#downloadcircle").on("click", function(){
+       d3.select(this)
         .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#circlelayout").html()))
         .attr("download", "CORAL.circle.svg") 
+        
     })
 
     //////////.JS//////////
