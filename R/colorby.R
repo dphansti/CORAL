@@ -88,7 +88,7 @@ color.by.value <- function(df ,recolordf ,colors  ,heatrange , bg.col="#D3D3D3")
 
 
 # Define a function creates radius vector from values
-resizes.by.value <- function(df, resizedf, sizerange )
+resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, minvalue=0, maxvalue = 5 )
 {
   # set background color
   radius.vector = rep(0,nrow(df))
@@ -101,6 +101,10 @@ resizes.by.value <- function(df, resizedf, sizerange )
   
   # (1) get range
   rangesize = sizerange[2] - sizerange[1]
+  
+  # # if controlledrange == TRUE
+  # if (controlledrange == TRUE)
+  # {}
   
   # (2) shift values such that they start at zero
   radii = resizedf[,2] - min(resizedf[,2])
