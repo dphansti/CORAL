@@ -93,7 +93,7 @@ resizes.by.value <- function(df, resizedf, sizerange )
   # set background color
   radius.vector = rep(0,nrow(df))
   
-  # kep track of group labels
+  # keep track of group labels
   value.vector = rep(NA,nrow(df))
   
   # convert to numeric
