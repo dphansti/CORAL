@@ -25,6 +25,7 @@ binding.renderValue = function(el, data) {
       var svg = d3.select("#" + $(el).attr('id')).append("svg")
           .attr("width", width)
           .attr("height", height)
+          .attr("xmlns","http://www.w3.org/2000/svg")
           .call(d3.behavior.zoom().on("zoom", redraw));
 
       var link = svg.selectAll(".link")
@@ -55,6 +56,14 @@ binding.renderValue = function(el, data) {
     }
 
 
+      // Code to download svg
+     d3.select("#downloadforce").on("click", function(){
+       d3.select(this)
+        .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#forcelayout").html()))
+        .attr("download", "CORAL.force.svg") 
+    })
+
+
       function update() {
         var nodes = flatten(root),
             links = d3.layout.tree().links(nodes);
@@ -71,7 +80,10 @@ binding.renderValue = function(el, data) {
         link.exit().remove();
 
         link.enter().insert("line", ".node")
-            .attr("class", "link");
+            .attr("class", "link")
+            .attr("stroke-width", 1.5)
+            .attr("stroke","#D3D3D3")
+            .attr("fill","none");
 
         // Update nodes.
         node = node.data(nodes, function(d) { return d.id; });
@@ -90,11 +102,14 @@ binding.renderValue = function(el, data) {
             
         node.append("text")
             .attr("dy", ".35em")
+            .attr("text-anchor","middle")
             .text(function(d) { return d.name; })
             .attr("font-size", function(d) { return ((d.textsize * 2) + "px"); });
 
         node.select("circle")
-            .style("fill", function(d) { return d3.rgb(d.nodecol); });
+            .style("fill", function(d) { return d3.rgb(d.nodecol); })
+            .attr("stroke-width", 1.0)
+            .attr("stroke","white");
       }
 
       function tick() {
@@ -141,6 +156,7 @@ binding.renderValue = function(el, data) {
 
       function redraw() {
         console.log("here", d3.event.translate, d3.event.scale); svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
+        
       }
   //closing if statement
   }

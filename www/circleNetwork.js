@@ -38,17 +38,20 @@ binding.renderValue = function(el, data) {
 
       var link = svg.selectAll("path.link")
           .data(cluster.links(nodes))
-        .enter().append("path")
+          .enter().append("path")
           .attr("class", "link")
           .attr("d", diagonal)
           .attr("stroke-width", 1.5)
           .attr("stroke","#ccc")
-          .attr("fill","none");
+          .attr("fill","none")
+          .attr("pointer-events","none");
 
       var node = svg.selectAll("g.node")
           .data(nodes)
           .enter().append("g")
           .attr("class", "node")
+          .attr("stroke-width", 1.5)
+          .attr("stroke","white")
           .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
@@ -61,6 +64,8 @@ binding.renderValue = function(el, data) {
 
       node.append("text")
           .attr("dy", ".31em")
+          .attr("font-color","black")
+          .attr("stroke-width", 0.0)
           .attr("font-size",function(d) { return d.textsize; })
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
           .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
@@ -84,16 +89,12 @@ binding.renderValue = function(el, data) {
 
     d3.select(self.frameElement).style("height", radius * 2 + "px");
     
-    // I am trying to add a action to download the image
-    // It kind of works but the svg file is a bit broken. Might need at xmlns line
-  
+    // Code to download svg
      d3.select("#downloadcircle").on("click", function(){
        d3.select(this)
         .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#circlelayout").html()))
         .attr("download", "CORAL.circle.svg") 
     })
-    
-//    d3.select("#downloadcircle").on("click", function() { downloadSVG(); });
 
     //////////.JS//////////
 

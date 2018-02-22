@@ -289,22 +289,23 @@ ui <- dashboardPage(skin="black",
                   # add select tree circle force
                   selectInput(inputId =  "downloadtype", label = "File Type",choices = c("pdf","svg"),selected = "pdf"),
                   
-                  # radio button for file type
-                  radioButtons(inputId="downloadplot", label = "View to Download", choices = c("Tree","Circle","Force"),inline=TRUE),
-                  tags$hr(),
-                  
                   # download button
-                  downloadButton("downloadData", "Download")
+                  downloadButton("downloadData", "Download"),
+                  
+                  # download link for cirlce
+                  tags$hr(),
+                  HTML("<a id=\"downloadcircle\" href=\"#\">Download Circle</button></a>"),
+                  
+                  # download link for cirlce
+                  tags$hr(),
+                  HTML("<a id=\"downloadforce\" href=\"#\">Download Force</button></a>")
+                  
                   
                 ) # end box
-              ), # end row
+              ) # end row
               
-              div(
-                # You can use a string value as HTML by wrapping it with the HTML
-                # function. If you didn't do that, then the string would be treated as
-                # plain text and the HTML tags would be escaped. See ?HTML.
-                HTML("<a id=\"downloadcircle\" href=\"#\">Download SVG</button>")
-              )
+             
+              
             
               ) # end column
                        ,
