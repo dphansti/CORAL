@@ -11,7 +11,7 @@ binding.renderValue = function(el, data) {
   
   if(data!=null){
     //////////.JS//////////
-
+    
     var radius = 450
       width = 940,
       height = 940;
@@ -77,6 +77,14 @@ binding.renderValue = function(el, data) {
 
 
     d3.select(self.frameElement).style("height", radius * 2 + "px");
+    
+    // I am trying to add a action to download the image
+    // It kind of works but the svg file is a bit broken. Might need at xmlns line
+    d3.select("#downloadcircle").on("click", function(){
+      d3.select(this)
+        .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#circlelayout").html()))
+        .attr("download", "CORAL.circle.svg") 
+    })
 
     //////////.JS//////////
 

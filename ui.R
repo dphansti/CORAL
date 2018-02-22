@@ -297,8 +297,15 @@ ui <- dashboardPage(skin="black",
                   downloadButton("downloadData", "Download")
                   
                 ) # end box
-              ) # end row
+              ), # end row
               
+              div(
+                # You can use a string value as HTML by wrapping it with the HTML
+                # function. If you didn't do that, then the string would be treated as
+                # plain text and the HTML tags would be escaped. See ?HTML.
+                HTML("<a id=\"downloadcircle\" href=\"#\">Download SVG</button>")
+              )
+            
               ) # end column
                        ,
                        
