@@ -212,8 +212,10 @@ server <- function(input, output) {
       
       if (nrow(resizedf)>0)
       {
-        radii_and_mapping = resizes.by.value(df = tempdf, resizedf = resizedf, sizerange = input$nodesizeValueslider)
         
+        radii_and_mapping = resizes.by.value(df = tempdf, resizedf = resizedf, sizerange = input$nodesizeValueslider,
+                                             controlledrange = input$Manuallysetdatarange, minvalue=input$nodesizevaluemin, maxvalue = input$nodesizevaluemax)
+
         tempdf$node.radius     = radii_and_mapping[[1]]
         tempdf$node.val.radius = radii_and_mapping[[2]]
         

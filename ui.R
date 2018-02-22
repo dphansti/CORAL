@@ -190,7 +190,15 @@ ui <- dashboardPage(skin="black",
                              selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
-                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 20,step = 0.25)
+                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 20,step = 0.25),
+                             
+                             checkboxInput("Manuallysetdatarange","Manually set data range",value = FALSE),
+                             
+                             conditionalPanel(
+                               condition = "input.Manuallysetdatarange == true",
+                               numericInput("nodesizevaluemin","Min Value",value=0),
+                               numericInput("nodesizevaluemax","Max Value",value=1)
+                                )
                            )
                        ), # end box    
               

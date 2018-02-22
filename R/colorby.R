@@ -15,7 +15,6 @@ color.by.selected <- function(df,sel,bg.col,sel.col)
   return (color.vector)
 }
 
-
 # Define a function creates color vector from group
 color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
 {
