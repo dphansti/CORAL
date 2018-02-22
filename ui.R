@@ -285,20 +285,32 @@ ui <- dashboardPage(skin="black",
               
               box(width=12,title = "Download",status = "warning", solidHeader = TRUE,
                   collapsible = TRUE,collapsed = TRUE,
+
+                  # download link for circle
+                  conditionalPanel(
+                    condition = "input.tabboxselected == 'Tree'",
+                    # add select tree circle force
+                    selectInput(inputId =  "downloadtype", label = "File Type",choices = c("pdf","svg"),selected = "pdf"),
+                    
+                    # download button
+                    downloadButton("downloadData", "Download")
+                  ),
+
+                  # download link for circle
+                  conditionalPanel(
+                    condition = "input.tabboxselected == 'Circle'",
+
+                    HTML("<a id=\"downloadcircle\" href=\"#\"><b>Download Circle in .svg format</b></button></a>")
+                  ),
                   
-                  # add select tree circle force
-                  selectInput(inputId =  "downloadtype", label = "File Type",choices = c("pdf","svg"),selected = "pdf"),
+                  # download link for force
+                  conditionalPanel(
+                    condition = "input.tabboxselected == 'Force'",
+
+                    HTML("<a id=\"downloadforce\" href=\"#\"><b>Download Force in .svg format</b></button></a>")
+                  )
                   
-                  # download button
-                  downloadButton("downloadData", "Download"),
                   
-                  # download link for cirlce
-                  tags$hr(),
-                  HTML("<a id=\"downloadcircle\" href=\"#\">Download Circle</button></a>"),
-                  
-                  # download link for cirlce
-                  tags$hr(),
-                  HTML("<a id=\"downloadforce\" href=\"#\">Download Force</button></a>")
                   
                   
                 ) # end box
@@ -311,7 +323,7 @@ ui <- dashboardPage(skin="black",
                        ,
                        
                        tabBox
-                       ( width=9,height=1000,
+                       (id = "tabboxselected",width=9,height=1000,
                          tabPanel
                          ("Tree",
                            width=12,
