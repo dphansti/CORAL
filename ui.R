@@ -39,9 +39,9 @@ ui <- dashboardPage(skin="black",
     # Fix a bug in the texboxInput funciton that doesn't respect width= "100%"
     tags$style(HTML(".shiny-input-container:not(.shiny-input-container-inline) {width: 100%;}")),
     
-    # remove extra sace under file input
-    tags$style(".shiny-input-container {margin-bottom: 0px} #phospepcsv_progress { margin-bottom: 0px } .checkbox { margin-top: 0px}"),
-    
+    # # remove extra sace under file input
+    # tags$style(".shiny-input-container {margin-bottom: 0px} #phospepcsv_progress { margin-bottom: 0px } .checkbox { margin-top: 0px}"),
+    # 
     tabItems(
       # First tab content
       tabItem(tabName = "KinaseInput",
@@ -247,41 +247,41 @@ ui <- dashboardPage(skin="black",
                        ), #end box
               
               
-              box(width=12,title = "Phosphopeptide Analysis",status = "info", solidHeader = TRUE,
-                  collapsible = TRUE,collapsed = TRUE,
-                  
-                  fileInput(inputId="phospepcsv",
-                            label = h4("Upload CSV File",
-                                       tags$style(type = "text/css", "#q1 {vertical-align: top;}"),
-                                       bsButton("q1", label = "", icon = icon("question"), style = "info", size = "extra-small")
-                            ),
-                          accept = c(
-                            "text/csv",
-                            "text/comma-separated-values,text/plain",
-                            ".csv")
-                    ),
-                    checkboxInput("header", "csv file contains a header row", TRUE),
-                  
-                  bsTooltip(id="q1",title="Provide phosphorylation site and group info in 2 columns csv file. Column 1 should be unprot ID and site (e.g. Q01860_S236).  Column 2 should be a group classification (e.g. up, down, static, etc)",
-                            placement = "bottom", trigger = "hover",
-                            options = NULL),
-              tags$hr(),
-              
-              textAreaInput("Phospepinput", 
-                            
-                            label = h4("PO4 Sites & Group",
-                                       tags$style(type = "text/css", "#q2 {vertical-align: top;}"),
-                                       bsButton("q2", label = "", icon = icon("question"), style = "info", size = "extra-small")
-                            ),
-                            "PO4 Sites & Group", height = "100px",width = "100%"
-              ),
-              
-              bsTooltip(id="q2",title="Provide phosphorylation site and group info in 2 columns separated by a space or tab. Column 1 should be unprot ID and site (e.g. Q01860_S236).  Column 2 should be a group classification (e.g. up, down, static, etc)",
-                        placement = "bottom", trigger = "hover",
-                        options = NULL),
-              
-              checkboxInput("load_example_po4data", "Use example data", FALSE)
-                  ), # end box
+              # box(width=12,title = "Phosphopeptide Analysis",status = "info", solidHeader = TRUE,
+              #     collapsible = TRUE,collapsed = TRUE,
+              #     
+              #     fileInput(inputId="phospepcsv",
+              #               label = h4("Upload CSV File",
+              #                          tags$style(type = "text/css", "#q1 {vertical-align: top;}"),
+              #                          bsButton("q1", label = "", icon = icon("question"), style = "info", size = "extra-small")
+              #               ),
+              #             accept = c(
+              #               "text/csv",
+              #               "text/comma-separated-values,text/plain",
+              #               ".csv")
+              #       ),
+              #       checkboxInput("header", "csv file contains a header row", TRUE),
+              #     
+              #     bsTooltip(id="q1",title="Provide phosphorylation site and group info in 2 columns csv file. Column 1 should be unprot ID and site (e.g. Q01860_S236).  Column 2 should be a group classification (e.g. up, down, static, etc)",
+              #               placement = "bottom", trigger = "hover",
+              #               options = NULL),
+              # tags$hr(),
+              # 
+              # textAreaInput("Phospepinput", 
+              #               
+              #               label = h4("PO4 Sites & Group",
+              #                          tags$style(type = "text/css", "#q2 {vertical-align: top;}"),
+              #                          bsButton("q2", label = "", icon = icon("question"), style = "info", size = "extra-small")
+              #               ),
+              #               "PO4 Sites & Group", height = "100px",width = "100%"
+              # ),
+              # 
+              # bsTooltip(id="q2",title="Provide phosphorylation site and group info in 2 columns separated by a space or tab. Column 1 should be unprot ID and site (e.g. Q01860_S236).  Column 2 should be a group classification (e.g. up, down, static, etc)",
+              #           placement = "bottom", trigger = "hover",
+              #           options = NULL),
+              # 
+              # checkboxInput("load_example_po4data", "Use example data", FALSE)
+              #     ), # end box
               
               box(width=12,title = "Download",status = "warning", solidHeader = TRUE,
                   collapsible = TRUE,collapsed = TRUE,
