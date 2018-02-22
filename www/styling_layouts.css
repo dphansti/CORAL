@@ -31,25 +31,6 @@
   stroke-width: 1.5px;
 }
 
-#circlelayout .node circle {
-  fill: #fff;
-  stroke: white;
-  stroke-width: 0.5px;
-}
-
-#circlelayout .node {
-  font: 6px sans-serif;
-}
-
-#circlelayout .link {
-  fill: none;
-  stroke: #ccc;
-  stroke-width: 1.5px;
-}
-
-
-
-
 /*#forcelayout .node {
   cursor: pointer;
 }

@@ -40,7 +40,10 @@ binding.renderValue = function(el, data) {
           .data(cluster.links(nodes))
         .enter().append("path")
           .attr("class", "link")
-          .attr("d", diagonal);
+          .attr("d", diagonal)
+          .attr("stroke-width", 1.5)
+          .attr("stroke","#ccc")
+          .attr("fill","none");
 
       var node = svg.selectAll("g.node")
           .data(nodes)
@@ -52,6 +55,8 @@ binding.renderValue = function(el, data) {
           
       node.append("circle")
           .attr("r", function(d) { return d.noderadius; })
+          .attr("stroke","white")
+          .attr("stroke-width", 0.5)
           .style("fill", function(d) { return d3.rgb(d.nodecol); });
 
       node.append("text")
@@ -86,8 +91,9 @@ binding.renderValue = function(el, data) {
        d3.select(this)
         .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#circlelayout").html()))
         .attr("download", "CORAL.circle.svg") 
-        
     })
+    
+//    d3.select("#downloadcircle").on("click", function() { downloadSVG(); });
 
     //////////.JS//////////
 
