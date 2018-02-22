@@ -87,7 +87,7 @@ color.by.value <- function(df ,recolordf ,colors  ,heatrange , bg.col="#D3D3D3")
 
 
 # Define a function creates radius vector from values
-resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, minvalue=0, maxvalue = 5 )
+resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, minvalue=0, maxvalue = 5)
 {
   # set background color
   radius.vector = rep(0,nrow(df))
@@ -98,18 +98,33 @@ resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, m
   # convert to numeric
   resizedf[,2] = as.numeric(resizedf[,2])
   
-  # (1) get range
-  rangesize = sizerange[2] - sizerange[1]
+  if (controlledrange == FALSE)
+  {
+    # (1) get range
+    rangesize = sizerange[2] - sizerange[1]
+    
+    minvalue = min(resizedf[,2])
+    maxvalue = max(resizedf[,2])
+  }
   
-  # # if controlledrange == TRUE
-  # if (controlledrange == TRUE)
-  # {}
   
+  # if controlledrange == TRUE
+  if (controlledrange == TRUE)
+  {
+    # truncate values beyond the range
+    resizedf[,2][which(resizedf[,2] < minvalue)] = minvalue
+    resizedf[,2][which(resizedf[,2] > maxvalue)] = maxvalue
+    
+    # (1) get range
+    rangesize = maxvalue - minvalue
+  }
+  
+
   # (2) shift values such that they start at zero
-  radii = resizedf[,2] - min(resizedf[,2])
+  radii = resizedf[,2] - minvalue
   
   # (3) scale so max = 1
-  radii[which(radii !=0)] = radii[which(radii !=0)] / max(radii)
+  radii[which(radii !=0)] = radii[which(radii !=0)] / maxvalue
   
   # (3) multiply to fit range
   radii = radii * rangesize
@@ -119,11 +134,8 @@ resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, m
   
   resizedf$radii = radii
   
-  print(resizedf)
-
   
-  
-  # find indices to recolor
+  # find indices to resize
   dflookup = match(resizedf[,1],df[,1])
   
   # update colors and values
