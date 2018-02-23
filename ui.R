@@ -12,8 +12,8 @@ ui <- dashboardPage(skin="black",
   dashboardSidebar
   (
     sidebarMenu(
-      menuItem("Kinase Input", tabName = "KinaseInput", icon = icon("dashboard")),
-      menuItem("PhosSite Input", tabName = "PhosSiteInput", icon = icon("th"))
+      menuItem("Visualize", tabName = "Visualize", icon = icon("eye")),
+      menuItem("Info", tabName = "Info", icon = icon("info"))
       
     ),
     collapsed = TRUE
@@ -44,7 +44,7 @@ ui <- dashboardPage(skin="black",
     # 
     tabItems(
       # First tab content
-      tabItem(tabName = "KinaseInput",
+      tabItem(tabName = "Visualize",
               
           fluidRow(width=12,
               column(width=3,
@@ -374,8 +374,8 @@ ui <- dashboardPage(skin="black",
       ),
       
       # Second tab content
-      tabItem(tabName = "PhosSiteInput",
-              h2("PhosSite Input")
+      tabItem(tabName = "Info",
+              h2("CORAL: Highly-customizable visualizations of qualitative and quantitative kinase attributes")
       )
     )
     
