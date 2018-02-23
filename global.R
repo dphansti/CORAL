@@ -1,28 +1,22 @@
+library(pacman)
+
 # load basic libraries
-require(shiny)
-require(shinydashboard)
-require(shinyBS)
-require(readr)
-require(rsvg)
+p_load(shiny)
+p_load(shinydashboard)
+p_load(shinyBS)
+p_load(readr)
+p_load(rsvg)
 
 # load Manning-related libraries
-require(svgPanZoom)
+p_load(svgPanZoom)
 
 # load ui-related libraries
-require(rhandsontable)
-require(colourpicker)
-require(DT)
+p_load(colourpicker)
+p_load(DT)
 
 # load other network libraries
-require(dplyr)
-require(data.tree)
-require(radialNetworkR)
-require(networkD3)
-require(igraph)
-require(jsonlite)
-require(rjson)
-require(httr)
-require(stringr)
+p_load(data.tree)
+p_load(jsonlite)
 
 # Point to R functions
 source("R/colorby.R")
@@ -32,10 +26,7 @@ source("R/legendfunctions.R")
 
 source("R/map2color.R")
 source("R/convertID.R")
-
 source("R/makejson.R")
-source("R/radialNetwork_KinomeTree.R")
-source("R/forceNetwork_KinomeTree.R")
 
 # read RDS
 orig_svginfo = readRDS("Data/kintree.RDS")
