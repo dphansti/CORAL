@@ -80,7 +80,7 @@ ui <- dashboardPage(skin="black",
                              value =  paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
                              ),
                              selectInput(inputId = "branchGroupIDtype",label = "Identifier Type",
-                                         choices = c("KinrichID","uniprot","ensembl","entrez"),
+                                         choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%")
                            ),
                            
@@ -92,7 +92,7 @@ ui <- dashboardPage(skin="black",
                                                       paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
                              ),
                              selectInput(inputId = "branchValueIDtype",label = "Identifier Type",
-                                         choices = c("KinrichID","uniprot","ensembl","entrez"),
+                                         choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                              fluidRow( width=12,
                                        column(4,  colourInput("col_heat_low", "Low", HM_low,showColour = "both")),
@@ -139,7 +139,7 @@ ui <- dashboardPage(skin="black",
                                            value =  paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
                              ),
                              selectInput(inputId = "nodeGroupIDtype",label = "Identifier Type",
-                                         choices = c("KinrichID","uniprot","ensembl","entrez"),
+                                         choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%")
                            ),
                            
@@ -151,7 +151,7 @@ ui <- dashboardPage(skin="black",
                                                           paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
                              ),
                              selectInput(inputId = "nodeValueIDtype",label = "Identifier Type",
-                                         choices = c("KinrichID","uniprot","ensembl","entrez"),
+                                         choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                              fluidRow( width=12,
                                        column(4,  colourInput("col_node_low", "Low", HM_low,showColour = "background")),
@@ -188,7 +188,7 @@ ui <- dashboardPage(skin="black",
                                                           paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
                              ),
                              selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
-                                         choices = c("KinrichID","uniprot","ensembl","entrez"),
+                                         choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                              sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 20,step = 0.25),
                              
