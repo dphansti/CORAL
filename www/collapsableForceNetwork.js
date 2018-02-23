@@ -82,7 +82,7 @@ binding.renderValue = function(el, data) {
         link.enter().insert("line", ".node")
             .attr("class", "link")
             .attr("stroke-width", 1.5)
-            .attr("stroke","#D3D3D3")
+            .attr("stroke", function(d) { return d3.rgb(d.target.branchcol); })
             .attr("fill","none");
 
         // Update nodes.

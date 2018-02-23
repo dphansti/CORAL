@@ -12,8 +12,8 @@ ui <- dashboardPage(skin="black",
   dashboardSidebar
   (
     sidebarMenu(
-      menuItem("Kinase Input", tabName = "KinaseInput", icon = icon("dashboard")),
-      menuItem("PhosSite Input", tabName = "PhosSiteInput", icon = icon("th"))
+      menuItem("Visualize", tabName = "Visualize", icon = icon("eye")),
+      menuItem("Info", tabName = "Info", icon = icon("info"))
       
     ),
     collapsed = TRUE
@@ -44,7 +44,7 @@ ui <- dashboardPage(skin="black",
     # 
     tabItems(
       # First tab content
-      tabItem(tabName = "KinaseInput",
+      tabItem(tabName = "Visualize",
               
           fluidRow(width=12,
               column(width=3,
@@ -190,7 +190,15 @@ ui <- dashboardPage(skin="black",
                              selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
                                          choices = c("KinrichID","uniprot","ensembl","entrez"),
                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
-                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 20,step = 0.25)
+                             sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 20,step = 0.25),
+                             
+                             checkboxInput("Manuallysetdatarange","Manually set data range",value = FALSE),
+                             
+                             conditionalPanel(
+                               condition = "input.Manuallysetdatarange == true",
+                               numericInput("nodesizevaluemin","Min Value",value=0),
+                               numericInput("nodesizevaluemax","Max Value",value=1)
+                                )
                            )
                        ), # end box    
               
@@ -285,20 +293,32 @@ ui <- dashboardPage(skin="black",
               
               box(width=12,title = "Download",status = "warning", solidHeader = TRUE,
                   collapsible = TRUE,collapsed = TRUE,
+
+                  # download link for circle
+                  conditionalPanel(
+                    condition = "input.tabboxselected == 'Tree'",
+                    # add select tree circle force
+                    selectInput(inputId =  "downloadtype", label = "File Type",choices = c("pdf","svg"),selected = "pdf"),
+                    
+                    # download button
+                    downloadButton("downloadData", "Download")
+                  ),
+
+                  # download link for circle
+                  conditionalPanel(
+                    condition = "input.tabboxselected == 'Circle'",
+
+                    HTML("<a id=\"downloadcircle\" href=\"#\"><b>Download Circle in .svg format</b></button></a>")
+                  ),
                   
-                  # add select tree circle force
-                  selectInput(inputId =  "downloadtype", label = "File Type",choices = c("pdf","svg"),selected = "pdf"),
+                  # download link for force
+                  conditionalPanel(
+                    condition = "input.tabboxselected == 'Force'",
+
+                    HTML("<a id=\"downloadforce\" href=\"#\"><b>Download Force in .svg format</b></button></a>")
+                  )
                   
-                  # download button
-                  downloadButton("downloadData", "Download"),
                   
-                  # download link for cirlce
-                  tags$hr(),
-                  HTML("<a id=\"downloadcircle\" href=\"#\">Download Circle</button></a>"),
-                  
-                  # download link for cirlce
-                  tags$hr(),
-                  HTML("<a id=\"downloadforce\" href=\"#\">Download Force</button></a>")
                   
                   
                 ) # end box
@@ -311,7 +331,7 @@ ui <- dashboardPage(skin="black",
                        ,
                        
                        tabBox
-                       ( width=9,height=1000,
+                       (id = "tabboxselected",width=9,height=1000,
                          tabPanel
                          ("Tree",
                            width=12,
@@ -354,8 +374,8 @@ ui <- dashboardPage(skin="black",
       ),
       
       # Second tab content
-      tabItem(tabName = "PhosSiteInput",
-              h2("PhosSite Input")
+      tabItem(tabName = "Info",
+              h2("CORAL: Highly-customizable visualizations of qualitative and quantitative kinase attributes")
       )
     )
     
