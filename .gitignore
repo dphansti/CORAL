@@ -1,0 +1,10 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+Data/.DS_Store
+rsconnect/
+.DS_Store
+Output/kintreeout.svg
+www/kinome_tree.json
+www/subdf.txt
