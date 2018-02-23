@@ -18,8 +18,6 @@ convertID <- function(df,recolordf,inputtype)
     return(data.frame())
   }
   
-
-  
   print (paste(length(which(recolordf[,1] %in% df[,inputtype])),"matches found"))
   
   # filter input df for those found in table

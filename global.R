@@ -1,6 +1,6 @@
-# load basic libraries
 library(pacman)
 
+# load basic libraries
 p_load(shiny)
 p_load(shinydashboard)
 p_load(shinyBS)
@@ -11,20 +11,12 @@ p_load(rsvg)
 p_load(svgPanZoom)
 
 # load ui-related libraries
-p_load(rhandsontable)
 p_load(colourpicker)
 p_load(DT)
 
 # load other network libraries
-p_load(dplyr)
 p_load(data.tree)
-p_load(radialNetworkR)
-p_load(networkD3)
-p_load(igraph)
 p_load(jsonlite)
-p_load(rjson)
-p_load(httr)
-p_load(stringr)
 
 # Point to R functions
 source("R/colorby.R")
@@ -34,10 +26,7 @@ source("R/legendfunctions.R")
 
 source("R/map2color.R")
 source("R/convertID.R")
-
 source("R/makejson.R")
-source("R/radialNetwork_KinomeTree.R")
-source("R/forceNetwork_KinomeTree.R")
 
 # read RDS
 orig_svginfo = readRDS("Data/kintree.RDS")
