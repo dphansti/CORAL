@@ -5,3 +5,6 @@
 Data/.DS_Store
 rsconnect/
 .DS_Store
+Output/*
+www/kinome_tree.json
+www/subdf.txt
