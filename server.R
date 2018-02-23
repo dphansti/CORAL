@@ -224,8 +224,6 @@ server <- function(input, output) {
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
-        
-        
       }
     }
     

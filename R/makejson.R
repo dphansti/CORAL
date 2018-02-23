@@ -1,9 +1,7 @@
 makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
 {
   # reorder so so that groups, families, and subfamilies are properly colored
-  df = df[order(abs(df$node.val.col),decreasing = TRUE),]
-  
-  print (head(df$node.val.col))
+  df<- df[seq(dim(df)[1],1),]
   
   # filter df
   df = df[,c("id.kinrich","kinase.group","kinase.family","kinase.subfamily","branch.col","node.col","node.radius","text.size")]
@@ -37,6 +35,7 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
     if(is.na(g)) {
       root$children[[length(root$children)+1]]<-list("name"=list(group),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius) ,"textsize"=list(textsize),"children"=list())
       g<-length(root$children)
+      print (row)
     }
     
     # Add Group

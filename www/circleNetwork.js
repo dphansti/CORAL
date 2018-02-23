@@ -42,7 +42,7 @@ binding.renderValue = function(el, data) {
           .attr("class", "link")
           .attr("d", diagonal)
           .attr("stroke-width", 1.5)
-          .attr("stroke","#ccc")
+          .attr("stroke", function(d) { return d3.rgb(d.target.branchcol); })
           .attr("fill","none")
           .attr("pointer-events","none");
 
