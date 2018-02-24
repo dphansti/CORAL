@@ -8,3 +8,5 @@ rsconnect/
 tempfiles/kintreeout.svg
 www/kinome_tree.json
 tempfiles/subdf.txt
+tempfiles/
+www/*json
