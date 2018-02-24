@@ -5,6 +5,6 @@
 Data/.DS_Store
 rsconnect/
 .DS_Store
-Output/kintreeout.svg
+tempfiles/kintreeout.svg
 www/kinome_tree.json
-www/subdf.txt
+tempfiles/subdf.txt
