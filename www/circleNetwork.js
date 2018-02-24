@@ -11,7 +11,6 @@ binding.renderValue = function(el, data) {
   
   if(data!=null){
     //////////.JS//////////
-    
     var radius = 450
       width = 940,
       height = 940;

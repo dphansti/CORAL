@@ -2,6 +2,10 @@
 # server business
 server <- function(input, output) {
   
+  outputjson <- "www/kinome_tree.json"
+  subdffile  <-  "tempfiles/subdf.txt"
+  svgoutfile <- "tempfiles/kintreeout.svg"
+  
   newdf <- reactive({ 
     
     # get current values
@@ -255,9 +259,8 @@ server <- function(input, output) {
     svginfo$title = input$titleinput
     
     # Write SVG file
-    outfile <- "Output/kintreeout.svg"
-    writekinasetree(svginfo,destination=outfile)
-    svgPanZoom(outfile,viewBox = F,controlIconsEnabled=F)
+    writekinasetree(svginfo,destination=svgoutfile)
+    svgPanZoom(svgoutfile,viewBox = F,controlIconsEnabled=F)
   })
   
   
@@ -273,8 +276,7 @@ server <- function(input, output) {
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
     
     # Write kinome_tree.json (based on current dataframe)
-    outputjson <- "www/kinome_tree.json"
-    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)
@@ -291,7 +293,6 @@ server <- function(input, output) {
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
     
     # Write kinome_tree.json (based on current dataframe)
-    outputjson <- "www/kinome_tree.json"
     makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
     
     # Make this reactive to any change in input paramters
@@ -309,8 +310,7 @@ server <- function(input, output) {
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
     
     # Write kinome_tree.json (based on current dataframe)
-    outputjson <- "www/kinome_tree.json"
-    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)
@@ -340,7 +340,6 @@ server <- function(input, output) {
     # add node info if present
     if ("none" %in% simpldf$node.col == F)
     {
-      
       # convert node colors to rgb
       mycolors <- simpldf$node.col
       
@@ -358,18 +357,15 @@ server <- function(input, output) {
     datatable(newdf, escape=FALSE)
   })
   
-  
-  
-  
   # Downloadable csv of selected dataset ----
   output$downloadData <- downloadHandler(
     
-    filename <- function(file) { paste("CORAL",".",input$downloadplot,".",input$downloadtype,sep="")},
+    filename <- function(file) { paste("CORAL",".","tree",".",input$downloadtype,sep="")},
     content <- function(file) {
       if (input$downloadtype == 'pdf') {
-        rsvg_pdf("Output/kintreeout.svg", file)
+        rsvg_pdf(svgoutfile, file)
       } else if (input$downloadtype == 'svg') {
-        rsvg_svg("Output/kintreeout.svg", file)
+        rsvg_svg(svgoutfile, file)
       } else {
         showNotification('Unrecognized Output Image Type')
       }
