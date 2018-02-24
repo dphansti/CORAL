@@ -35,7 +35,6 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
     if(is.na(g)) {
       root$children[[length(root$children)+1]]<-list("name"=list(group),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius) ,"textsize"=list(textsize),"children"=list())
       g<-length(root$children)
-      print (row)
     }
     
     # Add Group
