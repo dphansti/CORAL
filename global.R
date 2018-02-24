@@ -54,6 +54,13 @@ CaMs = grep(pattern = "CaM",svginfo$dataframe$id.kinrich)
 
 defaultpalette = colorRampPalette( c("forestgreen","violet","dodgerblue2","deepskyblue2","lightgrey","gold","orange","firebrick2"))(12)
 
+# set all of the temp files
+outputjson = tempfile(pattern="kinome_tree",tmpdir="www",fileext = ".json")
+outputjsonshort =strsplit(outputjson,split = "/")[[1]][2]
+#outputjsonshort = paste("../tempfiles/",strsplit(outputjson,split = "/")[[1]][2],sep="")
+subdffile = tempfile(pattern="subdf",tmpdir="tempfiles",fileext = ".txt")
+svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
+
 
 # To upload
 # library(rsconnect)

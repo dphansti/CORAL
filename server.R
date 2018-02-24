@@ -1,11 +1,7 @@
 
 # server business
 server <- function(input, output) {
-  
-  outputjson <- "www/kinome_tree.json"
-  subdffile  <-  "tempfiles/subdf.txt"
-  svgoutfile <- "tempfiles/kintreeout.svg"
-  
+
   newdf <- reactive({ 
     
     # get current values
@@ -55,7 +51,6 @@ server <- function(input, output) {
       recolordf = read.text.input(input$branchGroupBox)
       
       # convert to coral id
-      # print (paste("asdfadsfadsf = ",input$branchGroupIDtype))
       recolordf = convertID (tempdf,recolordf,inputtype=input$branchGroupIDtype)
       
       if (nrow(recolordf)>0)

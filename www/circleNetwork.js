@@ -31,7 +31,7 @@ binding.renderValue = function(el, data) {
       .append("g")
       .attr("transform", "translate(" + radius + "," + radius + ")");
 
-    d3.json("kinome_tree.json", function(error, root) {
+    d3.json($(el).attr('jsonfilename'), function(error, root) {
 
       var nodes = cluster.nodes(root);
 
