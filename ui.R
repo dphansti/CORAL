@@ -1,11 +1,4 @@
 ## app.R ##
-
-# Define colors
-BG_col1 = "#D3D3D3"
-HM_low = "#F66049"
-HM_med = "#D3D3D3"
-HM_hi = "#07C9DE"
-
 ui <- dashboardPage(skin="black",
                     dashboardHeader(title = "CORAL"),
                     
@@ -20,16 +13,16 @@ ui <- dashboardPage(skin="black",
                     dashboardBody(
                      
                      tags$head(
+                      
                       #adds the d3 library needed to draw the plot
                       tags$script(src="d3.v3.min.js"),
                       
                       #the js script holding the code to make the custom output
                       tags$script(src="circleNetwork.js"),
                       tags$script(src="collapsableForceNetwork.js"),
-                      # tags$script(src="collapsableDiagonalNetwork.js"),
                       
                       #the stylesheet, paste all that was between the <style> tags from your example in the graph_style.css file
-                      tags$link(rel = "stylesheet", type = "text/css", href = "styling_layouts.css"),
+                      # tags$link(rel = "stylesheet", type = "text/css", href = "styling_layouts.css"),
                       
                       # try to resize plot according to window size
                       tags$head(tags$style("#plot1{height:100vh;}"))
@@ -38,9 +31,6 @@ ui <- dashboardPage(skin="black",
                      # Fix a bug in the texboxInput funciton that doesn't respect width= "100%"
                      tags$style(HTML(".shiny-input-container:not(.shiny-input-container-inline) {width: 100%;}")),
                      
-                     # # remove extra sace under file input
-                     # tags$style(".shiny-input-container {margin-bottom: 0px} #phospepcsv_progress { margin-bottom: 0px } .checkbox { margin-top: 0px}"),
-                     # 
                      tabItems(
                       # First tab content
                       tabItem(tabName = "Visualize",
@@ -373,5 +363,5 @@ ui <- dashboardPage(skin="black",
                               h2("CORAL: Highly-customizable visualizations of qualitative and quantitative kinase attributes")
                       )
                      )
-                    ), # /tabItems
+                    ) # /tabItems
 )
