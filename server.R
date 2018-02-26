@@ -1,9 +1,92 @@
 
 # server business
-server <- function(input, output) {
+server <- function(input, output,session) {
+ 
+ # Load example data for branches color by group
+ observe({
+  if (input$loadexamplebranchgroup == FALSE)
+  {
+   kinasegroupinfobr = ""
+  }
+  if (input$loadexamplebranchgroup == TRUE)
+  {
+   kinasegroupinfobr = paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
+   updateTextInput(session, "branchGroupIDtype", value = "KinrichID")
+  }
   
+  updateTextInput(session, "branchGroupBox", value = kinasegroupinfobr)
+ })
+ 
+ # Load example data for nodes color by group
+ observe({
+  if (input$loadexamplennodegroup == FALSE)
+  {
+   kinasegroupinfono = ""
+  }
+  if (input$loadexamplennodegroup == TRUE)
+  {
+   kinasegroupinfono = paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
+   updateTextInput(session, "nodeGroupIDtype", value = "KinrichID")
+  }
+  
+  updateTextInput(session, "nodeGroupBox", value = kinasegroupinfono)
+ })
+ 
+ # Load example data for branches color by value
+ observe({
+  if (input$loadexamplebranchvalue == FALSE)
+  {
+   examplebranchvaluedata = ""
+  }
+  if (input$loadexamplebranchvalue == TRUE)
+  {
+   examplebranchvaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   updateTextInput(session, "branchValueIDtype", value = "KinrichID")
+  }
+  
+  updateTextInput(session, "branchValueBox", value = examplebranchvaluedata)
+ })
+ 
+ # Load example data for nodes color by value
+ observe({
+  if (input$loadexamplennodevalue == FALSE)
+  {
+   examplenodevaluedata = ""
+  }
+  if (input$loadexamplennodevalue == TRUE)
+  {
+   examplenodevaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   updateTextInput(session, "nodeValueIDtype", value = "KinrichID")
+  }
+  
+  updateTextInput(session, "nodeValueBox", value = examplenodevaluedata)
+ })
+ 
+ # Load example data for nodes size by value
+ observe({
+  if (input$loadexamplennodesizevalue == FALSE)
+  {
+   examplenodesizevaluedata = ""
+  }
+  if (input$loadexamplennodevalue == TRUE)
+  {
+   examplenodesizevaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   # set the correct ID type
+   updateTextInput(session, "nodesizeValueIDtype", value = "KinrichID")
+   
+   # Set the input range
+   
+   # Set the size range
+  }
+  
+  updateTextInput(session, "nodesizeValueBox", value = examplenodesizevaluedata)
+ })
+ 
   newdf <- reactive({ 
-    
+   
     # get current values
     tempdf = svginfo$dataframe
     
@@ -51,7 +134,6 @@ server <- function(input, output) {
       recolordf = read.text.input(input$branchGroupBox)
       
       # convert to coral id
-      # print (paste("asdfadsfadsf = ",input$branchGroupIDtype))
       recolordf = convertID (tempdf,recolordf,inputtype=input$branchGroupIDtype)
       
       if (nrow(recolordf)>0)
@@ -276,8 +358,7 @@ server <- function(input, output) {
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
     
     # Write kinome_tree.json (based on current dataframe)
-    outputjson <- "www/kinome_tree.json"
-    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)
@@ -294,7 +375,6 @@ server <- function(input, output) {
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
     
     # Write kinome_tree.json (based on current dataframe)
-    outputjson <- "www/kinome_tree.json"
     makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
     
     # Make this reactive to any change in input paramters
@@ -312,8 +392,7 @@ server <- function(input, output) {
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
     
     # Write kinome_tree.json (based on current dataframe)
-    outputjson <- "www/kinome_tree.json"
-    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)
@@ -343,7 +422,6 @@ server <- function(input, output) {
     # add node info if present
     if ("none" %in% simpldf$node.col == F)
     {
-      
       # convert node colors to rgb
       mycolors <- simpldf$node.col
       
@@ -361,18 +439,15 @@ server <- function(input, output) {
     datatable(newdf, escape=FALSE)
   })
   
-  
-  
-  
   # Downloadable csv of selected dataset ----
   output$downloadData <- downloadHandler(
     
-    filename <- function(file) { paste("CORAL",".",input$downloadplot,".",input$downloadtype,sep="")},
+    filename <- function(file) { paste("CORAL",".","tree",".",input$downloadtype,sep="")},
     content <- function(file) {
       if (input$downloadtype == 'pdf') {
-        rsvg_pdf("Output/kintreeout.svg", file)
+        rsvg_pdf(svgoutfile, file)
       } else if (input$downloadtype == 'svg') {
-        rsvg_svg("Output/kintreeout.svg", file)
+        rsvg_svg(svgoutfile, file)
       } else {
         showNotification('Unrecognized Output Image Type')
       }

@@ -31,7 +31,7 @@ binding.renderValue = function(el, data) {
       var link = svg.selectAll(".link")
           node = svg.selectAll(".node");
 
-      d3.json("kinome_tree.json", function(error, json) {
+      d3.json($(el).attr('jsonfilename'), function(error, json) {
         if (error) throw error;
 
         root = json;

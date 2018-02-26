@@ -1,3 +1,6 @@
+
+#---------------------- LOAD LIBRARIES ----------------------#
+
 library(pacman)
 
 # load basic libraries
@@ -18,15 +21,17 @@ p_load(DT)
 p_load(data.tree)
 p_load(jsonlite)
 
-# Point to R functions
+#---------------------- SOURCE R FILES ----------------------#
+
 source("R/colorby.R")
 source("R/readinput.R")
 source("R/writekinasetree.R")
 source("R/legendfunctions.R")
-
 source("R/map2color.R")
 source("R/convertID.R")
 source("R/makejson.R")
+
+#---------------------- READ IN AND ORGANIZE DATA ----------------------#
 
 # read RDS
 orig_svginfo = readRDS("Data/kintree.RDS")
@@ -52,17 +57,41 @@ svginfo = orig_svginfo
 CDKs = grep(pattern = "CDK",svginfo$dataframe$id.kinrich)
 CaMs = grep(pattern = "CaM",svginfo$dataframe$id.kinrich)
 
+# set all of the temp files
+outputjson = tempfile(pattern="kinome_tree",tmpdir="www",fileext = ".json")
+outputjsonshort =strsplit(outputjson,split = "/")[[1]][2]
+subdffile = tempfile(pattern="subdf",tmpdir="tempfiles",fileext = ".txt")
+svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
+
+#---------------------- DEFAULT COLORS ----------------------#
+
+# Default tree branch color
+BG_col1 = "#D3D3D3"
+
+# Default heatmap colors
+HM_low = "#F66049"
+HM_med = "#D3D3D3"
+HM_hi = "#07C9DE"
+
+# Default group color palette
 defaultpalette = colorRampPalette( c("forestgreen","violet","dodgerblue2","deepskyblue2","lightgrey","gold","orange","firebrick2"))(12)
 
 
-# To upload
-# library(rsconnect)
-# rsconnect::deployApp("~/Dropbox/Work/Projects/Ongoing/Kinrich/CURRENT/Project/Kinrich/")
-# rsconnect::deployApp()
-# rsconnect::deployApp("~/Dropbox/Work/Projects/Ongoing/CORAL/Rpackage/CORAL/")
-# rsconnect::setAccountInfo(name='dphansti', token='97CD97745674D398F80301CA4EF52342', secret='08F7iBW64Du4zadfda6qIzrHDAseBmUMtHNSi2u/')
 
 
-# To access
-# https://dphansti.shinyapps.io/coral/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

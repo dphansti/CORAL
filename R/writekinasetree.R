@@ -50,7 +50,7 @@ build.node <- function(l)
 }
 
 # Define a function that writes an kinase tree svg file
-writekinasetree <- function(svginfo,destination="Output/kintreeout.svg")
+writekinasetree <- function(svginfo,destination)
 {
   outputlines = c()
   
