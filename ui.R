@@ -201,12 +201,17 @@ ui <- dashboardPage(skin="black",
                                                              
                                                              conditionalPanel(
                                                               condition = "input.Manuallysetdatarange == true",
-                                                              numericInput("nodesizevaluemin","Min Value",value=0),
-                                                              numericInput("nodesizevaluemax","Max Value",value=1)
-                                                             )
-                                                            )
-                                                        ), # end box    
-                                                        
+                                                              
+                                                              
+                                                              fluidRow( width=12,
+                                                                        column(6,                numericInput(inputId = "nodesizevaluemin",label = "Min Value",value = 0 )),
+                                                                        column(6,                  numericInput(inputId = "nodesizevaluemax",label = "Max Value",value =  1 ))
+                                                              )
+                                                             ),
+                                                             checkboxInput(inputId="loadexamplennodesizevalue",label="load example data",value = FALSE)
+                                                            ) # end box    
+                                                            ),
+
                                                         # fluidRow(width=12,
                                                         box(width=12,
                                                             title = tagList(shiny::icon("gear"), "advanced settings"), status = "primary", solidHeader = TRUE,

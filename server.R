@@ -32,7 +32,6 @@ server <- function(input, output,session) {
   updateTextInput(session, "nodeGroupBox", value = kinasegroupinfono)
  })
  
- 
  # Load example data for branches color by value
  observe({
   if (input$loadexamplebranchvalue == FALSE)
@@ -65,7 +64,26 @@ server <- function(input, output,session) {
   updateTextInput(session, "nodeValueBox", value = examplenodevaluedata)
  })
  
- 
+ # Load example data for nodes size by value
+ observe({
+  if (input$loadexamplennodesizevalue == FALSE)
+  {
+   examplenodesizevaluedata = ""
+  }
+  if (input$loadexamplennodevalue == TRUE)
+  {
+   examplenodesizevaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   # set the correct ID type
+   updateTextInput(session, "nodesizeValueIDtype", value = "KinrichID")
+   
+   # Set the input range
+   
+   # Set the size range
+  }
+  
+  updateTextInput(session, "nodesizeValueBox", value = examplenodesizevaluedata)
+ })
  
   newdf <- reactive({ 
    
