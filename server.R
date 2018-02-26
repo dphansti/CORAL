@@ -1,9 +1,74 @@
 
 # server business
-server <- function(input, output) {
-
+server <- function(input, output,session) {
+ 
+ # Load example data for branches color by group
+ observe({
+  if (input$loadexamplebranchgroup == FALSE)
+  {
+   kinasegroupinfobr = ""
+  }
+  if (input$loadexamplebranchgroup == TRUE)
+  {
+   kinasegroupinfobr = paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
+   updateTextInput(session, "branchGroupIDtype", value = "KinrichID")
+  }
+  
+  updateTextInput(session, "branchGroupBox", value = kinasegroupinfobr)
+ })
+ 
+ # Load example data for nodes color by group
+ observe({
+  if (input$loadexamplennodegroup == FALSE)
+  {
+   kinasegroupinfono = ""
+  }
+  if (input$loadexamplennodegroup == TRUE)
+  {
+   kinasegroupinfono = paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
+   updateTextInput(session, "nodeGroupIDtype", value = "KinrichID")
+  }
+  
+  updateTextInput(session, "nodeGroupBox", value = kinasegroupinfono)
+ })
+ 
+ 
+ # Load example data for branches color by value
+ observe({
+  if (input$loadexamplebranchvalue == FALSE)
+  {
+   examplebranchvaluedata = ""
+  }
+  if (input$loadexamplebranchvalue == TRUE)
+  {
+   examplebranchvaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   updateTextInput(session, "branchValueIDtype", value = "KinrichID")
+  }
+  
+  updateTextInput(session, "branchValueBox", value = examplebranchvaluedata)
+ })
+ 
+ # Load example data for nodes color by value
+ observe({
+  if (input$loadexamplennodevalue == FALSE)
+  {
+   examplenodevaluedata = ""
+  }
+  if (input$loadexamplennodevalue == TRUE)
+  {
+   examplenodevaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   updateTextInput(session, "nodeValueIDtype", value = "KinrichID")
+  }
+  
+  updateTextInput(session, "nodeValueBox", value = examplenodevaluedata)
+ })
+ 
+ 
+ 
   newdf <- reactive({ 
-    
+   
     # get current values
     tempdf = svginfo$dataframe
     

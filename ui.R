@@ -76,19 +76,21 @@ ui <- dashboardPage(skin="black",
                                                             conditionalPanel(
                                                              condition = "input.branchcolortype == 'by group'",
                                                              textAreaInput("branchGroupBox", "Kinases & Group", height = "100px",width = "100%",
-                                                                           value =  paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
+                                                                           value = ""
                                                              ),
                                                              selectInput(inputId = "branchGroupIDtype",label = "Identifier Type",
                                                                          choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
-                                                                         multiple = FALSE,selected = "KinrichID",width = "100%")
-                                                            ),
+                                                                         multiple = FALSE,selected = "KinrichID",width = "100%"),
+                                                            
+                                                             checkboxInput(inputId="loadexamplebranchgroup",label="load kinase groups",value = FALSE)
+                                                             
+                                                             ),
                                                             
                                                             # if by value
                                                             conditionalPanel(
                                                              condition = "input.branchcolortype == 'by value'",
                                                              textAreaInput("branchValueBox", "Kinases & Value", height = "100px",width = "100%",
-                                                                           value =  paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                                                                          paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+                                                                           value =  ""
                                                              ),
                                                              selectInput(inputId = "branchValueIDtype",label = "Identifier Type",
                                                                          choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
@@ -101,7 +103,8 @@ ui <- dashboardPage(skin="black",
                                                              fluidRow( width=12,
                                                                        column(6,                numericInput(inputId = "minheat",label = "min",value = -5 )),
                                                                        column(6,                  numericInput(inputId = "maxheat",label = "max",value =  5 ))
-                                                             )
+                                                             ),
+                                                             checkboxInput(inputId="loadexamplebranchvalue",label="load example data",value = FALSE)
                                                             )
                                                         ), # end box
                                                         
@@ -135,19 +138,20 @@ ui <- dashboardPage(skin="black",
                                                             conditionalPanel(
                                                              condition = "input.nodecolortype == 'by group'",
                                                              textAreaInput("nodeGroupBox", "Kinases & Group", height = "100px",width = "100%",
-                                                                           value =  paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
+                                                                           value =  ""
                                                              ),
                                                              selectInput(inputId = "nodeGroupIDtype",label = "Identifier Type",
                                                                          choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
-                                                                         multiple = FALSE,selected = "KinrichID",width = "100%")
+                                                                         multiple = FALSE,selected = "KinrichID",width = "100%"),
+                                                             
+                                                             checkboxInput(inputId="loadexamplennodegroup",label="load kinase groups",value = FALSE)
                                                             ),
                                                             
                                                             # if by value
                                                             conditionalPanel(
                                                              condition = "input.nodecolortype == 'by value'",
                                                              textAreaInput("nodeValueBox", "Kinases & Value", height = "100px",width = "100%",
-                                                                           value =  paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                                                                          paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+                                                                           value =  ""
                                                              ),
                                                              selectInput(inputId = "nodeValueIDtype",label = "Identifier Type",
                                                                          choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
@@ -160,8 +164,10 @@ ui <- dashboardPage(skin="black",
                                                              fluidRow( width=12,
                                                                        column(6,                numericInput(inputId = "nodeminheat",label = "min",value = -5 )),
                                                                        column(6,                  numericInput(inputId = "nodemaxheat",label = "max",value =  5 ))
-                                                             )
+                                                             ),
+                                                             checkboxInput(inputId="loadexamplennodevalue",label="load example data",value = FALSE)
                                                             )
+                                                            
                                                         ), # end box   
                                                         
                                                         # ---- NODE SIZE ---- #
