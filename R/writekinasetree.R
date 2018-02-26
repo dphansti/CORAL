@@ -15,7 +15,7 @@ build.text <- function(l)
   label = paste("<a xlink:href=\"http://www.uniprot.org/uniprot/",l["id.uniprot"],"\">",
                 "<text id=\"t_x5F_",l["id.kinrich"],"\" ",
                 "x=\"", l["text.x"],"\" ",
-                "y=\"", l["text.y"],"\" ",
+                "y=\"", trimws(l["text.y"]),"\" ",
                 " font-size=\"",l["text.size"],"px\" ",
                 "fill=\"",l["text.col"],"\" ",
                 "font-family=\"", l["text.font"], "\" ",
