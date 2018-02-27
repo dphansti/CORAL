@@ -1,4 +1,4 @@
-makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
+makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol="#D3D3D3",colsubnodes=FALSE)
 {
   # reorder so so that groups, families, and subfamilies are properly colored
   df<- df[seq(dim(df)[1],1),]
@@ -11,7 +11,7 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
 
   # read json file
   data<-read.delim(tmp, stringsAsFactors=F)
-  root<-list("name"=list("    "), "nodecol"=list("#D3D3De"),"noderadius"=list(6) ,"children"=list())
+  root<-list("name"=list("    "), "nodecol"=list(BGcol),"noderadius"=list(6) ,"children"=list())
   i = 1
   
   for(i in 1:nrow(data)) {
@@ -29,18 +29,23 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
     nodecol<-row$node.col 
     noderadius<-row$node.radius 
     textsize<-row$text.size
+    subnodecol=nodecol
+    if (colsubnodes == FALSE)
+    {
+     subnodecol = BGcol
+    }
 
     # Add Group if not already there
     g<-match(group, unlist(unlist(root$children, F)[names(unlist(root$children, F))=="name"]))
     if(is.na(g)) {
-      root$children[[length(root$children)+1]]<-list("name"=list(group),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius) ,"textsize"=list(textsize),"children"=list())
+      root$children[[length(root$children)+1]]<-list("name"=list(group),"branchcol"=list(branchcol) ,"nodecol"=list(subnodecol),"noderadius"=list(noderadius) ,"textsize"=list(textsize),"children"=list())
       g<-length(root$children)
     }
     
     # Add Group
     f<-match(family, unlist(unlist(root$children[[g]]$children, F)[names(unlist(root$children[[g]]$children, F))=="name"]))
     if(is.na(f)) {
-      root$children[[g]]$children[[length(root$children[[g]]$children)+1]]<-list("name"=list(family),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius)  , "textsize"=list(textsize),"children"=list())
+      root$children[[g]]$children[[length(root$children[[g]]$children)+1]]<-list("name"=list(family),"branchcol"=list(branchcol) ,"nodecol"=list(subnodecol),"noderadius"=list(noderadius)  , "textsize"=list(textsize),"children"=list())
       f<-length(root$children[[g]]$children)
     }
     
@@ -50,7 +55,7 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json")
     } else {
       sf<-match(subfamily, unlist(unlist(root$children[[g]]$children[[f]]$children, F)[names(unlist(root$children[[g]]$children[[f]]$children, F))=="name"]))
       if(is.na(sf)) {
-        root$children[[g]]$children[[f]]$children[[length(root$children[[g]]$children[[f]]$children)+1]]<-list("name"=list(subfamily),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius) ,"textsize"=list(textsize) , "children"=list())
+        root$children[[g]]$children[[f]]$children[[length(root$children[[g]]$children[[f]]$children)+1]]<-list("name"=list(subfamily),"branchcol"=list(branchcol) ,"nodecol"=list(subnodecol),"noderadius"=list(noderadius) ,"textsize"=list(textsize) , "children"=list())
         sf<-length(root$children[[g]]$children[[f]]$children)
       }
       root$children[[g]]$children[[f]]$children[[sf]]$children[[length(root$children[[g]]$children[[f]]$children[[sf]]$children)+1]]<-list("name"=list(kinase),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius),"textsize"=list(textsize)  )

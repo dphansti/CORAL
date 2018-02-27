@@ -354,7 +354,7 @@ server <- function(input, output,session) {
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
     
     # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,colsubnodes=input$colorsubnodes)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)
@@ -371,7 +371,7 @@ server <- function(input, output,session) {
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
     
     # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson)
+    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson,BGcol=BG_col1,colsubnodes=input$colorsubnodes)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)
@@ -388,7 +388,7 @@ server <- function(input, output,session) {
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
     
     # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,colsubnodes=input$colorsubnodes)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)

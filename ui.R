@@ -73,7 +73,6 @@ ui <- dashboardPage(skin="black",
                                                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                                                             
                                                              checkboxInput(inputId="loadexamplebranchgroup",label="load kinase groups",value = FALSE)
-                                                             
                                                              ),
                                                             
                                                             # if by value
@@ -113,6 +112,13 @@ ui <- dashboardPage(skin="black",
                                                              condition = "input.nodecolortype == 'As one color'",
                                                              colourInput("col_node_single", "Node Color","#A3A3A3")
                                                             ),
+                                                            
+                                                            
+                                                            conditionalPanel(
+                                                             condition = "input.nodecolortype != 'As one color' & input.nodecolortype != 'None'",
+                                                             checkboxInput(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = TRUE)
+                                                            ),
+                                                            
                                                             
                                                             # if manual selection
                                                             conditionalPanel(
