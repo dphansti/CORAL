@@ -46,7 +46,7 @@ ui <- dashboardPage(skin="black",
                                                choices = c("Info", "Plot"), 
                                                selected = "Plot",
                                                justified = TRUE, status = "primary",
-                                               checkIcon = list(yes = icon("ok", lib = "glyphicon"), no = ""),
+                                               checkIcon = list(yes = "", no = ""),
                                               ),
                                               
                                               fluidRow( width=12,
@@ -390,7 +390,7 @@ ui <- dashboardPage(skin="black",
                                                choices = c("Info", "Plot"), 
                                                selected = "Info",
                                                justified = TRUE, status = "primary",
-                                               checkIcon = list(yes = icon("ok", lib = "glyphicon"), no = "")
+                                               checkIcon = list(yes = "", no = "")
                                               ),
                                               
                                               fluidRow( width=12
