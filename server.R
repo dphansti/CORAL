@@ -2,6 +2,22 @@
 # server business
 server <- function(input, output,session) {
  
+ # Update selected tab
+ observe({
+  if (input$dashboardchooser == "Info")
+   {
+   updateTabItems(session, inputId="sidebartabs", selected = "Info")
+   updateRadioGroupButtons(session,inputId="dashboardchooser2",selected="Info")
+   }
+ })
+ observe({
+  if (input$dashboardchooser2 == "Plot")
+  {
+   updateTabItems(session, inputId="sidebartabs", selected = "Visualize")
+   updateRadioGroupButtons(session,inputId="dashboardchooser",selected="Plot")
+   }
+ })
+ 
  # Load example data for branches color by group
  observe({
   if (input$loadexamplebranchgroup == FALSE)

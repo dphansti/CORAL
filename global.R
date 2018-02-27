@@ -9,6 +9,7 @@ p_load(shinydashboard)
 p_load(shinyBS)
 p_load(readr)
 p_load(rsvg)
+p_load(shinyWidgets)
 
 # load Manning-related libraries
 p_load(svgPanZoom)

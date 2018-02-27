@@ -1,5 +1,5 @@
 
-box(width=12,
+box(width="100%",
     h2("CORAL: Highly-customizable visualizations of qualitative and quantitative kinase attributes"),
     
     div(

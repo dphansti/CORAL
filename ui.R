@@ -1,17 +1,19 @@
 ## app.R ##
 ui <- dashboardPage(skin="black",
-                    dashboardHeader(title = "CORAL"),
-                    
-                    dashboardSidebar
-                    (
-                     sidebarMenu(
-                      menuItem("Visualize", tabName = "Visualize", icon = icon("eye")),
-                      menuItem("Info", tabName = "Info", icon = icon("info"))
-                     ),
-                     collapsed = TRUE
-                    ),
-                    dashboardBody(
-                     
+ dashboardHeader(title = "CORAL"
+ ),
+ dashboardSidebar
+ (
+  sidebarMenu(id="sidebartabs",
+   menuItem("Visualize", tabName = "Visualize", icon = icon("eye")),
+   menuItem("Info", tabName = "Info", icon = icon("info"))
+  ),
+  collapsed = TRUE,
+  disable = TRUE
+ ),
+ dashboardBody(
+ # "CORAL",
+ 
                      tags$head(
                       
                       #adds the d3 library needed to draw the plot
@@ -37,12 +39,24 @@ ui <- dashboardPage(skin="black",
                               
                               fluidRow(width=12,
                                        column(width=3,
+                                              
+                                              # choose between tabs
+                                              radioGroupButtons(
+                                               inputId = "dashboardchooser", label = NULL, 
+                                               choices = c("Info", "Plot"), 
+                                               selected = "Plot",
+                                               justified = TRUE, status = "primary",
+                                               checkIcon = list(yes = icon("ok", lib = "glyphicon"), no = ""),
+                                              ),
+                                              
                                               fluidRow( width=12,
+                                                        
+                                                        
                                                         
                                                         box(width=12,title = "Branch Color",status = "primary", solidHeader = TRUE,
                                                             collapsible = TRUE,collapsed = TRUE,
                                                             
-                                                            selectInput(inputId = "branchcolortype",label = "Color Branch",
+                                                            selectInput(inputId = "branchcolortype",label = "Color Branch", 
                                                                         choices = c("As one color","Manually","by group","by value"),
                                                                         multiple = FALSE,selected = "As one color",width = "100%"),
                                                             
@@ -364,10 +378,32 @@ ui <- dashboardPage(skin="black",
                               )
                       ),
                       
-                      # Second tab content
+                      
                       tabItem(tabName = "Info",
                               
-                              source("R/info.R",local=TRUE)$value
+                              fluidRow(width=12,
+                                       column(width=3,
+                                              
+                                              # choose between tabs
+                                              radioGroupButtons(
+                                               inputId = "dashboardchooser2", label = NULL, 
+                                               choices = c("Info", "Plot"), 
+                                               selected = "Info",
+                                               justified = TRUE, status = "primary",
+                                               checkIcon = list(yes = icon("ok", lib = "glyphicon"), no = "")
+                                              ),
+                                              
+                                              fluidRow( width=12
+                                              ) # end row
+                                       ), # end column
+                                       column
+                                       (  width=9,   
+                                        # Second tab content
+                                        source("R/info.R",local=TRUE)$value
+                                       )
+                              ) # end row
+                        
+                      
                       )
                      )
                     ) # /tabItems
