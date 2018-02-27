@@ -63,7 +63,6 @@ binding.renderValue = function(el, data) {
         .attr("download", "CORAL.force.svg") 
     })
 
-
       function update() {
         var nodes = flatten(root),
             links = d3.layout.tree().links(nodes);
