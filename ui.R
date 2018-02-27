@@ -366,7 +366,8 @@ ui <- dashboardPage(skin="black",
                       
                       # Second tab content
                       tabItem(tabName = "Info",
-                              h2("CORAL: Highly-customizable visualizations of qualitative and quantitative kinase attributes")
+                              
+                              source("R/info.R",local=TRUE)$value
                       )
                      )
                     ) # /tabItems
