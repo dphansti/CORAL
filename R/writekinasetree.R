@@ -88,6 +88,11 @@ writekinasetree <- function(svginfo,destination)
   outputlines = c(outputlines,"</g>")
   outputlines = c(outputlines,"</svg>")
   
+  # Check that the output directory exists, if not, create the output directory
+  if (! dir.exists(dirname(destination))) {
+   dir.create(dirname(destination),recursive = T)
+  }
+  
   writeLines(outputlines,destination)
 }
 

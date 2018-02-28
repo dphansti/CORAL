@@ -353,8 +353,12 @@ server <- function(input, output,session) {
     svginfo$title = input$titleinput
     
     # Write SVG file
-    writekinasetree(svginfo,destination=svgoutfile)
-    svgPanZoom(svgoutfile,viewBox = F,controlIconsEnabled=F)
+    outfile <- "Output/kintreeout.svg"
+    if (! dir.exists("Output")) {
+      dir.create("Output");
+    }
+    writekinasetree(svginfo,destination=outfile)
+    svgPanZoom(outfile,viewBox = F,controlIconsEnabled=F)
   })
   
   
