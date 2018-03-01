@@ -292,13 +292,29 @@ server <- function(input, output,session) {
       if (nrow(recolordf)>0)
       {
         # establish palette
-       if (input$nodecolorpalettetype == "sequential") {nodecolpalette = colorRampPalette(unlist(seqpalettes[input$nodecolorpalette_seq]))(11)}
-       if (input$nodecolorpalettetype == "divergent") {nodecolpalette = colorRampPalette(unlist(divpalettes[input$nodecolorpalette_div]))(11)}
-       if (input$nodecolorpalettetype == "manual 2 color") {nodecolpalette = colorRampPalette(c(input$node2col_low,input$node2col_hi))(11)}
-       if (input$nodecolorpalettetype == "manual 3 color") {nodecolpalette = colorRampPalette(c(input$node3col_low,input$node3col_med,input$node3col_hi))(11)}
+       if (input$nodecolorpalettetype == "sequential") 
+       {
+        nodecolpalette = colorRampPalette(unlist(seqpalettes[input$nodecolorpalette_seq]))(11)
+        bg.col = unlist(seqpalettes[input$nodecolorpalette_seq])[1]
+        }
+       if (input$nodecolorpalettetype == "divergent") 
+       {
+        nodecolpalette = colorRampPalette(unlist(divpalettes[input$nodecolorpalette_div]))(11)
+        bg.col = unlist(divpalettes[input$nodecolorpalette_div])[2]
+        }
+       if (input$nodecolorpalettetype == "manual 2 color") 
+       {
+        nodecolpalette = colorRampPalette(c(input$node2col_low,input$node2col_hi))(11)
+        bg.col = input$node2col_low
+        }
+       if (input$nodecolorpalettetype == "manual 3 color") 
+        {
+        nodecolpalette = colorRampPalette(c(input$node3col_low,input$node3col_med,input$node3col_hi))(11)
+        bg.col = input$node3col_med
+       }
        
         # set colors based on group
-        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = nodecolpalette, heatrange = c(input$nodeminheat,input$nodemaxheat))
+        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = nodecolpalette, heatrange = c(input$nodeminheat,input$nodemaxheat),bg.col = bg.col)
         tempdf$node.col = newcolors_and_colormapping[[1]]
         tempdf$node.val = newcolors_and_colormapping[[2]]
         
