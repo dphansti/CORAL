@@ -1,0 +1,308 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+:root {
+  --font-family-sans-serif: "Roboto", Calibri, Candara, Arial, sans-serif;
+  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+html {
+  font-family: sans-serif;
+}
+
+body {
+  font-family: "Roboto", Calibri, Candara, Arial, sans-serif;
+  font-size: 130%;
+  letter-spacing: 1;
+}
+
+textarea {
+  font-family: inherit
+}
+
+h1, h2, h3, h5, h6,
+.h1, .h2, .h3, .h5, .h6 {
+  font-family: inherit;
+  font-weight: 400;
+  letter-spacing: .25px;
+  font-size: 50%;
+}
+
+/* advanced settings "title" */
+h4,
+.h4 {
+ font-family: inherit;
+ font-weight: 600;
+ font-size: 100%;
+ letter-spacing: .25px;
+}
+
+/* box titles */
+.box.box-solid.box-primary>.box-header>h3.box-title,
+.box.box-solid.box-success>.box-header>h3.box-title,
+.box.box-solid.box-info>.box-header>h3.box-title,
+.box.box-solid.box-warning>.box-header>h3.box-title,
+.box.box-solid.box-danger>.box-header>h3.box-title{
+ font-size: 120%;
+ line-height: 140%;
+ letter-spacing: .25px;
+}
+
+/* form input text */
+.form-control.shiny-colour-input.shinyjs-resettable.colourpicker-input.shiny-bound-input{
+ font-size: 100%;
+}
+
+/* header logo text */
+.main-header .logo {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+
+
+/* logo */
+.skin-blue .main-header .logo {
+  color: #000000;                      
+  background-color: #eceff3;
+
+                              }
+
+/* logo when hovered */
+.skin-blue .main-header .logo:hover {
+  color: #000000;
+  background-color: #fff;
+}
+
+/* toggle button  */                    
+.skin-blue .main-header .navbar .sidebar-toggle {
+  color: #fff;
+  background-color: #fff;
+}
+
+/* toggle button when hovered  */                    
+.skin-blue .main-header .navbar .sidebar-toggle:hover{
+  color: #--font-family-sans-serif;
+  background-color: #fff;
+}
+                              
+/* navbar (rest of the header) */
+.skin-blue .main-header .navbar {
+  background-color: #eceff3;
+}        
+
+/* main sidebar */
+.main-sidebar {
+  background-color: #222c32;
+}
+
+/* active selected tab in the sidebarmenu */
+.main-sidebar .sidebar .sidebar-menu .active a{
+  background-color: #1e272c;
+}
+
+/* other links in the sidebarmenu */
+.main-sidebar .sidebar .sidebar-menu a{
+  color: #d3d3d3;
+}
+
+/* other links in the sidebarmenu when hovered */
+.main-sidebar .sidebar .sidebar-menu a:hover{
+  background-color: #d3d3d3;
+  color: #fff;
+}
+
+/* node size slider */
+.js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar{
+  background: #ea7a6a;
+}
+
+.js-irs-0 .irs-bar, .js-irs-0 .irs-bar-edge{
+  border: #ea7a6a;
+}
+
+/* advanced settings slider */
+
+.js-irs-2 .irs-single, .js-irs-2 .irs-bar-edge, .js-irs-2 .irs-bar{
+  background: #ea7a6a;
+}
+
+.js-irs-2 .irs-bar, .js-irs-2 .irs-bar-edge {
+  border: #ea7a6a;
+}
+
+/* slider value */
+.irs-single{
+ padding: 2px 3px 0px 3px;
+  vertical-align: bottom;
+}
+
+/* tooltip button */
+.btn.action-button.btn-primary.btn-xs.shiny-bound-input{
+ background: #c4c8cc;
+ border: #fff;
+}
+
+.btn.action-button.btn-primary.btn-xs.shiny-bound-input>.fa.fa-question{
+ color: #fff;
+}
+
+.btn.action-button.btn-primary.btn-xs.shiny-bound-input{
+  width: 14px;
+  height: 17px;
+  line-height: 16px;
+  min-height: 16px;
+  vertical-align: center;
+  font-size: 11px;
+  padding: 1.5px 1.25px 0px 1px;
+  margin: 0;
+}
+
+.btn.btn-box-tool>.fa.fa-plus,
+.btn.btn-box-tool>.fa.fa-minus{
+ color: #fff;
+ padding: 5px 0px 0px 0px;
+}
+
+/* checkmarks */
+
+
+/* radio button */
+
+.btn.radiobtn.btn-success{
+  background:#c4c8cc;
+  border-bottom-color:#eceff3;
+  border-left-color:#eceff3;
+  border-right-color:#eceff3;
+  border-top-color:#eceff3;
+      border-radius: 20px;
+}
+
+.btn.radiobtn.btn-success.active{
+  background:#333;
+  border-bottom-color:#eceff3;
+  border-left-color:#eceff3;
+  border-right-color:#eceff3;
+  border-top-color:#eceff3;
+}
+
+.btn.radiobtn.btn-success.active{
+  -webkit-box-shadow: none; 
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.btn-group{
+   padding: 0px 0px 2px 0px;
+}
+
+/* remove box shadows */
+
+.box{
+  -webkit-box-shadow: none; 
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.nav-tabs-custom{
+  -webkit-box-shadow: none; 
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+/* box 1 */
+
+.box.box-solid.box-primary>.box-header{
+  color:#fff;
+  background:#0571B0;
+}
+
+.box.box-solid.box-primary{
+  border-bottom-color:#eceff3;
+  border-left-color:#eceff3;
+  border-right-color:#eceff3;
+  border-top-color:#eceff3;
+  
+}
+
+.box.box-primary{
+ border-top-color:#;
+ 
+}
+
+/* box 2 */
+
+.box.box-solid.box-success>.box-header{
+  color:#fff;
+  background:#
+}
+
+.box.box-solid.box-success{
+  border-bottom-color:#eceff3;
+  border-left-color:#eceff3;
+  border-right-color:#eceff3;
+  border-top-color:#eceff3;
+  
+}
+
+/* box 3 */
+
+.box.box-solid.box-info>.box-header{
+  color:#fff;
+  background:#
+}
+
+.box.box-solid.box-info{
+  border-bottom-color:#eceff3;
+  border-left-color:#eceff3;
+  border-right-color:#eceff3;
+  border-top-color:#eceff3;
+}
+
+/* box 4 */
+.box.box-solid.box-warning>.box-header{
+  color:#fff;
+  background:#c4c8cc
+}
+
+.box.box-solid.box-warning{
+  border-bottom-color:#eceff3;
+  border-left-color:#eceff3;
+  border-right-color:#eceff3;
+  border-top-color:#eceff3;
+}
+
+.box.box-warning{
+ border-top-color:#c4c8cc;
+}
+
+/* box 5 */
+
+.box.box-solid.box-danger>.box-header{
+  color:#fff;
+  background:#D6604D
+}
+
+.box.box-solid.box-danger{
+  border-bottom-color:#eceff3;
+  border-left-color:#eceff3;
+  border-right-color:#eceff3;
+  border-top-color:#eceff3;
+}
+
+/* active tab */
+
+.nav-tabs-custom .nav-tabs li.active {
+     border-top-color: #0571B0;
+}
+
+/* dashboard background */
+.content-wrapper,
+.right-side {
+background-color: #;
+}
+
+/*
+.form-control:focus {
+        border-color: #36c9da;
+    }
+*/
+
+
