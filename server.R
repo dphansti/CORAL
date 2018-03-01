@@ -10,6 +10,7 @@ server <- function(input, output,session) {
    updateRadioGroupButtons(session,inputId="dashboardchooser2",selected="Info")
    }
  })
+ 
  observe({
   if (input$dashboardchooser2 == "Plot")
   {
@@ -84,7 +85,7 @@ server <- function(input, output,session) {
   {
    examplenodesizevaluedata = ""
   }
-  if (input$loadexamplennodevalue == TRUE)
+  if (input$loadexamplennodesizevalue == TRUE)
   {
    examplenodesizevaluedata = rna_abs_data
    
@@ -138,7 +139,6 @@ server <- function(input, output,session) {
       yoffset = lines_and_offset[[2]] + 14
       
       legend = c(legend,lines)
-      
     }
     
     # color branches by group
@@ -343,15 +343,26 @@ server <- function(input, output,session) {
       
       if (nrow(resizedf)>0)
       {
-        
         radii_and_mapping = resizes.by.value(df = tempdf, resizedf = resizedf, sizerange = input$nodesizeValueslider,
                                              controlledrange = input$Manuallysetdatarange, minvalue=input$nodesizevaluemin, maxvalue = input$nodesizevaluemax)
-
+       
+        # Get correct limits for legend
+        if (input$Manuallysetdatarange == FALSE)
+        {
+         minvalforlegend = min(as.numeric(resizedf[,2]))
+         maxvalforlegend = max(as.numeric(resizedf[,2]))
+        }
+        if (input$Manuallysetdatarange == TRUE)
+        {
+         minvalforlegend = input$nodesizevaluemin
+         maxvalforlegend = input$nodesizevaluemax
+        }
+        
         tempdf$node.radius     = radii_and_mapping[[1]]
         tempdf$node.val.radius = radii_and_mapping[[2]]
         
         # add legend info
-        lines_and_offset = build.nodesize.legend (yoffset=yoffset,minval=min(as.numeric(resizedf[,2])),maxval=max(as.numeric(resizedf[,2])),minsize = input$nodesizeValueslider[1] ,maxsize = input$nodesizeValueslider[2])
+        lines_and_offset = build.nodesize.legend (yoffset=yoffset,minval=minvalforlegend,maxval=maxvalforlegend,minsize = input$nodesizeValueslider[1] ,maxsize = input$nodesizeValueslider[2])
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
@@ -387,6 +398,8 @@ server <- function(input, output,session) {
     
     # Write SVG file
     writekinasetree(svginfo,destination=svgoutfile)
+    
+    # Render SVG
     svgPanZoom(svgoutfile,viewBox = F,controlIconsEnabled=F)
   })
   

@@ -64,12 +64,8 @@ orig_svginfo$legend = c()
 # make svginfo (leaving the original intact)
 svginfo = orig_svginfo
 
-# Used for Default values
-CDKs = grep(pattern = "CDK",svginfo$dataframe$id.kinrich)
-CaMs = grep(pattern = "CaM",svginfo$dataframe$id.kinrich)
-
 # get example RNA data
-rna_data = paste(readLines("Data/RNAdata.txt"),collapse="\n")
+rna_data     = paste(readLines("Data/RNAdata.txt"),collapse="\n")
 rna_abs_data = paste(readLines("Data/RNAdata_pluripotent.txt"),collapse="\n")
 
 # set all of the temp files
@@ -79,8 +75,6 @@ subdffile = tempfile(pattern="subdf",tmpdir="tempfiles",fileext = ".txt")
 svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
 
 #---------------------- DEFAULT COLORS ----------------------#
-
-
 
 #' sequential_palette_choices <- c(
 #'  '<img src="Greys.png">' = 'Greys',

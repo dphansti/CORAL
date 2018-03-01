@@ -108,7 +108,6 @@ resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, m
     maxvalue = max(resizedf[,2])
   }
   
-  
   # if controlledrange == TRUE
   if (controlledrange == TRUE)
   {
@@ -117,9 +116,8 @@ resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, m
     resizedf[,2][which(resizedf[,2] > maxvalue)] = maxvalue
     
     # (1) get range
-    rangesize = maxvalue - minvalue
+    rangesize = sizerange[2] - sizerange[1]
   }
-  
 
   # (2) shift values such that they start at zero
   radii = resizedf[,2] - minvalue
@@ -134,7 +132,6 @@ resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, m
   radii = radii+ sizerange[1]
   
   resizedf$radii = radii
-  
   
   # find indices to resize
   dflookup = match(resizedf[,1],df[,1])

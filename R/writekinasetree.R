@@ -69,7 +69,7 @@ writekinasetree <- function(svginfo,destination)
     
   # add branches
   outputlines = c(outputlines,"<g id=\"BRANCHES\">")
-  outputlines = c(outputlines,unlist(apply(svginfo$dataframe,1, build.branch)))
+  outputlines = c(outputlines,unlist(     apply(svginfo$dataframe,1, build.branch)       ))
   outputlines = c(outputlines,"</g>")
   
   # add circles
@@ -90,13 +90,6 @@ writekinasetree <- function(svginfo,destination)
   
   writeLines(outputlines,destination)
 }
-
-
-
-
-
-
-
 
 
 
