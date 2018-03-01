@@ -56,10 +56,8 @@ server <- function(input, output,session) {
   }
   if (input$loadexamplebranchvalue == TRUE)
   {
-   # examplebranchvaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-   #                              paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
    examplebranchvaluedata = rna_data
-   updateTextInput(session, "branchValueIDtype", value = "KinrichID")
+   updateTextInput(session, "branchValueIDtype", value = "HGNC")
   }
   
   updateTextInput(session, "branchValueBox", value = examplebranchvaluedata)
@@ -73,11 +71,8 @@ server <- function(input, output,session) {
   }
   if (input$loadexamplennodevalue == TRUE)
   {
-   # examplenodevaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                # paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
-   
    examplenodevaluedata = rna_data
-   updateTextInput(session, "nodeValueIDtype", value = "KinrichID")
+   updateTextInput(session, "nodeValueIDtype", value = "HGNC")
   }
   
   updateTextInput(session, "nodeValueBox", value = examplenodevaluedata)
@@ -91,10 +86,10 @@ server <- function(input, output,session) {
   }
   if (input$loadexamplennodevalue == TRUE)
   {
-   examplenodesizevaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   examplenodesizevaluedata = rna_abs_data
+   
    # set the correct ID type
-   updateTextInput(session, "nodesizeValueIDtype", value = "KinrichID")
+   updateTextInput(session, "nodesizeValueIDtype", value = "HGNC")
    
    # Set the input range
    

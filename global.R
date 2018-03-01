@@ -70,6 +70,7 @@ CaMs = grep(pattern = "CaM",svginfo$dataframe$id.kinrich)
 
 # get example RNA data
 rna_data = paste(readLines("Data/RNAdata.txt"),collapse="\n")
+rna_abs_data = paste(readLines("Data/RNAdata_pluripotent.txt"),collapse="\n")
 
 # set all of the temp files
 outputjson = tempfile(pattern="kinome_tree",tmpdir="www",fileext = ".json")
@@ -121,12 +122,24 @@ svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
 #'                                '<img src="Set2.png">' = 'Set2',
 #'                                '<img src="Set3.png">' = 'Set3')
 #' 
-#' divergent_palette_choices <- c('<img src="Red_Grey_Blue.png">' = 'Red_Grey_Blue',
-#'                                '<img src="Bro_Grey_Tur.png">' = 'Bro_Grey_Tur',
-#'                                '<img src="Pink_Grey_Gre.png">' = 'Pink_Grey_Gre',
-#'                                '<img src="Pur_Grey_Gre.png">' = 'Pur_Grey_Gre',
-#'                                '<img src="Pur_Grey_Or.png">' = 'Pur_Grey_Or',
-#'                                '<img src="Red_Grey_Gre.png">' = 'Red_Grey_Gre')
+#' 
+#' 
+#' 
+
+sequential_palette_choices <- c(
+ '<img src="Greys.png">' = 'Greys',
+ '<img src="Reds.png">' = 'Reds',
+ '<img src="Oranges.png">' = 'Oranges',
+ '<img src="Greens.png">' = 'Greens',
+  '<img src="Blues.png">' = 'Blues',
+ '<img src="Purples.png">' = 'Purples')
+ 
+divergent_palette_choices <- c('<img src="Red_Grey_Blue.png">' = 'Red_Grey_Blue',
+                               '<img src="Bro_Grey_Tur.png">' = 'Bro_Grey_Tur',
+                               '<img src="Pink_Grey_Gre.png">' = 'Pink_Grey_Gre',
+                               '<img src="Pur_Grey_Gre.png">' = 'Pur_Grey_Gre',
+                               '<img src="Pur_Grey_Or.png">' = 'Pur_Grey_Or',
+                               '<img src="Red_Grey_Gre.png">' = 'Red_Grey_Gre')
 
 # my sequential palettes
 Greys = brewer.pal(3,"Greys")
