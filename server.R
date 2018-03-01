@@ -186,13 +186,29 @@ server <- function(input, output,session) {
       if (nrow(recolordf)>0)
       {
         # establish palette
-        if (input$branchcolorpalettetype == "sequential") {branchcolpalette = colorRampPalette(unlist(seqpalettes[input$branchcolorpalette_seq]))(11)}
-        if (input$branchcolorpalettetype == "divergent") {branchcolpalette = colorRampPalette(unlist(divpalettes[input$branchcolorpalette_div]))(11)}
-        if (input$branchcolorpalettetype == "manual 2 color") {branchcolpalette = colorRampPalette(c(input$branch2col_low,input$branch2col_hi))(11)}
-        if (input$branchcolorpalettetype == "manual 3 color") {branchcolpalette = colorRampPalette(c(input$branch3col_low,input$branch3col_med,input$branch3col_hi))(11)}
+        if (input$branchcolorpalettetype == "sequential") 
+        {
+          branchcolpalette = colorRampPalette(unlist(seqpalettes[input$branchcolorpalette_seq]))(11)
+          bg.col = unlist(seqpalettes[input$branchcolorpalette_seq])[1]
+         }
+        if (input$branchcolorpalettetype == "divergent") 
+         {
+         branchcolpalette = colorRampPalette(unlist(divpalettes[input$branchcolorpalette_div]))(11)
+         bg.col = unlist(divpalettes[input$branchcolorpalette_div])[2]
+         }
+        if (input$branchcolorpalettetype == "manual 2 color")
+         {
+         branchcolpalette = colorRampPalette(c(input$branch2col_low,input$branch2col_hi))(11)
+         bg.col = input$branch2col_low
+         }
+        if (input$branchcolorpalettetype == "manual 3 color") 
+        {
+         branchcolpalette = colorRampPalette(c(input$branch3col_low,input$branch3col_med,input$branch3col_hi))(11)
+         bg.col = input$branch3col_med
+         }
        
         # set colors based on group
-        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = branchcolpalette, heatrange = c(input$minheat,input$maxheat))
+        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = branchcolpalette, heatrange = c(input$minheat,input$maxheat),bg.col = bg.col)
         tempdf$branch.col = newcolors_and_colormapping[[1]]
         tempdf$branch.val = newcolors_and_colormapping[[2]]
         
@@ -281,9 +297,6 @@ server <- function(input, output,session) {
        if (input$nodecolorpalettetype == "manual 2 color") {nodecolpalette = colorRampPalette(c(input$node2col_low,input$node2col_hi))(11)}
        if (input$nodecolorpalettetype == "manual 3 color") {nodecolpalette = colorRampPalette(c(input$node3col_low,input$node3col_med,input$node3col_hi))(11)}
        
-        # establish palette
-        # colpalette = colorRampPalette(c(input$col_node_low, input$col_node_med, input$col_node_hi))(100)
-        
         # set colors based on group
         newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = nodecolpalette, heatrange = c(input$nodeminheat,input$nodemaxheat))
         tempdf$node.col = newcolors_and_colormapping[[1]]

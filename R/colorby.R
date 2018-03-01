@@ -63,7 +63,8 @@ color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
 # Define a function creates color vector from values
 color.by.value <- function(df ,recolordf ,colors  ,heatrange , bg.col="#D3D3D3")
 {
-  # set background color
+ print (bg.col) 
+ # set background color
   color.vector = rep(bg.col,nrow(df))
   
   # kep track of group labels

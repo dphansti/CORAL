@@ -147,12 +147,12 @@ drawmypalettes("Blues",Blues,"www")
 drawmypalettes("Purples",Purples,"www")
 
 # my divergent palettes
-Red_Grey_Blue = c("#CA0020","grey90","#0571B0")
-Bro_Grey_Tur = c("#A6611A","grey90", "#018571")
-Pink_Grey_Gre = c("#D01C8B","grey90", "#4DAC26")
-Pur_Grey_Gre = c("#7B3294","grey90", "#008837")
-Pur_Grey_Or = c("#E66101","grey90", "#5E3C99")
-Red_Grey_Gre = c("#CA0020","grey90", "#404040")
+Red_Grey_Blue = c("#CA0020","#e5e5e5","#0571B0")
+Bro_Grey_Tur = c("#A6611A","#e5e5e5", "#018571")
+Pink_Grey_Gre = c("#D01C8B","#e5e5e5", "#4DAC26")
+Pur_Grey_Gre = c("#7B3294","#e5e5e5", "#008837")
+Pur_Grey_Or = c("#E66101","#e5e5e5", "#5E3C99")
+Red_Grey_Gre = c("#CA0020","#e5e5e5", "#404040")
 
 divpalettes = list(Red_Grey_Blue,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
 names(divpalettes) = c("Red_Grey_Blue","Bro_Grey_Tur","Pink_Grey_Gre","Pur_Grey_Gre","Pur_Grey_Or","Red_Grey_Gre")
