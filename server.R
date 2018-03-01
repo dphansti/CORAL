@@ -56,8 +56,9 @@ server <- function(input, output,session) {
   }
   if (input$loadexamplebranchvalue == TRUE)
   {
-   examplebranchvaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   # examplebranchvaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+   #                              paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   examplebranchvaluedata = rna_data
    updateTextInput(session, "branchValueIDtype", value = "KinrichID")
   }
   
@@ -72,8 +73,10 @@ server <- function(input, output,session) {
   }
   if (input$loadexamplennodevalue == TRUE)
   {
-   examplenodevaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   # examplenodevaluedata = paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
+                                # paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+   
+   examplenodevaluedata = rna_data
    updateTextInput(session, "nodeValueIDtype", value = "KinrichID")
   }
   
@@ -183,8 +186,11 @@ server <- function(input, output,session) {
       if (nrow(recolordf)>0)
       {
         # establish palette
-        branchcolpalette = colorRampPalette(c(input$col_heat_low, input$col_heat_med, input$col_heat_hi))(100)
-        
+        if (input$branchcolorpalettetype == "sequential") {branchcolpalette = colorRampPalette(unlist(seqpalettes[input$branchcolorpalette_seq]))(11)}
+        if (input$branchcolorpalettetype == "divergent") {branchcolpalette = colorRampPalette(unlist(divpalettes[input$branchcolorpalette_div]))(11)}
+        if (input$branchcolorpalettetype == "manual 2 color") {branchcolpalette = colorRampPalette(c(input$branch2col_low,input$branch2col_hi))(11)}
+        if (input$branchcolorpalettetype == "manual 3 color") {branchcolpalette = colorRampPalette(c(input$branch3col_low,input$branch3col_med,input$branch3col_hi))(11)}
+       
         # set colors based on group
         newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = branchcolpalette, heatrange = c(input$minheat,input$maxheat))
         tempdf$branch.col = newcolors_and_colormapping[[1]]
@@ -270,13 +276,16 @@ server <- function(input, output,session) {
       if (nrow(recolordf)>0)
       {
         # establish palette
-        nodecolpalette = colorRampPalette(c(input$col_node_low, input$col_node_med, input$col_node_hi))(100)
-        
+       if (input$nodecolorpalettetype == "sequential") {nodecolpalette = colorRampPalette(unlist(seqpalettes[input$nodecolorpalette_seq]))(11)}
+       if (input$nodecolorpalettetype == "divergent") {nodecolpalette = colorRampPalette(unlist(divpalettes[input$nodecolorpalette_div]))(11)}
+       if (input$nodecolorpalettetype == "manual 2 color") {nodecolpalette = colorRampPalette(c(input$node2col_low,input$node2col_hi))(11)}
+       if (input$nodecolorpalettetype == "manual 3 color") {nodecolpalette = colorRampPalette(c(input$node3col_low,input$node3col_med,input$node3col_hi))(11)}
+       
         # establish palette
-        colpalette = colorRampPalette(c(input$col_node_low, input$col_node_med, input$col_node_hi))(100)
+        # colpalette = colorRampPalette(c(input$col_node_low, input$col_node_med, input$col_node_hi))(100)
         
         # set colors based on group
-        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = colpalette, heatrange = c(input$nodeminheat,input$nodemaxheat))
+        newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = nodecolpalette, heatrange = c(input$nodeminheat,input$nodemaxheat))
         tempdf$node.col = newcolors_and_colormapping[[1]]
         tempdf$node.val = newcolors_and_colormapping[[2]]
         

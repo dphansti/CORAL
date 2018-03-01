@@ -1,7 +1,48 @@
 ## app.R ##
-ui <- dashboardPage(skin="black",
- dashboardHeader(title = "CORAL"
- ),
+
+radioButtons_withHTML <- function (inputId, label, choices, selected = NULL, inline = FALSE, 
+                                   width = NULL) 
+{
+ choices <- shiny:::choicesWithNames(choices)
+ selected <- if (is.null(selected)) 
+  choices[[1]]
+ else {
+  shiny:::validateSelected(selected, choices, inputId)
+ }
+ if (length(selected) > 1) 
+  stop("The 'selected' argument must be of length 1")
+ options <- generateOptions_withHTML(inputId, choices, selected, inline, 
+                                     type = "radio")
+ divClass <- "form-group shiny-input-radiogroup shiny-input-container"
+ if (inline) 
+  divClass <- paste(divClass, "shiny-input-container-inline")
+ tags$div(id = inputId, style = if (!is.null(width)) 
+  paste0("width: ", validateCssUnit(width), ";"), class = divClass, 
+  shiny:::controlLabel(inputId, label), options)
+}
+
+generateOptions_withHTML <- function (inputId, choices, selected, inline, type = "checkbox") 
+{
+ options <- mapply(choices, names(choices), FUN = function(value, 
+                                                           name) {
+  inputTag <- tags$input(type = type, name = inputId, value = value)
+  if (value %in% selected) 
+   inputTag$attribs$checked <- "checked"
+  if (inline) {
+   tags$label(class = paste0(type, "-inline"), inputTag, 
+              tags$span(HTML(name)))
+  }
+  else {
+   tags$div(class = type, tags$label(inputTag, tags$span(HTML(name))))
+  }
+ }, SIMPLIFY = FALSE, USE.NAMES = FALSE)
+ div(class = "shiny-options-group", options)
+}
+
+
+ui <- dashboardPage(
+ dashboardHeader(title = span(img(src="", width = 190))),
+ 
  dashboardSidebar
  (
   sidebarMenu(id="sidebartabs",
@@ -12,8 +53,6 @@ ui <- dashboardPage(skin="black",
   disable = TRUE
  ),
  dashboardBody(
- # "CORAL",
- 
                      tags$head(
                       
                       #adds the d3 library needed to draw the plot
@@ -24,7 +63,7 @@ ui <- dashboardPage(skin="black",
                       tags$script(src="collapsableForceNetwork.js"),
                       
                       #the stylesheet, paste all that was between the <style> tags from your example in the graph_style.css file
-                      # tags$link(rel = "stylesheet", type = "text/css", href = "styling_layouts.css"),
+                      tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
                       
                       # try to resize plot according to window size
                       tags$head(tags$style("#plot1{height:100vh;}"))
@@ -45,7 +84,7 @@ ui <- dashboardPage(skin="black",
                                                inputId = "dashboardchooser", label = NULL, 
                                                choices = c("Info", "Plot"), 
                                                selected = "Plot",
-                                               justified = TRUE, status = "primary",
+                                               justified = TRUE, status = "success",
                                                checkIcon = list(yes = "", no = ""),
                                               ),
                                               
@@ -86,7 +125,7 @@ ui <- dashboardPage(skin="black",
                                                                          choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                                                             
-                                                             checkboxInput(inputId="loadexamplebranchgroup",label="load kinase groups",value = FALSE)
+                                                             prettyCheckbox(inputId="loadexamplebranchgroup",label="load kinase groups",value = FALSE,shape="round",status="primary")
                                                              ),
                                                             
                                                             # if by value
@@ -95,19 +134,54 @@ ui <- dashboardPage(skin="black",
                                                              textAreaInput("branchValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                                            value =  ""
                                                              ),
+                                                             
+                                                             prettyCheckbox(inputId="loadexamplebranchvalue",label="load example data",value = FALSE,shape="round",status="primary"),
+                                                             
                                                              selectInput(inputId = "branchValueIDtype",label = "Identifier Type",
                                                                          choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
-                                                             fluidRow( width=12,
-                                                                       column(4,  colourInput("col_heat_low", "Low", HM_low,showColour = "both")),
-                                                                       column(4,                  colourInput("col_heat_med", "Med", HM_med,showColour = "both")),
-                                                                       column(4,                  colourInput("col_heat_hi", "High", HM_hi,showColour = "both"))
-                                                             ) ,
+                                                             
+                                                             
                                                              fluidRow( width=12,
                                                                        column(6,                numericInput(inputId = "minheat",label = "min",value = -5 )),
                                                                        column(6,                  numericInput(inputId = "maxheat",label = "max",value =  5 ))
                                                              ),
-                                                             checkboxInput(inputId="loadexamplebranchvalue",label="load example data",value = FALSE)
+                                                             
+                                                             column(6,
+                                                                    radioButtons(inputId="branchcolorpalettetype",label = "Color Range Type",
+                                                                                 choices = c("sequential","divergent","manual 2 color","manual 3 color"),inline = FALSE)
+                                                             ),
+                                                             
+                                                             column(6,
+                                                             conditionalPanel(
+                                                              condition = "input.branchcolorpalettetype == 'sequential'",
+                                                              radioButtons_withHTML('branchcolorpalette_seq', 'Choose Palette',choices = sequential_palette_choices, inline = FALSE)
+                                                             ),
+                                                             
+                                                             conditionalPanel(
+                                                              condition = "input.branchcolorpalettetype == 'divergent'",
+                                                              radioButtons_withHTML('branchcolorpalette_div', 'Choose Palette',choices = divergent_palette_choices, inline = FALSE)
+                                                             ),
+                                                            
+                                                             conditionalPanel(
+                                                              condition = "input.branchcolorpalettetype == 'manual 2 color'",
+                                                             
+                                                              colourInput("branch2col_low", "Low", HM_low,showColour = "both"),
+                                                              colourInput("branch2col_hi", "High", HM_hi,showColour = "both")
+                                                             ),
+                                                             
+                                                             conditionalPanel(
+                                                              condition = "input.branchcolorpalettetype == 'manual 3 color'",
+                                                              
+                                                              colourInput("branch3col_low", "Low", HM_low,showColour = "both"),
+                                                              colourInput("branch3col_med", "Med", HM_med,showColour = "both"),
+                                                              colourInput("branch3col_hi", "High", HM_hi,showColour = "both")
+                                                             )
+                                                             
+                                                             
+                                                             )
+                                                             
+                                                             
                                                             )
                                                         ), # end box
                                                         
@@ -130,7 +204,7 @@ ui <- dashboardPage(skin="black",
                                                             
                                                             conditionalPanel(
                                                              condition = "input.nodecolortype != 'As one color' & input.nodecolortype != 'None'",
-                                                             checkboxInput(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = TRUE)
+                                                             prettyCheckbox(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = FALSE,shape="round",status="primary")
                                                             ),
                                                             
                                                             
@@ -154,7 +228,7 @@ ui <- dashboardPage(skin="black",
                                                                          choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                                                              
-                                                             checkboxInput(inputId="loadexamplennodegroup",label="load kinase groups",value = FALSE)
+                                                             prettyCheckbox(inputId="loadexamplennodegroup",label="load kinase groups",value = FALSE,shape="round",status="primary")
                                                             ),
                                                             
                                                             # if by value
@@ -163,21 +237,52 @@ ui <- dashboardPage(skin="black",
                                                              textAreaInput("nodeValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                                            value =  ""
                                                              ),
+                                                             prettyCheckbox(inputId="loadexamplennodevalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                                              selectInput(inputId = "nodeValueIDtype",label = "Identifier Type",
                                                                          choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
-                                                             fluidRow( width=12,
-                                                                       column(4,  colourInput("col_node_low", "Low", HM_low,showColour = "background")),
-                                                                       column(4,                  colourInput("col_node_med", "Med", HM_med,showColour = "background")),
-                                                                       column(4,                  colourInput("col_node_hi", "High", HM_hi,showColour = "background"))
-                                                             ) ,
+                                                             # fluidRow( width=12,
+                                                             #           column(4,  colourInput("col_node_low", "Low", HM_low,showColour = "background")),
+                                                             #           column(4,                  colourInput("col_node_med", "Med", HM_med,showColour = "background")),
+                                                             #           column(4,                  colourInput("col_node_hi", "High", HM_hi,showColour = "background"))
+                                                             # ) ,
                                                              fluidRow( width=12,
                                                                        column(6,                numericInput(inputId = "nodeminheat",label = "min",value = -5 )),
                                                                        column(6,                  numericInput(inputId = "nodemaxheat",label = "max",value =  5 ))
                                                              ),
-                                                             checkboxInput(inputId="loadexamplennodevalue",label="load example data",value = FALSE)
+                                                             column(6,
+                                                                    radioButtons(inputId="nodecolorpalettetype",label = "Color Range Type",
+                                                                                 choices = c("sequential","divergent","manual 2 color","manual 3 color"),inline = FALSE)
+                                                             ),
+                                                             
+                                                             column(6,
+                                                                    conditionalPanel(
+                                                                     condition = "input.nodecolorpalettetype == 'sequential'",
+                                                                     radioButtons_withHTML('nodecolorpalette_seq', 'Choose Palette',choices = sequential_palette_choices, inline = FALSE)
+                                                                    ),
+                                                                    
+                                                                    conditionalPanel(
+                                                                     condition = "input.nodecolorpalettetype == 'divergent'",
+                                                                     radioButtons_withHTML('nodecolorpalette_div', 'Choose Palette',choices = divergent_palette_choices, inline = FALSE)
+                                                                    ),
+                                                                    
+                                                                    conditionalPanel(
+                                                                     condition = "input.nodecolorpalettetype == 'manual 2 color'",
+                                                                     
+                                                                     colourInput("node2col_low", "Low", HM_low,showColour = "both"),
+                                                                     colourInput("node2col_hi", "High", HM_hi,showColour = "both")
+                                                                    ),
+                                                                    
+                                                                    conditionalPanel(
+                                                                     condition = "input.nodecolorpalettetype == 'manual 3 color'",
+                                                                     
+                                                                     colourInput("node3col_low", "Low", HM_low,showColour = "both"),
+                                                                     colourInput("node3col_med", "Med", HM_med,showColour = "both"),
+                                                                     colourInput("node3col_hi", "High", HM_hi,showColour = "both")
+                                                                    )
+                                                                    
                                                             )
-                                                            
+                                                            ) # end conditional  
                                                         ), # end box   
                                                         
                                                         # ---- NODE SIZE ---- #
@@ -207,7 +312,7 @@ ui <- dashboardPage(skin="black",
                                                                          multiple = FALSE,selected = "KinrichID",width = "100%"),
                                                              sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 20,step = 0.25),
                                                              
-                                                             checkboxInput("Manuallysetdatarange","Manually set data range",value = FALSE),
+                                                             prettyCheckbox("Manuallysetdatarange","Manually set data range",value = FALSE,shape="round",status="primary"),
                                                              
                                                              conditionalPanel(
                                                               condition = "input.Manuallysetdatarange == true",
@@ -218,13 +323,13 @@ ui <- dashboardPage(skin="black",
                                                                         column(6,                  numericInput(inputId = "nodesizevaluemax",label = "Max Value",value =  1 ))
                                                               )
                                                              ),
-                                                             checkboxInput(inputId="loadexamplennodesizevalue",label="load example data",value = FALSE)
+                                                             prettyCheckbox(inputId="loadexamplennodesizevalue",label="load example data",value = FALSE,shape="round",status="primary")
                                                             ) # end box    
                                                             ),
 
                                                         # fluidRow(width=12,
                                                         box(width=12,
-                                                            title = tagList(shiny::icon("gear"), "advanced settings"), status = "primary", solidHeader = TRUE,
+                                                            title = "Advanced Settings", status = "warning", solidHeader = TRUE,
                                                             collapsible = TRUE,collapsed = TRUE,
                                                             
                                                             # text box for title
@@ -311,7 +416,7 @@ ui <- dashboardPage(skin="black",
                                                         # checkboxInput("load_example_po4data", "Use example data", FALSE)
                                                         #     ), # end box
                                                         
-                                                        box(width=12,title = "Download",status = "warning", solidHeader = TRUE,
+                                                        box(width=12,title = "Download",status = "danger", solidHeader = TRUE,
                                                             collapsible = TRUE,collapsed = TRUE,
                                                             
                                                             # download link for circle
@@ -389,7 +494,7 @@ ui <- dashboardPage(skin="black",
                                                inputId = "dashboardchooser2", label = NULL, 
                                                choices = c("Info", "Plot"), 
                                                selected = "Info",
-                                               justified = TRUE, status = "primary",
+                                               justified = TRUE, status = "success",
                                                checkIcon = list(yes = "", no = "")
                                               ),
                                               
