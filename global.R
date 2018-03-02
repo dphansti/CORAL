@@ -120,6 +120,40 @@ svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
 #' 
 #' 
 
+
+qualitative_palette_choices <- c('<img src="Accent.png">' = 'Accent',
+                               '<img src="Dark2.png">' = 'Dark2',
+                               '<img src="Paired.png">' = 'Paired',
+                               '<img src="Pastel1.png">' = 'Pastel1',
+                               '<img src="Pastel2.png">' = 'Pastel2',
+                               '<img src="Set1.png">' = 'Set1',
+                               '<img src="Set2.png">' = 'Set2',
+                               '<img src="Set3.png">' = 'Set3')
+
+# my qualitative palettes
+Accent = brewer.pal(8,"Accent")
+Dark2 = brewer.pal(8,"Dark2")
+Paired = brewer.pal(12,"Paired")
+Pastel1 = brewer.pal(9,"Pastel1")
+Pastel2 = brewer.pal(8,"Pastel2")
+Set1 = brewer.pal(9,"Set1")
+Set2 = brewer.pal(8,"Set2")
+Set3 = brewer.pal(12,"Set3")
+
+qualpalettes = list(Accent,Dark2,Paired,Pastel1,Pastel2,Set1,Set2,Set3)
+names(qualpalettes) = c("Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3")
+
+drawmypalettes("Accent",Accent,"www",boxes =5)
+drawmypalettes("Dark2",Dark2,"www",boxes =5)
+drawmypalettes("Paired",Paired,"www",boxes =5)
+drawmypalettes("Pastel1",Pastel1,"www",boxes =5)
+drawmypalettes("Pastel2",Pastel2,"www",boxes =5)
+drawmypalettes("Set1",Set1,"www",boxes =5)
+drawmypalettes("Set2",Set2,"www",boxes =5)
+drawmypalettes("Set3",Set3,"www",boxes =5)
+
+
+
 sequential_palette_choices <- c(
  '<img src="Greys.png">' = 'Greys',
  '<img src="Reds.png">' = 'Reds',
@@ -171,16 +205,9 @@ drawmypalettes("Pur_Grey_Gre",Pur_Grey_Gre,"www")
 drawmypalettes("Pur_Grey_Or",Pur_Grey_Or,"www")
 drawmypalettes("Red_Grey_Gre",Red_Grey_Gre,"www")
 
-# make images of palettes
-for (palette in row.names(brewer.pal.info))
-{
- drawpalettes(palette=palette,outdir="www")
-}
-
 pal_divs = row.names(brewer.pal.info[brewer.pal.info[,2]=="div",])
 pal_seqs = row.names(brewer.pal.info[brewer.pal.info[,2]=="seq",])
 pal_quals = row.names(brewer.pal.info[brewer.pal.info[,2]=="qual",])
-
 
 # Default tree branch color
 BG_col1 = "#D3D3D3"

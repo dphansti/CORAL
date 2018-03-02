@@ -110,11 +110,6 @@ server <- function(input, output,session) {
     # Set initial yoffset
     yoffset = 79.125
     
-    # default palette for group colors
-    colpalette = c( input$groupcol1,input$groupcol2,input$groupcol3,input$groupcol4,input$groupcol5,input$groupcol6,
-                    input$groupcol7,input$groupcol8,input$groupcol9,input$groupcol10,input$groupcol11,input$groupcol12)
-    
-    
     # get current values
     tempdf$text.size = input$fontsize
     
@@ -144,7 +139,10 @@ server <- function(input, output,session) {
     # color branches by group
     if (input$branchcolortype == "by group")
     {
-      # read in text area input
+     # define color palette
+     branchgroupcolpalette = unlist(qualpalettes[input$branchgroupcolorpalette_qaul])
+     
+     # read in text area input
       recolordf = read.text.input(input$branchGroupBox)
       
       # convert to coral id
@@ -153,7 +151,7 @@ server <- function(input, output,session) {
       if (nrow(recolordf)>0)
       {
         # set colors based on group
-        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = colpalette)
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = branchgroupcolpalette)
         tempdf$branch.col = newcolors_and_colormapping[[1]]
         tempdf$branch.group = newcolors_and_colormapping[[2]]
         branch.group.colormapping = newcolors_and_colormapping[[3]]
@@ -253,7 +251,10 @@ server <- function(input, output,session) {
     # color nodes by group
     if (input$nodecolortype == "by group")
     {
-      # read in text area input
+     # define color palette
+     nodegroupcolpalette = unlist(qualpalettes[input$nodegroupcolorpalette_qaul]) 
+     
+     # read in text area input
       recolordf = read.text.input(input$nodeGroupBox)
       
       # convert to coral id
@@ -262,7 +263,7 @@ server <- function(input, output,session) {
       if (nrow(recolordf)>0)
       {
         # set colors based on group
-        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = colpalette)
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = nodegroupcolpalette)
         tempdf$node.col = newcolors_and_colormapping[[1]]
         tempdf$node.group = newcolors_and_colormapping[[2]]
         node.group.colormapping = newcolors_and_colormapping[[3]]
@@ -392,7 +393,7 @@ server <- function(input, output,session) {
     dfandlegend = newdf()
     svginfo$dataframe = dfandlegend[[1]]
     svginfo$legend = dfandlegend[[2]]
-    
+
     # set title
     svginfo$title = input$titleinput
     

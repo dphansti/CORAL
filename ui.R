@@ -89,9 +89,6 @@ ui <- dashboardPage(
                            ),
                            
                            fluidRow( width=12,
-                                     
-                                     
-                                     
                                      box(width=12,title = "Branch Color",status = "primary", solidHeader = TRUE,
                                          collapsible = TRUE,collapsed = TRUE,
                                          
@@ -125,8 +122,33 @@ ui <- dashboardPage(
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
                                           
-                                          prettyCheckbox(inputId="loadexamplebranchgroup",label="load kinase groups",value = FALSE,shape="round",status="primary")
+                                          prettyCheckbox(inputId="loadexamplebranchgroup",label="load kinase groups",value = FALSE,shape="round",status="primary"),
+                                          
+                                          fluidRow(width=12,
+                                                   column(6,
+                                                          radioButtons(inputId="branchgroupcolorpalettetype",label = "Color Range Type",
+                                                                       choices = c("prebuilt","manual"),inline = FALSE)
+                                                   ),
+                                                   
+                                                   column(6,
+                                                          conditionalPanel(
+                                                           condition = "input.branchgroupcolorpalettetype == 'prebuilt'",
+                                                           radioButtons_withHTML('branchgroupcolorpalette_qaul', 'Choose Palette',choices = qualitative_palette_choices, inline = FALSE)
+                                                          )
+                                                   ) # end col
+                                          ), # end row
+                                          
+                                          tags$hr(),
+                                          
+                                          prettyCheckbox(inputId="manualgroupcols_branch","manual group entry",
+                                                         value = FALSE,shape="round",status="primary")
                                          ),
+
+                                         
+                                         
+                                         
+
+                                         
                                          
                                          # if by value
                                          conditionalPanel(
@@ -224,7 +246,27 @@ ui <- dashboardPage(
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
                                           
-                                          prettyCheckbox(inputId="loadexamplennodegroup",label="load kinase groups",value = FALSE,shape="round",status="primary")
+                                          prettyCheckbox(inputId="loadexamplennodegroup",label="load kinase groups",value = FALSE,shape="round",status="primary"),
+                                          
+                                          fluidRow(width=12,
+                                                   column(6,
+                                                          radioButtons(inputId="nodegroupcolorpalettetype",label = "Color Range Type",
+                                                                       choices = c("prebuilt","manual"),inline = FALSE)
+                                                   ),
+                                                   
+                                                   column(6,
+                                                          conditionalPanel(
+                                                           condition = "input.nodegroupcolorpalettetype == 'prebuilt'",
+                                                           radioButtons_withHTML('nodegroupcolorpalette_qaul', 'Choose Palette',choices = qualitative_palette_choices, inline = FALSE)
+                                                          )
+                                                   ) # end col
+                                          ), # end row
+                                          
+                                          tags$hr(),
+                                          
+                                          prettyCheckbox(inputId="manualgroupcols_node","manual group entry",
+                                                         value = FALSE,shape="round",status="primary")
+                                          
                                          ),
                                          
                                          # if by value
@@ -300,8 +342,7 @@ ui <- dashboardPage(
                                          conditionalPanel(
                                           condition = "input.nodesizetype == 'by value'",
                                           textAreaInput("nodesizeValueBox", "Kinases & Value", height = "100px",width = "100%",
-                                                        value =  paste(paste(apply(data.frame(svginfo$dataframe$id.kinrich[CDKs],rep(5,length(CDKs))),1,paste,collapse="\t"),collapse="\n"),
-                                                                       paste(apply(data.frame(svginfo$dataframe$id.kinrich[CaMs],rep(-5,length(CaMs))),1,paste,collapse="\t"),collapse="\n"),sep="\n")
+                                                        value = ""
                                           ),
                                           selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),

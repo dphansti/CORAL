@@ -21,7 +21,7 @@ color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
   # set background color
   color.vector = rep(bg.col,nrow(df))
   
-  # kep track of group labels
+  # keep track of group labels
   group.vector = rep("none",nrow(df))
   
   # get group names
