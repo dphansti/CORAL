@@ -164,6 +164,13 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
 # Define a function that builds a legend for values
 build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize)
 {
+  extrayoff = 0
+ 
+  if (maxsize > 6)
+  {
+   extrayoff = maxsize - 6
+  }
+ 
   # write the header
   header = paste("<text x=\"98.8075\"",
                  " y=\"", yoffset + 8.8451, "\"",
@@ -172,7 +179,7 @@ build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize)
                  sep="")
 
   # write the grey line
-  greylineheight = 41.58
+  greylineheight = 41.58 + 2 * extrayoff
   greyline       = paste("<rect x=\"", 89.807,"\"",
                          " y=\"", yoffset, "\"",
                          " fill=\"", "#D3D3D3", "\"",
@@ -183,35 +190,39 @@ build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize)
   circles = c()
   
   xs = c(100.266,109.45,120.846,134.454,150.273,168.303)
+  
   sizes = seq(minsize,maxsize,length.out = length(xs))
   
   for (i in 1:length(xs))
   {
     circle = paste("<circle cx=\"", xs[i] ,"\"",
-                   " cy=\"", yoffset + 33.932, "\"",
+                   " cy=\"", yoffset + 33.932 + extrayoff, "\"",
                    " fill=\"", "#D3D3D3", "\"",
+                   " stroke=\"white\"",
                    " r=\"", sizes[i], "\"/>",
                    sep="")
     circles = c(circles,circle)
   }
   
   # add text labels
-  text.min = paste("<text x=\"",  98.8072,"\"",
+  text.min = paste("<text x=\"",  min(xs),"\"",
                    " y=\"", yoffset + 23.1251, "\"",
                    " font-size=\"", "5px", "\"",
+                   " text-anchor=\"middle\"",
                    " font-family=\"", "'AvenirNext-Bold'","\">",
                    minval,"</text>",
                    sep="")
-  text.max = paste("<text x=\"",  166.7776,"\"",
+  text.max = paste("<text x=\"",  max(xs),"\"",
                    " y=\"", yoffset + 23.1251, "\"",
                    " font-size=\"", "5px", "\"",
+                   " text-anchor=\"middle\"",
                    " font-family=\"", "'AvenirNext-Bold'","\">",
                    maxval,"</text>",
                    sep="")
   
   # asssemble output
   output = c(header, greyline, circles, text.min, text.max)
-  yoffset = yoffset + 41.58
+  yoffset = yoffset + 41.58 + extrayoff
   return(list(output,yoffset))
 }
 

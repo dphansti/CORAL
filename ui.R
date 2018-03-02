@@ -348,7 +348,7 @@ ui <- dashboardPage(
                                           selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
-                                          sliderInput("nodesizeValueslider",label = "Size Range",value=c(2,5),min = 0, max = 20,step = 0.25),
+                                          sliderInput("nodesizeValueslider",label = "Size Range",value=c(3,9),min = 0, max = 20,step = 0.25),
                                           
                                           prettyCheckbox("Manuallysetdatarange","Manually set data range",value = FALSE,shape="round",status="primary"),
                                           
