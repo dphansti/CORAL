@@ -2,6 +2,8 @@
 # server business
 server <- function(input, output,session) {
  
+ # ----------------- INFO PAGES ---------------- #
+ 
  observeEvent(input$InfoAbout,{
   
   # Remove existing info boxes
@@ -72,6 +74,9 @@ server <- function(input, output,session) {
    updateRadioGroupButtons(session,inputId="dashboardchooser",selected="Plot")
    }
  })
+ 
+ 
+ # ----------------- LOAD EXAMPLE DATA ---------------- #
  
  # Load example data for branches color by group
  observe({
@@ -146,13 +151,21 @@ server <- function(input, output,session) {
    # set the correct ID type
    updateTextInput(session, "nodesizeValueIDtype", value = "HGNC")
    
+   # update the manual inpout checkbox
+   updatePrettyCheckbox(session,"Manuallysetdatarange",value=TRUE)
+   
    # Set the input range
+   updateNumericInput(session, "nodesizevaluein", value = 0)
+   updateNumericInput(session, "nodesizevaluemax",value = 100)
    
    # Set the size range
+   updateSliderInput(session,"nodesizeValueslider",value=c(4,16))
   }
   
   updateTextInput(session, "nodesizeValueBox", value = examplenodesizevaluedata)
  })
+ 
+ # ----------------- MAIN REACTIVE FUNCTION ---------------- #
  
   newdf <- reactive({ 
    
@@ -490,6 +503,7 @@ server <- function(input, output,session) {
     return(list(tempdf,legend))
   }) # end reactive
   
+  # ----------------- PLOTS ---------------- #
   
   # build the manning tree
   output$plot1  <- renderSvgPanZoom ({
@@ -574,6 +588,8 @@ server <- function(input, output,session) {
     x <- reactiveValuesToList(input)
   })
   
+  # ----------------- DATA TABLE ---------------- #
+  
   # build the table
   output$KinaseTable <- DT::renderDataTable({
     
@@ -615,7 +631,9 @@ server <- function(input, output,session) {
     datatable(newdf, escape=FALSE)
   })
   
-  # Downloadable csv of selected dataset ----
+  # ----------------- DATA TABLE ---------------- #
+  
+  # Download image
   output$downloadData <- downloadHandler(
     
     filename <- function(file) { paste("CORAL",".","tree",".",input$downloadtype,sep="")},
