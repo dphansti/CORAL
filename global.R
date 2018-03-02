@@ -33,6 +33,7 @@ source("R/map2color.R")
 source("R/convertID.R")
 source("R/makejson.R")
 source("R/colors.R")
+source("R/radiobuttonswithimages.R")
 
 #---------------------- READ IN AND ORGANIZE DATA ----------------------#
 
@@ -76,50 +77,16 @@ svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
 
 #---------------------- DEFAULT COLORS ----------------------#
 
-#' sequential_palette_choices <- c(
-#'  '<img src="Greys.png">' = 'Greys',
-#'  '<img src="Reds.png">' = 'Reds',
-#'  '<img src="Oranges.png">' = 'Oranges',
-#'  '<img src="Greens.png">' = 'Greens',
-#'   '<img src="Blues.png">' = 'Blues',
-#'  '<img src="Purples.png">' = 'Purples'
-#'                                 #'<img src="BuGn.png">' = 'BuGn',
-#'                                 #'<img src="BuPu.png">' = 'BuPu',
-#'                                 #'<img src="GnBu.png">' = 'GnBu',
-#'                                 #'<img src="OrRd.png">' = 'OrRd',
-#'                                 #'<img src="PuBu.png">' = 'PuBu',
-#'                                 #'<img src="PuBuGn.png">' = 'PuBuGn',
-#'                                 #'<img src="PuRd.png">' = 'PuRd',
-#'                                 #'<img src="RdPu.png">' = 'RdPu',
-#'                                 #'<img src="YlGn.png">' = 'YlGn',
-#'                                 #'<img src="YlGnBu.png">' = 'YlGnBu',
-#'                                 #'<img src="YlOrBr.png">' = 'YlOrBr',
-#'                                 #'<img src="YlOrRd.png">' = 'YlOrRd'
-#'                                 )
-#' 
-#' # divergent_palette_choices <- c('<img src="BrBG.png">' = 'BrBG',
-#' #                                 '<img src="PiYG.png">' = 'PiYG',
-#' #                                 '<img src="PRGn.png">' = 'PRGn',
-#' #                                '<img src="PuOr.png">' = 'PuOr',
-#' #                                '<img src="RdBu.png">' = 'RdBu',
-#' #                                '<img src="RdGy.png">' = 'RdGy',
-#' #                                '<img src="RdYlBu.png">' = 'RdYlBu',
-#' #                                '<img src="RdYlGn.png">' = 'RdYlGn',
-#' #                                '<img src="Spectral.png">' = 'Spectral')
-#' 
-#' qualitative_palette_choices <- c('<img src="Accent.png">' = 'Accent',
-#'                                '<img src="Dark2.png">' = 'Dark2',
-#'                                '<img src="Paired.png">' = 'Paired',
-#'                                '<img src="Pastel1.png">' = 'Pastel1',
-#'                                '<img src="Pastel2.png">' = 'Pastel2',
-#'                                '<img src="Set1.png">' = 'Set1',
-#'                                '<img src="Set2.png">' = 'Set2',
-#'                                '<img src="Set3.png">' = 'Set3')
-#' 
-#' 
-#' 
-#' 
+# Default tree branch color
+BG_col1 = "#D3D3D3"
 
+# Default heatmap colors
+HM_low = "#07C9DE"
+HM_med = "#D3D3D3"
+HM_hi = "#F66049"
+
+
+### Qualtative Palettes ###
 
 qualitative_palette_choices <- c('<img src="Accent.png">' = 'Accent',
                                '<img src="Dark2.png">' = 'Dark2',
@@ -152,7 +119,7 @@ drawmypalettes("Set1",Set1,"www",boxes =5)
 drawmypalettes("Set2",Set2,"www",boxes =5)
 drawmypalettes("Set3",Set3,"www",boxes =5)
 
-
+### Sequential Palettes ###
 
 sequential_palette_choices <- c(
  '<img src="Greys.png">' = 'Greys',
@@ -187,6 +154,8 @@ drawmypalettes("Greens",Greens,"www")
 drawmypalettes("Blues",Blues,"www")
 drawmypalettes("Purples",Purples,"www")
 
+### Divergent Palettes ###
+
 # my divergent palettes
 Red_Grey_Blue = c("#CA0020","#e5e5e5","#0571B0")
 Bro_Grey_Tur = c("#A6611A","#e5e5e5", "#018571")
@@ -205,17 +174,7 @@ drawmypalettes("Pur_Grey_Gre",Pur_Grey_Gre,"www")
 drawmypalettes("Pur_Grey_Or",Pur_Grey_Or,"www")
 drawmypalettes("Red_Grey_Gre",Red_Grey_Gre,"www")
 
-pal_divs = row.names(brewer.pal.info[brewer.pal.info[,2]=="div",])
-pal_seqs = row.names(brewer.pal.info[brewer.pal.info[,2]=="seq",])
-pal_quals = row.names(brewer.pal.info[brewer.pal.info[,2]=="qual",])
 
-# Default tree branch color
-BG_col1 = "#D3D3D3"
-
-# Default heatmap colors
-HM_low = "#07C9DE"
-HM_med = "#D3D3D3"
-HM_hi = "#F66049"
 
 # Default group color palette
 defaultpalette = colorRampPalette( c(
@@ -236,13 +195,11 @@ defaultpalette = colorRampPalette( c(
 # # Default group color palette
 # defaultpalette = colorRampPalette( brewer.pal(11,"Paired"))(11)
 
+# pal_divs = row.names(brewer.pal.info[brewer.pal.info[,2]=="div",])
+# pal_seqs = row.names(brewer.pal.info[brewer.pal.info[,2]=="seq",])
+# pal_quals = row.names(brewer.pal.info[brewer.pal.info[,2]=="qual",])
 
-
-
-
-
-
-
+CurrentInfoPage = "About"
 
 
 

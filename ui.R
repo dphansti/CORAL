@@ -1,45 +1,5 @@
 ## app.R ##
 
-radioButtons_withHTML <- function (inputId, label, choices, selected = NULL, inline = FALSE, 
-                                   width = NULL) 
-{
- choices <- shiny:::choicesWithNames(choices)
- selected <- if (is.null(selected)) 
-  choices[[1]]
- else {
-  shiny:::validateSelected(selected, choices, inputId)
- }
- if (length(selected) > 1) 
-  stop("The 'selected' argument must be of length 1")
- options <- generateOptions_withHTML(inputId, choices, selected, inline, 
-                                     type = "radio")
- divClass <- "form-group shiny-input-radiogroup shiny-input-container"
- if (inline) 
-  divClass <- paste(divClass, "shiny-input-container-inline")
- tags$div(id = inputId, style = if (!is.null(width)) 
-  paste0("width: ", validateCssUnit(width), ";"), class = divClass, 
-  shiny:::controlLabel(inputId, label), options)
-}
-
-generateOptions_withHTML <- function (inputId, choices, selected, inline, type = "checkbox") 
-{
- options <- mapply(choices, names(choices), FUN = function(value, 
-                                                           name) {
-  inputTag <- tags$input(type = type, name = inputId, value = value)
-  if (value %in% selected) 
-   inputTag$attribs$checked <- "checked"
-  if (inline) {
-   tags$label(class = paste0(type, "-inline"), inputTag, 
-              tags$span(HTML(name)))
-  }
-  else {
-   tags$div(class = type, tags$label(inputTag, tags$span(HTML(name))))
-  }
- }, SIMPLIFY = FALSE, USE.NAMES = FALSE)
- div(class = "shiny-options-group", options)
-}
-
-
 ui <- dashboardPage(
  dashboardHeader(title = span(img(src="", width = 190))),
  
@@ -66,7 +26,11 @@ ui <- dashboardPage(
    tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
    
    # try to resize plot according to window size
-   tags$head(tags$style("#plot1{height:100vh;}"))
+   tags$head(tags$style("#plot1{height:100vh;}")),
+   tags$head(tags$style("#InfoAbout{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}")),
+   tags$head(tags$style("#InfoUsage{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}")),
+   tags$head(tags$style("#InfoOther{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}"))
+   
   ),
   
   # Fix a bug in the texboxInput funciton that doesn't respect width= "100%"
@@ -85,7 +49,7 @@ ui <- dashboardPage(
                             choices = c("Info", "Plot"), 
                             selected = "Plot",
                             justified = TRUE, status = "success",
-                            checkIcon = list(yes = "", no = ""),
+                            checkIcon = list(yes = "", no = "")
                            ),
                            
                            fluidRow( width=12,
@@ -122,7 +86,7 @@ ui <- dashboardPage(
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
                                           
-                                          prettyCheckbox(inputId="loadexamplebranchgroup",label="load kinase groups",value = FALSE,shape="round",status="primary"),
+                                          prettyCheckbox(inputId="loadexamplebranchgroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
                                           
                                           fluidRow(width=12,
                                                    column(6,
@@ -134,7 +98,33 @@ ui <- dashboardPage(
                                                           conditionalPanel(
                                                            condition = "input.branchgroupcolorpalettetype == 'prebuilt'",
                                                            radioButtons_withHTML('branchgroupcolorpalette_qaul', 'Choose Palette',choices = qualitative_palette_choices, inline = FALSE)
-                                                          )
+                                                          ),
+                                                          
+                                                          
+                                                          conditionalPanel(
+                                                           condition = "input.branchgroupcolorpalettetype == 'manual'",
+                                                           
+                                                           "Select Colors",
+                                                           
+                                                           fluidRow(
+                                                            column(width = 1,  colourInput("branchgroupcol1", "", defaultpalette[1],showColour = "both")),
+                                                            column(width = 1,  colourInput("branchgroupcol2", "", defaultpalette[2],showColour = "both")),
+                                                            column(width = 1,  colourInput("branchgroupcol3", "", defaultpalette[3],showColour = "both")),
+                                                            column(width = 1,  colourInput("branchgroupcol4", "", defaultpalette[4],showColour = "both"))
+                                                           ),
+                                                           fluidRow( 
+                                                            column(width = 1,  colourInput("branchgroupcol5", "", defaultpalette[5],showColour = "both")),
+                                                            column(width = 1,  colourInput("branchgroupcol6", "", defaultpalette[6],showColour = "both")),
+                                                            column(width = 1,  colourInput("branchgroupcol7", "", defaultpalette[7],showColour = "both")),
+                                                            column(width = 1,  colourInput("branchgroupcol8", "", defaultpalette[8],showColour = "both"))
+                                                           ),
+                                                           fluidRow( 
+                                                            column(width = 1,  colourInput("branchgroupcol9", "", defaultpalette[9],showColour = "both")),
+                                                            column(width = 1,  colourInput("branchgroupcol10", "", defaultpalette[10],showColour = "both")),
+                                                            column(width = 1,  colourInput("branchgroupcol11", "", defaultpalette[11],showColour = "both")),
+                                                            column(width = 1,  colourInput("branchgroupcol12", "", defaultpalette[12],showColour = "both"))
+                                                           )
+                                                          ) # end conditional
                                                    ) # end col
                                           ), # end row
                                           
@@ -143,11 +133,6 @@ ui <- dashboardPage(
                                           prettyCheckbox(inputId="manualgroupcols_branch","manual group entry",
                                                          value = FALSE,shape="round",status="primary")
                                          ),
-
-                                         
-                                         
-                                         
-
                                          
                                          
                                          # if by value
@@ -216,15 +201,10 @@ ui <- dashboardPage(
                                          # if single color
                                          conditionalPanel(
                                           condition = "input.nodecolortype == 'As one color'",
-                                          colourInput("col_node_single", "Node Color","#A3A3A3")
+                                          colourInput("col_node_single", "Node Color",BG_col1)
                                          ),
                                          
-                                         
-                                         conditionalPanel(
-                                          condition = "input.nodecolortype != 'As one color' & input.nodecolortype != 'None'",
-                                          prettyCheckbox(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = FALSE,shape="round",status="primary")
-                                         ),
-                                         
+                                         prettyCheckbox(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = FALSE,shape="round",status="primary"),
                                          
                                          # if manual selection
                                          conditionalPanel(
@@ -246,7 +226,7 @@ ui <- dashboardPage(
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
                                           
-                                          prettyCheckbox(inputId="loadexamplennodegroup",label="load kinase groups",value = FALSE,shape="round",status="primary"),
+                                          prettyCheckbox(inputId="loadexamplennodegroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
                                           
                                           fluidRow(width=12,
                                                    column(6,
@@ -258,7 +238,33 @@ ui <- dashboardPage(
                                                           conditionalPanel(
                                                            condition = "input.nodegroupcolorpalettetype == 'prebuilt'",
                                                            radioButtons_withHTML('nodegroupcolorpalette_qaul', 'Choose Palette',choices = qualitative_palette_choices, inline = FALSE)
-                                                          )
+                                                          ),
+                                                          
+                                                          conditionalPanel(
+                                                           condition = "input.nodegroupcolorpalettetype == 'manual'",
+                                                           
+                                                           "Select Colors",
+                                                           
+                                                           fluidRow(
+                                                            column(width = 1,  colourInput("nodegroupcol1", "", defaultpalette[1],showColour = "both")),
+                                                            column(width = 1,  colourInput("nodegroupcol2", "", defaultpalette[2],showColour = "both")),
+                                                            column(width = 1,  colourInput("nodegroupcol3", "", defaultpalette[3],showColour = "both")),
+                                                            column(width = 1,  colourInput("nodegroupcol4", "", defaultpalette[4],showColour = "both"))
+                                                           ),
+                                                           fluidRow( 
+                                                            column(width = 1,  colourInput("nodegroupcol5", "", defaultpalette[5],showColour = "both")),
+                                                            column(width = 1,  colourInput("nodegroupcol6", "", defaultpalette[6],showColour = "both")),
+                                                            column(width = 1,  colourInput("nodegroupcol7", "", defaultpalette[7],showColour = "both")),
+                                                            column(width = 1,  colourInput("nodegroupcol8", "", defaultpalette[8],showColour = "both"))
+                                                           ),
+                                                           fluidRow( 
+                                                            column(width = 1,  colourInput("nodegroupcol9", "", defaultpalette[9],showColour = "both")),
+                                                            column(width = 1,  colourInput("nodegroupcol10", "", defaultpalette[10],showColour = "both")),
+                                                            column(width = 1,  colourInput("nodegroupcol11", "", defaultpalette[11],showColour = "both")),
+                                                            column(width = 1,  colourInput("nodegroupcol12", "", defaultpalette[12],showColour = "both"))
+                                                           )
+                                                          ) # end conditional
+                                                          
                                                    ) # end col
                                           ), # end row
                                           
@@ -279,11 +285,6 @@ ui <- dashboardPage(
                                           selectInput(inputId = "nodeValueIDtype",label = "Identifier Type",
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
-                                          # fluidRow( width=12,
-                                          #           column(4,  colourInput("col_node_low", "Low", HM_low,showColour = "background")),
-                                          #           column(4,                  colourInput("col_node_med", "Med", HM_med,showColour = "background")),
-                                          #           column(4,                  colourInput("col_node_hi", "High", HM_hi,showColour = "background"))
-                                          # ) ,
                                           fluidRow( width=12,
                                                     column(6,                numericInput(inputId = "nodeminheat",label = "min",value = -5 )),
                                                     column(6,                  numericInput(inputId = "nodemaxheat",label = "max",value =  5 ))
@@ -369,50 +370,65 @@ ui <- dashboardPage(
                                          title = "Advanced Settings", status = "warning", solidHeader = TRUE,
                                          collapsible = TRUE,collapsed = TRUE,
                                          
-                                         # text box for title
-                                         textInput(inputId="titleinput",label = 
-                                                    h4("Title",
-                                                       tags$style(type = "text/css", "#titletooltip {vertical-align: top;}"),
-                                                       bsButton("titletooltip", label = "", icon = icon("question"), style = "primary", size = "extra-small")),
-                                                   placeholder = ""),
-                                         bsTooltip(id="titletooltip",title="Provide title for top of plot (Only applies to Tree layout)",
-                                                   placement = "bottom", trigger = "hover",
-                                                   options = NULL),
+                                         prettyRadioButtons("AdvancedSections",label = "",
+                                                            choices = c("Title","Font","Node"),
+                                                            selected = "Title",inline = TRUE),
                                          
-                                         # Slider for font size 
-                                         sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 4,step = 0.05,ticks=F),
-                                         
-                                         selectInput(inputId = "fontcolorselect",label = "Label Color",
-                                                     choices = c("Same as Branch","Single Color"),
-                                                     multiple = FALSE,selected = "Single Color",width = "100%"),
-                                         
-                                         conditionalPanel(condition = "input.fontcolorselect == 'Single Color'",
-                                                          colourInput("fontcolorchoose", "Label Color","#000000")
+                                         conditionalPanel(
+                                          condition = "input.AdvancedSections == 'Title'",
+                                          # text box for title
+                                          textInput(inputId="titleinput",label = 
+                                                     h4("Title",
+                                                        tags$style(type = "text/css", "#titletooltip {vertical-align: top;}"),
+                                                        bsButton("titletooltip", label = "", icon = icon("question"), style = "primary", size = "extra-small")),
+                                                    placeholder = ""),
+                                          bsTooltip(id="titletooltip",title="Provide title for top of plot (Only applies to Tree layout)",
+                                                    placement = "bottom", trigger = "hover",
+                                                    options = NULL)
                                          ),
                                          
-                                         tags$b("Group Colors") ,
                                          
-                                         # Group Colors
-                                         fluidRow( width=12,
-                                                   column(width = 3,  colourInput("groupcol1", "1", defaultpalette[1],showColour = "background")),
-                                                   column(width = 3,  colourInput("groupcol2", "2", defaultpalette[2],showColour = "background")),
-                                                   column(width = 3,  colourInput("groupcol3", "3", defaultpalette[3],showColour = "background")),
-                                                   column(width = 3,  colourInput("groupcol4", "4", defaultpalette[4],showColour = "background"))
+                                         conditionalPanel(
+                                          condition = "input.AdvancedSections == 'Font'",
+                                          
+                                          # Slider for font size 
+                                          sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 4,step = 0.05,ticks=F),
+                                          
+                                          selectInput(inputId = "fontcolorselect",label = "Label Color",
+                                                      choices = c("Same as Branch","Single Color"),
+                                                      multiple = FALSE,selected = "Single Color",width = "100%"),
+                                          
+                                          conditionalPanel(condition = "input.fontcolorselect == 'Single Color'",
+                                                           colourInput("fontcolorchoose", "Label Color","#000000"))
                                          ),
                                          
-                                         fluidRow( width=12,
-                                                   column(width = 3,  colourInput("groupcol5", "5", defaultpalette[5],showColour = "background")),
-                                                   column(width = 3,  colourInput("groupcol6", "6", defaultpalette[6],showColour = "background")),
-                                                   column(width = 3,  colourInput("groupcol7", "7", defaultpalette[7],showColour = "background")),
-                                                   column(width = 3,  colourInput("groupcol8", "8", defaultpalette[8],showColour = "background"))
-                                         ),
                                          
-                                         fluidRow( width=12,
-                                                   column(width = 3,  colourInput("groupcol9", "9", defaultpalette[9],showColour = "background")),
-                                                   column(width = 3,  colourInput("groupcol10", "10", defaultpalette[10],showColour = "background")),
-                                                   column(width = 3,  colourInput("groupcol11", "11", defaultpalette[11],showColour = "background")),
-                                                   column(width = 3,  colourInput("groupcol12", "12", defaultpalette[12],showColour = "background"))
-                                         ) 
+                                         conditionalPanel(
+                                          condition = "input.AdvancedSections == 'Node'",
+                                          
+                                          # How to color stroke of node
+                                          selectInput(inputId = "nodestrokecolselect",label = "Color Node Stroke By",
+                                                      choices = c("Single Color","Same as Node","Selected"),
+                                                      multiple = FALSE,selected = "Single Color",width = "100%"),
+                                          
+                                          # Node stroke as single color
+                                          conditionalPanel(condition = "input.nodestrokecolselect == 'Single Color'",
+                                                           colourInput("nodestrokecol", "Node Stroke Color","#ffffff")
+                                          ),
+                                          # Node stroke by selected
+                                          conditionalPanel(condition = "input.nodestrokecolselect == 'Selected'",
+                                                           textAreaInput("NodeStrokeSelect", "Selected Kinases", height = "100px",width = "100%",
+                                                                         value = ""
+                                                           ),
+                                                           selectInput(inputId = "NodeStrokeSelectIDtype",label = "Identifier Type",
+                                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
+                                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
+                                                           
+                                                           colourInput("NodeStrokeSelect_BG", "Not Selected Color","#ffffff"),
+                                                           colourInput("NodeStrokeSelect_FG", "Selected Color",HM_hi)
+                                          ) # end condition
+                                         )
+                                         
                                          
                                      ), #end box
                                      
@@ -497,16 +513,31 @@ ui <- dashboardPage(
                             checkIcon = list(yes = "", no = "")
                            ),
                            
-                           fluidRow( width=12
-                           ) # end row
+                           
+                           div(
+                            actionButton("InfoAbout",label="About",status="primary",width="100%")
+                           ),
+                           
+                           tags$br(),
+                           
+                           div(
+                            actionButton("InfoUsage",label="Usage",status="primary",width="100%")
+                           ),
+                           
+                           tags$br(),
+                           
+                           div(
+                            actionButton("InfoOther",label="Other",status="primary",width="100%")
+                           )
+                           
                     ), # end column
+                    
                     column
                     (  width=9,   
-                     # Second tab content
-                     source("R/info.R",local=TRUE)$value
+                     
+                     div(id= "InfoBox")
                     )
            ) # end row
-           
            
    )
   )

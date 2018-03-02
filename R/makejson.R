@@ -1,17 +1,17 @@
-makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol="#D3D3D3",colsubnodes=FALSE)
+makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol="#D3D3D3",BGstrolecol="#ffffff",colsubnodes=FALSE)
 {
   # reorder so so that groups, families, and subfamilies are properly colored
   df<- df[seq(dim(df)[1],1),]
   
   # filter df
-  df = df[,c("id.kinrich","kinase.group","kinase.family","kinase.subfamily","branch.col","node.col","node.radius","text.size")]
+  df = df[,c("id.kinrich","kinase.group","kinase.family","kinase.subfamily","branch.col","node.col","node.radius","text.size","node.strokecol")]
   
   # write df to file
   write_tsv(df,tmp,col_names = T)
 
   # read json file
   data<-read.delim(tmp, stringsAsFactors=F)
-  root<-list("name"=list("    "), "nodecol"=list(BGcol),"noderadius"=list(6) ,"children"=list())
+  root<-list("name"=list("    "), "nodecol"=list(BGcol),"noderadius"=list(6), nodestrokecol= BGcol,"children"=list())
   i = 1
   
   for(i in 1:nrow(data)) {
@@ -27,7 +27,9 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol=
     kinase<-paste0("   ", row$id.kinrich)
     branchcol<-row$branch.col 
     nodecol<-row$node.col 
-    noderadius<-row$node.radius 
+    noderadius<-row$node.radius
+    nodestrokecol<-row$node.strokecol
+    subnodestrokecol = BGstrolecol # only highlight the outer nodes
     textsize<-row$text.size
     subnodecol=nodecol
     if (colsubnodes == FALSE)
@@ -38,27 +40,27 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol=
     # Add Group if not already there
     g<-match(group, unlist(unlist(root$children, F)[names(unlist(root$children, F))=="name"]))
     if(is.na(g)) {
-      root$children[[length(root$children)+1]]<-list("name"=list(group),"branchcol"=list(branchcol) ,"nodecol"=list(subnodecol),"noderadius"=list(noderadius) ,"textsize"=list(textsize),"children"=list())
+      root$children[[length(root$children)+1]]<-list("name"=list(group),"branchcol"=list(branchcol) ,"nodecol"=list(subnodecol),"noderadius"=list(noderadius),"nodestrokecol"=list(subnodestrokecol) ,"textsize"=list(textsize),"children"=list())
       g<-length(root$children)
     }
     
     # Add Group
     f<-match(family, unlist(unlist(root$children[[g]]$children, F)[names(unlist(root$children[[g]]$children, F))=="name"]))
     if(is.na(f)) {
-      root$children[[g]]$children[[length(root$children[[g]]$children)+1]]<-list("name"=list(family),"branchcol"=list(branchcol) ,"nodecol"=list(subnodecol),"noderadius"=list(noderadius)  , "textsize"=list(textsize),"children"=list())
+      root$children[[g]]$children[[length(root$children[[g]]$children)+1]]<-list("name"=list(family),"branchcol"=list(branchcol) ,"nodecol"=list(subnodecol),"noderadius"=list(noderadius),"nodestrokecol"=list(subnodestrokecol)  , "textsize"=list(textsize),"children"=list())
       f<-length(root$children[[g]]$children)
     }
     
     # Determine whether to skip subfamily or not and add kinase
     if(subfamily == "  ") {
-      root$children[[g]]$children[[f]]$children[[length(root$children[[g]]$children[[f]]$children)+1]]<-list("name"=list(kinase),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius),"textsize"=list(textsize) )
+      root$children[[g]]$children[[f]]$children[[length(root$children[[g]]$children[[f]]$children)+1]]<-list("name"=list(kinase),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius),"nodestrokecol"=list(nodestrokecol),"textsize"=list(textsize) )
     } else {
       sf<-match(subfamily, unlist(unlist(root$children[[g]]$children[[f]]$children, F)[names(unlist(root$children[[g]]$children[[f]]$children, F))=="name"]))
       if(is.na(sf)) {
-        root$children[[g]]$children[[f]]$children[[length(root$children[[g]]$children[[f]]$children)+1]]<-list("name"=list(subfamily),"branchcol"=list(branchcol) ,"nodecol"=list(subnodecol),"noderadius"=list(noderadius) ,"textsize"=list(textsize) , "children"=list())
+        root$children[[g]]$children[[f]]$children[[length(root$children[[g]]$children[[f]]$children)+1]]<-list("name"=list(subfamily),"branchcol"=list(branchcol) ,"nodecol"=list(subnodecol),"noderadius"=list(noderadius), "nodestrokecol"=list(subnodestrokecol),"textsize"=list(textsize) , "children"=list())
         sf<-length(root$children[[g]]$children[[f]]$children)
       }
-      root$children[[g]]$children[[f]]$children[[sf]]$children[[length(root$children[[g]]$children[[f]]$children[[sf]]$children)+1]]<-list("name"=list(kinase),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius),"textsize"=list(textsize)  )
+      root$children[[g]]$children[[f]]$children[[sf]]$children[[length(root$children[[g]]$children[[f]]$children[[sf]]$children)+1]]<-list("name"=list(kinase),"branchcol"=list(branchcol) ,"nodecol"=list(nodecol),"noderadius"=list(noderadius),"nodestrokecol"=list(nodestrokecol),"textsize"=list(textsize)  )
     }
   }
   

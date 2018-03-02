@@ -2,6 +2,60 @@
 # server business
 server <- function(input, output,session) {
  
+ observeEvent(input$InfoAbout,{
+  
+  # Remove existing info boxes
+  removeUI(
+   selector = "#InfoBoxAbout")
+  removeUI(
+   selector = "#InfoBoxUsage")
+  removeUI(
+   selector = "#InfoBoxOther")
+  
+  # Add appropriate info box
+  insertUI(
+   selector = "#InfoBox",
+   where = "afterEnd",
+   ui = source("R/InfoAbout.R",local=TRUE)$value
+  )
+ })
+ 
+ observeEvent(input$InfoUsage,{
+  
+  # Remove existing info boxes
+  removeUI(
+   selector = "#InfoBoxAbout")
+  removeUI(
+   selector = "#InfoBoxUsage")
+  removeUI(
+   selector = "#InfoBoxOther")
+  
+  # Add appropriate info box
+  insertUI(
+   selector = "#InfoBox",
+   where = "afterEnd",
+   ui = source("R/InfoUsage.R",local=TRUE)$value
+  )
+ })
+ 
+ observeEvent(input$InfoOther,{
+  
+  # Remove existing info boxes
+  removeUI(
+   selector = "#InfoBoxAbout")
+  removeUI(
+   selector = "#InfoBoxUsage")
+  removeUI(
+   selector = "#InfoBoxOther")
+  
+  # Add appropriate info box
+  insertUI(
+   selector = "#InfoBox",
+   where = "afterEnd",
+   ui = source("R/InfoOther.R",local=TRUE)$value
+  )
+ })
+ 
  # Update selected tab
  observe({
   if (input$dashboardchooser == "Info")
@@ -140,7 +194,16 @@ server <- function(input, output,session) {
     if (input$branchcolortype == "by group")
     {
      # define color palette
-     branchgroupcolpalette = unlist(qualpalettes[input$branchgroupcolorpalette_qaul])
+     if (input$branchgroupcolorpalettetype == "prebuilt")
+     {
+      branchgroupcolpalette = unlist(qualpalettes[input$branchgroupcolorpalette_qaul])
+     }
+     if (input$branchgroupcolorpalettetype == "manual")
+     {
+      branchgroupcolpalette = c(input$branchgroupcol1,input$branchgroupcol2,input$branchgroupcol3,input$branchgroupcol4,
+                                input$branchgroupcol5,input$branchgroupcol6,input$branchgroupcol7,input$branchgroupcol8,
+                                input$branchgroupcol9,input$branchgroupcol10,input$branchgroupcol11,input$branchgroupcol12)
+     }
      
      # read in text area input
       recolordf = read.text.input(input$branchGroupBox)
@@ -252,7 +315,16 @@ server <- function(input, output,session) {
     if (input$nodecolortype == "by group")
     {
      # define color palette
-     nodegroupcolpalette = unlist(qualpalettes[input$nodegroupcolorpalette_qaul]) 
+     if (input$nodegroupcolorpalettetype == "prebuilt")
+     {
+      nodegroupcolpalette = unlist(qualpalettes[input$nodegroupcolorpalette_qaul])
+     }
+     if (input$nodegroupcolorpalettetype == "manual")
+     {
+      nodegroupcolpalette = c(input$nodegroupcol1,input$nodegroupcol2,input$nodegroupcol3,input$nodegroupcol4,
+                                input$nodegroupcol5,input$nodegroupcol6,input$nodegroupcol7,input$nodegroupcol8,
+                                input$nodegroupcol9,input$nodegroupcol10,input$nodegroupcol11,input$nodegroupcol12)
+     }
      
      # read in text area input
       recolordf = read.text.input(input$nodeGroupBox)
@@ -377,10 +449,43 @@ server <- function(input, output,session) {
     {
       tempdf$text.col = tempdf$branch.col
     }
+    
     if (input$fontcolorselect == "Single Color")
     {
       tempdf$text.col = input$fontcolorchoose
     }
+    if (input$nodestrokecolselect == "Single Color")
+    {
+       tempdf$node.strokecol = input$nodestrokecol
+    }
+    if (input$nodestrokecolselect == "Same as Node")
+    {
+     tempdf$node.strokecol = tempdf$node.col
+    }
+    if (input$nodestrokecolselect == "Selected")
+    {
+     
+     tempdf$node.strokecol =  input$NodeStrokeSelect_BG
+     
+     # read in text area input
+     kinases = unlist(strsplit(x=input$NodeStrokeSelect,split="\\n"))
+     
+     if (length(kinases) > 0)
+     {
+      df = data.frame(kinases=kinases,again=kinases)
+      
+      # convert IDs
+      selectedkinasesforstroke = convertID (tempdf,df,inputtype=input$NodeStrokeSelectIDtype)
+      
+      if (nrow(selectedkinasesforstroke) > 0)
+      {
+       # set colors based on selected ids 
+       tempdf$node.strokecol =  color.by.selected(df = tempdf, sel = selectedkinasesforstroke[,1], bg.col  = input$NodeStrokeSelect_BG,  sel.col = input$NodeStrokeSelect_FG)
+      }
+     }
+
+    }
+    # View(svginfo$dataframe)
     
     return(list(tempdf,legend))
   }) # end reactive
@@ -406,6 +511,38 @@ server <- function(input, output,session) {
   
   
   #output to the graph div
+  output$circlelayout <- reactive({
+   # recolor the official matrix
+   dfandlegend = newdf()
+   svginfo$dataframe = dfandlegend[[1]]
+   
+   # replace none color for D3 plots
+   allnodescoloreddf =  svginfo$dataframe
+   allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = BG_col1
+   
+   # modify color subnodes based on coloring options
+   if (input$nodestrokecolselect == "Single Color")
+   {
+    BGstrolecol = input$nodestrokecol
+   }
+   if (input$nodestrokecolselect == "Selected")
+   {
+    BGstrolecol = input$NodeStrokeSelect_BG
+   }
+   if (input$nodestrokecolselect == "Same as Node")
+   {
+    BGstrolecol = "#ffffff"
+   }
+   print(BGstrolecol)
+   
+   # Write kinome_tree.json (based on current dataframe)
+   makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes)
+   
+   # Make this reactive to any change in input paramters
+   x <- reactiveValuesToList(input)
+  })
+  
+  #output to the graph div
   output$forcelayout <- reactive({
     
     # recolor the official matrix
@@ -414,44 +551,24 @@ server <- function(input, output,session) {
     
     # replace none color for D3 plots
     allnodescoloreddf =  svginfo$dataframe
-    allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
+    allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = BG_col1
+    
+    # modify color subnodes based on coloring options
+    if (input$nodestrokecolselect == "Single Color")
+    {
+     BGstrolecol = "#ffffff"
+    }
+    if (input$nodestrokecolselect == "Selected")
+    {
+     BGstrolecol = input$NodeStrokeSelect_BG
+    }
+    if (input$nodestrokecolselect == "Same as Node")
+    {
+     BGstrolecol = "#ffffff"
+    }
     
     # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,colsubnodes=input$colorsubnodes)
-    
-    # Make this reactive to any change in input paramters
-    x <- reactiveValuesToList(input)
-  })
-  
-  #output to the graph div
-  output$diaglayout <- reactive({
-    # recolor the official matrix
-    dfandlegend = newdf()
-    svginfo$dataframe = dfandlegend[[1]]
-    
-    # replace none color for D3 plots
-    allnodescoloreddf =  svginfo$dataframe
-    allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
-    
-    # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp="www/subdf.txt",output=outputjson,BGcol=BG_col1,colsubnodes=input$colorsubnodes)
-    
-    # Make this reactive to any change in input paramters
-    x <- reactiveValuesToList(input)
-  })
-  
-  #output to the graph div
-  output$circlelayout <- reactive({
-    # recolor the official matrix
-    dfandlegend = newdf()
-    svginfo$dataframe = dfandlegend[[1]]
-    
-    # replace none color for D3 plots
-    allnodescoloreddf =  svginfo$dataframe
-    allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = "#D3D3D3"
-    
-    # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,colsubnodes=input$colorsubnodes)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)

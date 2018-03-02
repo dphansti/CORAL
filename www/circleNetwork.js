@@ -50,14 +50,14 @@ binding.renderValue = function(el, data) {
           .enter().append("g")
           .attr("class", "node")
           .attr("stroke-width", 1.5)
-          .attr("stroke","white")
+          .attr("stroke", "white")
           .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
           
       node.append("circle")
           .attr("r", function(d) { return d.noderadius; })
-          .attr("stroke","white")
+          .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); })
           .attr("stroke-width", 0.5)
           .style("fill", function(d) { return d3.rgb(d.nodecol); });
 
