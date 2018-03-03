@@ -1,7 +1,8 @@
 ## app.R ##
 
 ui <- dashboardPage(
- dashboardHeader(title = span(img(src="", width = 190))),
+ dashboardHeader(title = h4("CORAL")),
+  # title = span(img(src="", width = 190))),
  
  dashboardSidebar
  (

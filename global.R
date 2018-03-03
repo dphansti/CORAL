@@ -4,24 +4,24 @@
 library(pacman)
 
 # load basic libraries
-p_load(shiny)
-p_load(shinydashboard)
-p_load(shinyBS)
-p_load(readr)
-p_load(rsvg)
-p_load(shinyWidgets)
-p_load(RColorBrewer)
+library(shiny)
+library(shinydashboard)
+library(shinyBS)
+library(readr)
+library(rsvg)
+library(shinyWidgets)
+library(RColorBrewer)
 
 # load Manning-related libraries
-p_load(svgPanZoom)
+library(svgPanZoom)
 
 # load ui-related libraries
-p_load(colourpicker)
-p_load(DT)
+library(colourpicker)
+library(DT)
 
 # load other network libraries
-p_load(data.tree)
-p_load(jsonlite)
+library(data.tree)
+library(jsonlite)
 
 #---------------------- SOURCE R FILES ----------------------#
 
