@@ -79,6 +79,8 @@ ui <- dashboardPage(
                                          # if by group
                                          conditionalPanel(
                                           condition = "input.branchcolortype == 'by group'",
+                                          prettyCheckbox(inputId="loadexamplebranchgroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
+                                          
                                           textAreaInput("branchGroupBox", "Kinases & Group", height = "100px",width = "100%",
                                                         value = ""
                                           ),
@@ -86,7 +88,6 @@ ui <- dashboardPage(
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
                                           
-                                          prettyCheckbox(inputId="loadexamplebranchgroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
                                           
                                           fluidRow(width=12,
                                                    column(6,
@@ -138,11 +139,12 @@ ui <- dashboardPage(
                                          # if by value
                                          conditionalPanel(
                                           condition = "input.branchcolortype == 'by value'",
+                                          prettyCheckbox(inputId="loadexamplebranchvalue",label="load example data",value = FALSE,shape="round",status="primary"),
+                                          
                                           textAreaInput("branchValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                         value =  ""
                                           ),
                                           
-                                          prettyCheckbox(inputId="loadexamplebranchvalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           
                                           selectInput(inputId = "branchValueIDtype",label = "Identifier Type",
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
@@ -204,8 +206,6 @@ ui <- dashboardPage(
                                           colourInput("col_node_single", "Node Color",BG_col1)
                                          ),
                                          
-                                         prettyCheckbox(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = FALSE,shape="round",status="primary"),
-                                         
                                          # if manual selection
                                          conditionalPanel(
                                           condition = "input.nodecolortype == 'Manually'",
@@ -219,6 +219,7 @@ ui <- dashboardPage(
                                          # if by group
                                          conditionalPanel(
                                           condition = "input.nodecolortype == 'by group'",
+                                          prettyCheckbox(inputId="loadexamplennodegroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
                                           textAreaInput("nodeGroupBox", "Kinases & Group", height = "100px",width = "100%",
                                                         value =  ""
                                           ),
@@ -226,7 +227,6 @@ ui <- dashboardPage(
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
                                           
-                                          prettyCheckbox(inputId="loadexamplennodegroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
                                           
                                           fluidRow(width=12,
                                                    column(6,
@@ -278,10 +278,10 @@ ui <- dashboardPage(
                                          # if by value
                                          conditionalPanel(
                                           condition = "input.nodecolortype == 'by value'",
+                                          prettyCheckbox(inputId="loadexamplennodevalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           textAreaInput("nodeValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                         value =  ""
                                           ),
-                                          prettyCheckbox(inputId="loadexamplennodevalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           selectInput(inputId = "nodeValueIDtype",label = "Identifier Type",
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
@@ -321,7 +321,8 @@ ui <- dashboardPage(
                                                  )
                                                  
                                           )
-                                         ) # end conditional  
+                                         ), # end conditional  
+                                         prettyCheckbox(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = FALSE,shape="round",status="primary")
                                      ), # end box   
                                      
                                      # ---- NODE SIZE ---- #
@@ -342,6 +343,7 @@ ui <- dashboardPage(
                                          # if by value
                                          conditionalPanel(
                                           condition = "input.nodesizetype == 'by value'",
+                                          prettyCheckbox(inputId="loadexamplennodesizevalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           textAreaInput("nodesizeValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                         value = ""
                                           ),
@@ -358,9 +360,9 @@ ui <- dashboardPage(
                                                      column(6,                numericInput(inputId = "nodesizevaluemin",label = "Min Value",value = 0 )),
                                                      column(6,                  numericInput(inputId = "nodesizevaluemax",label = "Max Value",value =  1 ))
                                            )
-                                          ),
-                                          prettyCheckbox(inputId="loadexamplennodesizevalue",label="load example data",value = FALSE,shape="round",status="primary")
-                                         ) # end box    
+                                          )
+                                          
+                                         ) # end box  
                                      ),
                                      
                                      # ---- ADVANCED SETTINGS ---- #
@@ -430,36 +432,64 @@ ui <- dashboardPage(
                                          )
                                          
                                          
-                                     ), #end box
+                                     ) #end box
+                           ), #end row
                                      
-                                     box(width=12,title = "Download",status = "danger", solidHeader = TRUE,
-                                         collapsible = TRUE,collapsed = TRUE,
-                                         
-                                         # download link for circle
-                                         conditionalPanel(
-                                          condition = "input.tabboxselected == 'Tree'",
-                                          # add select tree circle force
-                                          selectInput(inputId =  "downloadtype", label = "File Type",choices = c("pdf","svg"),selected = "pdf"),
-                                          
-                                          # download button
-                                          downloadButton("downloadData", "Download")
-                                         ),
-                                         
-                                         # download link for circle
-                                         conditionalPanel(
-                                          condition = "input.tabboxselected == 'Circle'",
-                                          
-                                          HTML("<a id=\"downloadcircle\" href=\"#\"><b>Download Circle in .svg format</b></button></a>")
-                                         ),
-                                         
-                                         # download link for force
-                                         conditionalPanel(
-                                          condition = "input.tabboxselected == 'Force'",
-                                          
-                                          HTML("<a id=\"downloadforce\" href=\"#\"><b>Download Force in .svg format</b></button></a>")
-                                         )
-                                     ) # end box
-                           ) # end row
+                           conditionalPanel(
+                           condition = "input.tabboxselected == 'Tree'",
+                                      tags$head(tags$style("#downloadtree{width: 100%; text-align: left; vertical-align: middle; color: #000000; background-color: #fff; height:43px; font-size: 120%; line-height: 200%; letter-spacing: .25px; border-radius: 0;}")),
+                                     downloadButton("downloadtree", "Download")
+                           
+                           # tags$a(id="downloadtree", href="#", class="btn btn-default", "Download")
+                           ),
+                           conditionalPanel(
+                            condition = "input.tabboxselected == 'Circle'",
+                            tags$head(tags$style("#downloadcircle{width: 100%; text-align: left; vertical-align: middle; color: #000000; background-color: #fff; height:43px; font-size: 120%; line-height: 200%; letter-spacing: .25px; border-radius: 0;}")),
+                            tags$a(id="downloadcircle", href="#", class="btn btn-default",icon("download"), "Download")
+                           ),
+                           conditionalPanel(
+                            condition = "input.tabboxselected == 'Force'",
+                            tags$head(tags$style("#downloadforce{width: 100%; text-align: left; vertical-align: middle; color: #000000; background-color: #fff; height:43px; font-size: 120%; line-height: 200%; letter-spacing: .25px; border-radius: 0;}")),
+                            tags$a(id="downloadforce", href="#", class="btn btn-default",icon("download"),  "Download")
+                           )
+                           
+                           
+                                     # )
+                                     
+                                     
+                                     
+                                     # box(width=12,title = "Download",status = "danger", solidHeader = TRUE,
+                                     #     collapsible = TRUE,collapsed = TRUE,
+                                     #     
+                                     #     # download link for circle
+                                     #     conditionalPanel(
+                                     #      condition = "input.tabboxselected == 'Tree'",
+                                     #      # add select tree circle force
+                                     #      selectInput(inputId =  "downloadtype", label = "File Type",choices = c("pdf","svg"),selected = "pdf"),
+                                     #      
+                                     #      # download button
+                                     #      downloadButton("downloadData", "Download")
+                                     #     ),
+                                     #     
+                                     #     # download link for circle
+                                     #     conditionalPanel(
+                                     #      condition = "input.tabboxselected == 'Circle'",
+                                     #     
+                                     #      tags$a(id="downloadcircle", href="#", class="btn btn-default", "Download")
+                                     #      
+                                     #       
+                                     #      # actionButton("asdfadfa", "Download",href = "#",id="downloadcircle")
+                                     #      # HTML("<a id=\"downloadcircle\" href=\"#\"><b>Download Circle in .svg format</b></button></a>")
+                                     #     ),
+                                     #     
+                                     #     # download link for force
+                                     #     conditionalPanel(
+                                     #      condition = "input.tabboxselected == 'Force'",
+                                     #      
+                                     #      HTML("<a id=\"downloadforce\" href=\"#\"><b>Download Force in .svg format</b></button></a>")
+                                     #     )
+                                     # ) # end box
+                           # ) # end row
                     ) # end column
                     ,
                     

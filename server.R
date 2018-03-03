@@ -631,21 +631,24 @@ server <- function(input, output,session) {
     datatable(newdf, escape=FALSE)
   })
   
-  # ----------------- DATA TABLE ---------------- #
-  
+  # ----------------- DOWNLOAD ---------------- #
+ 
   # Download image
-  output$downloadData <- downloadHandler(
+  output$downloadtree <- downloadHandler(
     
-    filename <- function(file) { paste("CORAL",".","tree",".",input$downloadtype,sep="")},
+    filename <- function(file) { paste("CORAL",".","tree",".","pdf",sep="")},
     content <- function(file) {
-      if (input$downloadtype == 'pdf') {
-        rsvg_pdf(svgoutfile, file)
-      } else if (input$downloadtype == 'svg') {
-        rsvg_svg(svgoutfile, file)
-      } else {
-        showNotification('Unrecognized Output Image Type')
-      }
+    rsvg_pdf(svgoutfile, file)
     }
+    # content <- function(file) {
+    #   if (input$downloadtype == 'pdf') {
+    #     rsvg_pdf(svgoutfile, file)
+    #   } else if (input$downloadtype == 'svg') {
+    #     rsvg_svg(svgoutfile, file)
+    #   } else {
+    #     showNotification('Unrecognized Output Image Type')
+    #   }
+    # }
   )
   
 }
