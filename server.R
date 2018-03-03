@@ -75,7 +75,6 @@ server <- function(input, output,session) {
    }
  })
  
- 
  # ----------------- LOAD EXAMPLE DATA ---------------- #
  
  # Load example data for branches color by group
@@ -89,7 +88,6 @@ server <- function(input, output,session) {
    kinasegroupinfobr = paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
    updateTextInput(session, "branchGroupIDtype", value = "KinrichID")
   }
-  
   updateTextInput(session, "branchGroupBox", value = kinasegroupinfobr)
  })
  
@@ -104,7 +102,6 @@ server <- function(input, output,session) {
    kinasegroupinfono = paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
    updateTextInput(session, "nodeGroupIDtype", value = "KinrichID")
   }
-  
   updateTextInput(session, "nodeGroupBox", value = kinasegroupinfono)
  })
  
@@ -119,7 +116,6 @@ server <- function(input, output,session) {
    examplebranchvaluedata = rna_data
    updateTextInput(session, "branchValueIDtype", value = "HGNC")
   }
-  
   updateRadioButtons(session,"branchcolorpalettetype", selected="divergent")
   updateTextInput(session, "branchValueBox", value = examplebranchvaluedata)
  })
@@ -135,7 +131,6 @@ server <- function(input, output,session) {
    examplenodevaluedata = rna_data
    updateTextInput(session, "nodeValueIDtype", value = "HGNC")
   }
-  
   updateRadioButtons(session,"nodecolorpalettetype",selected="divergent")
   updateTextInput(session, "nodeValueBox", value = examplenodevaluedata)
  })
@@ -163,7 +158,6 @@ server <- function(input, output,session) {
    # Set the size range
    updateSliderInput(session,"nodesizeValueslider",value=c(4,16))
   }
-  
   updateTextInput(session, "nodesizeValueBox", value = examplenodesizevaluedata)
  })
  
@@ -201,7 +195,6 @@ server <- function(input, output,session) {
       lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch")
       lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
-      
       legend = c(legend,lines)
     }
     
@@ -479,7 +472,6 @@ server <- function(input, output,session) {
     }
     if (input$nodestrokecolselect == "Selected")
     {
-     
      tempdf$node.strokecol =  input$NodeStrokeSelect_BG
      
      # read in text area input
@@ -498,9 +490,7 @@ server <- function(input, output,session) {
        tempdf$node.strokecol =  color.by.selected(df = tempdf, sel = selectedkinasesforstroke[,1], bg.col  = input$NodeStrokeSelect_BG,  sel.col = input$NodeStrokeSelect_FG)
       }
      }
-
     }
-    # View(svginfo$dataframe)
     
     return(list(tempdf,legend))
   }) # end reactive
@@ -524,7 +514,6 @@ server <- function(input, output,session) {
     # Render SVG
     svgPanZoom(svgoutfile,viewBox = F,controlIconsEnabled=F)
   })
-  
   
   #output to the graph div
   output$circlelayout <- reactive({

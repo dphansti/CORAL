@@ -30,7 +30,6 @@ ui <- dashboardPage(
    tags$head(tags$style("#InfoAbout{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}")),
    tags$head(tags$style("#InfoUsage{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}")),
    tags$head(tags$style("#InfoOther{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}"))
-   
   ),
   
   # Fix a bug in the texboxInput funciton that doesn't respect width= "100%"
@@ -260,7 +259,6 @@ ui <- dashboardPage(
                                                             column(width = 1,  colourInput("nodegroupcol12", "", defaultpalette[12],showColour = "both"))
                                                            )
                                                           ) # end conditional
-                                                          
                                                    ) # end col
                                           ), # end row
                                           
@@ -268,7 +266,6 @@ ui <- dashboardPage(
                                           
                                           prettyCheckbox(inputId="manualgroupcols_node","manual group entry",
                                                          value = FALSE,shape="round",status="primary")
-                                          
                                          ),
                                          
                                          # if by value
@@ -357,7 +354,6 @@ ui <- dashboardPage(
                                                      column(6,                  numericInput(inputId = "nodesizevaluemax",label = "Max Value",value =  1 ))
                                            )
                                           )
-                                          
                                          ) # end box  
                                      ),
                                      
@@ -385,7 +381,6 @@ ui <- dashboardPage(
                                                     options = NULL)
                                          ),
                                          
-                                         
                                          conditionalPanel(
                                           condition = "input.AdvancedSections == 'Font'",
                                           
@@ -399,7 +394,6 @@ ui <- dashboardPage(
                                           conditionalPanel(condition = "input.fontcolorselect == 'Single Color'",
                                                            colourInput("fontcolorchoose", "Label Color","#000000"))
                                          ),
-                                         
                                          
                                          conditionalPanel(
                                           condition = "input.AdvancedSections == 'Node'",
@@ -426,8 +420,6 @@ ui <- dashboardPage(
                                                            colourInput("NodeStrokeSelect_FG", "Selected Color",HM_hi)
                                           ) # end condition
                                          )
-                                         
-                                         
                                      ) #end box
                            ), #end row
                                      
@@ -435,8 +427,6 @@ ui <- dashboardPage(
                            condition = "input.tabboxselected == 'Tree'",
                                       tags$head(tags$style("#downloadtree{width: 100%; text-align: left; vertical-align: middle; color: #000000; background-color: #fff; height:43px; font-size: 120%; line-height: 200%; letter-spacing: .25px; border-radius: 0;}")),
                                      downloadButton("downloadtree", "Download")
-                           
-                           # tags$a(id="downloadtree", href="#", class="btn btn-default", "Download")
                            ),
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Circle'",
@@ -474,7 +464,6 @@ ui <- dashboardPage(
                       #this div will hold the final graph
                       div(id="forcelayout", class="collapsableForceNetwork",jsonfilename=outputjsonshort)
                      )
-                     
                     )
            ),
            
@@ -484,7 +473,6 @@ ui <- dashboardPage(
                     )
            )
    ),
-   
    
    tabItem(tabName = "Info",
            
@@ -499,7 +487,6 @@ ui <- dashboardPage(
                             justified = TRUE, status = "success",
                             checkIcon = list(yes = "", no = "")
                            ),
-                           
                            
                            div(
                             actionButton("InfoAbout",label="About",status="primary",width="100%")
@@ -525,7 +512,6 @@ ui <- dashboardPage(
                      div(id= "InfoBox")
                     )
            ) # end row
-           
    )
   )
  ) # /tabItems
