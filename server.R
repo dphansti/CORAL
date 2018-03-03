@@ -120,6 +120,7 @@ server <- function(input, output,session) {
    updateTextInput(session, "branchValueIDtype", value = "HGNC")
   }
   
+  updateRadioButtons(session,"branchcolorpalettetype", selected="divergent")
   updateTextInput(session, "branchValueBox", value = examplebranchvaluedata)
  })
  
@@ -135,6 +136,7 @@ server <- function(input, output,session) {
    updateTextInput(session, "nodeValueIDtype", value = "HGNC")
   }
   
+  updateRadioButtons(session,"nodecolorpalettetype",selected="divergent")
   updateTextInput(session, "nodeValueBox", value = examplenodevaluedata)
  })
  

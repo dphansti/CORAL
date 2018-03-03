@@ -88,7 +88,6 @@ ui <- dashboardPage(
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
                                           
-                                          
                                           fluidRow(width=12,
                                                    column(6,
                                                           radioButtons(inputId="branchgroupcolorpalettetype",label = "Color Range Type",
@@ -100,7 +99,6 @@ ui <- dashboardPage(
                                                            condition = "input.branchgroupcolorpalettetype == 'prebuilt'",
                                                            radioButtons_withHTML('branchgroupcolorpalette_qaul', 'Choose Palette',choices = qualitative_palette_choices, inline = FALSE)
                                                           ),
-                                                          
                                                           
                                                           conditionalPanel(
                                                            condition = "input.branchgroupcolorpalettetype == 'manual'",
@@ -145,15 +143,13 @@ ui <- dashboardPage(
                                                         value =  ""
                                           ),
                                           
-                                          
                                           selectInput(inputId = "branchValueIDtype",label = "Identifier Type",
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
                                           
-                                          
                                           fluidRow( width=12,
-                                                    column(6,                numericInput(inputId = "minheat",label = "min",value = -5 )),
-                                                    column(6,                  numericInput(inputId = "maxheat",label = "max",value =  5 ))
+                                                    column(6,                numericInput(inputId = "minheat",label = "min",value = -3 )),
+                                                    column(6,                  numericInput(inputId = "maxheat",label = "max",value =  3 ))
                                           ),
                                           
                                           column(6,
@@ -286,8 +282,8 @@ ui <- dashboardPage(
                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
                                           fluidRow( width=12,
-                                                    column(6,                numericInput(inputId = "nodeminheat",label = "min",value = -5 )),
-                                                    column(6,                  numericInput(inputId = "nodemaxheat",label = "max",value =  5 ))
+                                                    column(6,                numericInput(inputId = "nodeminheat",label = "min",value = -3 )),
+                                                    column(6,                  numericInput(inputId = "nodemaxheat",label = "max",value =  3 ))
                                           ),
                                           column(6,
                                                  radioButtons(inputId="nodecolorpalettetype",label = "Color Range Type",
@@ -452,46 +448,7 @@ ui <- dashboardPage(
                             tags$head(tags$style("#downloadforce{width: 100%; text-align: left; vertical-align: middle; color: #000000; background-color: #fff; height:43px; font-size: 120%; line-height: 200%; letter-spacing: .25px; border-radius: 0;}")),
                             tags$a(id="downloadforce", href="#", class="btn btn-default",icon("download"),  "Download")
                            )
-                           
-                           
-                                     # )
-                                     
-                                     
-                                     
-                                     # box(width=12,title = "Download",status = "danger", solidHeader = TRUE,
-                                     #     collapsible = TRUE,collapsed = TRUE,
-                                     #     
-                                     #     # download link for circle
-                                     #     conditionalPanel(
-                                     #      condition = "input.tabboxselected == 'Tree'",
-                                     #      # add select tree circle force
-                                     #      selectInput(inputId =  "downloadtype", label = "File Type",choices = c("pdf","svg"),selected = "pdf"),
-                                     #      
-                                     #      # download button
-                                     #      downloadButton("downloadData", "Download")
-                                     #     ),
-                                     #     
-                                     #     # download link for circle
-                                     #     conditionalPanel(
-                                     #      condition = "input.tabboxselected == 'Circle'",
-                                     #     
-                                     #      tags$a(id="downloadcircle", href="#", class="btn btn-default", "Download")
-                                     #      
-                                     #       
-                                     #      # actionButton("asdfadfa", "Download",href = "#",id="downloadcircle")
-                                     #      # HTML("<a id=\"downloadcircle\" href=\"#\"><b>Download Circle in .svg format</b></button></a>")
-                                     #     ),
-                                     #     
-                                     #     # download link for force
-                                     #     conditionalPanel(
-                                     #      condition = "input.tabboxselected == 'Force'",
-                                     #      
-                                     #      HTML("<a id=\"downloadforce\" href=\"#\"><b>Download Force in .svg format</b></button></a>")
-                                     #     )
-                                     # ) # end box
-                           # ) # end row
-                    ) # end column
-                    ,
+                    ), # end column
                     
                     tabBox
                     (id = "tabboxselected",width=9,height=1000,
