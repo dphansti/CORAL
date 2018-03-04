@@ -69,7 +69,7 @@ ui <- dashboardPage(
                                          # if manual selection
                                          conditionalPanel(
                                           condition = "input.branchcolortype == 'Manually'",
-                                          selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
+                                          selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%"),
                                           fluidRow( width=12,
                                                     column(6,colourInput("col_select_bg", "BG Color", BG_col1,showColour = "both")),
                                                     column(6,colourInput("col_select", "Color", HM_hi,showColour = "both"))
@@ -85,8 +85,8 @@ ui <- dashboardPage(
                                                         value = ""
                                           ),
                                           selectInput(inputId = "branchGroupIDtype",label = "Identifier Type",
-                                                      choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
-                                                      multiple = FALSE,selected = "KinrichID",width = "100%"),
+                                                      choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
+                                                      multiple = FALSE,selected = "coralID",width = "100%"),
                                           
                                           fluidRow(width=12,
                                                    column(6,
@@ -144,8 +144,8 @@ ui <- dashboardPage(
                                           ),
                                           
                                           selectInput(inputId = "branchValueIDtype",label = "Identifier Type",
-                                                      choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
-                                                      multiple = FALSE,selected = "KinrichID",width = "100%"),
+                                                      choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
+                                                      multiple = FALSE,selected = "coralID",width = "100%"),
                                           
                                           fluidRow( width=12,
                                                     column(6,                numericInput(inputId = "minheat",label = "min",value = -3 )),
@@ -205,7 +205,7 @@ ui <- dashboardPage(
                                          # if manual selection
                                          conditionalPanel(
                                           condition = "input.nodecolortype == 'Manually'",
-                                          selectInput(inputId = "NodeManual",label = "Kinases",choices = svginfo$dataframe$id.kinrich,multiple = TRUE,width = "100%"),
+                                          selectInput(inputId = "NodeManual",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%"),
                                           fluidRow( width=12,
                                                     column(6,colourInput("col_node_bg", "BG Color", HM_med)),
                                                     column(6,colourInput("col_sel_node", "Color", HM_hi))
@@ -220,8 +220,8 @@ ui <- dashboardPage(
                                                         value =  ""
                                           ),
                                           selectInput(inputId = "nodeGroupIDtype",label = "Identifier Type",
-                                                      choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
-                                                      multiple = FALSE,selected = "KinrichID",width = "100%"),
+                                                      choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
+                                                      multiple = FALSE,selected = "coralID",width = "100%"),
                                           
                                           
                                           fluidRow(width=12,
@@ -277,8 +277,8 @@ ui <- dashboardPage(
                                                         value =  ""
                                           ),
                                           selectInput(inputId = "nodeValueIDtype",label = "Identifier Type",
-                                                      choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
-                                                      multiple = FALSE,selected = "KinrichID",width = "100%"),
+                                                      choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
+                                                      multiple = FALSE,selected = "coralID",width = "100%"),
                                           fluidRow( width=12,
                                                     column(6,                numericInput(inputId = "nodeminheat",label = "min",value = -3 )),
                                                     column(6,                  numericInput(inputId = "nodemaxheat",label = "max",value =  3 ))
@@ -342,8 +342,8 @@ ui <- dashboardPage(
                                                         value = ""
                                           ),
                                           selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
-                                                      choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
-                                                      multiple = FALSE,selected = "KinrichID",width = "100%"),
+                                                      choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
+                                                      multiple = FALSE,selected = "coralID",width = "100%"),
                                           sliderInput("nodesizeValueslider",label = "Size Range",value=c(3,9),min = 0, max = 20,step = 0.25),
                                           
                                           prettyCheckbox("Manuallysetdatarange","Manually set data range",value = FALSE,shape="round",status="primary"),
@@ -414,8 +414,8 @@ ui <- dashboardPage(
                                                                          value = ""
                                                            ),
                                                            selectInput(inputId = "NodeStrokeSelectIDtype",label = "Identifier Type",
-                                                                       choices = c("KinrichID","uniprot","ensembl","entrez","HGNC"),
-                                                                       multiple = FALSE,selected = "KinrichID",width = "100%"),
+                                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
+                                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                                            
                                                            colourInput("NodeStrokeSelect_BG", "Not Selected Color","#ffffff"),
                                                            colourInput("NodeStrokeSelect_FG", "Selected Color",HM_hi)

@@ -109,16 +109,16 @@ extractinfo <- function(cleansvgdata)
   section = "header"
 
   # determine which items to read in  
-  id.kinrich.branch = c()
+  id.coral.branch = c()
   branch.coords = c()
   
-  id.kinrich.text = c()
+  id.coral.text = c()
   text.x = c()
   text.y = c()
   text.label = c()
   uniprot = c()
   
-  id.kinrich.node= c()
+  id.coral.node= c()
   node.x = c()
   node.y = c()
   
@@ -173,7 +173,7 @@ extractinfo <- function(cleansvgdata)
       longidsplit = unlist(strsplit(lineitems["id"],"_"))
       id= paste(longidsplit[3:length(longidsplit)],collapse="_")
       id = gsub("\"","",id)
-      id.kinrich.branch = c(id.kinrich.branch,id)
+      id.coral.branch = c(id.coral.branch,id)
      
       branch.coords = c(branch.coords,lineitems["d"])
     }
@@ -186,7 +186,7 @@ extractinfo <- function(cleansvgdata)
       longidsplit = unlist(strsplit(lineitems["id"],"_"))
       id= paste(longidsplit[3:length(longidsplit)],collapse="_")
       id = gsub("\"","",id)
-      id.kinrich.text = c(id.kinrich.text,id)
+      id.coral.text = c(id.coral.text,id)
 
       text.x = c(text.x,lineitems["x"])
       text.y = c(text.y,lineitems["y"])
@@ -202,7 +202,7 @@ extractinfo <- function(cleansvgdata)
       longidsplit = unlist(strsplit(lineitems["id"],"_"))
       id= paste(longidsplit[3:length(longidsplit)],collapse="_")
       id = gsub("\"","",id)
-      id.kinrich.node = c(id.kinrich.node,id)
+      id.coral.node = c(id.coral.node,id)
     
       node.x = c(node.x,lineitems["cx"])
       node.y = c(node.y,lineitems["cy"])
@@ -216,24 +216,24 @@ extractinfo <- function(cleansvgdata)
   }
   
   # build data frames
-  branches = data.frame(id.kinrich=id.kinrich.branch, branch.coords=branch.coords,stringsAsFactors = FALSE)
-  branches = branches[order(branches$id.kinrich),]
+  branches = data.frame(id.coral=id.coral.branch, branch.coords=branch.coords,stringsAsFactors = FALSE)
+  branches = branches[order(branches$id.coral),]
   
-  labels   = data.frame(id.kinrich=id.kinrich.text,
+  labels   = data.frame(id.coral=id.coral.text,
                         uniprot=uniprot,
                         text.x=text.x,
                         text.y=text.y,
                         text.label=text.label,stringsAsFactors = FALSE)
-  labels = labels[order(labels$id.kinrich),]
+  labels = labels[order(labels$id.coral),]
   
-  nodes   = data.frame(id.kinrich=id.kinrich.text,
+  nodes   = data.frame(id.coral=id.coral.text,
                         node.x=node.x,
                         node.y=node.y,stringsAsFactors = FALSE)
-  nodes = nodes[order(nodes$id.kinrich),]
+  nodes = nodes[order(nodes$id.coral),]
   
   # merge data frames
-  both = merge(branches,labels,by = "id.kinrich")
-  all = merge(both,nodes,by = "id.kinrich")
+  both = merge(branches,labels,by = "id.coral")
+  all = merge(both,nodes,by = "id.coral")
   
   # perform sanity check
   nrow(labels)
@@ -298,13 +298,13 @@ readsvgtree <- function(svgtree,kinmapfile,ensemblfile,entrezfile)
   #kinmap = kinmap[which(kinmap$group != "Atypical"),]
   
   # check for similarities with kinmap
-  setdiff(svginfo$dataframe$id.kinrich,kinmap$ids)
-  setdiff(kinmap$ids,svginfo$dataframe$id.kinrich)
+  setdiff(svginfo$dataframe$id.coral,kinmap$ids)
+  setdiff(kinmap$ids,svginfo$dataframe$id.coral)
   
   # kinmap = kinmap[which(kinmap$ids != "PAN3"),]
   
   # merge with kinmap info
-  svginfo$dataframe = merge(svginfo$dataframe,kinmap[,2:ncol(kinmap)],by.x = "id.kinrich" ,by.y = "ids")
+  svginfo$dataframe = merge(svginfo$dataframe,kinmap[,2:ncol(kinmap)],by.x = "id.coral" ,by.y = "ids")
 
   # fix uniprot name after merge  
   svginfo$dataframe$uniprot.x = svginfo$dataframe$uniprot.y
@@ -318,7 +318,7 @@ readsvgtree <- function(svgtree,kinmapfile,ensemblfile,entrezfile)
   svgallinfoDF = data.frame(
     
     # identifiers
-    id.kinrich  = svginfo$dataframe$id.kinrich,
+    id.coral  = svginfo$dataframe$id.coral,
     id.uniprot  = svginfo$dataframe$uniprot,
     id.ensembl  = svginfo$dataframe$ensembl,
     id.entrez   = svginfo$dataframe$entrez,

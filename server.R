@@ -85,8 +85,8 @@ server <- function(input, output,session) {
   }
   if (input$loadexamplebranchgroup == TRUE)
   {
-   kinasegroupinfobr = paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
-   updateTextInput(session, "branchGroupIDtype", value = "KinrichID")
+   kinasegroupinfobr = paste(apply(data.frame(svginfo$dataframe$id.coral,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
+   updateTextInput(session, "branchGroupIDtype", value = "coralID")
   }
   updateTextInput(session, "branchGroupBox", value = kinasegroupinfobr)
  })
@@ -99,8 +99,8 @@ server <- function(input, output,session) {
   }
   if (input$loadexamplennodegroup == TRUE)
   {
-   kinasegroupinfono = paste(apply(data.frame(svginfo$dataframe$id.kinrich,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
-   updateTextInput(session, "nodeGroupIDtype", value = "KinrichID")
+   kinasegroupinfono = paste(apply(data.frame(svginfo$dataframe$id.coral,svginfo$dataframe$kinase.group),1,paste,collapse="\t"),collapse="\n")
+   updateTextInput(session, "nodeGroupIDtype", value = "coralID")
   }
   updateTextInput(session, "nodeGroupBox", value = kinasegroupinfono)
  })
@@ -189,7 +189,7 @@ server <- function(input, output,session) {
       tempdf$branch.col =  color.by.selected(df = tempdf, sel = input$KinasesManual, bg.col  = input$col_select_bg,  sel.col = input$col_select)
       
       # reorder based on selected ids
-      tempdf = tempdf[order(tempdf$id.kinrich %in% input$KinasesManual, decreasing = FALSE),]
+      tempdf = tempdf[order(tempdf$id.coral %in% input$KinasesManual, decreasing = FALSE),]
       
       # build legend for Branch Color (by group)
       lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch")
@@ -585,7 +585,7 @@ server <- function(input, output,session) {
   output$KinaseTable <- DT::renderDataTable({
     
     dfandlegend = newdf()
-    simpldf = dfandlegend[[1]][,c("id.kinrich","id.longname","kinase.family","kinase.group","branch.val","branch.col","node.col","node.radius")] 
+    simpldf = dfandlegend[[1]][,c("id.coral","id.longname","kinase.family","kinase.group","branch.val","branch.col","node.col","node.radius")] 
     
     # reverse the data frame so that colored kinases appear first
     simpldf<-simpldf[dim(simpldf)[1]:1,]
@@ -596,7 +596,7 @@ server <- function(input, output,session) {
                        function(rgb) sprintf("rgb(%s)", paste(rgb, collapse=",")))
     tgtbranch <- sprintf('<span style="color:%s">&#9608;</span>', rgbcolors)
     
-    newdf = data.frame(kinase=simpldf$id.kinrich,
+    newdf = data.frame(kinase=simpldf$id.coral,
                        name=simpldf$id.longname,
                        family=simpldf$kinase.family,
                        group = simpldf$kinase.group

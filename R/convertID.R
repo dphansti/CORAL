@@ -1,13 +1,13 @@
 
 
-# Define a function the converts input identifiers to kinrich IDs
+# Define a function the converts input identifiers to coral IDs
 convertID <- function(df,recolordf,inputtype)
 {
-  if (inputtype == "KinrichID")
+  if (inputtype == "coralID")
   {
-    inputtype = "id.kinrich"
+    inputtype = "id.coral"
   }
-  if (inputtype != "id.kinrich")
+  if (inputtype != "id.coral")
   {
     inputtype = paste("id.",inputtype,sep="")
   }

@@ -3,7 +3,7 @@
 # Define a function that make a branch
 build.branch <- function(l)
 {
-  branch = paste("<path id=\"b_x5F_",l["id.kinrich"],
+  branch = paste("<path id=\"b_x5F_",l["id.coral"],
                  "\" fill=\"",l["branch.col"],
                  "\" d=\"",l["branch.coords"],"\"/>",sep = "")
   return(branch)
@@ -13,7 +13,7 @@ build.branch <- function(l)
 build.text <- function(l)
 {
   label = paste("<a xlink:href=\"http://www.uniprot.org/uniprot/",l["id.uniprot"],"\">",
-                "<text id=\"t_x5F_",l["id.kinrich"],"\" ",
+                "<text id=\"t_x5F_",l["id.coral"],"\" ",
                 "x=\"", l["text.x"],"\" ",
                 "y=\"", trimws(l["text.y"]),"\" ",
                 " font-size=\"",l["text.size"],"px\" ",
@@ -38,7 +38,7 @@ build.node <- function(l)
     return()
   }
   
-  circle = paste("<circle id=\"n_x5F_",l["id.kinrich"],"\" ",
+  circle = paste("<circle id=\"n_x5F_",l["id.coral"],"\" ",
                  "cx=\"",l["node.x"],
                  "\" cy=\"",l["node.y"],
                  "\" r=\"",l["node.radius"],

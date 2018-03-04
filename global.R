@@ -39,6 +39,8 @@ source("R/radiobuttonswithimages.R")
 
 # read RDS
 orig_svginfo = readRDS("Data/kintree.RDS")
+# names(orig_svginfo$dataframe)[1] = "id.coral"
+# write_rds(orig_svginfo,path = "Data/kintree.RDS")
 
 # read in to get eEF2K data
 # readintofixEEF2K = data.frame(read_tsv("~/Desktop/dftorecolor.tsv",col_names = TRUE))
@@ -46,7 +48,7 @@ orig_svginfo = readRDS("Data/kintree.RDS")
 # orig_svginfo$dataframe$node.y = as.numeric(as.character(orig_svginfo$dataframe$node.y))
 # orig_svginfo$dataframe$text.x = as.numeric(as.character(orig_svginfo$dataframe$text.x))
 # orig_svginfo$dataframe$text.y = as.numeric(trimws(as.character(orig_svginfo$dataframe$text.y)))
-# orig_svginfo$dataframe = rbind(orig_svginfo$dataframe,readintofixEEF2K[which(readintofixEEF2K$id.kinrich == "eEF2K"),])
+# orig_svginfo$dataframe = rbind(orig_svginfo$dataframe,readintofixEEF2K[which(readintofixEEF2K$id.coral == "eEF2K"),])
 
 # add correct header
 orig_svginfo$header = "<svg viewBox=\"50 -10 800 640\"  preserveAspectRatio=\"xMidYMid meet\"\n

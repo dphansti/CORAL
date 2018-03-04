@@ -4,7 +4,7 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol=
   df<- df[seq(dim(df)[1],1),]
   
   # filter df
-  df = df[,c("id.kinrich","kinase.group","kinase.family","kinase.subfamily","branch.col","node.col","node.radius","text.size","node.strokecol")]
+  df = df[,c("id.coral","kinase.group","kinase.family","kinase.subfamily","branch.col","node.col","node.radius","text.size","node.strokecol")]
   
   # write df to file
   write_tsv(df,tmp,col_names = T)
@@ -24,7 +24,7 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol=
     family<-paste0(" ", row$kinase.family)
     family<-row$kinase.family
     subfamily<-paste0("  ", row$kinase.subfamily)
-    kinase<-paste0("   ", row$id.kinrich)
+    kinase<-paste0("   ", row$id.coral)
     branchcol<-row$branch.col 
     nodecol<-row$node.col 
     noderadius<-row$node.radius
