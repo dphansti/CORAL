@@ -385,6 +385,11 @@ ui <- dashboardPage(
                                          conditionalPanel(
                                           condition = "input.AdvancedSections == 'Font'",
                                           
+                                          # Choose Font
+                                          selectInput(inputId = "fontfamilyselect",label = "Choose Font",
+                                                      choices = c("Helvetica","Arial","Roboto","Georgia"),
+                                                      multiple = FALSE,selected = "Helvetica",width = "100%"),
+                                          
                                           # Slider for font size 
                                           sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 4,step = 0.05,ticks=F),
                                           

@@ -168,6 +168,10 @@ server <- function(input, output,session) {
     # get current values
     tempdf = svginfo$dataframe
     
+    
+    # set font family
+    tempdf$text.font = paste("'",input$fontfamilyselect,"'",sep="")
+
     # establish legend
     legend = c()
     # Set initial yoffset
@@ -192,7 +196,7 @@ server <- function(input, output,session) {
       tempdf = tempdf[order(tempdf$id.coral %in% input$KinasesManual, decreasing = FALSE),]
       
       # build legend for Branch Color (by group)
-      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch")
+      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch",fontfamily = input$fontfamilyselect)
       lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
       legend = c(legend,lines)
@@ -231,7 +235,7 @@ server <- function(input, output,session) {
         tempdf = tempdf[order(tempdf$branch.group),]
         
         # build legend for Branch Color (by group)
-        lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=names(branch.group.colormapping),groupcolors=branch.group.colormapping,elementtype = "Branch")
+        lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=names(branch.group.colormapping),groupcolors=branch.group.colormapping,elementtype = "Branch",fontfamily = input$fontfamilyselect)
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
@@ -280,7 +284,7 @@ server <- function(input, output,session) {
         tempdf = tempdf[order(abs(tempdf$branch.val), decreasing = FALSE,na.last = FALSE),]
         
         # add legend info
-        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$minheat,maxval=input$maxheat, palette=branchcolpalette,elementtype = "Branch")
+        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$minheat,maxval=input$maxheat, palette=branchcolpalette,elementtype = "Branch",fontfamily = input$fontfamilyselect)
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
@@ -313,7 +317,7 @@ server <- function(input, output,session) {
       tempdf$node.col =  color.by.selected(df = tempdf, sel = input$NodeManual, bg.col  = input$col_node_bg,  sel.col = input$col_sel_node)
       
       # # build legend for Node Color (by group)
-      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_node_bg,input$col_sel_node),elementtype = "Node")
+      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_node_bg,input$col_sel_node),elementtype = "Node",fontfamily = input$fontfamilyselect)
       lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
       legend = c(legend,lines)
@@ -349,7 +353,7 @@ server <- function(input, output,session) {
         node.group.colormapping = newcolors_and_colormapping[[3]]
         
         # build legend for Branch Color (by group)
-        lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=names(node.group.colormapping),groupcolors=node.group.colormapping,elementtype = "Node")
+        lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=names(node.group.colormapping),groupcolors=node.group.colormapping,elementtype = "Node",fontfamily = input$fontfamilyselect)
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
@@ -398,7 +402,7 @@ server <- function(input, output,session) {
         tempdf = tempdf[order(abs(tempdf$node.val), decreasing = FALSE,na.last = FALSE),]
         
         # add legend info
-        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$nodeminheat,maxval=input$nodemaxheat, palette=nodecolpalette,elementtype = "Node")
+        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$nodeminheat,maxval=input$nodemaxheat, palette=nodecolpalette,elementtype = "Node",fontfamily = input$fontfamilyselect)
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
@@ -443,7 +447,7 @@ server <- function(input, output,session) {
         tempdf$node.val.radius = radii_and_mapping[[2]]
         
         # add legend info
-        lines_and_offset = build.nodesize.legend (yoffset=yoffset,minval=minvalforlegend,maxval=maxvalforlegend,minsize = input$nodesizeValueslider[1] ,maxsize = input$nodesizeValueslider[2])
+        lines_and_offset = build.nodesize.legend (yoffset=yoffset,minval=minvalforlegend,maxval=maxvalforlegend,minsize = input$nodesizeValueslider[1] ,maxsize = input$nodesizeValueslider[2],fontfamily = input$fontfamilyselect)
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)

@@ -1,7 +1,7 @@
 
 
 # Define a function that makes boxes and labels for group type legends
-build.group.legend.elements <- function(x=99.208,y,color,width=6.584,height=6.584,label="group",fontsize=5,fontfamily="'AvenirNext-Bold'",elementtype="Branch")
+build.group.legend.elements <- function(x=99.208,y,color,width=6.584,height=6.584,label="group",fontsize=5,elementtype="Branch",fontfamily="'AvenirNext-Bold'")
 {
   # build the square
   square = paste("<rect x=\"", x,"\"",
@@ -43,12 +43,12 @@ build.group.legend.elements <- function(x=99.208,y,color,width=6.584,height=6.58
 
 
 # Define a function that builds a legend for group color
-build.group.legend  <- function(yoffset=0,groupslabels,groupcolors,elementtype = "Branch")
+build.group.legend  <- function(yoffset=0,groupslabels,groupcolors,elementtype = "Branch",fontfamily="'AvenirNext-Bold'")
 {
   # write the header
   header = paste("<text x=\"98.8075\"",
   " y=\"", yoffset + 8.8451, "\"",
-  " font-family=\"'AvenirNext-Bold'\" ",
+  " font-family=\"", fontfamily, "\" ",
   " font-size=\"9px\">", elementtype," Color</text>",
   sep="")
   
@@ -75,7 +75,7 @@ build.group.legend  <- function(yoffset=0,groupslabels,groupcolors,elementtype =
                       height=6.584,
                       label=groupslabels[i],
                       fontsize=5,
-                      fontfamily="'AvenirNext-Bold'",
+                      fontfamily=fontfamily,
                       elementtype)
     )
     yoffset = yoffset + 14
@@ -101,12 +101,12 @@ drawrect <- function(x,y,fill,width=6.584,height=11.27)
 
 
 # Define a function that builds a legend for values
-build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "Branch")
+build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "Branch",fontfamily="'AvenirNext-Bold'")
 {
   # write the header
   header = paste("<text x=\"98.8075\"",
                  " y=\"", yoffset + 8.8451, "\"",
-                 " font-family=\"'AvenirNext-Bold'\" ",
+                 " font-family=\"", fontfamily, "\" ",
                  " font-size=\"9px\">", elementtype," Color</text>",
                  sep="")
   
@@ -133,14 +133,14 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
   text.min = paste("<text x=\"", 98.8075,"\"",
                " y=\"", yoffset + 23.1251, "\"",
                " font-size=\"", "5px", "\"",
-               " font-family=\"", "'AvenirNext-Bold'","\">",
+               " font-family=\"", fontfamily, "\">",
                minval,"</text>",
                sep="")
   
   text.mid = paste("<text x=\"", 133.8944,"\"",
                " y=\"", yoffset + 23.1251, "\"",
                " font-size=\"", "5px", "\"",
-               " font-family=\"", "'AvenirNext-Bold'","\">",
+               " font-family=\"", fontfamily, "\">",
                mean(c(minval , maxval)),"</text>",
                sep="")
   
@@ -162,7 +162,7 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
 
 
 # Define a function that builds a legend for values
-build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize)
+build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize,fontfamily="'AvenirNext-Bold'")
 {
   extrayoff = 0
  
@@ -174,7 +174,7 @@ build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize)
   # write the header
   header = paste("<text x=\"98.8075\"",
                  " y=\"", yoffset + 8.8451, "\"",
-                 " font-family=\"'AvenirNext-Bold'\" ",
+                 " font-family=\"", fontfamily, "\" ",
                  " font-size=\"9px\">","Node Size</text>",
                  sep="")
 
@@ -209,14 +209,14 @@ build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize)
                    " y=\"", yoffset + 23.1251, "\"",
                    " font-size=\"", "5px", "\"",
                    " text-anchor=\"middle\"",
-                   " font-family=\"", "'AvenirNext-Bold'","\">",
+                   " font-family=\"", fontfamily, "\">",
                    minval,"</text>",
                    sep="")
   text.max = paste("<text x=\"",  max(xs),"\"",
                    " y=\"", yoffset + 23.1251, "\"",
                    " font-size=\"", "5px", "\"",
                    " text-anchor=\"middle\"",
-                   " font-family=\"", "'AvenirNext-Bold'","\">",
+                   " font-family=\"", fontfamily, "\">",
                    maxval,"</text>",
                    sep="")
   
