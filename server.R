@@ -233,6 +233,10 @@ server <- function(input, output,session) {
         # reorder based on branch color 
         tempdf = tempdf[order(tempdf$branch.group),]
         
+       
+        print (newcolors_and_colormapping)
+        
+        
         # build legend for Branch Color (by group)
         lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=names(branch.group.colormapping),groupcolors=branch.group.colormapping,elementtype = "Branch",fontfamily = input$fontfamilyselect)
         lines = lines_and_offset[[1]]

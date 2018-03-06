@@ -8,7 +8,7 @@ color.by.selected <- function(df,sel,bg.col,sel.col)
   # recolor selected kinases
   if (length(sel) > 0)
   {
-    color.vector[which(df$id.kinrich %in% sel)] = sel.col
+    color.vector[which(df$id.coral %in% sel)] = sel.col
   }
   
   # return color vector
@@ -52,8 +52,8 @@ color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
     kinsase.from.this.group = recolordf[which(recolordf[,2]==group.name),1]
     
     # update vector of colors
-    color.vector[which(df$id.kinrich %in% kinsase.from.this.group)] = group.color
-    group.vector[which(df$id.kinrich %in% kinsase.from.this.group)] = group.name
+    color.vector[which(df$id.coral %in% kinsase.from.this.group)] = group.color
+    group.vector[which(df$id.coral %in% kinsase.from.this.group)] = group.name
   }
 
   return( list(color.vector,group.vector,groupcolormapping))
@@ -63,8 +63,8 @@ color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
 # Define a function creates color vector from values
 color.by.value <- function(df ,recolordf ,colors  ,heatrange , bg.col="#D3D3D3")
 {
- print (bg.col) 
- # set background color
+  print (df) 
+  # set background color
   color.vector = rep(bg.col,nrow(df))
   
   # kep track of group labels
