@@ -87,6 +87,10 @@ writekinasetree <- function(svginfo,destination,font)
   
   # add circles
   outputlines = c(outputlines,"<g id=\"CIRCLES\">")
+  
+  # reorder circles by size
+  svginfo$dataframe = svginfo$dataframe[order(svginfo$dataframe$node.radius,decreasing = TRUE),]
+  
   outputlines = c(outputlines,unlist(apply(svginfo$dataframe,1, build.node )))
   outputlines = c(outputlines,"</g>")
   
