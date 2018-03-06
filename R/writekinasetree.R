@@ -16,6 +16,7 @@ build.text <- function(l)
                 "<text id=\"t_x5F_",l["id.coral"],"\" ",
                 "x=\"", l["text.x"],"\" ",
                 "y=\"", trimws(l["text.y"]),"\" ",
+                "font-weight=700 ",
                 " font-size=\"",l["text.size"],"px\" ",
                 "fill=\"",l["text.col"],"\" ",
                 "font-family=\"", l["text.font"], "\" ",

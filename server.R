@@ -168,7 +168,6 @@ server <- function(input, output,session) {
     # get current values
     tempdf = svginfo$dataframe
     
-    
     # set font family
     tempdf$text.font = paste("'",input$fontfamilyselect,"'",sep="")
 
