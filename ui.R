@@ -1,14 +1,21 @@
 ## app.R ##
 
 ui <- dashboardPage(
- dashboardHeader(title = h4("CORAL")),
-  # title = span(img(src="", width = 190))),
+ dashboardHeader(title = span(img(src="coral-logo-draft.png",height=100,align="left")),titleWidth = 600,
+
+ tags$li(class = "dropdown",
+         tags$style(".main-header {max-height: 100px}"),
+         tags$style(".main-header .logo {height: 100px;}"),
+         tags$style(".sidebar-toggle {height: 100px; padding-top: 10px !important;}"),
+         tags$style(".navbar {min-height:100px !important}")
+ ) ),
  
  dashboardSidebar
  (
   sidebarMenu(id="sidebartabs",
               menuItem("Visualize", tabName = "Visualize", icon = icon("eye")),
-              menuItem("Info", tabName = "Info", icon = icon("info"))
+              menuItem("Info", tabName = "Info", icon = icon("info")),
+              tags$style(".left-side, .main-sidebar {padding-top: 100px}")
   ),
   collapsed = TRUE,
   disable = TRUE
@@ -387,7 +394,7 @@ ui <- dashboardPage(
                                           
                                           # Choose Font
                                           selectInput(inputId = "fontfamilyselect",label = "Choose Font",
-                                                      choices = c("Helvetica","Arial","Roboto","Georgia"),
+                                                      choices = c("Helvetica","Arial","Verdana","Trebuchet MS","Times New Roman","Garamond"),
                                                       multiple = FALSE,selected = "Helvetica",width = "100%"),
                                           
                                           # Slider for font size 
