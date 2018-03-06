@@ -39,6 +39,7 @@ source("R/radiobuttonswithimages.R")
 
 # read RDS
 orig_svginfo = readRDS("Data/kintree.RDS")
+
 # names(orig_svginfo$dataframe)[1] = "id.coral"
 # write_rds(orig_svginfo,path = "Data/kintree.RDS")
 

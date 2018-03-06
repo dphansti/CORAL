@@ -1,5 +1,17 @@
 
 
+# Define a function that writes the group names
+build.group.labels <- function(l,font)
+{
+ # use correct font
+ grouplabel = gsub(pattern = "'Roboto-Bold'",font,l)
+ 
+ # make bold
+ grouplabel = gsub(pattern = "letter-spacing","font-weight=700 letter-spacing",grouplabel)
+ 
+ return(grouplabel)
+}
+
 # Define a function that make a branch
 build.branch <- function(l)
 {
@@ -51,7 +63,7 @@ build.node <- function(l)
 }
 
 # Define a function that writes an kinase tree svg file
-writekinasetree <- function(svginfo,destination)
+writekinasetree <- function(svginfo,destination,font)
 {
   outputlines = c()
   
@@ -85,7 +97,7 @@ writekinasetree <- function(svginfo,destination)
   
   # add tail
   outputlines = c(outputlines,"<g id=\"GROUPS\">")
-  outputlines = c(outputlines,svginfo$groups)
+  outputlines = c(outputlines,unlist(lapply(svginfo$groups, build.group.labels, font=font)))
   outputlines = c(outputlines,"</g>")
   outputlines = c(outputlines,"</svg>")
   
