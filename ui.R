@@ -1,13 +1,13 @@
 ## app.R ##
 
 ui <- dashboardPage(
- dashboardHeader(title = span(img(src="coral-logo-draft.png",height=100,align="left")),titleWidth = 600,
+ dashboardHeader(title = span(img(src="coral-logo-draft.png",height=60,align="left")),titleWidth = 600,
 
  tags$li(class = "dropdown",
-         tags$style(".main-header {max-height: 100px}"),
-         tags$style(".main-header .logo {height: 100px;}"),
-         tags$style(".sidebar-toggle {height: 100px; padding-top: 10px !important;}"),
-         tags$style(".navbar {min-height:100px !important}")
+         tags$style(".main-header {max-height: 60px}"),
+         tags$style(".main-header .logo {height: 60px;}"),
+         tags$style(".sidebar-toggle {height: 60px; padding-top: 10px !important;}"),
+         tags$style(".navbar {min-height:60px !important}")
  ) ),
  
  dashboardSidebar
@@ -15,7 +15,7 @@ ui <- dashboardPage(
   sidebarMenu(id="sidebartabs",
               menuItem("Visualize", tabName = "Visualize", icon = icon("eye")),
               menuItem("Info", tabName = "Info", icon = icon("info")),
-              tags$style(".left-side, .main-sidebar {padding-top: 100px}")
+              tags$style(".left-side, .main-sidebar {padding-top: 60px}")
   ),
   collapsed = TRUE,
   disable = TRUE
