@@ -54,7 +54,7 @@ binding.renderValue = function(el, data) {
           .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
-          
+      
       node.append("circle")
           .attr("r", function(d) { return d.noderadius; })
           .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); })
