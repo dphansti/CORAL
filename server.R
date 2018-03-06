@@ -631,6 +631,7 @@ server <- function(input, output,session) {
     content <- function(file) {
     rsvg_pdf(svgoutfile, file)
     }
+    
     # content <- function(file) {
     #   if (input$downloadtype == 'pdf') {
     #     rsvg_pdf(svgoutfile, file)
