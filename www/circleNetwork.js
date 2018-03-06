@@ -63,6 +63,7 @@ binding.renderValue = function(el, data) {
 
       node.append("text")
           .attr("dy", ".31em")
+          .attr("font-family","Helvetica")
           .attr("font-color","black")
           .attr("stroke-width", 0.0)
           .attr("font-size",function(d) { return d.textsize; })

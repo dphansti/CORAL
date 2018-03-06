@@ -101,6 +101,7 @@ binding.renderValue = function(el, data) {
             
         node.append("text")
             .attr("dy", ".35em")
+            .attr("font-family","Helvetica")
             .attr("text-anchor","middle")
             .text(function(d) { return d.name; })
             .attr("font-size", function(d) { return ((d.textsize * 2) + "px"); });
