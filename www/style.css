@@ -60,65 +60,64 @@ h4,
 
 /* logo */
 .skin-blue .main-header .logo {
-  color: #000000;                      
-  background-color: #eceff3;
-
-                              }
+  color: #;                     
+}
 
 /* logo when hovered */
 .skin-blue .main-header .logo:hover {
-  color: #000000;
-  background-color: #fff;
+  color: #;
 }
 
-/* toggle button  */                    
-.skin-blue .main-header .navbar .sidebar-toggle {
-  color: #fff;
-  background-color: #fff;
-}
-
-/* toggle button when hovered  */                    
-.skin-blue .main-header .navbar .sidebar-toggle:hover{
-  color: #--font-family-sans-serif;
-  background-color: #fff;
-}
-                              
-/* navbar (rest of the header) */
-.skin-blue .main-header .navbar {
-  background-color: #eceff3;
+/*  header */
+.skin-blue .main-header .navbar,
+.skin-blue .main-header .logo,
+.skin-blue .main-header .logo:hover{
+  background-color: #333;
 }        
 
-/* main sidebar */
-.main-sidebar {
-  background-color: #222c32;
+/* slider bar */
+.irs-single, .irs-bar-edge, .irs-bar, .irs-from, .irs-to{
+  background: #333;
 }
 
-/* active selected tab in the sidebarmenu */
-.main-sidebar .sidebar .sidebar-menu .active a{
-  background-color: #1e272c;
+.irs-bar, .irs-bar-edge{
+  border: #333;
 }
 
-/* other links in the sidebarmenu */
-.main-sidebar .sidebar .sidebar-menu a{
-  color: #d3d3d3;
+.irs-line{
+ background: #dde1e6;
+ border:none;
 }
 
-/* other links in the sidebarmenu when hovered */
-.main-sidebar .sidebar .sidebar-menu a:hover{
-  background-color: #d3d3d3;
-  color: #fff;
+/* slider circle */
+.irs-slider.single,
+.irs-slider.from,
+.irs-slider.to{
+ background: #fff;
+ border-color: #c4c8cc;
+ border-width: 6px;
+ -webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
 }
 
-/* node size slider */
-.js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar{
-  background: #ea7a6a;
+.irs-shadow{
+ opacity: 0;
+ background: #fff;
+ display: none;
 }
 
-.js-irs-0 .irs-bar, .js-irs-0 .irs-bar-edge{
-  border: #ea7a6a;
+/* slider value box */
+.irs-single, .irs-from, .irs-to{
+  padding: 2px 3px 0px 3px;
+  vertical-align: bottom;
 }
 
-/* advanced settings slider */
+.irs-min, .irs-max{
+ background: #eceff3;
+}
+
+/* specific slider
 
 .js-irs-2 .irs-single, .js-irs-2 .irs-bar-edge, .js-irs-2 .irs-bar{
   background: #ea7a6a;
@@ -126,13 +125,7 @@ h4,
 
 .js-irs-2 .irs-bar, .js-irs-2 .irs-bar-edge {
   border: #ea7a6a;
-}
-
-/* slider value */
-.irs-single{
- padding: 2px 3px 0px 3px;
-  vertical-align: bottom;
-}
+} */
 
 /* tooltip button */
 .btn.action-button.btn-primary.btn-xs.shiny-bound-input{
@@ -164,18 +157,24 @@ h4,
 /* checkmarks */
 
 
-/* radio button */
+/* info-plot button */
 
-.btn.radiobtn.btn-success{
-  background:#c4c8cc;
+.btn.radiobtn.btn-primary{
+  color:#eceff3;
+  background: #a3b8cc;
   border-bottom-color:#eceff3;
   border-left-color:#eceff3;
   border-right-color:#eceff3;
   border-top-color:#eceff3;
-      border-radius: 20px;
+      border-radius: 0px;
 }
 
-.btn.radiobtn.btn-success.active{
+.btn.radiobtn.btn-primary:hover{
+  background: #99b1c7;
+}
+
+.btn.radiobtn.btn-primary.active{
+  color: #fff;
   background:#333;
   border-bottom-color:#eceff3;
   border-left-color:#eceff3;
@@ -183,7 +182,7 @@ h4,
   border-top-color:#eceff3;
 }
 
-.btn.radiobtn.btn-success.active{
+.btn.radiobtn.btn-primary.active{
   -webkit-box-shadow: none; 
   -moz-box-shadow: none;
   box-shadow: none;
@@ -191,6 +190,33 @@ h4,
 
 .btn-group{
    padding: 0px 0px 2px 0px;
+}
+
+/* download button */
+
+.btn.button-default{
+ border-style: none;
+}
+
+#downloadtree.btn.btn-default, 
+#downloadcircle.btn.btn-default, 
+#downloadforce.btn.btn-default{
+  width: 100%; 
+  text-align: left; 
+  color: #fff; 
+  background-color: #333; 
+  height:43px; 
+  font-size: 120%; 
+  line-height: 185%; 
+  letter-spacing: .25px; 
+  border-radius: 0; 
+  border-color: #eceff3;
+}
+
+#downloadtree.btn.btn-default:hover, 
+#downloadcircle.btn.btn-default:hover, 
+#downloadforce.btn.btn-default:hover{
+ background-color: #2b2b2b;
 }
 
 /* remove box shadows */
@@ -207,11 +233,28 @@ h4,
   box-shadow: none;
 }
 
+#InfoAbout.btn.btn-default.action-button.shiny-bound-input,
+#InfoUsage.btn.btn-default.action-button.shiny-bound-input,
+#InfoOther.btn.btn-default.action-button.shiny-bound-input{
+  width: 100%; 
+  text-align: left; 
+  color: #fff; 
+  height:43px; 
+  font-size: 120%; 
+  line-height: 190%; 
+  letter-spacing: .25px; 
+  border-radius: 0; 
+  border-color: #eceff3;
+  margin-bottom: 2px;
+}
+
+
 /* box 1 */
 
-.box.box-solid.box-primary>.box-header{
+.box.box-solid.box-primary>.box-header,
+#InfoAbout.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
-  background:#0571B0;
+  background:#3da1cc;
 }
 
 .box.box-solid.box-primary{
@@ -229,9 +272,10 @@ h4,
 
 /* box 2 */
 
-.box.box-solid.box-success>.box-header{
+.box.box-solid.box-success>.box-header,
+#InfoUsage.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
-  background:#
+  background:#3889bf
 }
 
 .box.box-solid.box-success{
@@ -244,9 +288,10 @@ h4,
 
 /* box 3 */
 
-.box.box-solid.box-info>.box-header{
+.box.box-solid.box-info>.box-header,
+#InfoOther.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
-  background:#
+  background:#3477b3
 }
 
 .box.box-solid.box-info{
@@ -259,7 +304,7 @@ h4,
 /* box 4 */
 .box.box-solid.box-warning>.box-header{
   color:#fff;
-  background:#c4c8cc
+  background:#425e8c
 }
 
 .box.box-solid.box-warning{
@@ -270,7 +315,7 @@ h4,
 }
 
 .box.box-warning{
- border-top-color:#c4c8cc;
+ border-top-color:#;
 }
 
 /* box 5 */
@@ -290,7 +335,7 @@ h4,
 /* active tab */
 
 .nav-tabs-custom .nav-tabs li.active {
-     border-top-color: #0571B0;
+     border-top-color: #3da1cc;
 }
 
 /* dashboard background */
@@ -305,4 +350,36 @@ background-color: #;
     }
 */
 
+/* toggle button                    
+.skin-blue .main-header .navbar .sidebar-toggle {
+  color: #fff;
+  background-color: #fff;
+}
+
+/* toggle button when hovered                      
+.skin-blue .main-header .navbar .sidebar-toggle:hover{
+  color: #--font-family-sans-serif;
+  background-color: #fff;
+}
+
+/* main sidebar 
+.main-sidebar {
+  background-color: #222c32;
+}
+
+/* active selected tab in the sidebarmenu 
+.main-sidebar .sidebar .sidebar-menu .active a{
+  background-color: #1e272c;
+}
+
+/* other links in the sidebarmenu 
+.main-sidebar .sidebar .sidebar-menu a{
+  color: #d3d3d3;
+}
+
+/* other links in the sidebarmenu when hovered 
+.main-sidebar .sidebar .sidebar-menu a:hover{
+  background-color: #d3d3d3;
+  color: #fff;
+}
 
