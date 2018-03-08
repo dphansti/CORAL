@@ -4,60 +4,61 @@ server <- function(input, output,session) {
  
  # ----------------- INFO PAGES ---------------- #
  
- observeEvent(input$InfoAbout,{
-  
+ observeEvent(input$InfoBranchColorButton,{
   # Remove existing info boxes
-  removeUI(
-   selector = "#InfoBoxAbout")
-  removeUI(
-   selector = "#InfoBoxUsage")
-  removeUI(
-   selector = "#InfoBoxOther")
-  
+  removeUI(selector = "#InfoBranchColorBox")
+  removeUI(selector = "#InfoNodeColorBox")
+  removeUI(selector = "#InfoNodeSizeBox")
+  removeUI(selector = "#InfoAdvancedOptionsBox")
+  removeUI(selector = "#InfoAboutBox")
   # Add appropriate info box
-  insertUI(
-   selector = "#InfoBox",
-   where = "afterEnd",
-   ui = source("R/InfoAbout.R",local=TRUE)$value
-  )
- })
+  insertUI(selector = "#InfoBox",where = "afterEnd",
+   ui = source("R/InfoBranchColor.R",local=TRUE)$value)})
  
- observeEvent(input$InfoUsage,{
-  
+ observeEvent(input$InfoNodeColorButton,{
   # Remove existing info boxes
-  removeUI(
-   selector = "#InfoBoxAbout")
-  removeUI(
-   selector = "#InfoBoxUsage")
-  removeUI(
-   selector = "#InfoBoxOther")
-  
+  removeUI(selector = "#InfoBranchColorBox")
+  removeUI(selector = "#InfoNodeColorBox")
+  removeUI(selector = "#InfoNodeSizeBox")
+  removeUI(selector = "#InfoAdvancedOptionsBox")
+  removeUI(selector = "#InfoAboutBox")
   # Add appropriate info box
-  insertUI(
-   selector = "#InfoBox",
-   where = "afterEnd",
-   ui = source("R/InfoUsage.R",local=TRUE)$value
-  )
- })
+  insertUI(selector = "#InfoBox",where = "afterEnd",
+           ui = source("R/InfoNodeColor.R",local=TRUE)$value)})
  
- observeEvent(input$InfoOther,{
-  
+ observeEvent(input$InfoNodeSizeButton,{
   # Remove existing info boxes
-  removeUI(
-   selector = "#InfoBoxAbout")
-  removeUI(
-   selector = "#InfoBoxUsage")
-  removeUI(
-   selector = "#InfoBoxOther")
-  
+  removeUI(selector = "#InfoBranchColorBox")
+  removeUI(selector = "#InfoNodeColorBox")
+  removeUI(selector = "#InfoNodeSizeBox")
+  removeUI(selector = "#InfoAdvancedOptionsBox")
+  removeUI(selector = "#InfoAboutBox")
   # Add appropriate info box
-  insertUI(
-   selector = "#InfoBox",
-   where = "afterEnd",
-   ui = source("R/InfoOther.R",local=TRUE)$value
-  )
- })
+  insertUI(selector = "#InfoBox",where = "afterEnd",
+           ui = source("R/InfoNodeSize.R",local=TRUE)$value)})
+
+ observeEvent(input$InfoAdvancedOptionsButton,{
+  # Remove existing info boxes
+  removeUI(selector = "#InfoBranchColorBox")
+  removeUI(selector = "#InfoNodeColorBox")
+  removeUI(selector = "#InfoNodeSizeBox")
+  removeUI(selector = "#InfoAdvancedOptionsBox")
+  removeUI(selector = "#InfoAboutBox")
+  # Add appropriate info box
+  insertUI(selector = "#InfoBox",where = "afterEnd",
+           ui = source("R/InfoAdvancedOptions.R",local=TRUE)$value)})
  
+ observeEvent(input$InfoAboutButton,{
+  # Remove existing info boxes
+  removeUI(selector = "#InfoBranchColorBox")
+  removeUI(selector = "#InfoNodeColorBox")
+  removeUI(selector = "#InfoNodeSizeBox")
+  removeUI(selector = "#InfoAdvancedOptionsBox")
+  removeUI(selector = "#InfoAboutBox")
+  # Add appropriate info box
+  insertUI(selector = "#InfoBox",where = "afterEnd",
+           ui = source("R/InfoAbout.R",local=TRUE)$value)})
+
  # Update selected tab
  observe({
   if (input$dashboardchooser == "Info")

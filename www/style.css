@@ -233,9 +233,11 @@ h4,
   box-shadow: none;
 }
 
-#InfoAbout.btn.btn-default.action-button.shiny-bound-input,
-#InfoUsage.btn.btn-default.action-button.shiny-bound-input,
-#InfoOther.btn.btn-default.action-button.shiny-bound-input{
+#InfoAboutButton.btn.btn-default.action-button.shiny-bound-input,
+#InfoBranchColorButton.btn.btn-default.action-button.shiny-bound-input,
+#InfoNodeColorButton.btn.btn-default.action-button.shiny-bound-input,
+#InfoNodeSizeButton.btn.btn-default.action-button.shiny-bound-input,
+#InfoAdvancedOptionsButton.btn.btn-default.action-button.shiny-bound-input{
   width: 100%; 
   text-align: left; 
   color: #fff; 
@@ -246,13 +248,14 @@ h4,
   border-radius: 0; 
   border-color: #eceff3;
   margin-bottom: 2px;
+  background:#3da1cc;
 }
 
 
 /* box 1 */
 
 .box.box-solid.box-primary>.box-header,
-#InfoAbout.btn.btn-default.action-button.shiny-bound-input{
+#InfoAboutButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
   background:#3da1cc;
 }

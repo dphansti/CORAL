@@ -1,8 +1,8 @@
-div(id="InfoBoxUsage",
+div(id="InfoAdvancedOptionsBox",
     
     box(width="100%",
         div(
-         h3 ("Usage"),
+         h3 ("fasdfasdafds"),
          "asdjfad sdj kf adsfjhsdf asdhdsdhkjfadshjkfa dsfad f"
         )
     ) # end box

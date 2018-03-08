@@ -31,13 +31,13 @@ ui <- dashboardPage(
    tags$script(src="collapsableForceNetwork.js"),
    
    #the stylesheet, paste all that was between the <style> tags from your example in the graph_style.css file
-   tags$link(rel = "stylesheet", type = "text/css", href = "style.css"),
+   tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
    
-   # try to resize plot according to window size
-   tags$head(tags$style("#plot1{height:100vh;}")),
-   tags$head(tags$style("#InfoAbout{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}")),
-   tags$head(tags$style("#InfoUsage{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}")),
-   tags$head(tags$style("#InfoOther{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}"))
+   # # try to resize plot according to window size
+   # tags$head(tags$style("#plot1{height:100vh;}")),
+   # tags$head(tags$style("#InfoAbout{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}")),
+   # tags$head(tags$style("#InfoUsage{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}")),
+   # tags$head(tags$style("#InfoOther{text-align: left; color: #fff; background-color: #0571B0; height:43px; font-size: 120%; line-height: 140%; letter-spacing: .25px; border-radius: 0;}"))
   ),
   
   # Fix a bug in the texboxInput funciton that doesn't respect width= "100%"
@@ -519,19 +519,31 @@ ui <- dashboardPage(
                            ),
                            
                            div(
-                            actionButton("InfoAbout",label="About")
+                            actionButton("InfoBranchColorButton",label="Branch Color")
                            ),
                            
                            tags$br(),
                            
                            div(
-                            actionButton("InfoUsage",label="Usage")
+                            actionButton("InfoNodeColorButton",label="Node Color")
                            ),
                            
                            tags$br(),
                            
                            div(
-                            actionButton("InfoOther",label="Other")
+                            actionButton("InfoNodeSizeButton",label="Node Size")
+                           ),
+                           
+                           tags$br(),
+                           
+                           div(
+                            actionButton("InfoAdvancedOptionsButton",label="Advanced Options")
+                           ),
+                           
+                           tags$br(),
+                           
+                           div(
+                            actionButton("InfoAboutButton",label="About")
                            )
                            
                     ), # end column
