@@ -1,7 +1,7 @@
 ## app.R ##
 
 ui <- dashboardPage(
- dashboardHeader(title = span(img(src="coral-logo-draft.png",height=60,align="left")),titleWidth = 600,
+ dashboardHeader(title = span(img(src="coral-logo-white.png",height=60,align="left")),titleWidth = 600,
 
  tags$li(class = "dropdown",
          tags$style(".main-header {max-height: 60px}"),
@@ -55,7 +55,7 @@ ui <- dashboardPage(
                             inputId = "dashboardchooser", label = NULL, 
                             choices = c("Info", "Plot"), 
                             selected = "Plot",
-                            justified = TRUE, status = "success",
+                            justified = TRUE, status = "primary",
                             checkIcon = list(yes = "", no = "")
                            ),
                            
@@ -76,11 +76,29 @@ ui <- dashboardPage(
                                          # if manual selection
                                          conditionalPanel(
                                           condition = "input.branchcolortype == 'Manually'",
-                                          selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%"),
+                                          
+                                          # choose between selecting and pasting in
+                                          radioButtons(inputId="branchmanuallyinputmethod",label = "Kinase Input Method",
+                                                       choices = c("Select","Paste"),inline = TRUE),
+                                          
+                                          # if Select
+                                          conditionalPanel(
+                                           condition = "input.branchmanuallyinputmethod == 'Select'",
+                                           selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%")
+                                          ),
+                                          # if Paste
+                                          conditionalPanel(
+                                           condition = "input.branchmanuallyinputmethod == 'Paste'",
+                                           textAreaInput("KinasesManualBranchText", "Kinases", height = "100px",width = "100%",
+                                                         value = ""
+                                           )
+                                          ),
+
                                           fluidRow( width=12,
                                                     column(6,colourInput("col_select_bg", "BG Color", BG_col1,showColour = "both")),
                                                     column(6,colourInput("col_select", "Color", HM_hi,showColour = "both"))
                                           )
+                                          
                                          ),
                                          
                                          # if by group
@@ -195,7 +213,7 @@ ui <- dashboardPage(
                                      
                                      # ---- NODE COLOR ---- #
                                      
-                                     box(width=12,title = "Node Color",status = "primary", solidHeader = TRUE,
+                                     box(width=12,title = "Node Color",status = "success", solidHeader = TRUE,
                                          collapsible = TRUE,collapsed = TRUE,
                                          
                                          selectInput(inputId = "nodecolortype",label = "Color Node",
@@ -328,8 +346,8 @@ ui <- dashboardPage(
                                      
                                      # ---- NODE SIZE ---- #
                                      
-                                     box(width=12,title = "Node Size",status = "primary", solidHeader = TRUE,
-                                         collapsible = TRUE,collapsed = TRUE,
+                                     box(width=12,title = "Node Size",status = "info", solidHeader = TRUE,
+                                         collapsible = TRUE,collapsed = TRUE, 
                                          
                                          selectInput(inputId = "nodesizetype",label = "Size Node",
                                                      choices = c("One Size","by value"),
@@ -381,7 +399,7 @@ ui <- dashboardPage(
                                           # text box for title
                                           textInput(inputId="titleinput",label = 
                                                      h4("Title",
-                                                        tags$style(type = "text/css", "#titletooltip {vertical-align: top;}"),
+                                                        tags$style(type = "text/css", "#titletooltip {vertical-align: bottom;}"),
                                                         bsButton("titletooltip", label = "", icon = icon("question"), style = "primary", size = "extra-small")),
                                                     placeholder = ""),
                                           bsTooltip(id="titletooltip",title="Provide title for top of plot (Only applies to Tree layout)",
@@ -435,21 +453,20 @@ ui <- dashboardPage(
                                          )
                                      ) #end box
                            ), #end row
-                                     
+                           
+                           # ---- DOWNLOAD ---- #
+                          
                            conditionalPanel(
                            condition = "input.tabboxselected == 'Tree'",
-                                      tags$head(tags$style("#downloadtree{width: 100%; text-align: left; vertical-align: middle; color: #000000; background-color: #fff; height:43px; font-size: 120%; line-height: 200%; letter-spacing: .25px; border-radius: 0;}")),
-                                     downloadButton("downloadtree", "Download")
+                           tags$a(id="downloadcircle", href="#", class="btn btn-default", "Download")
                            ),
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Circle'",
-                            tags$head(tags$style("#downloadcircle{width: 100%; text-align: left; vertical-align: middle; color: #000000; background-color: #fff; height:43px; font-size: 120%; line-height: 200%; letter-spacing: .25px; border-radius: 0;}")),
-                            tags$a(id="downloadcircle", href="#", class="btn btn-default",icon("download"), "Download")
+                            tags$a(id="downloadcircle", href="#", class="btn btn-default", "Download")
                            ),
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Force'",
-                            tags$head(tags$style("#downloadforce{width: 100%; text-align: left; vertical-align: middle; color: #000000; background-color: #fff; height:43px; font-size: 120%; line-height: 200%; letter-spacing: .25px; border-radius: 0;}")),
-                            tags$a(id="downloadforce", href="#", class="btn btn-default",icon("download"),  "Download")
+                            tags$a(id="downloadforce", href="#", class="btn btn-default", "Download")
                            )
                     ), # end column
                     
@@ -497,24 +514,24 @@ ui <- dashboardPage(
                             inputId = "dashboardchooser2", label = NULL, 
                             choices = c("Info", "Plot"), 
                             selected = "Info",
-                            justified = TRUE, status = "success",
+                            justified = TRUE, status = "primary",
                             checkIcon = list(yes = "", no = "")
                            ),
                            
                            div(
-                            actionButton("InfoAbout",label="About",status="primary",width="100%")
+                            actionButton("InfoAbout",label="About")
                            ),
                            
                            tags$br(),
                            
                            div(
-                            actionButton("InfoUsage",label="Usage",status="primary",width="100%")
+                            actionButton("InfoUsage",label="Usage")
                            ),
                            
                            tags$br(),
                            
                            div(
-                            actionButton("InfoOther",label="Other",status="primary",width="100%")
+                            actionButton("InfoOther",label="Other")
                            )
                            
                     ), # end column
