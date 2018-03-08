@@ -455,7 +455,6 @@ ui <- dashboardPage(
                            ), #end row
                            
                            # ---- DOWNLOAD ---- #
-                          
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Tree'",
                             downloadButton(outputId = "downloadtree",label= "Download")
