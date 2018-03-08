@@ -7,7 +7,7 @@ build.group.labels <- function(l,font)
  grouplabel = gsub(pattern = "'Roboto-Bold'",font,l)
  
  # make bold
- grouplabel = gsub(pattern = "letter-spacing","font-weight=700 letter-spacing",grouplabel)
+ grouplabel = gsub(pattern = "letter-spacing","font-weight=\"700\" letter-spacing",grouplabel)
  
  return(grouplabel)
 }
@@ -28,7 +28,7 @@ build.text <- function(l)
                 "<text id=\"t_x5F_",l["id.coral"],"\" ",
                 "x=\"", l["text.x"],"\" ",
                 "y=\"", trimws(l["text.y"]),"\" ",
-                "font-weight=700 ",
+                "font-weight=\"700\" ",
                 " font-size=\"",l["text.size"],"px\" ",
                 "fill=\"",l["text.col"],"\" ",
                 "font-family=\"", l["text.font"], "\" ",
