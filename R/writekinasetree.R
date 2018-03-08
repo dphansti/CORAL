@@ -72,7 +72,7 @@ writekinasetree <- function(svginfo,destination,font)
   
   # add title
   outputlines = c(outputlines,"<g id=\"TITLE\">")
-  outputlines = c(outputlines,paste("<text x=\"425\" y=\"10\" text-anchor=\"middle\" font-family=\"'AvenirNext-Bold'\"  font-size=\"15px\">",svginfo$title,"</text>",sep=""))
+  outputlines = c(outputlines,paste("<text x=\"425\" y=\"10\" text-anchor=\"middle\" font-weight=\"700\" font-family=\"",font,"\"  font-size=\"15px\">",svginfo$title,"</text>",sep=""))
   outputlines = c(outputlines,"</g>")
   
   # add legend

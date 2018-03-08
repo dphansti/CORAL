@@ -24,7 +24,7 @@ build.group.legend.elements <- function(x=99.208,y,color,width=6.584,height=6.58
   texty = y + 4.5
   text = paste("<text x=\"", textx,"\"",
                  " y=\"", texty, "\"",
-                 "font-weight=700 ",
+                 " font-weight=\"700\" ",
                  " font-size=\"", fontsize, "\"",
                  " font-family=\"", fontfamily,"\">",
                   label,"</text>",
@@ -50,7 +50,7 @@ build.group.legend  <- function(yoffset=0,groupslabels,groupcolors,elementtype =
   header = paste("<text x=\"98.8075\"",
   " y=\"", yoffset + 8.8451, "\"",
   " font-family=\"", fontfamily, "\" ",
-  "font-weight=700 ",
+  " font-weight=\"700\" ",
   " font-size=\"9px\">", elementtype," Color</text>",
   sep="")
   
@@ -109,7 +109,7 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
   header = paste("<text x=\"98.8075\"",
                  " y=\"", yoffset + 8.8451, "\"",
                  " font-family=\"", fontfamily, "\" ",
-                 "font-weight=700 ",
+                 " font-weight=\"700\" ",
                  " font-size=\"9px\">", elementtype," Color</text>",
                  sep="")
   
@@ -136,7 +136,7 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
   text.min = paste("<text x=\"", 98.8075,"\"",
                " y=\"", yoffset + 23.1251, "\"",
                " font-size=\"", "5px", "\"",
-               "font-weight=700 ",
+               " font-weight=\"700\" ",
                " font-family=\"", fontfamily, "\">",
                minval,"</text>",
                sep="")
@@ -144,7 +144,7 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
   text.mid = paste("<text x=\"", 133.8944,"\"",
                " y=\"", yoffset + 23.1251, "\"",
                " font-size=\"", "5px", "\"",
-               "font-weight=700 ",
+               " font-weight=\"700\" ",
                " font-family=\"", fontfamily, "\">",
                mean(c(minval , maxval)),"</text>",
                sep="")
@@ -152,7 +152,7 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
   text.max = paste("<text x=\"", 166.7776,"\"",
                " y=\"", yoffset + 23.1251, "\"",
                " font-size=\"", "5px", "\"",
-               "font-weight=700 ",
+               " font-weight=\"700\" ",
                " font-family=\"", fontfamily,"\">",
                maxval,"</text>",
                sep="")
@@ -180,7 +180,7 @@ build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize,font
   # write the header
   header = paste("<text x=\"98.8075\"",
                  " y=\"", yoffset + 8.8451, "\"",
-                 "font-weight=700 ",
+                 " font-weight=\"700\" ",
                  " font-family=\"", fontfamily, "\" ",
                  " font-size=\"9px\">","Node Size</text>",
                  sep="")
@@ -216,7 +216,7 @@ build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize,font
                    " y=\"", yoffset + 23.1251, "\"",
                    " font-size=\"", "5px", "\"",
                    " text-anchor=\"middle\"",
-                   "font-weight=700 ",
+                   " font-weight=\"700\" ",
                    " font-family=\"", fontfamily, "\">",
                    minval,"</text>",
                    sep="")
@@ -224,7 +224,7 @@ build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize,font
                    " y=\"", yoffset + 23.1251, "\"",
                    " font-size=\"", "5px", "\"",
                    " text-anchor=\"middle\"",
-                   "font-weight=700 ",
+                   " font-weight=\"700\" ",
                    " font-family=\"", fontfamily, "\">",
                    maxval,"</text>",
                    sep="")
