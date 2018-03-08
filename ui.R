@@ -457,8 +457,8 @@ ui <- dashboardPage(
                            # ---- DOWNLOAD ---- #
                           
                            conditionalPanel(
-                           condition = "input.tabboxselected == 'Tree'",
-                           tags$a(id="downloadcircle", href="#", class="btn btn-default", "Download")
+                            condition = "input.tabboxselected == 'Tree'",
+                            downloadButton(outputId = "downloadtree",label= "Download")
                            ),
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Circle'",

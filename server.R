@@ -631,13 +631,12 @@ server <- function(input, output,session) {
   
   # ----------------- DOWNLOAD ---------------- #
  
-  # Download image
   output$downloadtree <- downloadHandler(
-    
-    filename <- function(file) { paste("CORAL",".","tree",".","pdf",sep="")},
-    content <- function(file) {
+   
+   filename <- function(file) { paste("CORAL",".","tree",".","pdf",sep="")},
+   content <- function(file) {
     rsvg_pdf(svgoutfile, file)
-    }
+   }
     
     # content <- function(file) {
     #   if (input$downloadtype == 'pdf') {
