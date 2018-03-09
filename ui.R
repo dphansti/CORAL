@@ -209,17 +209,20 @@ ui <- dashboardPage(
                                                   colourInput("branch3col_low", "Low", HM_low,showColour = "both"),
                                                   colourInput("branch3col_med", "Med", HM_med,showColour = "both"),
                                                   colourInput("branch3col_hi", "High", HM_hi,showColour = "both")
-                                                 ),
-                                                 
-                                                 conditionalPanel(
-                                                  condition = "input.branchcolorpalettetype == ('manual 3 color' |'manual 2 color') ",
-                                                  # add ability to reverse palette
-                                                  actionButton(inputId = "KinasesBranchValue23RevPalette","Reverse Palette",width = "100%")
-                                                   )
-                                                 
-                                                 
-                                                 
-                                          ) # end column
+                                                 )
+                                          ), # end column
+                                          
+                                          conditionalPanel(
+                                           condition = "input.branchcolorpalettetype == 'manual 2 color'",
+                                           # add ability to reverse palette
+                                           actionButton(inputId = "KinasesBranchValue2RevPalette","Reverse Palette",width = "100%")
+                                          ),
+                                          conditionalPanel(
+                                           condition = "input.branchcolorpalettetype == 'manual 3 color'",
+                                           # add ability to reverse palette
+                                           actionButton(inputId = "KinasesBranchValue3RevPalette","Reverse Palette",width = "100%")
+                                          )
+                                          
                                          ) # end conditional panel
                                      ), # end box
                                      
@@ -350,10 +353,20 @@ ui <- dashboardPage(
                                                   colourInput("node3col_med", "Med", HM_med,showColour = "both"),
                                                   colourInput("node3col_hi", "High", HM_hi,showColour = "both")
                                                  )
-                                                 
-                                          )
+                                          ),
+                                           conditionalPanel(
+                                            condition = "input.nodecolorpalettetype == 'manual 2 color'",
+                                            # add ability to reverse palette
+                                            actionButton(inputId = "KinasesNodeValue2RevPalette","Reverse Palette",width = "100%")
+                                           ),
+                                           conditionalPanel(
+                                            condition = "input.nodecolorpalettetype == 'manual 3 color'",
+                                            # add ability to reverse palette
+                                            actionButton(inputId = "KinasesNodeValue3RevPalette","Reverse Palette",width = "100%")
+                                           )
                                          ), # end conditional  
-                                         prettyCheckbox(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = FALSE,shape="round",status="primary")
+                                         tags$br(),
+                                         div(prettyCheckbox(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = FALSE,shape="round",status="primary"))
                                      ), # end box   
                                      
                                      # ---- NODE SIZE ---- #

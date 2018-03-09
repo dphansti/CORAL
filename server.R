@@ -12,10 +12,34 @@ server <- function(input, output,session) {
    updateColourInput(session,"col_select",value = orig_col_select_bg)
   })
  
+ observeEvent(input$KinasesBranchValue2RevPalette,{
+  orig_branch2col_low = input$branch2col_low
+  orig_branch2col_hi = input$branch2col_hi
+  updateColourInput(session,"branch2col_low",value = orig_branch2col_hi)
+  updateColourInput(session,"branch2col_hi",value = orig_branch2col_low)
+ })
+ 
+ observeEvent(input$KinasesBranchValue3RevPalette,{
+  orig_branch3col_low = input$branch3col_low
+  orig_branch3col_hi = input$branch3col_hi
+  updateColourInput(session,"branch3col_low",value = orig_branch3col_hi)
+  updateColourInput(session,"branch3col_hi",value = orig_branch3col_low)
+ })
  
  
+ observeEvent(input$KinasesNodeValue2RevPalette,{
+  orig_node2col_low = input$node2col_low
+  orig_node2col_hi = input$node2col_hi
+  updateColourInput(session,"node2col_low",value = orig_node2col_hi)
+  updateColourInput(session,"node2col_hi",value = orig_node2col_low)
+ })
  
- 
+ observeEvent(input$KinasesNodeValue3RevPalette,{
+  orig_node3col_low = input$node3col_low
+  orig_node3col_hi = input$node3col_hi
+  updateColourInput(session,"node3col_low",value = orig_node3col_hi)
+  updateColourInput(session,"node3col_hi",value = orig_node3col_low)
+ })
  
  # ----------------- INFO PAGES ---------------- #
  
