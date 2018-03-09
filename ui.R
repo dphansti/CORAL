@@ -93,6 +93,10 @@ ui <- dashboardPage(
                                                          value = ""
                                            )
                                           ),
+                                          
+                                          selectInput(inputId = "branchManualIDtype",label = "Identifier Type",
+                                                      choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
+                                                      multiple = FALSE,selected = "coralID",width = "100%"),
 
                                           fluidRow( width=12,
                                                     column(6,colourInput("col_select_bg", "BG Color", BG_col1,showColour = "both")),
@@ -101,7 +105,6 @@ ui <- dashboardPage(
                                           
                                           # add ability to reverse palette
                                           actionButton(inputId = "KinasesManualBranchRevPalette","Reverse Palette",width = "100%")
-                                          
                                          ),
                                          
                                          # if by group
@@ -130,9 +133,7 @@ ui <- dashboardPage(
                                                           
                                                           conditionalPanel(
                                                            condition = "input.branchgroupcolorpalettetype == 'manual'",
-                                                           
                                                            "Select Colors",
-                                                           
                                                            fluidRow(
                                                             column(width = 1,  colourInput("branchgroupcol1", "", defaultpalette[1],showColour = "both")),
                                                             column(width = 1,  colourInput("branchgroupcol2", "", defaultpalette[2],showColour = "both")),

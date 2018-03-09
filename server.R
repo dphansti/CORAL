@@ -2,7 +2,18 @@
 # server business
 server <- function(input, output,session) {
  
- # ----------------- PALEETE REVERSALS ---------------- #
+ # ----------------- UPDATE MANULA KINASE SELECTION ---------------- #
+ 
+ observe({
+  idtype = paste("id.",input$branchManualIDtype,sep="")
+  if (idtype == "id.coralID"){idtype = "id.coral"}
+  idstodisplay = svginfo$dataframe[,which(names(svginfo$dataframe) == idtype)] 
+  idstodisplay = idstodisplay[unique(idstodisplay)]
+  idstodisplay = idstodisplay[which(idstodisplay != "NA")]
+  updateSelectInput(session,inputId = "KinasesManual",choices = idstodisplay)
+ })
+ 
+ # ----------------- PALETTE REVERSALS ---------------- #
  
  observeEvent(input$KinasesManualBranchRevPalette,{
   
@@ -228,11 +239,34 @@ server <- function(input, output,session) {
     # Manually select branches to color
     if (input$branchcolortype == "Manually")
     {
-      # set colors based on selected ids 
-      tempdf$branch.col =  color.by.selected(df = tempdf, sel = input$KinasesManual, bg.col  = input$col_select_bg,  sel.col = input$col_select)
-      
-      # reorder based on selected ids
-      tempdf = tempdf[order(tempdf$id.coral %in% input$KinasesManual, decreasing = FALSE),]
+     # set colors based on selected ids
+     selkinases = ""
+     if (input$branchmanuallyinputmethod == "Select")
+     {
+      selkinases = input$KinasesManual
+     }
+     if (input$branchmanuallyinputmethod == "Paste")
+     {
+      selkinases = unlist(strsplit(split = "\n",x=input$KinasesManualBranchText))
+     }
+     
+     selkinasescoral = ""
+     if (length(selkinases) > 0)
+     {
+      # convert selected to coral ids
+      kinasestoconvert = data.frame(kin1=selkinases,kin2=selkinases)
+      selkinasesconverted = convertID (tempdf,kinasestoconvert,inputtype=input$branchManualIDtype)
+      if (nrow(selkinasesconverted) > 0)
+      {
+       selkinasescoral = selkinasesconverted[,1]
+      }
+     }
+     
+     # recolor based on selection
+     tempdf$branch.col =  color.by.selected(df = tempdf, sel = selkinasescoral, bg.col  = input$col_select_bg,  sel.col = input$col_select)
+     
+     # reorder based on selected ids
+     tempdf = tempdf[order(tempdf$id.coral %in% selkinasescoral, decreasing = FALSE),]
       
       # build legend for Branch Color (by group)
       lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch",fontfamily = input$fontfamilyselect)
@@ -272,11 +306,7 @@ server <- function(input, output,session) {
         
         # reorder based on branch color 
         tempdf = tempdf[order(tempdf$branch.group),]
-        
-       
-        print (newcolors_and_colormapping)
-        
-        
+
         # build legend for Branch Color (by group)
         lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=names(branch.group.colormapping),groupcolors=branch.group.colormapping,elementtype = "Branch",fontfamily = input$fontfamilyselect)
         lines = lines_and_offset[[1]]
@@ -585,7 +615,6 @@ server <- function(input, output,session) {
    {
     BGstrolecol = "#ffffff"
    }
-   print(BGstrolecol)
    
    # Write kinome_tree.json (based on current dataframe)
    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes)
