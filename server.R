@@ -364,6 +364,14 @@ server <- function(input, output,session) {
          bg.col = input$branch3col_med
          }
        
+       # recolor missing kinases accordingly
+       if (input$BranchValueMissingKinase == "manually")
+       {
+        print ("asdfdas")
+        bg.col = input$BranchValueMissingKinaseColor
+        print (bg.col)
+       }
+       
         # set colors based on group
         newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = branchcolpalette, heatrange = c(input$minheat,input$maxheat),bg.col = bg.col)
         tempdf$branch.col = newcolors_and_colormapping[[1]]
@@ -505,6 +513,12 @@ server <- function(input, output,session) {
         bg.col = input$node3col_med
        }
        
+       # recolor missing kinases accordingly
+       if (input$NodeValueMissingKinase == "manually")
+       {
+        bg.col = input$NodeValueMissingKinaseColor
+       }
+        
         # set colors based on group
         newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = nodecolpalette, heatrange = c(input$nodeminheat,input$nodemaxheat),bg.col = bg.col)
         tempdf$node.col = newcolors_and_colormapping[[1]]

@@ -226,6 +226,14 @@ ui <- dashboardPage(
                                            condition = "input.branchcolorpalettetype == 'manual 3 color'",
                                            # add ability to reverse palette
                                            actionButton(inputId = "KinasesBranchValue3RevPalette","Reverse Palette",width = "100%")
+                                          ),
+                                          
+                                          prettyRadioButtons(inputId = "BranchValueMissingKinase",label = "Color Missing Kinases",choices = c("automatically","manually"),
+                                                             selected = "automatically",inline=TRUE),
+                                          
+                                          conditionalPanel(
+                                           condition = "input.BranchValueMissingKinase == 'manually'",
+                                           colourInput(inputId = "BranchValueMissingKinaseColor", "Missing Kinase Color",value = BG_col1,showColour = "both")
                                           )
                                           
                                          ) # end conditional panel
@@ -285,13 +293,6 @@ ui <- dashboardPage(
                                            actionButton(inputId = "KinasesManualNodeRevPalette","Reverse Palette",width = "100%")
                                           ),
                                           
-                                          # selectInput(inputId = "NodeManual",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%"),
-                                          # fluidRow( width=12,
-                                          #           column(6,colourInput("col_node_bg", "BG Color", HM_med)),
-                                          #           column(6,colourInput("col_sel_node", "Color", HM_hi))
-                                          # )
-                                         # ),
-                                         
                                          # if by group
                                          conditionalPanel(
                                           condition = "input.nodecolortype == 'by group'",
@@ -403,8 +404,20 @@ ui <- dashboardPage(
                                             condition = "input.nodecolorpalettetype == 'manual 3 color'",
                                             # add ability to reverse palette
                                             actionButton(inputId = "KinasesNodeValue3RevPalette","Reverse Palette",width = "100%")
-                                           )
-                                         ), # end conditional  
+                                           ),
+                                          
+                                          div(
+                                          prettyRadioButtons(inputId = "NodeValueMissingKinase",label = "Color Missing Kinases",choices = c("automatically","manually"),
+                                                             selected = "automatically",inline=TRUE),
+                                          
+                                          conditionalPanel(
+                                           condition = "input.NodeValueMissingKinase == 'manually'",
+                                           colourInput("NodeValueMissingKinaseColor", "Missing Kinase Color",value = BG_col1,showColour = "both")
+                                          )
+                                          )
+                                          
+                                         ), # end conditional 
+
                                          tags$br(),
                                          div(prettyCheckbox(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = FALSE,shape="round",status="primary"))
                                      ), # end box   
