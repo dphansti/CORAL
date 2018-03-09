@@ -97,7 +97,10 @@ ui <- dashboardPage(
                                           fluidRow( width=12,
                                                     column(6,colourInput("col_select_bg", "BG Color", BG_col1,showColour = "both")),
                                                     column(6,colourInput("col_select", "Color", HM_hi,showColour = "both"))
-                                          )
+                                          ),
+                                          
+                                          # add ability to reverse palette
+                                          actionButton(inputId = "KinasesManualBranchRevPalette","Reverse Palette",width = "100%")
                                           
                                          ),
                                          
@@ -206,7 +209,16 @@ ui <- dashboardPage(
                                                   colourInput("branch3col_low", "Low", HM_low,showColour = "both"),
                                                   colourInput("branch3col_med", "Med", HM_med,showColour = "both"),
                                                   colourInput("branch3col_hi", "High", HM_hi,showColour = "both")
-                                                 )
+                                                 ),
+                                                 
+                                                 conditionalPanel(
+                                                  condition = "input.branchcolorpalettetype == ('manual 3 color' |'manual 2 color') ",
+                                                  # add ability to reverse palette
+                                                  actionButton(inputId = "KinasesBranchValue23RevPalette","Reverse Palette",width = "100%")
+                                                   )
+                                                 
+                                                 
+                                                 
                                           ) # end column
                                          ) # end conditional panel
                                      ), # end box

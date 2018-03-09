@@ -2,6 +2,21 @@
 # server business
 server <- function(input, output,session) {
  
+ # ----------------- PALEETE REVERSALS ---------------- #
+ 
+ observeEvent(input$KinasesManualBranchRevPalette,{
+  
+   orig_col_select_bg = input$col_select_bg
+   orig_col_select = input$col_select
+   updateColourInput(session,"col_select_bg",value = orig_col_select)
+   updateColourInput(session,"col_select",value = orig_col_select_bg)
+  })
+ 
+ 
+ 
+ 
+ 
+ 
  # ----------------- INFO PAGES ---------------- #
  
  observeEvent(input$InfoBranchColorButton,{
