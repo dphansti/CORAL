@@ -268,8 +268,8 @@ server <- function(input, output,session) {
      # reorder based on selected ids
      tempdf = tempdf[order(tempdf$id.coral %in% selkinasescoral, decreasing = FALSE),]
       
-      # build legend for Branch Color (by group)
-      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch",fontfamily = input$fontfamilyselect)
+      # build legend for Branch Color (manual selection)
+      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c(input$branch_nonselect_label,input$branch_select_label),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch",fontfamily = input$fontfamilyselect)
       lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
       legend = c(legend,lines)

@@ -102,6 +102,10 @@ ui <- dashboardPage(
                                                     column(6,colourInput("col_select_bg", "BG Color", BG_col1,showColour = "both")),
                                                     column(6,colourInput("col_select", "Color", HM_hi,showColour = "both"))
                                           ),
+                                          fluidRow( width=12,
+                                                    column(6,textInput(inputId="branch_nonselect_label",label="nonselected label",value = "not selected")),
+                                                    column(6,textInput(inputId="branch_select_label",label="selected label",value = "selected"))
+                                          ),
                                           
                                           # add ability to reverse palette
                                           actionButton(inputId = "KinasesManualBranchRevPalette","Reverse Palette",width = "100%")
