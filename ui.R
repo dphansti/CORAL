@@ -158,12 +158,12 @@ ui <- dashboardPage(
                                                            )
                                                           ) # end conditional
                                                    ) # end col
-                                          ), # end row
+                                          ) # end row
                                           
-                                          tags$hr(),
-                                          
-                                          prettyCheckbox(inputId="manualgroupcols_branch","manual group entry",
-                                                         value = FALSE,shape="round",status="primary")
+                                          # tags$hr(),
+                                          # 
+                                          # prettyCheckbox(inputId="manualgroupcols_branch","manual group entry",
+                                          #                value = FALSE,shape="round",status="primary")
                                          ),
                                          
                                          
@@ -342,12 +342,12 @@ ui <- dashboardPage(
                                                            )
                                                           ) # end conditional
                                                    ) # end col
-                                          ), # end row
+                                          ) # end row
                                           
-                                          tags$hr(),
-                                          
-                                          prettyCheckbox(inputId="manualgroupcols_node","manual group entry",
-                                                         value = FALSE,shape="round",status="primary")
+                                          # tags$hr(),
+                                          # 
+                                          # prettyCheckbox(inputId="manualgroupcols_node","manual group entry",
+                                          #                value = FALSE,shape="round",status="primary")
                                          ),
                                          
                                          # if by value
