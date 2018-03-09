@@ -250,12 +250,47 @@ ui <- dashboardPage(
                                          # if manual selection
                                          conditionalPanel(
                                           condition = "input.nodecolortype == 'Manually'",
-                                          selectInput(inputId = "NodeManual",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%"),
-                                          fluidRow( width=12,
-                                                    column(6,colourInput("col_node_bg", "BG Color", HM_med)),
-                                                    column(6,colourInput("col_sel_node", "Color", HM_hi))
-                                          )
-                                         ),
+                                           
+                                           # choose between selecting and pasting in
+                                           radioButtons(inputId="nodemanuallyinputmethod",label = "Kinase Input Method",
+                                                        choices = c("Select","Paste"),inline = TRUE),
+                                           
+                                           # if Select
+                                           conditionalPanel(
+                                            condition = "input.nodemanuallyinputmethod == 'Select'",
+                                            selectInput(inputId = "KinasesManualNode",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%")
+                                           ),
+                                           # if Paste
+                                           conditionalPanel(
+                                            condition = "input.nodemanuallyinputmethod == 'Paste'",
+                                            textAreaInput("KinasesManualNodeText", "Kinases", height = "100px",width = "100%",
+                                                          value = ""
+                                            )
+                                           ),
+                                           
+                                           selectInput(inputId = "NodeManualIDtype",label = "Identifier Type",
+                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
+                                                       multiple = FALSE,selected = "coralID",width = "100%"),
+                                           
+                                           fluidRow( width=12,
+                                                     column(6,colourInput("col_node_bg", "BG Color", BG_col1,showColour = "both")),
+                                                     column(6,colourInput("col_sel_node", "Color", HM_hi,showColour = "both"))
+                                           ),
+                                           fluidRow( width=12,
+                                                     column(6,textInput(inputId="node_nonselect_label",label="nonselected label",value = "not selected")),
+                                                     column(6,textInput(inputId="node_select_label",label="selected label",value = "selected"))
+                                           ),
+                                           
+                                           # add ability to reverse palette
+                                           actionButton(inputId = "KinasesManualNodeRevPalette","Reverse Palette",width = "100%")
+                                          ),
+                                          
+                                          # selectInput(inputId = "NodeManual",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%"),
+                                          # fluidRow( width=12,
+                                          #           column(6,colourInput("col_node_bg", "BG Color", HM_med)),
+                                          #           column(6,colourInput("col_sel_node", "Color", HM_hi))
+                                          # )
+                                         # ),
                                          
                                          # if by group
                                          conditionalPanel(

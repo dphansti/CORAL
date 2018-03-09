@@ -2,8 +2,9 @@
 # server business
 server <- function(input, output,session) {
  
- # ----------------- UPDATE MANULA KINASE SELECTION ---------------- #
+ # ----------------- UPDATE MANUAL KINASE SELECTION ---------------- #
  
+ # branch color
  observe({
   idtype = paste("id.",input$branchManualIDtype,sep="")
   if (idtype == "id.coralID"){idtype = "id.coral"}
@@ -13,10 +14,19 @@ server <- function(input, output,session) {
   updateSelectInput(session,inputId = "KinasesManual",choices = idstodisplay)
  })
  
+ # node color
+ observe({
+  idtype = paste("id.",input$NodeManualIDtype,sep="")
+  if (idtype == "id.coralID"){idtype = "id.coral"}
+  idstodisplay = svginfo$dataframe[,which(names(svginfo$dataframe) == idtype)] 
+  idstodisplay = idstodisplay[unique(idstodisplay)]
+  idstodisplay = idstodisplay[which(idstodisplay != "NA")]
+  updateSelectInput(session,inputId = "KinasesManualNode",choices = idstodisplay)
+ })
+ 
  # ----------------- PALETTE REVERSALS ---------------- #
  
  observeEvent(input$KinasesManualBranchRevPalette,{
-  
    orig_col_select_bg = input$col_select_bg
    orig_col_select = input$col_select
    updateColourInput(session,"col_select_bg",value = orig_col_select)
@@ -37,6 +47,12 @@ server <- function(input, output,session) {
   updateColourInput(session,"branch3col_hi",value = orig_branch3col_low)
  })
  
+ observeEvent(input$KinasesManualNodeRevPalette,{
+  orig_col_node_bg = input$col_node_bg
+  orig_col_sel_node = input$col_sel_node
+  updateColourInput(session,"col_node_bg",value = orig_col_sel_node)
+  updateColourInput(session,"col_sel_node",value = orig_col_node_bg)
+ })
  
  observeEvent(input$KinasesNodeValue2RevPalette,{
   orig_node2col_low = input$node2col_low
@@ -386,11 +402,34 @@ server <- function(input, output,session) {
     # Manually select nodes to color
     if (input$nodecolortype == "Manually")
     {
-      # set colors based on selected ids
-      tempdf$node.col =  color.by.selected(df = tempdf, sel = input$NodeManual, bg.col  = input$col_node_bg,  sel.col = input$col_sel_node)
-      
-      # # build legend for Node Color (by group)
-      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_node_bg,input$col_sel_node),elementtype = "Node",fontfamily = input$fontfamilyselect)
+     # set colors based on selected ids
+     selkinases = ""
+     if (input$nodemanuallyinputmethod == "Select")
+     {
+      selkinases = input$KinasesManualNode
+     }
+     if (input$nodemanuallyinputmethod == "Paste")
+     {
+      selkinases = unlist(strsplit(split = "\n",x=input$KinasesManualNodeText))
+     }
+     
+     selkinasescoral = ""
+     if (length(selkinases) > 0)
+     {
+      # convert selected to coral ids
+      kinasestoconvert = data.frame(kin1=selkinases,kin2=selkinases)
+      selkinasesconverted = convertID (tempdf,kinasestoconvert,inputtype=input$NodeManualIDtype)
+      if (nrow(selkinasesconverted) > 0)
+      {
+       selkinasescoral = selkinasesconverted[,1]
+      }
+     }
+     
+     # recolor based on selection
+     tempdf$node.col =  color.by.selected(df = tempdf, sel = selkinasescoral, bg.col  = input$col_node_bg,  sel.col = input$col_sel_node)
+
+      # # build legend for Node Color (Manual Selection)
+      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c(input$node_nonselect_label,input$node_select_label),groupcolors=c(input$col_node_bg,input$col_sel_node),elementtype = "Node",fontfamily = input$fontfamilyselect)
       lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
       legend = c(legend,lines)
