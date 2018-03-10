@@ -8,5 +8,5 @@ rsconnect/
 tempfiles/kintreeout.svg
 tempfiles/subdf.txt
 tempfiles/
-www/*json
-www/*png
+www/json/
+www/images/

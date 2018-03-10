@@ -1,7 +1,7 @@
 ## app.R ##
 
 ui <- dashboardPage(
- dashboardHeader(title = span(img(src="images/coral-logo-white.png",height=60,align="left")),titleWidth = 600,
+ dashboardHeader(title = span(img(src="logos/coral-logo-white.png",height=60,align="left")),titleWidth = 600,
 
  tags$li(class = "dropdown",
          tags$style(".main-header {max-height: 60px}"),
@@ -24,14 +24,14 @@ ui <- dashboardPage(
   tags$head(
    
    #adds the d3 library needed to draw the plot
-   tags$script(src="d3.v3.min.js"),
+   tags$script(src="javascript/d3.v3.min.js"),
    
    #the js script holding the code to make the custom output
-   tags$script(src="circleNetwork.js"),
-   tags$script(src="collapsableForceNetwork.js"),
+   tags$script(src="javascript/circleNetwork.js"),
+   tags$script(src="javascript/collapsableForceNetwork.js"),
    
    #the stylesheet, paste all that was between the <style> tags from your example in the graph_style.css file
-   tags$link(rel = "stylesheet", type = "text/css", href = "style.css")
+   tags$link(rel = "stylesheet", type = "text/css", href = "css/style.css")
    
    # # try to resize plot according to window size
    # tags$head(tags$style("#plot1{height:100vh;}")),

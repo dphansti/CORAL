@@ -1,7 +1,7 @@
 
 
 # Define a function that prints color palettes 
-drawpalettes <- function(palette="RdBu",outdir="images",boxes = 5)
+drawpalettes <- function(palette="RdBu",outdir="www/images",boxes = 5)
 {
  # open png
  pngname = paste(outdir,"/",palette,".png",sep="")
