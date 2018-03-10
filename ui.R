@@ -546,6 +546,8 @@ ui <- dashboardPage(
                             condition = "input.tabboxselected == 'Force'",
                             tags$a(id="downloadforce", href="#", class="btn btn-default", "Download")
                            )
+                           
+                           
                     ), # end column
                     
                     tabBox
