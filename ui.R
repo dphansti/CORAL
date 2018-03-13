@@ -1,7 +1,7 @@
 ## app.R ##
 
 ui <- dashboardPage(
- dashboardHeader(title = span(img(src="logos/coral-logo-white.png",height=60,align="left")),titleWidth = 600,
+ dashboardHeader(title = span(img(src="logos/coral-logo-white2.png",height=60,align="left")),titleWidth = 600,
 
  tags$li(class = "dropdown",
          tags$style(".main-header {max-height: 60px}"),
@@ -228,6 +228,7 @@ ui <- dashboardPage(
                                            actionButton(inputId = "KinasesBranchValue3RevPalette","Reverse Palette",width = "100%")
                                           ),
                                           
+                                          tags$br(),
                                           prettyRadioButtons(inputId = "BranchValueMissingKinase",label = "Color Missing Kinases",choices = c("automatically","manually"),
                                                              selected = "automatically",inline=TRUE),
                                           
@@ -406,6 +407,7 @@ ui <- dashboardPage(
                                             actionButton(inputId = "KinasesNodeValue3RevPalette","Reverse Palette",width = "100%")
                                            ),
                                           
+                                          tags$br(),
                                           div(
                                           prettyRadioButtons(inputId = "NodeValueMissingKinase",label = "Color Missing Kinases",choices = c("automatically","manually"),
                                                              selected = "automatically",inline=TRUE),
@@ -617,7 +619,7 @@ ui <- dashboardPage(
                            tags$br(),
                            
                            div(
-                            actionButton("InfoAdvancedOptionsButton",label="Advanced Options")
+                            actionButton("InfoAdvancedSettingsButton",label="Advanced Settings")
                            ),
                            
                            tags$br(),
