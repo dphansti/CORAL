@@ -77,6 +77,25 @@ div(id="InfoBranchColorBox",
         div(
          h3 ("Load example data"),
          "Load sample data into the 'Kinases & Value' tab."
+        ),
+        div(
+         h3 ("Kinases & Value"),
+         "Submit a two-column list of kinases and their associated values."
+        ),
+        div(
+         h3 ("Identifier Type"),
+         "Select the kinase identifier used to list kinases in the 'Kinases & Group' tab (coralID, uniprot, ensemble, entrez, HGNC)."
+        ),
+        div(
+         h3 ("Min & Max"),
+         "Indicate the values that will represent either end of the color spectrum. All values below the assigned min will be colored the same, as will all values above the assigned max."
+        ),
+        div(
+         h3 ("Color Range Type"),
+         "Choose between pre-built sequential and divergent color palettes or create your own 2- or 3-color gradient using color selectors."
+        ),
+        div(
+         "This option will automatically create a figure legend showing the full spectrum of possible colors and indicating the low, middle, and high values."
         )
     ) # end box
 ) # end div
