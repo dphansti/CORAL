@@ -24,7 +24,7 @@ build.branch <- function(l)
 # Define a function that make a label
 build.text <- function(l)
 {
-  label = paste("<a xlink:href=\"http://www.uniprot.org/uniprot/",l["id.uniprot"],"\">",
+  label = paste("<a xlink:href=\"http://www.uniprot.org/uniprot/",l["id.uniprot"],"\" target=\"_blank\">",
                 "<text id=\"t_x5F_",l["id.coral"],"\" ",
                 "x=\"", l["text.x"],"\" ",
                 "y=\"", trimws(l["text.y"]),"\" ",

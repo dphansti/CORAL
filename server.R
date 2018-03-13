@@ -2,63 +2,94 @@
 # server business
 server <- function(input, output,session) {
  
+ # ----------------- UPDATE MANUAL KINASE SELECTION ---------------- #
+ 
+ # branch color
+ observe({
+  idtype = paste("id.",input$branchManualIDtype,sep="")
+  if (idtype == "id.coralID"){idtype = "id.coral"}
+  idstodisplay = svginfo$dataframe[,which(names(svginfo$dataframe) == idtype)] 
+  idstodisplay = idstodisplay[unique(idstodisplay)]
+  idstodisplay = idstodisplay[which(idstodisplay != "NA")]
+  updateSelectInput(session,inputId = "KinasesManual",choices = idstodisplay)
+ })
+ 
+ # node color
+ observe({
+  idtype = paste("id.",input$NodeManualIDtype,sep="")
+  if (idtype == "id.coralID"){idtype = "id.coral"}
+  idstodisplay = svginfo$dataframe[,which(names(svginfo$dataframe) == idtype)] 
+  idstodisplay = idstodisplay[unique(idstodisplay)]
+  idstodisplay = idstodisplay[which(idstodisplay != "NA")]
+  updateSelectInput(session,inputId = "KinasesManualNode",choices = idstodisplay)
+ })
+ 
+ # ----------------- PALETTE REVERSALS ---------------- #
+ 
+ observeEvent(input$KinasesManualBranchRevPalette,{
+   orig_col_select_bg = input$col_select_bg
+   orig_col_select = input$col_select
+   updateColourInput(session,"col_select_bg",value = orig_col_select)
+   updateColourInput(session,"col_select",value = orig_col_select_bg)
+  })
+ 
+ observeEvent(input$KinasesBranchValue2RevPalette,{
+  orig_branch2col_low = input$branch2col_low
+  orig_branch2col_hi = input$branch2col_hi
+  updateColourInput(session,"branch2col_low",value = orig_branch2col_hi)
+  updateColourInput(session,"branch2col_hi",value = orig_branch2col_low)
+ })
+ 
+ observeEvent(input$KinasesBranchValue3RevPalette,{
+  orig_branch3col_low = input$branch3col_low
+  orig_branch3col_hi = input$branch3col_hi
+  updateColourInput(session,"branch3col_low",value = orig_branch3col_hi)
+  updateColourInput(session,"branch3col_hi",value = orig_branch3col_low)
+ })
+ 
+ observeEvent(input$KinasesManualNodeRevPalette,{
+  orig_col_node_bg = input$col_node_bg
+  orig_col_sel_node = input$col_sel_node
+  updateColourInput(session,"col_node_bg",value = orig_col_sel_node)
+  updateColourInput(session,"col_sel_node",value = orig_col_node_bg)
+ })
+ 
+ observeEvent(input$KinasesNodeValue2RevPalette,{
+  orig_node2col_low = input$node2col_low
+  orig_node2col_hi = input$node2col_hi
+  updateColourInput(session,"node2col_low",value = orig_node2col_hi)
+  updateColourInput(session,"node2col_hi",value = orig_node2col_low)
+ })
+ 
+ observeEvent(input$KinasesNodeValue3RevPalette,{
+  orig_node3col_low = input$node3col_low
+  orig_node3col_hi = input$node3col_hi
+  updateColourInput(session,"node3col_low",value = orig_node3col_hi)
+  updateColourInput(session,"node3col_hi",value = orig_node3col_low)
+ })
+ 
  # ----------------- INFO PAGES ---------------- #
  
- observeEvent(input$InfoBranchColorButton,{
-  # Remove existing info boxes
+ # Define a function to remove and replace info boxes
+ replaceinfobox = function(infoboxcode)
+ {
+  # remove any existing info boxes
   removeUI(selector = "#InfoBranchColorBox")
   removeUI(selector = "#InfoNodeColorBox")
   removeUI(selector = "#InfoNodeSizeBox")
   removeUI(selector = "#InfoAdvancedOptionsBox")
   removeUI(selector = "#InfoAboutBox")
-  # Add appropriate info box
-  insertUI(selector = "#InfoBox",where = "afterEnd",
-   ui = source("R/InfoBranchColor.R",local=TRUE)$value)})
+  # load code to insert selected info box
+  insertUI(selector = "#InfoBox",where = "afterEnd",ui = source(infoboxcode,local=TRUE)$value)
+ } 
  
- observeEvent(input$InfoNodeColorButton,{
-  # Remove existing info boxes
-  removeUI(selector = "#InfoBranchColorBox")
-  removeUI(selector = "#InfoNodeColorBox")
-  removeUI(selector = "#InfoNodeSizeBox")
-  removeUI(selector = "#InfoAdvancedOptionsBox")
-  removeUI(selector = "#InfoAboutBox")
-  # Add appropriate info box
-  insertUI(selector = "#InfoBox",where = "afterEnd",
-           ui = source("R/InfoNodeColor.R",local=TRUE)$value)})
+ # Load info box according to button click
+ observeEvent(input$InfoBranchColorButton,{replaceinfobox("R/InfoBranchColor.R")})
+ observeEvent(input$InfoNodeColorButton,{replaceinfobox("R/InfoNodeColor.R")})
+ observeEvent(input$InfoNodeSizeButton,{replaceinfobox("R/InfoNodeSize.R")})
+ observeEvent(input$InfoAdvancedOptionsButton,{replaceinfobox("R/InfoAdvancedOptions.R")})
+ observeEvent(input$InfoAboutButton,{replaceinfobox("R/InfoAbout.R")})
  
- observeEvent(input$InfoNodeSizeButton,{
-  # Remove existing info boxes
-  removeUI(selector = "#InfoBranchColorBox")
-  removeUI(selector = "#InfoNodeColorBox")
-  removeUI(selector = "#InfoNodeSizeBox")
-  removeUI(selector = "#InfoAdvancedOptionsBox")
-  removeUI(selector = "#InfoAboutBox")
-  # Add appropriate info box
-  insertUI(selector = "#InfoBox",where = "afterEnd",
-           ui = source("R/InfoNodeSize.R",local=TRUE)$value)})
-
- observeEvent(input$InfoAdvancedOptionsButton,{
-  # Remove existing info boxes
-  removeUI(selector = "#InfoBranchColorBox")
-  removeUI(selector = "#InfoNodeColorBox")
-  removeUI(selector = "#InfoNodeSizeBox")
-  removeUI(selector = "#InfoAdvancedOptionsBox")
-  removeUI(selector = "#InfoAboutBox")
-  # Add appropriate info box
-  insertUI(selector = "#InfoBox",where = "afterEnd",
-           ui = source("R/InfoAdvancedOptions.R",local=TRUE)$value)})
- 
- observeEvent(input$InfoAboutButton,{
-  # Remove existing info boxes
-  removeUI(selector = "#InfoBranchColorBox")
-  removeUI(selector = "#InfoNodeColorBox")
-  removeUI(selector = "#InfoNodeSizeBox")
-  removeUI(selector = "#InfoAdvancedOptionsBox")
-  removeUI(selector = "#InfoAboutBox")
-  # Add appropriate info box
-  insertUI(selector = "#InfoBox",where = "afterEnd",
-           ui = source("R/InfoAbout.R",local=TRUE)$value)})
-
  # Update selected tab
  observe({
   if (input$dashboardchooser == "Info")
@@ -189,14 +220,37 @@ server <- function(input, output,session) {
     # Manually select branches to color
     if (input$branchcolortype == "Manually")
     {
-      # set colors based on selected ids 
-      tempdf$branch.col =  color.by.selected(df = tempdf, sel = input$KinasesManual, bg.col  = input$col_select_bg,  sel.col = input$col_select)
+     # set colors based on selected ids
+     selkinases = ""
+     if (input$branchmanuallyinputmethod == "Select")
+     {
+      selkinases = input$KinasesManual
+     }
+     if (input$branchmanuallyinputmethod == "Paste")
+     {
+      selkinases = unlist(strsplit(split = "\n",x=input$KinasesManualBranchText))
+     }
+     
+     selkinasescoral = ""
+     if (length(selkinases) > 0)
+     {
+      # convert selected to coral ids
+      kinasestoconvert = data.frame(kin1=selkinases,kin2=selkinases)
+      selkinasesconverted = convertID (tempdf,kinasestoconvert,inputtype=input$branchManualIDtype)
+      if (nrow(selkinasesconverted) > 0)
+      {
+       selkinasescoral = selkinasesconverted[,1]
+      }
+     }
+     
+     # recolor based on selection
+     tempdf$branch.col =  color.by.selected(df = tempdf, sel = selkinasescoral, bg.col  = input$col_select_bg,  sel.col = input$col_select)
+     
+     # reorder based on selected ids
+     tempdf = tempdf[order(tempdf$id.coral %in% selkinasescoral, decreasing = FALSE),]
       
-      # reorder based on selected ids
-      tempdf = tempdf[order(tempdf$id.coral %in% input$KinasesManual, decreasing = FALSE),]
-      
-      # build legend for Branch Color (by group)
-      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch",fontfamily = input$fontfamilyselect)
+      # build legend for Branch Color (manual selection)
+      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c(input$branch_nonselect_label,input$branch_select_label),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch",fontfamily = input$fontfamilyselect)
       lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
       legend = c(legend,lines)
@@ -233,11 +287,7 @@ server <- function(input, output,session) {
         
         # reorder based on branch color 
         tempdf = tempdf[order(tempdf$branch.group),]
-        
-       
-        print (newcolors_and_colormapping)
-        
-        
+
         # build legend for Branch Color (by group)
         lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=names(branch.group.colormapping),groupcolors=branch.group.colormapping,elementtype = "Branch",fontfamily = input$fontfamilyselect)
         lines = lines_and_offset[[1]]
@@ -279,6 +329,14 @@ server <- function(input, output,session) {
          bg.col = input$branch3col_med
          }
        
+       # recolor missing kinases accordingly
+       if (input$BranchValueMissingKinase == "manually")
+       {
+        print ("asdfdas")
+        bg.col = input$BranchValueMissingKinaseColor
+        print (bg.col)
+       }
+       
         # set colors based on group
         newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = branchcolpalette, heatrange = c(input$minheat,input$maxheat),bg.col = bg.col)
         tempdf$branch.col = newcolors_and_colormapping[[1]]
@@ -317,11 +375,34 @@ server <- function(input, output,session) {
     # Manually select nodes to color
     if (input$nodecolortype == "Manually")
     {
-      # set colors based on selected ids
-      tempdf$node.col =  color.by.selected(df = tempdf, sel = input$NodeManual, bg.col  = input$col_node_bg,  sel.col = input$col_sel_node)
-      
-      # # build legend for Node Color (by group)
-      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c("not selected","selected"),groupcolors=c(input$col_node_bg,input$col_sel_node),elementtype = "Node",fontfamily = input$fontfamilyselect)
+     # set colors based on selected ids
+     selkinases = ""
+     if (input$nodemanuallyinputmethod == "Select")
+     {
+      selkinases = input$KinasesManualNode
+     }
+     if (input$nodemanuallyinputmethod == "Paste")
+     {
+      selkinases = unlist(strsplit(split = "\n",x=input$KinasesManualNodeText))
+     }
+     
+     selkinasescoral = ""
+     if (length(selkinases) > 0)
+     {
+      # convert selected to coral ids
+      kinasestoconvert = data.frame(kin1=selkinases,kin2=selkinases)
+      selkinasesconverted = convertID (tempdf,kinasestoconvert,inputtype=input$NodeManualIDtype)
+      if (nrow(selkinasesconverted) > 0)
+      {
+       selkinasescoral = selkinasesconverted[,1]
+      }
+     }
+     
+     # recolor based on selection
+     tempdf$node.col =  color.by.selected(df = tempdf, sel = selkinasescoral, bg.col  = input$col_node_bg,  sel.col = input$col_sel_node)
+
+      # # build legend for Node Color (Manual Selection)
+      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c(input$node_nonselect_label,input$node_select_label),groupcolors=c(input$col_node_bg,input$col_sel_node),elementtype = "Node",fontfamily = input$fontfamilyselect)
       lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
       legend = c(legend,lines)
@@ -397,6 +478,12 @@ server <- function(input, output,session) {
         bg.col = input$node3col_med
        }
        
+       # recolor missing kinases accordingly
+       if (input$NodeValueMissingKinase == "manually")
+       {
+        bg.col = input$NodeValueMissingKinaseColor
+       }
+        
         # set colors based on group
         newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = nodecolpalette, heatrange = c(input$nodeminheat,input$nodemaxheat),bg.col = bg.col)
         tempdf$node.col = newcolors_and_colormapping[[1]]
@@ -546,7 +633,6 @@ server <- function(input, output,session) {
    {
     BGstrolecol = "#ffffff"
    }
-   print(BGstrolecol)
    
    # Write kinome_tree.json (based on current dataframe)
    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes)

@@ -73,8 +73,8 @@ rna_data     = paste(readLines("Data/RNAdata.txt"),collapse="\n")
 rna_abs_data = paste(readLines("Data/RNAdata_pluripotent.txt"),collapse="\n")
 
 # set all of the temp files
-outputjson = tempfile(pattern="kinome_tree",tmpdir="www",fileext = ".json")
-outputjsonshort =strsplit(outputjson,split = "/")[[1]][2]
+outputjson = tempfile(pattern="kinome_tree",tmpdir="www/json",fileext = ".json")
+outputjsonshort =paste("json/",strsplit(outputjson,split = "/")[[1]][3],sep="")
 subdffile = tempfile(pattern="subdf",tmpdir="tempfiles",fileext = ".txt")
 svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
 
@@ -91,14 +91,14 @@ HM_hi = "#F66049"
 
 ### Qualtative Palettes ###
 
-qualitative_palette_choices <- c('<img src="Accent.png">' = 'Accent',
-                               '<img src="Dark2.png">' = 'Dark2',
-                               '<img src="Paired.png">' = 'Paired',
-                               '<img src="Pastel1.png">' = 'Pastel1',
-                               '<img src="Pastel2.png">' = 'Pastel2',
-                               '<img src="Set1.png">' = 'Set1',
-                               '<img src="Set2.png">' = 'Set2',
-                               '<img src="Set3.png">' = 'Set3')
+qualitative_palette_choices <- c('<img src="images/Accent.png">' = 'Accent',
+                               '<img src="images/Dark2.png">' = 'Dark2',
+                               '<img src="images/Paired.png">' = 'Paired',
+                               '<img src="images/Pastel1.png">' = 'Pastel1',
+                               '<img src="images/Pastel2.png">' = 'Pastel2',
+                               '<img src="images/Set1.png">' = 'Set1',
+                               '<img src="images/Set2.png">' = 'Set2',
+                               '<img src="images/Set3.png">' = 'Set3')
 
 # my qualitative palettes
 Accent = brewer.pal(8,"Accent")
@@ -113,31 +113,31 @@ Set3 = brewer.pal(12,"Set3")
 qualpalettes = list(Accent,Dark2,Paired,Pastel1,Pastel2,Set1,Set2,Set3)
 names(qualpalettes) = c("Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3")
 
-drawmypalettes("Accent",Accent,"www",boxes =5)
-drawmypalettes("Dark2",Dark2,"www",boxes =5)
-drawmypalettes("Paired",Paired,"www",boxes =5)
-drawmypalettes("Pastel1",Pastel1,"www",boxes =5)
-drawmypalettes("Pastel2",Pastel2,"www",boxes =5)
-drawmypalettes("Set1",Set1,"www",boxes =5)
-drawmypalettes("Set2",Set2,"www",boxes =5)
-drawmypalettes("Set3",Set3,"www",boxes =5)
+drawmypalettes("Accent",Accent,"www/images",boxes =5)
+drawmypalettes("Dark2",Dark2,"www/images",boxes =5)
+drawmypalettes("Paired",Paired,"www/images",boxes =5)
+drawmypalettes("Pastel1",Pastel1,"www/images",boxes =5)
+drawmypalettes("Pastel2",Pastel2,"www/images",boxes =5)
+drawmypalettes("Set1",Set1,"www/images",boxes =5)
+drawmypalettes("Set2",Set2,"www/images",boxes =5)
+drawmypalettes("Set3",Set3,"www/images",boxes =5)
 
 ### Sequential Palettes ###
 
 sequential_palette_choices <- c(
- '<img src="Greys.png">' = 'Greys',
- '<img src="Reds.png">' = 'Reds',
- '<img src="Oranges.png">' = 'Oranges',
- '<img src="Greens.png">' = 'Greens',
-  '<img src="Blues.png">' = 'Blues',
- '<img src="Purples.png">' = 'Purples')
+ '<img src="images/Greys.png">' = 'Greys',
+ '<img src="images/Reds.png">' = 'Reds',
+ '<img src="images/Oranges.png">' = 'Oranges',
+ '<img src="images/Greens.png">' = 'Greens',
+  '<img src="images/Blues.png">' = 'Blues',
+ '<img src="images/Purples.png">' = 'Purples')
  
-divergent_palette_choices <- c('<img src="Red_Grey_Blue.png">' = 'Red_Grey_Blue',
-                               '<img src="Bro_Grey_Tur.png">' = 'Bro_Grey_Tur',
-                               '<img src="Pink_Grey_Gre.png">' = 'Pink_Grey_Gre',
-                               '<img src="Pur_Grey_Gre.png">' = 'Pur_Grey_Gre',
-                               '<img src="Pur_Grey_Or.png">' = 'Pur_Grey_Or',
-                               '<img src="Red_Grey_Gre.png">' = 'Red_Grey_Gre')
+divergent_palette_choices <- c('<img src="images/Red_Grey_Blue.png">' = 'Red_Grey_Blue',
+                               '<img src="images/Bro_Grey_Tur.png">' = 'Bro_Grey_Tur',
+                               '<img src="images/Pink_Grey_Gre.png">' = 'Pink_Grey_Gre',
+                               '<img src="images/Pur_Grey_Gre.png">' = 'Pur_Grey_Gre',
+                               '<img src="images/Pur_Grey_Or.png">' = 'Pur_Grey_Or',
+                               '<img src="images/Red_Grey_Gre.png">' = 'Red_Grey_Gre')
 
 # my sequential palettes
 Greys = brewer.pal(3,"Greys")
@@ -150,12 +150,12 @@ Purples = brewer.pal(3,"Purples")
 seqpalettes = list(Greys,Reds,Oranges,Greens,Blues,Purples)
 names(seqpalettes) = c("Greys","Reds","Oranges","Greens","Blues","Purples")
 
-drawmypalettes("Greys",Greys,"www")
-drawmypalettes("Reds",Reds,"www")
-drawmypalettes("Oranges",Oranges,"www")
-drawmypalettes("Greens",Greens,"www")
-drawmypalettes("Blues",Blues,"www")
-drawmypalettes("Purples",Purples,"www")
+drawmypalettes("Greys",Greys,"www/images")
+drawmypalettes("Reds",Reds,"www/images")
+drawmypalettes("Oranges",Oranges,"www/images")
+drawmypalettes("Greens",Greens,"www/images")
+drawmypalettes("Blues",Blues,"www/images")
+drawmypalettes("Purples",Purples,"www/images")
 
 ### Divergent Palettes ###
 
@@ -170,12 +170,12 @@ Red_Grey_Gre = c("#CA0020","#e5e5e5", "#404040")
 divpalettes = list(Red_Grey_Blue,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
 names(divpalettes) = c("Red_Grey_Blue","Bro_Grey_Tur","Pink_Grey_Gre","Pur_Grey_Gre","Pur_Grey_Or","Red_Grey_Gre")
 
-drawmypalettes("Red_Grey_Blue",Red_Grey_Blue,"www")
-drawmypalettes("Bro_Grey_Tur",Bro_Grey_Tur,"www")
-drawmypalettes("Pink_Grey_Gre",Pink_Grey_Gre,"www")
-drawmypalettes("Pur_Grey_Gre",Pur_Grey_Gre,"www")
-drawmypalettes("Pur_Grey_Or",Pur_Grey_Or,"www")
-drawmypalettes("Red_Grey_Gre",Red_Grey_Gre,"www")
+drawmypalettes("Red_Grey_Blue",Red_Grey_Blue,"www/images")
+drawmypalettes("Bro_Grey_Tur",Bro_Grey_Tur,"www/images")
+drawmypalettes("Pink_Grey_Gre",Pink_Grey_Gre,"www/images")
+drawmypalettes("Pur_Grey_Gre",Pur_Grey_Gre,"www/images")
+drawmypalettes("Pur_Grey_Or",Pur_Grey_Or,"www/images")
+drawmypalettes("Red_Grey_Gre",Red_Grey_Gre,"www/images")
 
 
 

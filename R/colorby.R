@@ -2,7 +2,8 @@
 # Define a function to create a vector of colors based on selected kinases
 color.by.selected <- function(df,sel,bg.col,sel.col)
 {
-  # set background color
+
+ # set background color
   color.vector = rep(bg.col,nrow(df))
   
   # recolor selected kinases
@@ -63,7 +64,6 @@ color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
 # Define a function creates color vector from values
 color.by.value <- function(df ,recolordf ,colors  ,heatrange , bg.col="#D3D3D3")
 {
-  print (df) 
   # set background color
   color.vector = rep(bg.col,nrow(df))
   
