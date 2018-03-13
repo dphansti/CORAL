@@ -42,6 +42,57 @@ div(id="InfoBranchColorBox",
         ),
         div(
          "This option will automatically create a figure legend indicating the colors of selected and not selected kinases."
+        ),
+        div(
+         h2 ("Qualitative"),
+         "This option allows you to color kinase branches of different colors, to differentiate between multiple categories."
+        ),
+        div(
+         h3 ("Load default kinase groups"),
+         "Load the default kinase groups as defined by Manning et al 2002 into the 'Kinases & Group' tab."
+        ),
+        div(
+         h3 ("Kinases & Group"),
+         "Submit a two-column list of kinases and their group assignments." 
+        ),
+        div(
+         h3 ("Identifier Type"),
+         "Select the kinase identifier used to list kinases in the 'Kinases & Group' tab (coralID, uniprot, ensemble, entrez, HGNC)."
+        ),
+        div(
+         h3 ("Color Range Type"),
+         "Color groups based on pre-built color palettes, or manually assign colors."
+        ),
+        div(
+         h3 ("Manual Group Entry"),
+         "???????"
+        ),
+        div(
+         "This option will automatically create a figure legend showing the color and group name for each category listed."
+        ),
+        div(
+         h2 ("Quantitative"),
+         "This option allows you to color kinase branches based on a range of qualitative values"
+        ),
+        div(
+         h3 ("Load example data"),
+         "Load sample data into the 'Kinases & Value' tab."
         )
     ) # end box
 ) # end div
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
