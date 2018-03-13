@@ -87,7 +87,7 @@ server <- function(input, output,session) {
  observeEvent(input$InfoBranchColorButton,{replaceinfobox("R/InfoBranchColor.R")})
  observeEvent(input$InfoNodeColorButton,{replaceinfobox("R/InfoNodeColor.R")})
  observeEvent(input$InfoNodeSizeButton,{replaceinfobox("R/InfoNodeSize.R")})
- observeEvent(input$InfoAdvancedOptionsButton,{replaceinfobox("R/InfoAdvancedOptions.R")})
+ observeEvent(input$InfoAdvancedSettingsButton,{replaceinfobox("R/InfoAdvancedOptions.R")})
  observeEvent(input$InfoAboutButton,{replaceinfobox("R/InfoAbout.R")})
  
  # Update selected tab
