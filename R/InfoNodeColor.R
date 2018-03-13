@@ -2,8 +2,109 @@ div(id="InfoNodeColorBox",
     
     box(width="100%",
         div(
-         h3 ("fghdgfdgfhd"),
-         "asdjfad sdj kf adsfjhsdf asdhdsdhkjfadshjkfa dsfad f"
+         h1 ("Color Scheme"),
+         "Select a method with which to assign node colors."
+        ),
+        div(
+         h2 ("None"),
+         "This option will disable nodes from the tree altogether, showing only kinase identifiers at the ends of branches."
+        ),
+        div(
+         h2 ("Uniform"),
+         "This option allows you to color every node as a single uniform color. "
+        ),
+        div(
+         h3 ("Node Color"),
+         "A color-selector used to change the color of all nodes"
+        ),
+        div(
+         h2 ("Manual"),
+         "This option allows you to highlight branches to specific kinases of interest. "
+        ),
+        div(
+         h3 ("Kinase Input Method (????)"),
+         "Select the method you would like to use to identify kinases of interest."
+        ),
+        div(
+         h4 ("Select"),
+         "Scroll through a searchable list of all kinases available on the tree. "
+        ),
+        div(
+         h4("Paste"),
+         "Submit a list of kinases. (do names matter? Format?)"
+        ),
+        div(
+         h3 ("Kinases"),
+         "Select or input your list of kinases to highlight."
+        ),
+        div(
+         h3 ("BG Color & Color"),
+         "Select colors for your selected and unselected kinases."
+        ),
+        div(
+         h3 ("(Other option for titles??)"),
+         "Change the legend labels for selected and unselected kinases."
+        ),
+        div(
+         "This option will automatically create a figure legend indicating the colors of selected and not selected kinases."
+        ),
+        div(
+         h2 ("Qualitative"),
+         "This option allows you to color kinase nodes different colors, to differentiate between multiple categories."
+        ),
+        div(
+         h3 ("Load default kinase groups"),
+         "Load the default kinase groups as defined by Manning et al 2002 into the 'Kinases & Group' tab."
+        ),
+        div(
+         h3 ("Kinases & Group"),
+         "Submit a two-column list of kinases and their group assignments." 
+        ),
+        div(
+         h3 ("Identifier Type"),
+         "Select the kinase identifier used to list kinases in the 'Kinases & Group' tab (coralID, uniprot, ensemble, entrez, HGNC)."
+        ),
+        div(
+         h3 ("Color Range Type"),
+         "Color groups based on pre-built color palettes, or manually assign colors."
+        ),
+        div(
+         h3 ("Manual Group Entry"),
+         "???????"
+        ),
+        div(
+         "This option will automatically create a figure legend showing the color and group name for each category listed."
+        ),
+        div(
+         h2 ("Quantitative"),
+         "This option allows you to color kinase nodes based on a range of qualitative values"
+        ),
+        div(
+         h3 ("Load example data"),
+         "Load sample data into the 'Kinases & Value' tab."
+        ),
+        div(
+         h3 ("Kinases & Value"),
+         "Submit a two-column list of kinases and their associated values."
+        ),
+        div(
+         h3 ("Identifier Type"),
+         "Select the kinase identifier used to list kinases in the 'Kinases & Group' tab (coralID, uniprot, ensemble, entrez, HGNC)."
+        ),
+        div(
+         h3 ("Min & Max"),
+         "Indicate the values that will represent either end of the color spectrum. All nodes with values below the assigned min will be colored the same, as will all values above the assigned max."
+        ),
+        div(
+         h3 ("Color Range Type"),
+         "Choose between pre-built sequential and divergent color palettes or create your own 2- or 3-color gradient using color selectors."
+        ),
+        div(
+         "This option will automatically create a figure legend showing the full spectrum of possible colors and indicating the low, middle, and high values."
+        ),
+        div(
+         h1 ("Color Intermediate Nodes"),
+         "This option dictates whether or not the nodes for kinase families and sub-families on the Circle plot should also be colored according to the selected scheme. If selected, CORAL colors these nodes based on the most extreme value within its sub-nodes. (??? Word better)"
         )
     ) # end box
 ) # end div
