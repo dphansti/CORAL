@@ -185,6 +185,7 @@ ui <- dashboardPage(
                                                     column(6,                  numericInput(inputId = "maxheat",label = "max",value =  3 ))
                                           ),
                                           
+                                          fluidRow( width=12,
                                           column(6,
                                                  radioButtons(inputId="branchcolorpalettetype",label = "Color Range Type",
                                                               choices = c("sequential","divergent","manual 2 color","manual 3 color"),inline = FALSE)
@@ -215,7 +216,8 @@ ui <- dashboardPage(
                                                   colourInput("branch3col_med", "Med", HM_med,showColour = "both"),
                                                   colourInput("branch3col_hi", "High", HM_hi,showColour = "both")
                                                  )
-                                          ), # end column
+                                          ) # end column
+                                          ), # end row
                                           
                                           conditionalPanel(
                                            condition = "input.branchcolorpalettetype == 'manual 2 color'",
@@ -365,6 +367,8 @@ ui <- dashboardPage(
                                                     column(6,                numericInput(inputId = "nodeminheat",label = "min",value = -3 )),
                                                     column(6,                  numericInput(inputId = "nodemaxheat",label = "max",value =  3 ))
                                           ),
+                                          
+                                          fluidRow( width=12,
                                           column(6,
                                                  radioButtons(inputId="nodecolorpalettetype",label = "Color Range Type",
                                                               choices = c("sequential","divergent","manual 2 color","manual 3 color"),inline = FALSE)
@@ -395,6 +399,7 @@ ui <- dashboardPage(
                                                   colourInput("node3col_med", "Med", HM_med,showColour = "both"),
                                                   colourInput("node3col_hi", "High", HM_hi,showColour = "both")
                                                  )
+                                          )
                                           ),
                                            conditionalPanel(
                                             condition = "input.nodecolorpalettetype == 'manual 2 color'",
@@ -477,14 +482,7 @@ ui <- dashboardPage(
                                          conditionalPanel(
                                           condition = "input.AdvancedSections == 'Title'",
                                           # text box for title
-                                          textInput(inputId="titleinput",label = 
-                                                     h4("Title",
-                                                        tags$style(type = "text/css", "#titletooltip {vertical-align: bottom;}"),
-                                                        bsButton("titletooltip", label = "", icon = icon("question"), style = "primary", size = "extra-small")),
-                                                    placeholder = ""),
-                                          bsTooltip(id="titletooltip",title="Provide title for top of plot (Only applies to Tree layout)",
-                                                    placement = "bottom", trigger = "hover",
-                                                    options = NULL)
+                                          textInput(inputId="titleinput",label ="Title",value="" )
                                          ),
                                          
                                          conditionalPanel(
