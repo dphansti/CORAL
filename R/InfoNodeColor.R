@@ -41,12 +41,12 @@ div(id="InfoNodeColorBox",
         ),
         div(
          h4 ("Select"),
-         "A scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
+         "Creates a scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
          when trying to highlight a small number of kinases."
         ),
         div(
          h4("Paste"),
-         "A space to copy a list of kinases to highlight, each kinase separated by a new line. This feature is 
+         "Creates a space to copy a list of kinases to highlight, each kinase separated by a new line. This feature is 
          useful when trying to highlight a larger number of kinases, or if you have a pre-existing list of kinases 
          from a spreadsheet or other document."
         ),
