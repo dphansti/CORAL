@@ -101,6 +101,12 @@ div(id="InfoBranchColorBox",
                             h3 ("Reverse Palette"),
                             "This button will automatically swap the BG and selected colors."
                         )
+                 ),
+                 column(4, 
+                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
+                            tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        )
+                        )
                  )
         ),
         
@@ -155,6 +161,12 @@ div(id="InfoBranchColorBox",
                             tags$br(),tags$br(),
                             "The 'Qualitative' option will automatically create a figure legend showing the color and group name for each 
                             category listed. Groups will be listed in alphabetical order, and then colors will be assigned accordingly."
+                        )
+                 ),
+                 column(4, 
+                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
+                                tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        )
                         )
                  )
         ),
@@ -223,7 +235,9 @@ div(id="InfoBranchColorBox",
                         )
                  ), 
                  column(4, 
-                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left")
+                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
+                                tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        )
                         )
                  )
         )
