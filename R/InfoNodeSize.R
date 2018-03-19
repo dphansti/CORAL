@@ -40,8 +40,8 @@ div(id="InfoNodeSizeBox",
                             "This option allows you to color kinase branches based on a range of qualitative values. It is a useful 
                             option when trying to visualize a range of values, such as fold change or signal data."   
                         )
-                        )
-                 ),
+                 )
+        ),
         
         fluidRow(width=12,
                  column(2, tags$br(), 
@@ -87,7 +87,7 @@ div(id="InfoNodeSizeBox",
                         )
                         )
                  )
-                 )
+    )
         
-        ) # end box
-                 ) # end div
+    ) # end box
+) # end div
