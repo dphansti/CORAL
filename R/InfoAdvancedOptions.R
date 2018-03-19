@@ -61,7 +61,7 @@ div(id="InfoAdvancedOptionsBox",
                          
                             h4 (HTML("▾&nbsp;&nbsp; Single Color")),
                             "The default option is to use the same color font (black) for all kinase labels. 
-                            You can alternatively change the color of all labels by using the 'Label Color' drop-down box 
+                            You can alternatively change the color of all labels by using the color picker box 
                             to find a color or enter a hex value.",
                          
                             h4 (HTML("▾&nbsp;&nbsp; Same as Branch")),
@@ -106,8 +106,8 @@ div(id="InfoAdvancedOptionsBox",
                             option for personalizing your tree nodes.",
                          
                             h3 ("Node Stroke Color"),
-                            "A color-selector used to change the color of all node strokes. By default, node strokes are uniformly 
-                            colored white. You can change this color by using the drop-down box to find a color or entering a hex value."
+                            "This selection determines the color of all node strokes. By default, node strokes are uniformly 
+                            colored white. You can use the color picker box to find a new color or enter a hex value."
                         )
                         ),
                  column(4, 
@@ -177,7 +177,8 @@ div(id="InfoAdvancedOptionsBox",
                             h3 ("BG Color & Selected Color"),
                             "Here you can change node colors for both your selected and unselected kinases. The BG Color sets 
                             the color of kinases that were not listed, while Selected Color sets the color of the kinases you have 
-                            identified and are trying to highlight. You can use the drop-down box to find a color or enter a hex value."
+                            identified and are trying to highlight. You can use the color picker box to find a color or enter a 
+                            hex value."
                         )
                  ), 
                  column(4, 

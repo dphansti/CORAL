@@ -4,7 +4,7 @@ div(id="InfoNodeSizeBox",
         fluidRow(width=12, 
                  column(8,   
                         div(
-                            h1 ("Size Scheme"),
+                            h1 ("Node Size Scheme"),
                             "CORAL also allows you to change node size depending on the desired look of your tree and 
                             the data you are trying to visualize. You can set all nodes to a single size using the Uniform 
                             setting or scale nodes according to numerical data using the Quantitative setting."

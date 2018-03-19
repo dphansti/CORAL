@@ -4,7 +4,7 @@ div(id="InfoNodeColorBox",
         fluidRow(width=12, 
                  column(8,   
                         div(
-                            h1 ("Color Scheme"),
+                            h1 ("Node Color Scheme"),
                             "CORAL allows you to choose between several methods of node color assignment, depending on 
                             the desired look of your tree and the data you are trying to visualize. You can either 
                             disable nodes altogether using None, color all nodes a single color using the Uniform setting, 

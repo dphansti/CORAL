@@ -4,7 +4,7 @@ div(id="InfoBranchColorBox",
         fluidRow(width=12, 
                  column(8,   
                         div(
-                            h1 ("Branch Color"),
+                            h1 ("Branch Color Scheme"),
                             "CORAL allows you to choose between several methods of branch color assignment, 
                             depending on the desired look of your tree and the data you are trying to visualize. 
                             You can either color the entire tree a single color using the Uniform setting, 
