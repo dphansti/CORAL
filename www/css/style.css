@@ -25,7 +25,7 @@ h1,.h1{
   font-weight: ;
   font-size: 185%;
   margin-top: 20px;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
 }
 
 h2,.h2{
@@ -77,7 +77,7 @@ h6,.h6{
  ;
 }
 
-/* box titles */
+/* plot button titles */
 .box.box-solid.box-primary>.box-header>h3.box-title,
 .box.box-solid.box-success>.box-header>h3.box-title,
 .box.box-solid.box-info>.box-header>h3.box-title,
@@ -201,6 +201,7 @@ h6,.h6{
   margin: 0;
 }
 
+/* plot button +/- */
 .btn.btn-box-tool>.fa.fa-plus,
 .btn.btn-box-tool>.fa.fa-minus{
  color: #fff;
@@ -211,7 +212,6 @@ h6,.h6{
 
 
 /* info-plot button */
-
 .btn.radiobtn.btn-primary{
   color:#eceff3;
   background: #a3b8cc;
@@ -247,7 +247,6 @@ h6,.h6{
 }
 
 /* download button */
-
 .btn.button-default{
  border-style: none;
 }
@@ -274,8 +273,7 @@ h6,.h6{
  background-color: #2b2b2b;
 }
 
-/* remove box shadows */
-
+/* remove shadows */
 .box{
   -webkit-box-shadow: none; 
   -moz-box-shadow: none;
@@ -288,6 +286,7 @@ h6,.h6{
   box-shadow: none;
 }
 
+/* info buttons*/
 #InfoBranchColorButton.btn.btn-default.action-button.shiny-bound-input,
 #InfoNodeColorButton.btn.btn-default.action-button.shiny-bound-input,
 #InfoNodeSizeButton.btn.btn-default.action-button.shiny-bound-input,
@@ -308,8 +307,7 @@ h6,.h6{
 }
 
 
-/* box 1 */
-
+/* plot button 1 */
 .box.box-solid.box-primary>.box-header,
 #InfoBranchColorButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
@@ -321,16 +319,13 @@ h6,.h6{
   border-left-color:#eceff3;
   border-right-color:#eceff3;
   border-top-color:#eceff3;
-  
 }
 
 .box.box-primary{
  border-top-color:#;
- 
 }
 
-/* box 2 */
-
+/* plot button 2 */
 .box.box-solid.box-success>.box-header,
 #InfoNodeColorButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
@@ -342,11 +337,9 @@ h6,.h6{
   border-left-color:#eceff3;
   border-right-color:#eceff3;
   border-top-color:#eceff3;
-  
 }
 
-/* box 3 */
-
+/* plot button 3 */
 .box.box-solid.box-info>.box-header,
 #InfoNodeSizeButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
@@ -360,7 +353,7 @@ h6,.h6{
   border-top-color:#eceff3;
 }
 
-/* box 4 */
+/* plot button 4 */
 .box.box-solid.box-warning>.box-header,
 #InfoAdvancedSettingsButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
@@ -378,8 +371,7 @@ h6,.h6{
  border-top-color:#;
 }
 
-/* box 5 */
-
+/* plot button 5 */
 .box.box-solid.box-danger>.box-header,
 #InfoAboutButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
@@ -394,7 +386,6 @@ h6,.h6{
 }
 
 /* active tab */
-
 .nav-tabs-custom .nav-tabs li.active {
      border-top-color: #3da1cc;
 }
@@ -404,12 +395,14 @@ h6,.h6{
  border-top-color: #;
 }
 
+/* info box margins */
 #InfoBranchColorBox .box-body,
 #InfoNodeColorBox .box-body,
 #InfoNodeSizeBox .box-body,
 #InfoAdvancedOptionsBox .box-body,
 #InfoAboutBox .box-body{
  margin-left: 30px;
+ margin-right: 30px;
 }
 
 /* dashboard background */
@@ -446,38 +439,4 @@ background-color: #;
 .form-control:focus {
         border-color: #36c9da;
     }
-
-
-/* toggle button                    
-.skin-blue .main-header .navbar .sidebar-toggle {
-  color: #fff;
-  background-color: #fff;
-}
-
-/* toggle button when hovered                      
-.skin-blue .main-header .navbar .sidebar-toggle:hover{
-  color: #--font-family-sans-serif;
-  background-color: #fff;
-}
-
-/* main sidebar 
-.main-sidebar {
-  background-color: #222c32;
-}
-
-/* active selected tab in the sidebarmenu 
-.main-sidebar .sidebar .sidebar-menu .active a{
-  background-color: #1e272c;
-}
-
-/* other links in the sidebarmenu 
-.main-sidebar .sidebar .sidebar-menu a{
-  color: #d3d3d3;
-}
-
-/* other links in the sidebarmenu when hovered 
-.main-sidebar .sidebar .sidebar-menu a:hover{
-  background-color: #d3d3d3;
-  color: #fff;
-}
 
