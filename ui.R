@@ -1,4 +1,4 @@
-##  app.R ##
+## app.R ##
 
 ui <- dashboardPage(
  dashboardHeader(title = span(img(src="logos/coral-logo-white2.png",height=60,align="left")),titleWidth = 600,
