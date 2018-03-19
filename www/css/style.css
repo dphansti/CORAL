@@ -64,9 +64,11 @@ h5,.h5{
 
 h6,.h6{
   font-family: inherit;
-  font-weight: ;
-  font-size: 90%;
+  font-weight: 700;
+  font-size: 100%;
   letter-spacing: .25px;
+  margin-top: 2px;
+
 }
 
 /* original font sizes:

@@ -137,24 +137,26 @@ ui <- dashboardPage(
                                                           
                                                           conditionalPanel(
                                                            condition = "input.branchgroupcolorpalettetype == 'manual'",
-                                                           "Select Colors",
+                                                           h6("Select Colors"),
+                                                           fluidRow(style = "margin-top: 20px",
+                                                            column(width = 1,  colourInput("branchgroupcol1", "", defaultpalette[1],showColour = "both"), style = "margin-top:-29px"),
+                                                            column(width = 1,  colourInput("branchgroupcol2", "", defaultpalette[2],showColour = "both"), style = "margin-top:-29px"),
+                                                            column(width = 1,  colourInput("branchgroupcol3", "", defaultpalette[3],showColour = "both"), style = "margin-top:-29px")
+                                                           ), 
+                                                           fluidRow( 
+                                                            column(width = 1,  colourInput("branchgroupcol4", "", defaultpalette[4],showColour = "both"), style = "margin-top:-29px"),
+                                                            column(width = 1,  colourInput("branchgroupcol5", "", defaultpalette[5],showColour = "both"), style = "margin-top:-29px"),
+                                                            column(width = 1,  colourInput("branchgroupcol6", "", defaultpalette[6],showColour = "both"), style = "margin-top:-29px")
+                                                           ), 
                                                            fluidRow(
-                                                            column(width = 1,  colourInput("branchgroupcol1", "", defaultpalette[1],showColour = "both")),
-                                                            column(width = 1,  colourInput("branchgroupcol2", "", defaultpalette[2],showColour = "both")),
-                                                            column(width = 1,  colourInput("branchgroupcol3", "", defaultpalette[3],showColour = "both")),
-                                                            column(width = 1,  colourInput("branchgroupcol4", "", defaultpalette[4],showColour = "both"))
+                                                            column(width = 1,  colourInput("branchgroupcol7", "", defaultpalette[7],showColour = "both"), style = "margin-top:-29px"),
+                                                            column(width = 1,  colourInput("branchgroupcol8", "", defaultpalette[8],showColour = "both"), style = "margin-top:-29px"),
+                                                            column(width = 1,  colourInput("branchgroupcol9", "", defaultpalette[9],showColour = "both"), style = "margin-top:-29px")
                                                            ),
-                                                           fluidRow( 
-                                                            column(width = 1,  colourInput("branchgroupcol5", "", defaultpalette[5],showColour = "both")),
-                                                            column(width = 1,  colourInput("branchgroupcol6", "", defaultpalette[6],showColour = "both")),
-                                                            column(width = 1,  colourInput("branchgroupcol7", "", defaultpalette[7],showColour = "both")),
-                                                            column(width = 1,  colourInput("branchgroupcol8", "", defaultpalette[8],showColour = "both"))
-                                                           ),
-                                                           fluidRow( 
-                                                            column(width = 1,  colourInput("branchgroupcol9", "", defaultpalette[9],showColour = "both")),
-                                                            column(width = 1,  colourInput("branchgroupcol10", "", defaultpalette[10],showColour = "both")),
-                                                            column(width = 1,  colourInput("branchgroupcol11", "", defaultpalette[11],showColour = "both")),
-                                                            column(width = 1,  colourInput("branchgroupcol12", "", defaultpalette[12],showColour = "both"))
+                                                           fluidRow(
+                                                            column(width = 1,  colourInput("branchgroupcol10", "", defaultpalette[10],showColour = "both"), style = "margin-top:-29px"),
+                                                            column(width = 1,  colourInput("branchgroupcol11", "", defaultpalette[11],showColour = "both"), style = "margin-top:-29px"),
+                                                            column(width = 1,  colourInput("branchgroupcol12", "", defaultpalette[12],showColour = "both"), style = "margin-top:-29px")
                                                            )
                                                           ) # end conditional
                                                    ) # end col
