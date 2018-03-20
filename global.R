@@ -156,7 +156,7 @@ drawmypalettes("Purples",Purples,"www/images")
 
 ### Divergent Palettes ###
 
-divergent_palette_choices <- c('<img src="images/Coral_Grey_Aqua.png">' = 'Coral_Grey_Aqua',
+divergent_palette_choices <- c('<img src="images/Aqua_Grey_Coral.png">' = 'Aqua_Grey_Coral',
                                '<img src="images/Red_Grey_Blue.png">' = 'Red_Grey_Blue',
                                '<img src="images/Bro_Grey_Tur.png">' = 'Bro_Grey_Tur',
                                '<img src="images/Pink_Grey_Gre.png">' = 'Pink_Grey_Gre',
@@ -165,7 +165,7 @@ divergent_palette_choices <- c('<img src="images/Coral_Grey_Aqua.png">' = 'Coral
                                '<img src="images/Red_Grey_Gre.png">' = 'Red_Grey_Gre')
 
 # my divergent palettes
-Coral_Grey_Aqua = c("#F66049","#e5e5e5","#07C9DE")
+Aqua_Grey_Coral = c("#07C9DE","#e5e5e5","#F66049")
 Red_Grey_Blue = c("#CA0020","#e5e5e5","#0571B0")
 Bro_Grey_Tur = c("#A6611A","#e5e5e5", "#018571")
 Pink_Grey_Gre = c("#D01C8B","#e5e5e5", "#4DAC26")
@@ -173,10 +173,10 @@ Pur_Grey_Gre = c("#7B3294","#e5e5e5", "#008837")
 Pur_Grey_Or = c("#E66101","#e5e5e5", "#5E3C99")
 Red_Grey_Gre = c("#CA0020","#e5e5e5", "#404040")
 
-divpalettes = list(Coral_Grey_Aqua,Red_Grey_Blue,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
-names(divpalettes) = c("Coral_Grey_Aqua","Red_Grey_Blue","Bro_Grey_Tur","Pink_Grey_Gre","Pur_Grey_Gre","Pur_Grey_Or","Red_Grey_Gre")
+divpalettes = list(Aqua_Grey_Coral,Red_Grey_Blue,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
+names(divpalettes) = c("Aqua_Grey_Coral","Red_Grey_Blue","Bro_Grey_Tur","Pink_Grey_Gre","Pur_Grey_Gre","Pur_Grey_Or","Red_Grey_Gre")
 
-drawmypalettes("Coral_Grey_Aqua",Coral_Grey_Aqua,"www/images")
+drawmypalettes("Aqua_Grey_Coral",Aqua_Grey_Coral,"www/images")
 drawmypalettes("Red_Grey_Blue",Red_Grey_Blue,"www/images")
 drawmypalettes("Bro_Grey_Tur",Bro_Grey_Tur,"www/images")
 drawmypalettes("Pink_Grey_Gre",Pink_Grey_Gre,"www/images")
