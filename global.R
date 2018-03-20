@@ -91,7 +91,8 @@ HM_hi = "#F66049"
 
 ### Qualtative Palettes ###
 
-qualitative_palette_choices <- c('<img src="images/Accent.png">' = 'Accent',
+qualitative_palette_choices <- c('<img src="images/Erika.png">' = 'Erika',
+                               '<img src="images/Accent.png">' = 'Accent',
                                '<img src="images/Dark2.png">' = 'Dark2',
                                '<img src="images/Paired.png">' = 'Paired',
                                '<img src="images/Pastel1.png">' = 'Pastel1',
@@ -101,6 +102,7 @@ qualitative_palette_choices <- c('<img src="images/Accent.png">' = 'Accent',
                                '<img src="images/Set3.png">' = 'Set3')
 
 # my qualitative palettes
+Erika = c("#F05F37","#16CDDE","#EDC624","#B348A1","#7C64FF","#78C99B","#C2374A","#B0BE33","#CAE6A1","#3F9FFC","#F2987A","#BA8DB4")
 Accent = brewer.pal(8,"Accent")
 Dark2 = brewer.pal(8,"Dark2")
 Paired = brewer.pal(12,"Paired")
@@ -110,9 +112,10 @@ Set1 = brewer.pal(9,"Set1")
 Set2 = brewer.pal(8,"Set2")
 Set3 = brewer.pal(12,"Set3")
 
-qualpalettes = list(Accent,Dark2,Paired,Pastel1,Pastel2,Set1,Set2,Set3)
-names(qualpalettes) = c("Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3")
+qualpalettes = list(Erika,Accent,Dark2,Paired,Pastel1,Pastel2,Set1,Set2,Set3)
+names(qualpalettes) = c("Erika","Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3")
 
+drawmypalettes("Erika",Erika,"www/images",boxes =5)
 drawmypalettes("Accent",Accent,"www/images",boxes =5)
 drawmypalettes("Dark2",Dark2,"www/images",boxes =5)
 drawmypalettes("Paired",Paired,"www/images",boxes =5)
@@ -131,13 +134,7 @@ sequential_palette_choices <- c(
  '<img src="images/Greens.png">' = 'Greens',
   '<img src="images/Blues.png">' = 'Blues',
  '<img src="images/Purples.png">' = 'Purples')
- 
-divergent_palette_choices <- c('<img src="images/Red_Grey_Blue.png">' = 'Red_Grey_Blue',
-                               '<img src="images/Bro_Grey_Tur.png">' = 'Bro_Grey_Tur',
-                               '<img src="images/Pink_Grey_Gre.png">' = 'Pink_Grey_Gre',
-                               '<img src="images/Pur_Grey_Gre.png">' = 'Pur_Grey_Gre',
-                               '<img src="images/Pur_Grey_Or.png">' = 'Pur_Grey_Or',
-                               '<img src="images/Red_Grey_Gre.png">' = 'Red_Grey_Gre')
+
 
 # my sequential palettes
 Greys = brewer.pal(3,"Greys")
@@ -159,7 +156,16 @@ drawmypalettes("Purples",Purples,"www/images")
 
 ### Divergent Palettes ###
 
+divergent_palette_choices <- c('<img src="images/Coral_Grey_Aqua.png">' = 'Coral_Grey_Aqua',
+                               '<img src="images/Red_Grey_Blue.png">' = 'Red_Grey_Blue',
+                               '<img src="images/Bro_Grey_Tur.png">' = 'Bro_Grey_Tur',
+                               '<img src="images/Pink_Grey_Gre.png">' = 'Pink_Grey_Gre',
+                               '<img src="images/Pur_Grey_Gre.png">' = 'Pur_Grey_Gre',
+                               '<img src="images/Pur_Grey_Or.png">' = 'Pur_Grey_Or',
+                               '<img src="images/Red_Grey_Gre.png">' = 'Red_Grey_Gre')
+
 # my divergent palettes
+Coral_Grey_Aqua = c("#F66049","#e5e5e5","#07C9DE")
 Red_Grey_Blue = c("#CA0020","#e5e5e5","#0571B0")
 Bro_Grey_Tur = c("#A6611A","#e5e5e5", "#018571")
 Pink_Grey_Gre = c("#D01C8B","#e5e5e5", "#4DAC26")
@@ -167,9 +173,10 @@ Pur_Grey_Gre = c("#7B3294","#e5e5e5", "#008837")
 Pur_Grey_Or = c("#E66101","#e5e5e5", "#5E3C99")
 Red_Grey_Gre = c("#CA0020","#e5e5e5", "#404040")
 
-divpalettes = list(Red_Grey_Blue,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
-names(divpalettes) = c("Red_Grey_Blue","Bro_Grey_Tur","Pink_Grey_Gre","Pur_Grey_Gre","Pur_Grey_Or","Red_Grey_Gre")
+divpalettes = list(Coral_Grey_Aqua,Red_Grey_Blue,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
+names(divpalettes) = c("Coral_Grey_Aqua","Red_Grey_Blue","Bro_Grey_Tur","Pink_Grey_Gre","Pur_Grey_Gre","Pur_Grey_Or","Red_Grey_Gre")
 
+drawmypalettes("Coral_Grey_Aqua",Coral_Grey_Aqua,"www/images")
 drawmypalettes("Red_Grey_Blue",Red_Grey_Blue,"www/images")
 drawmypalettes("Bro_Grey_Tur",Bro_Grey_Tur,"www/images")
 drawmypalettes("Pink_Grey_Gre",Pink_Grey_Gre,"www/images")
