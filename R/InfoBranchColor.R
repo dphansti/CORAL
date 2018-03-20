@@ -32,8 +32,8 @@ div(id="InfoBranchColorBox",
         
         fluidRow(width=12,
                  column(2, tags$br(), 
-                        div(img(src="info/BC-Uniform.png",width="100%",align="left",
-                                tags$style("img[src='info/BC-Uniform.png'] {padding-top: 4px}")
+                        div(img(src="info/BC-1a.png",width="100%",align="left",
+                                tags$style("img[src='info/BC-1a.png'] {padding-top: 4px}")
                             )
                         )
                  ),
@@ -59,8 +59,8 @@ div(id="InfoBranchColorBox",
         
         fluidRow(width=12,
                  column(2, tags$br(), 
-                        div(img(src="info/BC-Manual.png",width="100%",align="left",
-                                tags$style("img[src='info/BC-Manual.png'] {padding-top: 4px}")                  
+                        div(img(src="info/BC-2a.png",width="100%",align="left",
+                                tags$style("img[src='info/BC-2a.png'] {padding-top: 4px}")                  
                             )
                         )
                  ),
@@ -103,8 +103,8 @@ div(id="InfoBranchColorBox",
                         )
                  ),
                  column(4, 
-                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
-                            tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        div(img(src="info/BC-2b.png",width="100%",align="left",
+                            tags$style("img[src='info/BC-2b.png'] {padding-top: 4px}")
                         )
                         )
                  )
@@ -124,8 +124,8 @@ div(id="InfoBranchColorBox",
         
         fluidRow(width=12,
                  column(2, tags$br(), 
-                        div(img(src="info/BC-Qualitative.png",width="100%",align="left",
-                                tags$style("img[src='info/BC-Qualitative.png'] {padding-top: 4px}")
+                        div(img(src="info/BC-3a.png",width="100%",align="left",
+                                tags$style("img[src='info/BC-3a.png'] {padding-top: 4px}")
                             )
                         )
                  ),
@@ -164,8 +164,8 @@ div(id="InfoBranchColorBox",
                         )
                  ),
                  column(4, 
-                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
-                                tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        div(img(src="info/BC-3b.png",width="100%",align="left",
+                                tags$style("img[src='info/BC-3b.png'] {padding-top: 4px}")
                         )
                         )
                  )
@@ -184,8 +184,8 @@ div(id="InfoBranchColorBox",
         
         fluidRow(width=12,
                  column(2, tags$br(), 
-                        div(img(src="info/BC-Quantitative.png",width="100%",align="left",
-                                tags$style("img[src='info/BC-Quantitative.png'] {padding-top: 4px}")
+                        div(img(src="info/BC-4a.png",width="100%",align="left",
+                                tags$style("img[src='info/BC-4a.png'] {padding-top: 4px}")
                         )
                         )
                  ),
@@ -235,8 +235,8 @@ div(id="InfoBranchColorBox",
                         )
                  ), 
                  column(4, 
-                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
-                                tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        div(img(src="info/BC-4b.png",width="100%",align="left",
+                                tags$style("img[src='info/BC-4b.png'] {padding-top: 4px}")
                         )
                         )
                  )
