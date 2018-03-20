@@ -10,75 +10,72 @@ div(id="InfoAdvancedOptionsBox",
                  )
         ),
         
-###
+# TITLE
         fluidRow(width=12, 
-                 column(8, 
-                        div(       
+                 column(8,   
+                        div(
                             h2 (HTML("Title &nbsp;☉")),
-                            "This tab allows you to input a title for the plot. This option will only affect the Tree plot."
+                            "This tab allows you to input a title for the plot. This option will only affect the Tree plot.",
                          
-                        )
-                 )
-        ),
+                            fluidRow(width=12,
+                                     column(3, tags$br(), 
+                                            div(img(src="info/AS-1a.png",width="100%",align="left",
+                                                tags$style("img[src='info/AS-1a.png'] {padding-top: 4px}")
+                                            )
+                                            )
+                                     )
+                            )
+                        ),
+                
         
-        fluidRow(width=12,
-                 column(2, tags$br(), 
-                        div(img(src="info/BC-Uniform.png",width="100%",align="left",
-                                tags$style("img[src='info/BC-Uniform.png'] {padding-top: 4px}")
-                        )
-                        )
-                 )
-        ),
-        
-###    
-        fluidRow(width=12,
-                 column(8,     
+# FONT    
                         div(
                             h2 (HTML("Font &nbsp;☉")),
                             "This tab allows you to change global font settings as well as kinase label colors. Font style 
-                            and color changes will on affect the Tree plot."
-                        )
-                 )
-        ),
-        fluidRow(width=12,
-                 column(2, tags$br(), 
-                        div(img(src="info/BC-Manual.png",width="100%",align="left",
-                                tags$style("img[src='info/BC-Manual.png'] {padding-top: 4px}")                  
-                        )
-                        )
-                 ),
-                 column(6,
-                        div(  
-                            h3 ("Choose Font"),
-                            "You can change the font to use for all kinase labels, family labels, and titles in the Tree plot.",
+                            and color changes will on affect the Tree plot.",
+                     
+                            fluidRow(width=12,
+                                     column(3, tags$br(), 
+                                            div(img(src="info/AS-2a.png",width="100%",align="left",
+                                                    tags$style("img[src='info/AS-2a.png'] {padding-top: 4px}")                  
+                                            )
+                                            )
+                                     ),
+                                     column(9,
+                                            div(  
+                                             h3 ("Choose Font"),
+                                             "You can change the font to use for all kinase labels, family labels, and titles in the Tree plot.",
                          
-                            h3 ("Label Font Size"),
-                            "You can also change the font size for all kinase labels, family labels, and titles. 
-                            This setting will apply to all plots.",
+                                             h3 ("Label Font Size"),
+                                             "You can also change the font size for all kinase labels, family labels, and titles. 
+                                             This setting will apply to all plots.",
                          
-                            h3 ("Label Color"),
-                            "This option allows you to change the kinase label colors either uniformly or based on branch color.",
+                                             h3 ("Label Color"),
+                                             "This option allows you to change the kinase label colors either uniformly or based on branch color.",
                          
-                            h4 (HTML("▾&nbsp;&nbsp; Single Color")),
-                            "The default option is to use the same color font (black) for all kinase labels. 
-                            You can alternatively change the color of all labels by using the color picker box 
-                            to find a color or enter a hex value.",
+                                             h4 (HTML("▾&nbsp;&nbsp; Single Color")),
+                                             "The default option is to use the same color font (black) for all kinase labels. 
+                                             You can alternatively change the color of all labels by using the color picker box 
+                                             to find a color or enter a hex value.",
                          
-                            h4 (HTML("▾&nbsp;&nbsp; Same as Branch")),
-                            "Another option is to color the kinase labels the same color as their branches. 
-                            This can work especially well when nodes are disabled and you are trying to highlight the names 
-                            of kinases in specific qualitative groups or quantitative extremes."
+                                             h4 (HTML("▾&nbsp;&nbsp; Same as Branch")),
+                                             "Another option is to color the kinase labels the same color as their branches. 
+                                             This can work especially well when nodes are disabled and you are trying to highlight the names 
+                                             of kinases in specific qualitative groups or quantitative extremes."
+                                            )
+                                     )
+                            )
                         )
                  ),
                  column(4, 
-                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
-                                tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        div(img(src="info/AS-2b.png",width="100%",align="left",
+                                tags$style("img[src='info/AS-2b.png'] {padding-top: 4px}")
                         )
                         )
                  )
         ),
         
-###    
+# NODE   
         fluidRow(width=12, 
                  column(8,    
                         div(
@@ -87,32 +84,32 @@ div(id="InfoAdvancedOptionsBox",
                             tree and the data you are trying to visualize. Using the 'Node Stroke Color Scheme' menu, you can 
                             assign all strokes to a single color using the Uniform setting, color strokes the same as the nodes 
                             themselves using Same as Node, or highlight specific kinase nodes of interest with unique stroke 
-                            colors using Manual."                  
-                        )
-                 )
-        ),
+                            colors using Manual.",
         
-        fluidRow(width=12,
-                 column(2, tags$br(), 
-                        div(img(src="info/BC-Qualitative.png",width="100%",align="left",
-                                tags$style("img[src='info/BC-Qualitative.png'] {padding-top: 4px}")
-                        )
+                            fluidRow(width=12,
+                                     column(3, tags$br(), 
+                                            div(img(src="info/AS-3a.png",width="100%",align="left",
+                                                    tags$style("img[src='info/BC-Qualitative.png'] {padding-top: 4px}")
+                                            )
+                                            )
+                                     ),
+                                     column(9,
+                                            div(  
+                                             h2 (HTML("Uniform &nbsp;&nbsp;▾")),
+                                             "This option allows you to color all node strokes in the tree a single uniform color. This is a useful 
+                                             option for personalizing your tree nodes.",
+                         
+                                             h3 ("Node Stroke Color"),
+                                             "This selection determines the color of all node strokes. By default, node strokes are uniformly 
+                                             colored white. You can use the color picker box to find a new color or enter a hex value."
+                                            )
+                                     )
+                            )
                         )
                  ),
-                 column(6,
-                        div(  
-                            h2 (HTML("Uniform &nbsp;&nbsp;▾")),
-                            "This option allows you to color all node strokes in the tree a single uniform color. This is a useful 
-                            option for personalizing your tree nodes.",
-                         
-                            h3 ("Node Stroke Color"),
-                            "This selection determines the color of all node strokes. By default, node strokes are uniformly 
-                            colored white. You can use the color picker box to find a new color or enter a hex value."
-                        )
-                        ),
                  column(4, 
-                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
-                                tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        div(img(src="info/AS-3b.png",width="100%",align="left",
+                                tags$style("img[src='info/AS-3b.png'] {padding-top: 4px}")
                         )
                         )
                  )
@@ -120,8 +117,8 @@ div(id="InfoAdvancedOptionsBox",
         
         fluidRow(width=12,
                  column(2, tags$br(), 
-                        div(img(src="info/BC-Quantitative.png",width="100%",align="left",
-                                tags$style("img[src='info/BC-Quantitative.png'] {padding-top: 4px}")
+                        div(img(src="info/AS-4a.png",width="100%",align="left",
+                                tags$style("img[src='info/AS-4a.png'] {padding-top: 4px}")
                         )
                         )
                  ),
@@ -133,8 +130,8 @@ div(id="InfoAdvancedOptionsBox",
                         )
                         ), 
                  column(4, 
-                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
-                                tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        div(img(src="info/AS-4b.png",width="100%",align="left",
+                                tags$style("img[src='AS-4b.png'] {padding-top: 4px}")
                         )
                         )
                  )
@@ -142,8 +139,8 @@ div(id="InfoAdvancedOptionsBox",
         
         fluidRow(width=12,
                  column(2, tags$br(), 
-                        div(img(src="info/BC-Quantitative.png",width="100%",align="left",
-                                tags$style("img[src='info/BC-Quantitative.png'] {padding-top: 4px}")
+                        div(img(src="info/AS-5a.png",width="100%",align="left",
+                                tags$style("img[src='info/AS-5a.png'] {padding-top: 4px}")
                         )
                         )
                  ),
@@ -182,8 +179,8 @@ div(id="InfoAdvancedOptionsBox",
                         )
                  ), 
                  column(4, 
-                        div(img(src="info/Tree-BC-Quan2.png",width="100%",align="left",
-                                tags$style("img[src='info/Tree-BC-Quan2.png'] {padding-top: 4px}")
+                        div(img(src="info/AS-5b.png",width="100%",align="left",
+                                tags$style("img[src='info/AS-5b.png'] {padding-top: 4px}")
                         )
                         )
                  )
