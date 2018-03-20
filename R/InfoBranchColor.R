@@ -11,7 +11,7 @@ div(id="InfoBranchColorBox",
                             highlight specific kinase branches of interest using Manual, or color several branches 
                             according to a qualitative or quantitative color palette. Qualitative coloring allows
                             you to assign kinases to groups, each of which will be assigned a unique color from 
-                            either a prebuilt or user-made palette. Quantitative coloring scales assigns numerical 
+                            either a prebuilt or user-made palette. Quantitative coloring scales assign numerical 
                             data to sequential, divergent or user-made color scales. Each method automatically 
                             creates a figure legend indicating the significance of the branch color scheme."
                         )
@@ -24,8 +24,8 @@ div(id="InfoBranchColorBox",
                         div(       
                             h2 (HTML("Uniform &nbsp;&nbsp;▾")),
                             "This option allows you to color every branch as a single uniform color. 
-                            It is a useful option for when you do not wish to present any data on the branches 
-                            themselves, for example if your data is well-represented by node size and color alone.",                       
+                            It is a useful option if you do not wish to present any data on the branches 
+                            themselves, such as when your data is well-represented by node size and color alone.",                       
                         
         
         
@@ -40,8 +40,8 @@ div(id="InfoBranchColorBox",
                                      column(9,
                                             div(      
                                                 h3 ("Branch Color"),
-                                                "A color-selector used to change the color of all branches. You can use the drop-down 
-                                                box to find a color or enter a hex value."   
+                                                "This will set the color of all branches. You can use the color picker
+                                                to find a color or enter a hex value."
                                             )
                                      )
                             )
@@ -55,7 +55,7 @@ div(id="InfoBranchColorBox",
                         div(
                             h2 (HTML("Manual &nbsp;&nbsp;▾")),
                             "This option allows you to highlight branches to specific kinases of interest. 
-                            It is a useful option for finding and emphasizing a single group of kinases.",
+                            It is useful for finding and emphasizing a single group of kinases.",
                        
         
                             fluidRow(width=12,
@@ -81,26 +81,26 @@ div(id="InfoBranchColorBox",
                               
                                              h3 ("Kinases"),
                                              "This is the space where you may select or input your list of kinases to highlight, 
-                                             depending on your preferred input method.",
+                                             depending on your chosen input method.",
                             
                                              h3 ("Identifier Type"),
                                              "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, 
                                              or HGNC ID. In order to properly plot your selected branches, you must specify the 
                                              identification used in the 'Kinases' space.",
                             
-                                             h3 ("BG Color & Color"),
+                                             h3 ("Background Color & Color"),
                                              "Here you can change branch colors for both your selected and unselected kinases. 
-                                             The BG Color sets the color of kinases that were not listed, while Selected Color 
-                                             sets the color of the kinases you have identified and are trying to highlight. 
-                                             You can use the drop-down box to find a color or enter a hex value.",
+                                             The Background Color sets the color of kinases that were not listed, while Selected Color 
+                                             sets the color of the kinases you have identified and wish to highlight. 
+                                             You can use the color picker box to find a color or enter a hex value.",
                               
-                                             h3 ("BG Label & Selected Label"),
+                                             h3 ("Nonselected Label & Selected Label"),
                                              "A figure legend will automatically be constructed indicating the colors of the 
                                              selected and unselected kinases. By default, the legend will refer to these two 
                                              categories as 'selected' and 'not selected'. These text boxes can be used to change the legend labels.",
                               
                                              h3 ("Reverse Palette"),
-                                             "This button will automatically swap the BG and selected colors."
+                                             "This button will automatically swap the background and selected colors."
                                             )
                                      )
                             )
