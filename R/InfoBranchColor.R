@@ -88,19 +88,19 @@ div(id="InfoBranchColorBox",
                                              or HGNC ID. In order to properly plot your selected branches, you must specify the 
                                              identification used in the 'Kinases' space.",
                             
-                                             h3 ("Background Color & Color"),
+                                             h3 ("Unselected Color & Selected Color"),
                                              "Here you can change branch colors for both your selected and unselected kinases. 
-                                             The Background Color sets the color of kinases that were not listed, while Selected Color 
+                                             Unselected Color sets the color of kinases that were not listed, while Selected Color 
                                              sets the color of the kinases you have identified and wish to highlight. 
                                              You can use the color picker box to find a color or enter a hex value.",
                               
-                                             h3 ("Nonselected Label & Selected Label"),
+                                             h3 ("Unselected Label & Selected Label"),
                                              "A figure legend will automatically be constructed indicating the colors of the 
                                              selected and unselected kinases. By default, the legend will refer to these two 
                                              categories as 'selected' and 'not selected'. These text boxes can be used to change the legend labels.",
                               
                                              h3 ("Reverse Palette"),
-                                             "This button will automatically swap the background and selected colors."
+                                             "This button will automatically swap the selected and unselected colors."
                                             )
                                      )
                             )
@@ -121,8 +121,8 @@ div(id="InfoBranchColorBox",
                         div(
                             h2 (HTML("Qualitative &nbsp;&nbsp;▾")),
                             "This option allows you to color kinase branches different colors according to user-defined 
-                            group assignments. It is a useful option when trying to differentiate between multiple categories,
-                            for example different kinases families. ",                        
+                            group assignments. It is a useful option when trying to differentiate between multiple categories 
+                            such as kinase families.",                        
                        
                             fluidRow(width=12,
                                      column(3, tags$br(), 
@@ -158,7 +158,7 @@ div(id="InfoBranchColorBox",
                          
                                              h3 ("Color Missing Kinases"),
                                              "This option allows you to select a color for kinases that were not listed in the 'Kinases & Value' 
-                                             by using the drop-down box to find a color or enter a hex value. This color defaults to light gray. 
+                                             by using the drop-down box to find a color or enter a hex value. This color defaults to light grey. 
                                              This color will not be included in the figure legend.",
                                              tags$br(),tags$br(),
                                              "The 'Qualitative' option will automatically create a figure legend showing the color and group name for each 
