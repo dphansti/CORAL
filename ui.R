@@ -183,8 +183,8 @@ ui <- dashboardPage(
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           
                                           fluidRow( width=12,
-                                                    column(6,                numericInput(inputId = "minheat",label = "min",value = -3 )),
-                                                    column(6,                  numericInput(inputId = "maxheat",label = "max",value =  3 ))
+                                                    column(6,                numericInput(inputId = "minheat",label = "Min Value",value = -3 )),
+                                                    column(6,                  numericInput(inputId = "maxheat",label = "Max Value",value =  3 ))
                                           ),
                                           
                                           fluidRow( width=12,
@@ -367,8 +367,8 @@ ui <- dashboardPage(
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           fluidRow( width=12,
-                                                    column(6,                numericInput(inputId = "nodeminheat",label = "min",value = -3 )),
-                                                    column(6,                  numericInput(inputId = "nodemaxheat",label = "max",value =  3 ))
+                                                    column(6,                numericInput(inputId = "nodeminheat",label = "Min Value",value = -3 )),
+                                                    column(6,                  numericInput(inputId = "nodemaxheat",label = "Max Value",value =  3 ))
                                           ),
                                           
                                           fluidRow( width=12,
