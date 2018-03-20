@@ -99,11 +99,11 @@ ui <- dashboardPage(
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
 
                                           fluidRow( width=12,
-                                                    column(6,colourInput("col_select_bg", "Background Color", BG_col1,showColour = "both")),
-                                                    column(6,colourInput("col_select", "Color", HM_hi,showColour = "both"))
+                                                    column(6,colourInput("col_select_bg", "Unselected Color", BG_col1,showColour = "both")),
+                                                    column(6,colourInput("col_select", "Selected Color", HM_hi,showColour = "both"))
                                           ),
                                           fluidRow( width=12,
-                                                    column(6,textInput(inputId="branch_nonselect_label",label="Nonselected Label",value = "not selected")),
+                                                    column(6,textInput(inputId="branch_nonselect_label",label="Unselected Label",value = "not selected")),
                                                     column(6,textInput(inputId="branch_select_label",label="Selected Label",value = "selected"))
                                           ),
                                           
@@ -286,11 +286,11 @@ ui <- dashboardPage(
                                                        multiple = FALSE,selected = "coralID",width = "100%"),
                                            
                                            fluidRow( width=12,
-                                                     column(6,colourInput("col_node_bg", "Background Color", BG_col1,showColour = "both")),
-                                                     column(6,colourInput("col_sel_node", "Color", HM_hi,showColour = "both"))
+                                                     column(6,colourInput("col_node_bg", "Unselected Color", BG_col1,showColour = "both")),
+                                                     column(6,colourInput("col_sel_node", "Selected Color", HM_hi,showColour = "both"))
                                            ),
                                            fluidRow( width=12,
-                                                     column(6,textInput(inputId="node_nonselect_label",label="Nonselected Label",value = "not selected")),
+                                                     column(6,textInput(inputId="node_nonselect_label",label="Unselected Label",value = "not selected")),
                                                      column(6,textInput(inputId="node_select_label",label="Selected Label",value = "selected"))
                                            ),
                                            
@@ -528,7 +528,7 @@ ui <- dashboardPage(
                                                                        choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                                        multiple = FALSE,selected = "coralID",width = "100%"),
                                                            
-                                                           colourInput("NodeStrokeSelect_BG", "Nonselected Color","#ffffff"),
+                                                           colourInput("NodeStrokeSelect_BG", "Unselected Color","#ffffff"),
                                                            colourInput("NodeStrokeSelect_FG", "Selected Color",HM_hi)
                                           ) # end condition
                                          )
