@@ -63,32 +63,32 @@ ui <- dashboardPage(
                                      box(width=12,title = "Branch Color",status = "primary", solidHeader = TRUE,
                                          collapsible = TRUE,collapsed = TRUE,
                                          
-                                         selectInput(inputId = "branchcolortype",label = "Color Branch", 
-                                                     choices = c("As one color","Manually","by group","by value"),
+                                         selectInput(inputId = "branchcolortype",label = "Color Scheme", 
+                                                     choices = c("Uniform","Manual","Qualitative","Quantitative"),
                                                      multiple = FALSE,selected = "As one color",width = "100%"),
                                          
                                          # if single color
                                          conditionalPanel(
-                                          condition = "input.branchcolortype == 'As one color'",
+                                          condition = "input.branchcolortype == 'Uniform'",
                                           colourInput("col_branch_single", "Branch Color",BG_col1,showColour = "both")
                                          ),
                                          
                                          # if manual selection
                                          conditionalPanel(
-                                          condition = "input.branchcolortype == 'Manually'",
+                                          condition = "input.branchcolortype == 'Manual'",
                                           
                                           # choose between selecting and pasting in
                                           radioButtons(inputId="branchmanuallyinputmethod",label = "Kinase Input Method",
-                                                       choices = c("Select","Paste"),inline = TRUE),
+                                                       choices = c("select","paste"),inline = TRUE),
                                           
                                           # if Select
                                           conditionalPanel(
-                                           condition = "input.branchmanuallyinputmethod == 'Select'",
+                                           condition = "input.branchmanuallyinputmethod == 'select'",
                                            selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%")
                                           ),
                                           # if Paste
                                           conditionalPanel(
-                                           condition = "input.branchmanuallyinputmethod == 'Paste'",
+                                           condition = "input.branchmanuallyinputmethod == 'paste'",
                                            textAreaInput("KinasesManualBranchText", "Kinases", height = "100px",width = "100%",
                                                          value = ""
                                            )
@@ -99,12 +99,12 @@ ui <- dashboardPage(
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
 
                                           fluidRow( width=12,
-                                                    column(6,colourInput("col_select_bg", "BG Color", BG_col1,showColour = "both")),
+                                                    column(6,colourInput("col_select_bg", "Background Color", BG_col1,showColour = "both")),
                                                     column(6,colourInput("col_select", "Color", HM_hi,showColour = "both"))
                                           ),
                                           fluidRow( width=12,
-                                                    column(6,textInput(inputId="branch_nonselect_label",label="nonselected label",value = "not selected")),
-                                                    column(6,textInput(inputId="branch_select_label",label="selected label",value = "selected"))
+                                                    column(6,textInput(inputId="branch_nonselect_label",label="Nonselected Label",value = "not selected")),
+                                                    column(6,textInput(inputId="branch_select_label",label="Selected Label",value = "selected"))
                                           ),
                                           
                                           # add ability to reverse palette
@@ -113,7 +113,7 @@ ui <- dashboardPage(
                                          
                                          # if by group
                                          conditionalPanel(
-                                          condition = "input.branchcolortype == 'by group'",
+                                          condition = "input.branchcolortype == 'Qualitative'",
                                           prettyCheckbox(inputId="loadexamplebranchgroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
                                           
                                           textAreaInput("branchGroupBox", "Kinases & Group", height = "100px",width = "100%",
@@ -171,7 +171,7 @@ ui <- dashboardPage(
                                          
                                          # if by value
                                          conditionalPanel(
-                                          condition = "input.branchcolortype == 'by value'",
+                                          condition = "input.branchcolortype == 'Quantitative'",
                                           prettyCheckbox(inputId="loadexamplebranchvalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           
                                           textAreaInput("branchValueBox", "Kinases & Value", height = "100px",width = "100%",
@@ -190,7 +190,7 @@ ui <- dashboardPage(
                                           fluidRow( width=12,
                                           column(6,
                                                  radioButtons(inputId="branchcolorpalettetype",label = "Color Range Type",
-                                                              choices = c("sequential","divergent","manual 2 color","manual 3 color"),inline = FALSE)
+                                                              choices = c("sequential","divergent","manual 2-color","manual 3-color"),inline = FALSE)
                                           ),
                                           
                                           column(6,
@@ -205,14 +205,14 @@ ui <- dashboardPage(
                                                  ),
                                                  
                                                  conditionalPanel(
-                                                  condition = "input.branchcolorpalettetype == 'manual 2 color'",
+                                                  condition = "input.branchcolorpalettetype == 'manual 2-color'",
                                                   
                                                   colourInput("branch2col_low", "Low", HM_low,showColour = "both"),
                                                   colourInput("branch2col_hi", "High", HM_hi,showColour = "both")
                                                  ),
                                                  
                                                  conditionalPanel(
-                                                  condition = "input.branchcolorpalettetype == 'manual 3 color'",
+                                                  condition = "input.branchcolorpalettetype == 'manual 3-color'",
                                                   
                                                   colourInput("branch3col_low", "Low", HM_low,showColour = "both"),
                                                   colourInput("branch3col_med", "Med", HM_med,showColour = "both"),
@@ -222,12 +222,12 @@ ui <- dashboardPage(
                                           ), # end row
                                           
                                           conditionalPanel(
-                                           condition = "input.branchcolorpalettetype == 'manual 2 color'",
+                                           condition = "input.branchcolorpalettetype == 'manual 2-color'",
                                            # add ability to reverse palette
                                            actionButton(inputId = "KinasesBranchValue2RevPalette","Reverse Palette",width = "100%")
                                           ),
                                           conditionalPanel(
-                                           condition = "input.branchcolorpalettetype == 'manual 3 color'",
+                                           condition = "input.branchcolorpalettetype == 'manual 3-color'",
                                            # add ability to reverse palette
                                            actionButton(inputId = "KinasesBranchValue3RevPalette","Reverse Palette",width = "100%")
                                           ),
@@ -249,33 +249,33 @@ ui <- dashboardPage(
                                      box(width=12,title = "Node Color",status = "success", solidHeader = TRUE,
                                          collapsible = TRUE,collapsed = TRUE,
                                          
-                                         selectInput(inputId = "nodecolortype",label = "Color Node",
+                                         selectInput(inputId = "nodecolortype",label = "Color Scheme",
                                                      #  choices = c("None","Same as branches","As one color","Manually","by group","by value"),
-                                                     choices = c("None","As one color","Manually","by group","by value"),
+                                                     choices = c("None","Uniform","Manual","Qualitative","Quantitative"),
                                                      multiple = FALSE,selected = "None",width = "100%"),
                                          
                                          # if single color
                                          conditionalPanel(
-                                          condition = "input.nodecolortype == 'As one color'",
+                                          condition = "input.nodecolortype == 'Uniform'",
                                           colourInput("col_node_single", "Node Color",BG_col1)
                                          ),
                                          
                                          # if manual selection
                                          conditionalPanel(
-                                          condition = "input.nodecolortype == 'Manually'",
+                                          condition = "input.nodecolortype == 'Manual'",
                                            
                                            # choose between selecting and pasting in
                                            radioButtons(inputId="nodemanuallyinputmethod",label = "Kinase Input Method",
-                                                        choices = c("Select","Paste"),inline = TRUE),
+                                                        choices = c("select","paste"),inline = TRUE),
                                            
                                            # if Select
                                            conditionalPanel(
-                                            condition = "input.nodemanuallyinputmethod == 'Select'",
+                                            condition = "input.nodemanuallyinputmethod == 'select'",
                                             selectInput(inputId = "KinasesManualNode",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%")
                                            ),
                                            # if Paste
                                            conditionalPanel(
-                                            condition = "input.nodemanuallyinputmethod == 'Paste'",
+                                            condition = "input.nodemanuallyinputmethod == 'paste'",
                                             textAreaInput("KinasesManualNodeText", "Kinases", height = "100px",width = "100%",
                                                           value = ""
                                             )
@@ -286,12 +286,12 @@ ui <- dashboardPage(
                                                        multiple = FALSE,selected = "coralID",width = "100%"),
                                            
                                            fluidRow( width=12,
-                                                     column(6,colourInput("col_node_bg", "BG Color", BG_col1,showColour = "both")),
+                                                     column(6,colourInput("col_node_bg", "Background Color", BG_col1,showColour = "both")),
                                                      column(6,colourInput("col_sel_node", "Color", HM_hi,showColour = "both"))
                                            ),
                                            fluidRow( width=12,
-                                                     column(6,textInput(inputId="node_nonselect_label",label="nonselected label",value = "not selected")),
-                                                     column(6,textInput(inputId="node_select_label",label="selected label",value = "selected"))
+                                                     column(6,textInput(inputId="node_nonselect_label",label="Nonselected Label",value = "not selected")),
+                                                     column(6,textInput(inputId="node_select_label",label="Selected Label",value = "selected"))
                                            ),
                                            
                                            # add ability to reverse palette
@@ -300,7 +300,7 @@ ui <- dashboardPage(
                                           
                                          # if by group
                                          conditionalPanel(
-                                          condition = "input.nodecolortype == 'by group'",
+                                          condition = "input.nodecolortype == 'Qualitative'",
                                           prettyCheckbox(inputId="loadexamplennodegroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
                                           textAreaInput("nodeGroupBox", "Kinases & Group", height = "100px",width = "100%",
                                                         value =  ""
@@ -358,7 +358,7 @@ ui <- dashboardPage(
                                          
                                          # if by value
                                          conditionalPanel(
-                                          condition = "input.nodecolortype == 'by value'",
+                                          condition = "input.nodecolortype == 'Quantitative'",
                                           prettyCheckbox(inputId="loadexamplennodevalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           textAreaInput("nodeValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                         value =  ""
@@ -374,7 +374,7 @@ ui <- dashboardPage(
                                           fluidRow( width=12,
                                           column(6,
                                                  radioButtons(inputId="nodecolorpalettetype",label = "Color Range Type",
-                                                              choices = c("sequential","divergent","manual 2 color","manual 3 color"),inline = FALSE)
+                                                              choices = c("sequential","divergent","manual 2-color","manual 3-color"),inline = FALSE)
                                           ),
                                           
                                           column(6,
@@ -389,14 +389,14 @@ ui <- dashboardPage(
                                                  ),
                                                  
                                                  conditionalPanel(
-                                                  condition = "input.nodecolorpalettetype == 'manual 2 color'",
+                                                  condition = "input.nodecolorpalettetype == 'manual 2-color'",
                                                   
                                                   colourInput("node2col_low", "Low", HM_low,showColour = "both"),
                                                   colourInput("node2col_hi", "High", HM_hi,showColour = "both")
                                                  ),
                                                  
                                                  conditionalPanel(
-                                                  condition = "input.nodecolorpalettetype == 'manual 3 color'",
+                                                  condition = "input.nodecolorpalettetype == 'manual 3-color'",
                                                   
                                                   colourInput("node3col_low", "Low", HM_low,showColour = "both"),
                                                   colourInput("node3col_med", "Med", HM_med,showColour = "both"),
@@ -405,12 +405,12 @@ ui <- dashboardPage(
                                           )
                                           ),
                                            conditionalPanel(
-                                            condition = "input.nodecolorpalettetype == 'manual 2 color'",
+                                            condition = "input.nodecolorpalettetype == 'manual 2-color'",
                                             # add ability to reverse palette
                                             actionButton(inputId = "KinasesNodeValue2RevPalette","Reverse Palette",width = "100%")
                                            ),
                                            conditionalPanel(
-                                            condition = "input.nodecolorpalettetype == 'manual 3 color'",
+                                            condition = "input.nodecolorpalettetype == 'manual 3-color'",
                                             # add ability to reverse palette
                                             actionButton(inputId = "KinasesNodeValue3RevPalette","Reverse Palette",width = "100%")
                                            ),
@@ -429,7 +429,7 @@ ui <- dashboardPage(
                                          ), # end conditional 
 
                                          tags$br(),
-                                         div(prettyCheckbox(inputId="colorsubnodes",label="Color Intermediate Nodes?",value = FALSE,shape="round",status="primary"))
+                                         div(prettyCheckbox(inputId="colorsubnodes",label="color intermediate nodes",value = FALSE,shape="round",status="primary"))
                                      ), # end box   
                                      
                                      # ---- NODE SIZE ---- #
@@ -437,19 +437,19 @@ ui <- dashboardPage(
                                      box(width=12,title = "Node Size",status = "info", solidHeader = TRUE,
                                          collapsible = TRUE,collapsed = TRUE, 
                                          
-                                         selectInput(inputId = "nodesizetype",label = "Size Node",
-                                                     choices = c("One Size","by value"),
+                                         selectInput(inputId = "nodesizetype",label = "Size Scheme",
+                                                     choices = c("Uniform","Quantitative"),
                                                      multiple = FALSE,selected = "One Size",width = "100%"),
                                          
                                          # if single color
                                          conditionalPanel(
-                                          condition = "input.nodesizetype == 'One Size'",
+                                          condition = "input.nodesizetype == 'Uniform'",
                                           sliderInput("size_node_single", "Node Size",value=6,min = 0,max=20,step = 0.25)
                                          ),
                                          
                                          # if by value
                                          conditionalPanel(
-                                          condition = "input.nodesizetype == 'by value'",
+                                          condition = "input.nodesizetype == 'Quantitative'",
                                           prettyCheckbox(inputId="loadexamplennodesizevalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           textAreaInput("nodesizeValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                         value = ""
@@ -459,7 +459,7 @@ ui <- dashboardPage(
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           sliderInput("nodesizeValueslider",label = "Size Range",value=c(3,9),min = 0, max = 20,step = 0.25),
                                           
-                                          prettyCheckbox("Manuallysetdatarange","Manually set data range",value = FALSE,shape="round",status="primary"),
+                                          prettyCheckbox("Manuallysetdatarange","manually set data range",value = FALSE,shape="round",status="primary"),
                                           
                                           conditionalPanel(
                                            condition = "input.Manuallysetdatarange == true",
@@ -528,7 +528,7 @@ ui <- dashboardPage(
                                                                        choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                                        multiple = FALSE,selected = "coralID",width = "100%"),
                                                            
-                                                           colourInput("NodeStrokeSelect_BG", "Not Selected Color","#ffffff"),
+                                                           colourInput("NodeStrokeSelect_BG", "Nonselected Color","#ffffff"),
                                                            colourInput("NodeStrokeSelect_FG", "Selected Color",HM_hi)
                                           ) # end condition
                                          )
