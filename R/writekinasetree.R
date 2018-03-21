@@ -53,7 +53,7 @@ build.node <- function(l)
   
   circle = paste("<circle id=\"n_x5F_",l["id.coral"],"\" ",
                  "cx=\"",l["node.x"],
-                 "\" cy=\"",l["node.y"],
+                 "\" cy=\"",gsub(" ","",l["node.y"]),
                  "\" r=\"",l["node.radius"],
                  # "\" stroke=\"",l["node.strokecol"],
                  "\" stroke=\"",l["node.strokecol"],
