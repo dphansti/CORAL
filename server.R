@@ -603,6 +603,8 @@ server <- function(input, output,session) {
     # set title
     svginfo$title = input$titleinput
     
+    dir.create(dirname(svgoutfile),showWarnings = F);
+    
     # Write SVG file
     writekinasetree(svginfo,destination=svgoutfile,font=input$fontfamilyselect)
     
