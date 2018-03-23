@@ -603,7 +603,9 @@ server <- function(input, output,session) {
     # set title
     svginfo$title = input$titleinput
     
-    dir.create(dirname(svgoutfile),showWarnings = F);
+    if (! dir.exists(dirname(svgoutfile))) {
+     dir.create(dirname(svgoutfile),showWarnings = F);  
+    }
     
     # Write SVG file
     writekinasetree(svginfo,destination=svgoutfile,font=input$fontfamilyselect)
@@ -637,6 +639,9 @@ server <- function(input, output,session) {
    }
    
    # Write kinome_tree.json (based on current dataframe)
+   if (! dir.exists('www/json')) {
+     dir.create('www/json')
+   }
    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes)
    
    # Make this reactive to any change in input paramters
