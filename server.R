@@ -222,11 +222,11 @@ server <- function(input, output,session) {
     {
      # set colors based on selected ids
      selkinases = ""
-     if (input$branchmanuallyinputmethod == "Select")
+     if (input$branchmanuallyinputmethod == "select")
      {
       selkinases = input$KinasesManual
      }
-     if (input$branchmanuallyinputmethod == "Paste")
+     if (input$branchmanuallyinputmethod == "paste")
      {
       selkinases = unlist(strsplit(split = "\n",x=input$KinasesManualBranchText))
      }
@@ -318,12 +318,12 @@ server <- function(input, output,session) {
          branchcolpalette = colorRampPalette(unlist(divpalettes[input$branchcolorpalette_div]))(11)
          bg.col = unlist(divpalettes[input$branchcolorpalette_div])[2]
          }
-        if (input$branchcolorpalettetype == "manual 2 color")
+        if (input$branchcolorpalettetype == "manual 2-color")
          {
          branchcolpalette = colorRampPalette(c(input$branch2col_low,input$branch2col_hi))(11)
          bg.col = input$branch2col_low
          }
-        if (input$branchcolorpalettetype == "manual 3 color") 
+        if (input$branchcolorpalettetype == "manual 3-color") 
         {
          branchcolpalette = colorRampPalette(c(input$branch3col_low,input$branch3col_med,input$branch3col_hi))(11)
          bg.col = input$branch3col_med
@@ -377,11 +377,11 @@ server <- function(input, output,session) {
     {
      # set colors based on selected ids
      selkinases = ""
-     if (input$nodemanuallyinputmethod == "Select")
+     if (input$nodemanuallyinputmethod == "select")
      {
       selkinases = input$KinasesManualNode
      }
-     if (input$nodemanuallyinputmethod == "Paste")
+     if (input$nodemanuallyinputmethod == "paste")
      {
       selkinases = unlist(strsplit(split = "\n",x=input$KinasesManualNodeText))
      }
@@ -467,12 +467,12 @@ server <- function(input, output,session) {
         nodecolpalette = colorRampPalette(unlist(divpalettes[input$nodecolorpalette_div]))(11)
         bg.col = unlist(divpalettes[input$nodecolorpalette_div])[2]
         }
-       if (input$nodecolorpalettetype == "manual 2 color") 
+       if (input$nodecolorpalettetype == "manual 2-color") 
        {
         nodecolpalette = colorRampPalette(c(input$node2col_low,input$node2col_hi))(11)
         bg.col = input$node2col_low
         }
-       if (input$nodecolorpalettetype == "manual 3 color") 
+       if (input$nodecolorpalettetype == "manual 3-color") 
         {
         nodecolpalette = colorRampPalette(c(input$node3col_low,input$node3col_med,input$node3col_hi))(11)
         bg.col = input$node3col_med
