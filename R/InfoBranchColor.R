@@ -22,7 +22,7 @@ div(id="InfoBranchColorBox",
         fluidRow(width=12, 
                  column(8, 
                         div(       
-                            h2 (HTML("Uniform &nbsp;&nbsp;▾")),
+                            h2 (HTML("Uniform &nbsp;&nbsp;\u25be")),
                             "This option allows you to color every branch as a single uniform color. 
                             It is a useful option if you do not wish to present any data on the branches 
                             themselves, such as when your data is well-represented by node size and color alone.",                       
@@ -53,7 +53,7 @@ div(id="InfoBranchColorBox",
         fluidRow(width=12,
                  column(8,     
                         div(
-                            h2 (HTML("Manual &nbsp;&nbsp;▾")),
+                            h2 (HTML("Manual &nbsp;&nbsp;\u25be")),
                             "This option allows you to highlight branches to specific kinases of interest. 
                             It is useful for finding and emphasizing a single group of kinases.",
                        
@@ -70,11 +70,11 @@ div(id="InfoBranchColorBox",
                                              h3 ("Kinase Input Method"),
                                              "Here you can select the method you would like to use to identify kinases of interest.",
                               
-                                             h4 (HTML("☉&nbsp; Select")),
+                                             h4 (HTML("\u2609&nbsp; Select")),
                                              "Creates a scrollable and searchable list of all kinases featured on the tree. 
                                              This feature is most useful when trying to highlight a small number of kinases.",
                               
-                                             h4 (HTML("☉&nbsp; Paste")),
+                                             h4 (HTML("\u2609&nbsp; Paste")),
                                              "Creates a space to copy a list of kinases to highlight, each kinase separated by a new line. 
                                              This feature is useful when trying to highlight a larger number of kinases, or if you 
                                              have a pre-existing list of kinases from a spreadsheet or other document.",
@@ -119,7 +119,7 @@ div(id="InfoBranchColorBox",
         fluidRow(width=12, 
                  column(8,    
                         div(
-                            h2 (HTML("Qualitative &nbsp;&nbsp;▾")),
+                            h2 (HTML("Qualitative &nbsp;&nbsp;\u25be")),
                             "This option allows you to color kinase branches different colors according to user-defined 
                             group assignments. It is a useful option when trying to differentiate between multiple categories 
                             such as kinase families.",                        
@@ -133,7 +133,7 @@ div(id="InfoBranchColorBox",
                                      ),
                                      column(9,
                                             div(  
-                                             h4 (HTML("◎&nbsp; Load default kinase groups")),
+                                             h4 (HTML("\u25ce&nbsp; Load default kinase groups")),
                                              "This button will load the default kinase groups as defined by Manning et al 2002 into the 
                                              'Kinases & Group' tab. These groups include AGC, CAMK, CK1, CMGC, RGC, STE, TK, and TKL, 
                                              as well as Atypical and Others which fall outside of those group assignments.",
@@ -181,7 +181,7 @@ div(id="InfoBranchColorBox",
         fluidRow(width=12, 
                  column(8, 
                         div(
-                            h2 (HTML("Quantitative &nbsp;&nbsp;▾")),
+                            h2 (HTML("Quantitative &nbsp;&nbsp;\u25be")),
                             "This option allows you to color kinase branches based on a range of qualitative values. It is 
                             a useful option when trying to visualize a range of values, such as fold change or signal data.",                       
                         
@@ -194,7 +194,7 @@ div(id="InfoBranchColorBox",
                                      ),
                                      column(9,        
                                             div(
-                                                h4 (HTML("◎&nbsp; Load example data")),
+                                                h4 (HTML("\u25ce&nbsp; Load example data")),
                                                 "This button will load sample data into the 'Kinases & Value' tab.",
                          
                                                 h3 ("Kinases & Value"),

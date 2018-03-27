@@ -14,14 +14,14 @@ div(id="InfoNodeColorBox",
                             Quantitative coloring scales assigns numerical data to sequential, divergent or user-made color scales. 
                             Each method automatically creates a figure legend indicating the significance of the node color scheme.",
                             
-                            h4 (HTML("◎&nbsp; Color Intermediate Nodes")),
+                            h4 (HTML("\u25ce&nbsp; Color Intermediate Nodes")),
                             "This option dictates whether or not the nodes for kinase families and sub-families on the Circle 
                             and Force plots should also be colored according to the chosen color scheme. If selected, CORAL 
                             colors these nodes based on the most extreme value within its sub-nodes.",
                        
 # NONE
                               
-                            h2 (HTML("None &nbsp;&nbsp;▾")),
+                            h2 (HTML("None &nbsp;&nbsp;\u25be")),
                             "This option will disable nodes from the tree altogether, showing only kinase identifiers at the ends of 
                             branches. This option may be useful if you are presenting all of your information in branch colors 
                             and are looking to declutter the tree and can combine well with the Advanced Settings option to color 
@@ -29,7 +29,7 @@ div(id="InfoNodeColorBox",
    
 # UNIFORM
       
-                            h2 (HTML("Uniform &nbsp;&nbsp;▾")),
+                            h2 (HTML("Uniform &nbsp;&nbsp;\u25be")),
                             "This option allows you to color every node as a single uniform color. It is a useful option for when 
                             you do not wish to present any data on the nodes themselves but prefer the look of having nodes for 
                             each kinase.",                 
@@ -64,7 +64,7 @@ div(id="InfoNodeColorBox",
         fluidRow(width=12,
                  column(8,     
                         div(
-                            h2 (HTML("Manual &nbsp;&nbsp;▾")),
+                            h2 (HTML("Manual &nbsp;&nbsp;\u25be")),
                             "This option allows you to highlight the nodes of specific kinases of interest. It is a useful option 
                             for finding and emphasizing a single group of kinases. ",
         
@@ -80,11 +80,11 @@ div(id="InfoNodeColorBox",
                                              h3 ("Kinase Input Method"),
                                              "Here you can select the method you would like to use to identify kinases of interest.",
                        
-                                             h4 (HTML("☉&nbsp; Select")),
+                                             h4 (HTML("\u2609&nbsp; Select")),
                                              "Creates a scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
                                              when trying to highlight a small number of kinases.",
                       
-                                             h4 (HTML("☉&nbsp; Paste")),
+                                             h4 (HTML("\u2609&nbsp; Paste")),
                                              "Creates a space to copy a list of kinases to highlight, each kinase separated by a new line. This feature is 
                                              useful when trying to highlight a larger number of kinases, or if you have a pre-existing list of kinases 
                                              from a spreadsheet or other document.",
@@ -128,7 +128,7 @@ div(id="InfoNodeColorBox",
         fluidRow(width=12, 
                  column(8,    
                         div(
-                            h2 (HTML("Qualitative &nbsp;&nbsp;▾")),
+                            h2 (HTML("Qualitative &nbsp;&nbsp;\u25be")),
                             "This option allows you to color kinase nodes different colors according to user-defined group assignments. 
                             It is a useful option when trying to differentiate between multiple categories, for example different 
                             kinases families.",
@@ -142,7 +142,7 @@ div(id="InfoNodeColorBox",
                                      ),
                                      column(9,
                                             div(  
-                                                h4 (HTML("◎&nbsp; Load default kinase groups")),
+                                                h4 (HTML("\u25ce&nbsp; Load default kinase groups")),
                                                 "This button will load the default kinase groups as defined by Manning et al 2002 into the 'Kinases & Group' 
                                                 tab. These groups include AGC, CAMK, CK1, CMGC, RGC, STE, TK, and TKL, as well as Atypical and Others 
                                                 which fall outside of those group assignments.",
@@ -189,7 +189,7 @@ div(id="InfoNodeColorBox",
         fluidRow(width=12, 
                  column(8, 
                         div(
-                            h2 (HTML("Quantitative &nbsp;&nbsp;▾")),
+                            h2 (HTML("Quantitative &nbsp;&nbsp;\u25be")),
                             "This option allows you to color kinase branches based on a range of qualitative values. It is a useful 
                             option when trying to visualize a range of values, such as fold change or signal data.",
         
@@ -202,7 +202,7 @@ div(id="InfoNodeColorBox",
                                      ),
                                      column(9,        
                                             div(
-                                                h4 (HTML("◎&nbsp; Load example data")),
+                                                h4 (HTML("\u25ce&nbsp; Load example data")),
                                                 "This button will load sample data into the 'Kinases & Value' tab.",
                      
                                                 h3 ("Kinases & Value"),

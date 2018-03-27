@@ -10,7 +10,7 @@ div(id="InfoNodeSizeBox",
                             setting or scale nodes according to numerical data using the Quantitative setting.",
         
 # UNIFORM
-                            h2 (HTML("Uniform &nbsp;&nbsp;▾")),
+                            h2 (HTML("Uniform &nbsp;&nbsp;\u25be")),
                             "This option allows you to set all nodes in the tree to a single size of your choosing using 
                             the slider.",        
         
@@ -37,7 +37,7 @@ div(id="InfoNodeSizeBox",
         fluidRow(width=12, 
                  column(8, 
                         div(
-                            h2 (HTML("Quantitative &nbsp;&nbsp;▾")),
+                            h2 (HTML("Quantitative &nbsp;&nbsp;\u25be")),
                             "This option allows you to color kinase branches based on a range of qualitative values. It is a useful 
                             option when trying to visualize a range of values, such as fold change or signal data.",
         
@@ -50,7 +50,7 @@ div(id="InfoNodeSizeBox",
                                      ),
                                      column(9,        
                                             div(
-                                                h4 (HTML("◎&nbsp; Load example data")),
+                                                h4 (HTML("\u25ce&nbsp; Load example data")),
                                                 "This button will load sample data into the 'Kinases & Value' tab.",
            
                                                 h3 ("Kinases & Value"),
@@ -69,7 +69,7 @@ div(id="InfoNodeSizeBox",
                                                 "This slider allows you to select a range of node sizes to plot. The values entered under 
                                                 'Kinases & Group' will be scaled to these minimum and maximum sizes.",
                          
-                                                h3 (HTML("◎&nbsp; Manually set data range")),
+                                                h3 (HTML("\u25ce&nbsp; Manually set data range")),
                                                 "By default, the smallest value will be set to the smallest node size, and the largest value 
                                                 will be set to the largest node size. You can opt instead to manually set Max and Min Values, 
                                                 in which case all values below the assigned minimum will be the set minimum size, and all values 
