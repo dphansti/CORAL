@@ -6,16 +6,16 @@ div(id="InfoNodeColorBox",
                         div(
                             h1 ("Node Color Scheme"),
                             "CORAL allows you to choose between several methods of node color assignment, depending on 
-                            the desired look of your tree and the data you are trying to visualize. You can either 
+                            the desired look of your tree and the data you intend to visualize. You can either 
                             disable nodes altogether using None, color all nodes a single color using the Uniform setting, 
-                            highlight specific kinases of interest using Manual, or color several nodes according to a 
+                            highlight specific kinases of interest using Manual, or color a selection of nodes according to a 
                             qualitative or quantitative color palette. Qualitative coloring allows you to assign kinases 
                             to groups, each of which will be assigned a unique color from either a prebuilt or user-made palette. 
                             Quantitative coloring scales assigns numerical data to sequential, divergent or user-made color scales. 
-                            Each method automatically creates a figure legend indicating the significance of the node color scheme.",
+                            Each method automatically generates a figure legend indicating the significance of the node color scheme.",
                             
                             h4 (HTML("\u25ce&nbsp; Color Intermediate Nodes")),
-                            "This option dictates whether or not the nodes for kinase families and sub-families on the Circle 
+                            "This option dictates whether the nodes for kinase families and sub-families on the Circle 
                             and Force plots should also be colored according to the chosen color scheme. If selected, CORAL 
                             colors these nodes based on the most extreme value within its sub-nodes.",
                        
@@ -23,17 +23,17 @@ div(id="InfoNodeColorBox",
                               
                             h2 (HTML("None &nbsp;&nbsp;\u25be")),
                             "This option will disable nodes from the tree altogether, showing only kinase identifiers at the ends of 
-                            branches. This option may be useful if you are presenting all of your information in branch colors 
-                            and are looking to declutter the tree and can combine well with the Advanced Settings option to color 
+                            branches. This option is useful if you are presenting all of your information in branch colors 
+                            and are looking to declutter the tree; it combines well with the Advanced Settings option to color 
                             kinase labels the same color as the branches.",                 
    
 # UNIFORM
       
                             h2 (HTML("Uniform &nbsp;&nbsp;\u25be")),
-                            "This option allows you to color every node as a single uniform color. It is a useful option for when 
-                            you do not wish to present any data on the nodes themselves but prefer the look of having nodes for 
-                            each kinase.",                 
-                      
+                            "This option allows you to color every node as a single uniform color. It is useful when 
+                            you prefer the appearance of nodes for each kinase but do not wish to present any data on 
+                            the nodes themselves.",
+
                             fluidRow(width = 12,
                                 column(3, tags$br(), 
                                    div(img(src="info/NC-2a.png",width="100%",align="left",
@@ -44,7 +44,7 @@ div(id="InfoNodeColorBox",
                                 column(9,
                                     div(      
                                         h3 ("Node Color"),
-                                        "A color-selector used to change the color of all branches. You can use the drop-down box to find a 
+                                        "This selector changes the color of all nodes You can use the color picker box to find a 
                                         color or enter a hex value."      
                                     )
                                 )
@@ -65,8 +65,8 @@ div(id="InfoNodeColorBox",
                  column(8,     
                         div(
                             h2 (HTML("Manual &nbsp;&nbsp;\u25be")),
-                            "This option allows you to highlight the nodes of specific kinases of interest. It is a useful option 
-                            for finding and emphasizing a single group of kinases. ",
+                            "This option allows you to highlight the nodes of specific kinases of interest. It is useful 
+                            for finding and emphasizing a single group of kinases.",
         
                             fluidRow(width=12,
                                      column(3, tags$br(), 
@@ -82,30 +82,30 @@ div(id="InfoNodeColorBox",
                        
                                              h4 (HTML("\u2609&nbsp; Select")),
                                              "Creates a scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
-                                             when trying to highlight a small number of kinases.",
+                                             when highlighting a small number of kinases.",
                       
                                              h4 (HTML("\u2609&nbsp; Paste")),
-                                             "Creates a space to copy a list of kinases to highlight, each kinase separated by a new line. This feature is 
-                                             useful when trying to highlight a larger number of kinases, or if you have a pre-existing list of kinases 
+                                             "Creates a field in which to copy a list of kinases, with each separated by a new line. This feature is 
+                                             useful when highlighting a larger number of kinases, or if you have a pre-existing list of kinases 
                                              from a spreadsheet or other document.",
                      
                                              h3 ("Kinases"),
-                                             "This is the space where you may select or input your list of kinases to highlight, 
+                                             "This is the field where you may select or input your list of kinases to highlight, 
                                              depending on your preferred input method.",
                        
                                              h3 ("Identifier Type"),
                                              "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
-                                             In order to properly plot your selected branches, you must specify the identification used in the 
-                                             'Kinases' space.",
+                                             In order to properly plot your selected nodes, you must specify the identification used in the 
+                                             'Kinases' field.",
                       
                                              h3 ("BG Color & Selected Color"),
-                                             "Here you can change branch colors for both your selected and unselected kinases. The BG Color sets 
+                                             "Here you can change node colors for both your selected and unselected kinases. The BG Color sets 
                                              the color of kinases that were not listed, while Selected Color sets the color of the kinases you 
-                                             have identified and are trying to highlight. You can use the drop-down box to find a color or enter 
+                                             have identified and wish to highlight. You can use the color picker box to find a color or enter 
                                              a hex value.",
                       
                                              h3 ("BG Label & Selected Label"),
-                                             "A figure legend will automatically be constructed indicating the colors of the selected and unselected 
+                                             "A figure legend will automatically be generated indicating the colors of the selected and unselected 
                                              kinases. By default, the legend will refer to these two categories as 'selected' and 'not selected'. 
                                              These text boxes can be used to change the legend labels.",
                         
@@ -130,7 +130,7 @@ div(id="InfoNodeColorBox",
                         div(
                             h2 (HTML("Qualitative &nbsp;&nbsp;\u25be")),
                             "This option allows you to color kinase nodes different colors according to user-defined group assignments. 
-                            It is a useful option when trying to differentiate between multiple categories, for example different 
+                            It is a useful option when differentiating between multiple categories, such as different 
                             kinases families.",
         
                             fluidRow(width=12,
@@ -152,25 +152,25 @@ div(id="InfoNodeColorBox",
                                                 must separate each kinase from its corresponding group assignment. Every kinase listed must have a group 
                                                 assignment, or plotting will fail. Including kinases with more than one group assignment will result in 
                                                 that kinase being colored according to the last group listed alphabetically. Identifiers not found within 
-                                                the tree will be ignored. Kinases that are not listed will be colored grey and excluded from the 
+                                                the tree will be ignored. Kinases that are not listed will be colored gray and excluded from the 
                                                 figure legend.",
                          
                                                 h3 ("Identifier Type"),
                                                 "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
-                                                In order to properly plot your selected branches, you must specify the identification used in the 
+                                                In order to properly plot your selected nodes, you must specify the identification used in the 
                                                 'Kinases & Group' space.",
                          
                                                 h3 ("Color Range Type"),
-                                                "Here you can choose from several built-in palettes or create your own. Although you can manually 
-                                                select up to 12 colors using the color drop-down boxes, each palette is able to expand to cover 
-                                                as many groups as you have identified in the 'Kinases & Group' space.",
+                                                "Here you can choose from several built-in palettes or create your own. You can 
+                                                manually select up to 12 colors using the color picker boxes, and each palette will automatically 
+                                                expand to accommodate as many groups as you have identified in the 'Kinases & Group' field.",
                          
                                                 h3 ("Color Missing Kinases"),
                                                 "This option allows you to select a color for kinases that were not listed in the 'Kinases & Value' 
-                                                by using the drop-down box to find a color or enter a hex value. This color defaults to light gray. 
+                                                by using the color picker box to find a color or enter a hex value. This color defaults to light gray. 
                                                 This color will not be included in the figure legend.",
                                                 tags$br(),tags$br(),
-                                                "This option will automatically create a figure legend showing the color and group name for each 
+                                                "This option will automatically generate a figure legend showing the color and group name for each 
                                                 category listed. Groups will be listed in alphabetical order, and then colors will be assigned accordingly."
                                             )
                                      )
@@ -190,7 +190,7 @@ div(id="InfoNodeColorBox",
                  column(8, 
                         div(
                             h2 (HTML("Quantitative &nbsp;&nbsp;\u25be")),
-                            "This option allows you to color kinase branches based on a range of qualitative values. It is a useful 
+                            "This option allows you to color kinase nodes based on a range of qualitative values. It is a useful 
                             option when trying to visualize a range of values, such as fold change or signal data.",
         
                             fluidRow(width=12,
@@ -209,13 +209,13 @@ div(id="InfoNodeColorBox",
                                                 "Here you can submit a two-column list of kinases and their associated values. A space, tab, 
                                                 or new line must separate each kinase from its corresponding value. Every kinase listed must 
                                                 have a value, or plotting will fail. Listing the same kinase multiple times with different values 
-                                                will result in the branch being colored according to the last listed value. Identifiers not found 
+                                                will result in the node being colored according to the last listed value. Identifiers not found 
                                                 within the tree will be ignored. Kinases that are not listed will be colored according to the 
                                                 'Color Missing Kinase' settings (see below).",
                          
                                                 h3 ("Identifier Type"),
                                                 "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
-                                                In order to properly plot your selected branches, you must specify the identification used in 
+                                                In order to properly plot your selected nodes, you must specify the identification used in 
                                                 the 'Kinases & Group' space.",
                          
                                                 h3 ("Min & Max"),
