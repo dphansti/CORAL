@@ -72,10 +72,6 @@ h6,.h6{
   margin-top: ;
 }
 
-#InfoAboutBox .h2{
- color: #fff;
-}
-
 /* original font sizes:
    h1 - 280%, h2 - 230%, h3 - 185%, h4 - 140%, h5 - 110%, h6 - 90% 
    font weight: 500 */
@@ -406,10 +402,13 @@ h6,.h6{
 #InfoBranchColorBox .box-body,
 #InfoNodeColorBox .box-body,
 #InfoNodeSizeBox .box-body,
-#InfoAdvancedOptionsBox .box-body,
-#InfoAboutBox .box-body{
+#InfoAdvancedOptionsBox .box-body{
  margin-left: 30px;
  margin-right: 30px;
+}
+
+#InfoAboutBox .box-body{
+ margin-left: 30px;
 }
 
 #InfoAboutBox .box{
@@ -425,23 +424,23 @@ background-color: #eceff3;
 /* info box top borders */
 
 #InfoBranchColorBox .box{
- border-top-color: #fff;
+ border-top-color: #eceff3;
 }
 
 #InfoNodeColorBox .box{
- border-top-color: #fff;
+ border-top-color: #eceff3;
 }
 
 #InfoNodeSizeBox .box{
- border-top-color: #fff;
+ border-top-color: #eceff3;
 }
 
 #InfoAdvancedOptionsBox .box{
- border-top-color: #fff;
+ border-top-color: #eceff3;
 }
 
 #InfoAboutBox .box{
- border-top-color: #333;
+ border-top-color: #eceff3;
 }
 
 /*
