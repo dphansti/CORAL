@@ -235,7 +235,10 @@ div(id="InfoBranchColorBox",
                                                 a color or enter a hex value.",
                                                 tags$br(),tags$br(),
                                                 "The 'Quantitative' option will automatically create a figure legend showing the full spectrum of possible 
-                                                colors and indicating the corresponding low, middle, and high values."
+                                                colors and indicating the corresponding low, middle, and high values.",
+                                                tags$br(),
+                                                tags$br(),
+                                                tags$br()
                                             )
                                      )
                             )

@@ -134,7 +134,7 @@ div(id="InfoNodeColorBox",
                             kinases families.",
                             tags$br(),tags$br(),
                             "The Qualitative option will automatically generate a figure legend showing the color and group name for each 
-                            category listed. Groups will be listed in alphabetical order, and then colors will be assigned accordingly."
+                            category listed. Groups will be listed in alphabetical order, and colors will be assigned accordingly.",
         
                             fluidRow(width=12,
                                      column(3, tags$br(), 
@@ -220,9 +220,9 @@ div(id="InfoNodeColorBox",
                                                 h3 ("Identifier Type"),
                                                 "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
                                                 In order to properly plot your selected nodes, you must specify the identification used in 
-                                                the 'Kinases & Group' space.",
+                                                the 'Kinases & Group' field",
                          
-                                                h3 ("Min & Max"),
+                                                h3 ("Min Value & Max Value"),
                                                 "This option allows you to set the values that will represent either end of the color spectrum. 
                                                 All values below the assigned Min Value will be colored as though they were the set minimum value, 
                                                 and all values above the assigned Max Value will be colored as though they were the set maximum value.",
@@ -243,7 +243,10 @@ div(id="InfoNodeColorBox",
                                                 according to the lowest (in sequential or 2-color palettes) or middle value 
                                                 (in divergent or 3-color palettes). You can opt to instead color these missing kinases manually, 
                                                 which will bring up a 'Missing Kinase Color' selector where you can use the drop-down box to find a 
-                                                color or enter a hex value."
+                                                color or enter a hex value.",
+                                                tags$br(),
+                                                tags$br(),
+                                                tags$br()
                                             )
                                      )
                             )

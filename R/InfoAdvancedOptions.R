@@ -175,7 +175,10 @@ div(id="InfoAdvancedOptionsBox",
                             "Here you can change node colors for both your selected and unselected kinases. The BG Color sets 
                             the color of kinases that are not listed in the above field, while Selected Color sets the color  
                             of the kinases you have identified. You can use the color picker box to find a color or enter a 
-                            hex value."
+                            hex value.",
+                            tags$br(),
+                            tags$br(),
+                            tags$br()
                         )
                  ), 
                  column(4, 

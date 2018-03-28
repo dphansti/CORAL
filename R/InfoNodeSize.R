@@ -76,7 +76,10 @@ div(id="InfoNodeSizeBox",
                                                 "By default, the smallest value will be set to the smallest node size, and the largest value 
                                                 will be set to the largest node size. You can opt instead to manually set Max and Min Values, 
                                                 in which case all values below the assigned minimum will be the set minimum size, and all values 
-                                                above the assigned maximum will be the set maximum size."
+                                                above the assigned maximum will be the set maximum size.",
+                                                tags$br(),
+                                                tags$br(),
+                                                tags$br()
                                             )
                                      )
                             )
