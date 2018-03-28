@@ -6,7 +6,7 @@ div(id="InfoNodeSizeBox",
                         div(
                             h1 ("Node Size Scheme"),
                             "CORAL also allows you to change node size depending on the desired look of your tree and 
-                            the data you are trying to visualize. You can set all nodes to a single size using the Uniform 
+                            the data you intend to visualize. You can set all nodes to a single size using the Uniform 
                             setting or scale nodes according to numerical data using the Quantitative setting.",
         
 # UNIFORM
@@ -40,6 +40,9 @@ div(id="InfoNodeSizeBox",
                             h2 (HTML("Quantitative &nbsp;&nbsp;\u25be")),
                             "This option allows you to color kinase branches based on a range of qualitative values. It is a useful 
                             option when trying to visualize a range of values, such as fold change or signal data.",
+                            tags$br(),tags$br(),
+                            "This option will automatically create a figure legend showing six nodes in the full range of 
+                            node sizes and indicating the corresponding minimum and maximum values.",
         
                             fluidRow(width=12,
                                      column(3, tags$br(), 
@@ -73,10 +76,7 @@ div(id="InfoNodeSizeBox",
                                                 "By default, the smallest value will be set to the smallest node size, and the largest value 
                                                 will be set to the largest node size. You can opt instead to manually set Max and Min Values, 
                                                 in which case all values below the assigned minimum will be the set minimum size, and all values 
-                                                above the assigned maximum will be the set maximum size.",
-                                                tags$br(),tags$br(),
-                                                "This option will automatically create a figure legend showing six nodes in the full range of 
-                                                node sizes and indicating the corresponding minimum and maximum values."
+                                                above the assigned maximum will be the set maximum size."
                                             )
                                      )
                             )

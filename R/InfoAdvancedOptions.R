@@ -32,7 +32,7 @@ div(id="InfoAdvancedOptionsBox",
                         div(
                             h2 (HTML("Font &nbsp;\u2609")),
                             "This tab allows you to change global font settings as well as kinase label colors. Font style 
-                            and color changes will on affect the Tree plot.",
+                            and color changes will only affect the Tree plot.",
                      
                             fluidRow(width=12,
                                      column(3, tags$br(), 
@@ -44,10 +44,10 @@ div(id="InfoAdvancedOptionsBox",
                                      column(9,
                                             div(  
                                              h3 ("Choose Font"),
-                                             "You can change the font to use for all kinase labels, family labels, and titles in the Tree plot.",
+                                             "Selects the font to use for all kinase labels, family labels, and titles in the Tree plot.",
                          
                                              h3 ("Label Font Size"),
-                                             "You can also change the font size for all kinase labels, family labels, and titles. 
+                                             "Sets the font size for all kinase labels, family labels, and titles. 
                                              This setting will apply to all plots.",
                          
                                              h3 ("Label Color"),
@@ -55,13 +55,13 @@ div(id="InfoAdvancedOptionsBox",
                          
                                              h4 (HTML("\u25be&nbsp;&nbsp; Single Color")),
                                              "The default option is to use the same color font (black) for all kinase labels. 
-                                             You can alternatively change the color of all labels by using the color picker box 
+                                             You can change the color of all labels by using the color picker box 
                                              to find a color or enter a hex value.",
                          
                                              h4 (HTML("\u25be&nbsp;&nbsp; Same as Branch")),
-                                             "Another option is to color the kinase labels the same color as their branches. 
-                                             This can work especially well when nodes are disabled and you are trying to highlight the names 
-                                             of kinases in specific qualitative groups or quantitative extremes."
+                                             "This option colors the kinase labels the same color as their branches. 
+                                             This can work especially well when nodes are disabled and you are highlighting
+                                             kinases in specific qualitative groups or quantitative extremes."
                                             )
                                      )
                             )
@@ -81,27 +81,22 @@ div(id="InfoAdvancedOptionsBox",
                         div(
                             h2 (HTML("Node &nbsp;\u2609")),
                             "This tab allows you to change the color of node outlines depending on the desired look of your 
-                            tree and the data you are trying to visualize. Using the 'Node Stroke Color Scheme' menu, you can 
-                            assign all strokes to a single color using the Uniform setting, color strokes the same as the nodes 
-                            themselves using Same as Node, or highlight specific kinase nodes of interest with unique stroke 
-                            colors using Manual.",
+                            tree and the data you intend to visualize. Using the 'Node Stroke Color Scheme' menu, you can 
+                            keep the strokes the same color as the nodes themselves, assign a single stroke color to all nodes, 
+                            or manually color the strokes of specific nodes of interest",
         
                             fluidRow(width=12,
                                      column(3, tags$br(), 
                                             div(img(src="info/AS-3a.png",width="100%",align="left",
-                                                    tags$style("img[src='info/BC-Qualitative.png'] {padding-top: 4px}")
+                                                    tags$style("img[src='info/AS-3a.png'] {padding-top: 4px}")
                                             )
                                             )
                                      ),
                                      column(9,
                                             div(  
-                                             h2 (HTML("Uniform &nbsp;&nbsp;\u25be")),
-                                             "This option allows you to color all node strokes in the tree a single uniform color. This is a useful 
-                                             option for personalizing your tree nodes.",
-                         
-                                             h3 ("Node Stroke Color"),
-                                             "This selection determines the color of all node strokes. By default, node strokes are uniformly 
-                                             colored white. You can use the color picker box to find a new color or enter a hex value."
+                                             h2 (HTML("Same as Node &nbsp;&nbsp;\u25be")),
+                                             "This default option matches the node stroke color to the color of the node itself, as determined 
+                                             by the Node Color settings."
                                             )
                                      )
                             )
@@ -124,9 +119,14 @@ div(id="InfoAdvancedOptionsBox",
                  ),
                  column(6,        
                         div(
-                            h2 (HTML("Same as Node &nbsp;&nbsp;\u25be")),
-                            "This option automatically sets the node stroke color to the color of the node itself, as determined 
-                            by the 'Node Color' settings."
+                         h2 (HTML("Uniform &nbsp;&nbsp;\u25be")),
+                         "This option allows you to color all node strokes in the tree a single uniform color. This is useful 
+                         for enhancing the appearance of your tree nodes.",
+                         
+                         h3 ("Node Stroke Color"),
+                         "This selection determines the stroke color of all selected and unselected nodes. By default, node strokes are uniformly 
+                         colored white. You can use the color picker box to find a new color or enter a hex value."
+                     
                         )
                         ), 
                  column(4, 
@@ -147,34 +147,34 @@ div(id="InfoAdvancedOptionsBox",
                  column(6,        
                         div(
                             h2 (HTML("Manual &nbsp;&nbsp;\u25be")),
-                            "This option allows you to color strokes of specific nodes of interest. This can be useful for 
-                            highlighting specific kinases when node and branch colors are already conveying important information. ",
+                            "This option allows you to color the strokes of specific nodes of interest. This is useful for 
+                            highlighting specific kinases when node and branch colors are already conveying important information.",
                       
                             h3 ("Kinase Input Method"),
-                            "Here you can select the method you would like to use to identify kinases of interest. ",
+                            "Here you can select the method you would like to use to identify kinases of interest.",
                          
                             h4 (HTML("\u2609&nbsp; Select")),
-                            "Creates a scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
-                            when trying to highlight a small number of kinases",
+                            "This method reates a scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
+                            when highlighting a small number of kinases",
                          
                             h4 (HTML("\u2609&nbsp; Paste")),
-                            "Creates a space to copy a list of kinases to highlight, each kinase separated by a new line. This feature 
+                            "This method creates a field into which you may type or paste a list of kinases, with each kinase on its own line. This feature 
                             is useful when trying to highlight a larger number of kinases, or if you have a pre-existing list of kinases 
                             from a spreadsheet or other document.",
                          
                             h3 ("Kinases"),
-                            "This is the space where you may select or input your list of kinases to highlight, depending on your 
-                            preferred input method.",
+                            "This is the field where you may select or input your list of kinases to highlight, depending on your 
+                            chosen input method.",
                          
                             h3 ("Identifier Type"),
                             "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
                             In order to properly plot your selected branches, you must specify the identification used in the 
-                            'Kinases' space.",
+                            'Kinases' field",
                          
                             h3 ("BG Color & Selected Color"),
                             "Here you can change node colors for both your selected and unselected kinases. The BG Color sets 
-                            the color of kinases that were not listed, while Selected Color sets the color of the kinases you have 
-                            identified and are trying to highlight. You can use the color picker box to find a color or enter a 
+                            the color of kinases that are not listed in the above field, while Selected Color sets the color  
+                            of the kinases you have identified. You can use the color picker box to find a color or enter a 
                             hex value."
                         )
                  ), 

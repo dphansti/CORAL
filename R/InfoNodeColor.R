@@ -81,17 +81,17 @@ div(id="InfoNodeColorBox",
                                              "Here you can select the method you would like to use to identify kinases of interest.",
                        
                                              h4 (HTML("\u2609&nbsp; Select")),
-                                             "Creates a scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
+                                             "This method creates a scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
                                              when highlighting a small number of kinases.",
                       
                                              h4 (HTML("\u2609&nbsp; Paste")),
-                                             "Creates a field in which to copy a list of kinases, with each separated by a new line. This feature is 
-                                             useful when highlighting a larger number of kinases, or if you have a pre-existing list of kinases 
-                                             from a spreadsheet or other document.",
+                                             "This method creates a field into which you may type or paste a list of kinases, with each kinase on its own line. 
+                                             This feature is useful when highlighting a larger number of kinases, or if you have a pre-existing list 
+                                             of kinases from a spreadsheet or other document.",
                      
                                              h3 ("Kinases"),
                                              "This is the field where you may select or input your list of kinases to highlight, 
-                                             depending on your preferred input method.",
+                                             depending on your chosen input method.",
                        
                                              h3 ("Identifier Type"),
                                              "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
@@ -132,6 +132,9 @@ div(id="InfoNodeColorBox",
                             "This option allows you to color kinase nodes different colors according to user-defined group assignments. 
                             It is a useful option when differentiating between multiple categories, such as different 
                             kinases families.",
+                            tags$br(),tags$br(),
+                            "The Qualitative option will automatically generate a figure legend showing the color and group name for each 
+                            category listed. Groups will be listed in alphabetical order, and then colors will be assigned accordingly."
         
                             fluidRow(width=12,
                                      column(3, tags$br(), 
@@ -144,7 +147,7 @@ div(id="InfoNodeColorBox",
                                             div(  
                                                 h4 (HTML("\u25ce&nbsp; Load default kinase groups")),
                                                 "This button will load the default kinase groups as defined by Manning et al 2002 into the 'Kinases & Group' 
-                                                tab. These groups include AGC, CAMK, CK1, CMGC, RGC, STE, TK, and TKL, as well as Atypical and Others 
+                                                field. These groups include AGC, CAMK, CK1, CMGC, RGC, STE, TK, and TKL, as well as Atypical and Others 
                                                 which fall outside of those group assignments.",
                      
                                                 h3 ("Kinases & Group"),
@@ -168,10 +171,8 @@ div(id="InfoNodeColorBox",
                                                 h3 ("Color Missing Kinases"),
                                                 "This option allows you to select a color for kinases that were not listed in the 'Kinases & Value' 
                                                 by using the color picker box to find a color or enter a hex value. This color defaults to light gray. 
-                                                This color will not be included in the figure legend.",
-                                                tags$br(),tags$br(),
-                                                "This option will automatically generate a figure legend showing the color and group name for each 
-                                                category listed. Groups will be listed in alphabetical order, and then colors will be assigned accordingly."
+                                                This color will not be included in the figure legend."
+                                                
                                             )
                                      )
                             )
@@ -190,8 +191,11 @@ div(id="InfoNodeColorBox",
                  column(8, 
                         div(
                             h2 (HTML("Quantitative &nbsp;&nbsp;\u25be")),
-                            "This option allows you to color kinase nodes based on a range of qualitative values. It is a useful 
-                            option when trying to visualize a range of values, such as fold change or signal data.",
+                            "This option allows you to color kinase nodes based on a range of qualitative values. It is useful 
+                            when presenting a range of values, such as fold change or signal data.",
+                            tags$br(),tags$br(),
+                            "The Quantitative option will automatically generate a figure legend showing the full spectrum of possible 
+                            colors and indicating the corresponding low, middle, and high values.",
         
                             fluidRow(width=12,
                                      column(3, tags$br(), 
@@ -203,7 +207,7 @@ div(id="InfoNodeColorBox",
                                      column(9,        
                                             div(
                                                 h4 (HTML("\u25ce&nbsp; Load example data")),
-                                                "This button will load sample data into the 'Kinases & Value' tab.",
+                                                "This button will load sample data into the 'Kinases & Value' field.",
                      
                                                 h3 ("Kinases & Value"),
                                                 "Here you can submit a two-column list of kinases and their associated values. A space, tab, 
@@ -220,8 +224,8 @@ div(id="InfoNodeColorBox",
                          
                                                 h3 ("Min & Max"),
                                                 "This option allows you to set the values that will represent either end of the color spectrum. 
-                                                All values below the assigned Min will be colored as though they were the set minimum value, 
-                                                and all values above the assigned Max will be colored as though they were the set maximum value.",
+                                                All values below the assigned Min Value will be colored as though they were the set minimum value, 
+                                                and all values above the assigned Max Value will be colored as though they were the set maximum value.",
                          
                                                 h3 ("Color Range Type"),
                                                 "These options allow you to choose between several pre-built sequential and divergent color palettes 
@@ -229,20 +233,17 @@ div(id="InfoNodeColorBox",
                                                 continuously increasing data, such as raw signal from RNA-Seq. Divergent palettes are useful for 
                                                 depicting data with both positive and negative values, such as fold change. Manual 2-color gradients 
                                                 require a high and low color setting, while 3-color gradients require a high, low, and middle. 
-                                                Each color can be selected by using the drop-down box to find a color or entering a hex value.",
+                                                Each color can be selected by using the color picker box to find a color or enter a hex value.",
                          
                                                 h3 ("Reverse Palette"),
                                                 "This button will automatically swap the minimum and maximum colors of any palette.",
                          
                                                 h3 ("Color Missing Kinases"),
-                                                "By default, kinases that were not listed in the 'Kinases & Value' tab will be automatically colored 
+                                                "By default, kinases that were not listed in the 'Kinases & Value' field will be automatically colored 
                                                 according to the lowest (in sequential or 2-color palettes) or middle value 
                                                 (in divergent or 3-color palettes). You can opt to instead color these missing kinases manually, 
                                                 which will bring up a 'Missing Kinase Color' selector where you can use the drop-down box to find a 
-                                                color or enter a hex value.",
-                                                tags$br(),tags$br(),
-                                                "This option will automatically create a figure legend showing the full spectrum of possible colors and 
-                                                indicating the corresponding low, middle, and high values."
+                                                color or enter a hex value."
                                             )
                                      )
                             )

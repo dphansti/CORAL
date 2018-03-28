@@ -40,7 +40,7 @@ div(id="InfoBranchColorBox",
                                      column(9,
                                             div(      
                                                 h3 ("Branch Color"),
-                                                "This will set the color of all branches. You can use the color picker
+                                                "This will set the color of all branches. You can use the color picker box
                                                 to find a color or enter a hex value."
                                             )
                                      )
@@ -75,7 +75,7 @@ div(id="InfoBranchColorBox",
                                              This feature is most useful when highlighting a small number of kinases.",
                               
                                              h4 (HTML("\u2609&nbsp; Paste")),
-                                             "Creates a field in which to copy a list of kinases, with each separated by a new line. 
+                                             "Creates a field into which you may type or paste a list of kinases, with each kinase on its own line. 
                                              This feature is useful when highlighting a larger number of kinases, or if you 
                                              have a pre-existing list of kinases from a spreadsheet or other document.",
                               
@@ -124,7 +124,7 @@ div(id="InfoBranchColorBox",
                             group assignments. It is a useful option when trying to differentiate between multiple categories 
                             such as kinase families.",
                             tags$br(),tags$br(),
-                            "The 'Qualitative' option will automatically generate a figure legend showing the color and group name for each 
+                            "The Qualitative option will automatically generate a figure legend showing the color and group name for each 
                             category listed. Groups will be listed in alphabetical order, and colors will be assigned accordingly.",
                        
                             fluidRow(width=12,
@@ -138,7 +138,7 @@ div(id="InfoBranchColorBox",
                                             div(  
                                              h4 (HTML("\u25ce&nbsp; Load default kinase groups")),
                                              "This button will load the default kinase groups as defined by Manning et al 2002 into the 
-                                             'Kinases & Group' tab. These groups include AGC, CAMK, CK1, CMGC, RGC, STE, TK, and TKL, 
+                                             'Kinases & Group' field. These groups include AGC, CAMK, CK1, CMGC, RGC, STE, TK, and TKL, 
                                              as well as Atypical and Others which fall outside of those group assignments.",
                          
                                              h3 ("Kinases & Group"),
@@ -196,7 +196,7 @@ div(id="InfoBranchColorBox",
                                      column(9,        
                                             div(
                                                 h4 (HTML("\u25ce&nbsp; Load example data")),
-                                                "This button will load sample data into the 'Kinases & Value' tab.",
+                                                "This button will load sample data into the 'Kinases & Value' field.",
                          
                                                 h3 ("Kinases & Value"),
                                                 "Here you can submit a two-column list of kinases and their associated values. A space, 
@@ -222,13 +222,13 @@ div(id="InfoBranchColorBox",
                                                 for continuously increasing data, such as raw signal from RNA-Seq. Divergent palettes are useful for 
                                                 depicting data with both positive and negative values, such as fold change. Manual 2-color gradients 
                                                 require a high and low color setting, while 3-color gradients require a high, low, and middle. 
-                                                Each color can be selected by using the color picker box to find a color or entering a hex value.",
+                                                Each color can be selected by using the color picker box to find a color or enter a hex value.",
                             
                                                 h3 ("Reverse Palette"),
                                                 "This button will automatically swap the minimum and maximum colors of any palette.",
                          
                                                 h3 ("Color Missing Kinases"),
-                                                "By default, kinases that were not listed in the 'Kinases & Value' tab will be automatically 
+                                                "By default, kinases that were not listed in the 'Kinases & Value' field will be automatically 
                                                 colored according to the lowest (in sequential or 2-color palettes) or middle value 
                                                 (in divergent or 3-color palettes). You can opt to instead color these missing kinases manually, 
                                                 which will bring up a 'Missing Kinase Color' selector where you can use the color picker box to find 
