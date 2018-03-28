@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Heebo:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Heebo:300,400,500,700');
 :root {
   --font-family-sans-serif: 'Heebo', Calibri, Candara, Arial, sans-serif;
   --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
@@ -57,18 +57,23 @@ h4,.h4{
 
 h5,.h5{
   font-family: inherit;
-  font-weight: ;
-  font-size: 110%;
+  font-weight: 500;
+  font-size: 120%;
   letter-spacing: .25px;
-}
+  margin-top: 20px;
+  margin-bottom: 4px;
+} 
 
 h6,.h6{
   font-family: inherit;
-  font-weight: 700;
+  font-weight: 300;
   font-size: 100%;
   letter-spacing: .25px;
-  margin-top: 2px;
+  margin-top: ;
+}
 
+#InfoAboutBox .h2{
+ color: #fff;
 }
 
 /* original font sizes:
@@ -407,35 +412,37 @@ h6,.h6{
  margin-right: 30px;
 }
 
+#InfoAboutBox .box{
+ background-color: #333;
+}
+
 /* dashboard background */
 .content-wrapper,
 .right-side {
-background-color: #;
+background-color: #eceff3;
 }
 
-/* info box top borders
+/* info box top borders */
 
 #InfoBranchColorBox .box{
- border-top-color: #3da1cc;
+ border-top-color: #fff;
 }
 
 #InfoNodeColorBox .box{
- border-top-color: #3889bf;
+ border-top-color: #fff;
 }
 
 #InfoNodeSizeBox .box{
- border-top-color: #3477b3;
+ border-top-color: #fff;
 }
 
 #InfoAdvancedOptionsBox .box{
- border-top-color: #425e8c;
+ border-top-color: #fff;
 }
 
 #InfoAboutBox .box{
  border-top-color: #333;
 }
-*/
-
 
 /*
 .form-control:focus {
