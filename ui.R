@@ -444,7 +444,7 @@ ui <- dashboardPage(
                                          # if single color
                                          conditionalPanel(
                                           condition = "input.nodesizetype == 'One Size'",
-                                          sliderInput("size_node_single", "Node Size",value=6,min = 0,max=20,step = 0.25)
+                                          sliderInput("size_node_single", "Node Size",value=5,min = 0,max=20,step = 0.25)
                                          ),
                                          
                                          # if by value
@@ -511,9 +511,9 @@ ui <- dashboardPage(
                                           condition = "input.AdvancedSections == 'Node'",
                                           
                                           # How to color stroke of node
-                                          selectInput(inputId = "nodestrokecolselect",label = "Color Node Stroke By",
-                                                      choices = c("Single Color","Same as Node","Selected"),
-                                                      multiple = FALSE,selected = "Single Color",width = "100%"),
+                                          selectInput(inputId = "nodestrokecolselect",label = "Node Stroke Color Scheme",
+                                                      choices = c("Same as Node","Single Color","Selected"),
+                                                      multiple = FALSE,selected = "Same as Node",width = "100%"),
                                           
                                           # Node stroke as single color
                                           conditionalPanel(condition = "input.nodestrokecolselect == 'Single Color'",
