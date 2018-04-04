@@ -499,7 +499,7 @@ ui <- dashboardPage(
                                           # Slider for font size 
                                           sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 4,step = 0.05,ticks=F),
                                           
-                                          selectInput(inputId = "fontcolorselect",label = "Label Color",
+                                          selectInput(inputId = "fontcolorselect",label = "Label Color Scheme",
                                                       choices = c("Same as Branch","Single Color"),
                                                       multiple = FALSE,selected = "Single Color",width = "100%"),
                                           
