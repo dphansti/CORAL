@@ -115,6 +115,10 @@ Set3 = brewer.pal(12,"Set3")
 qualpalettes = list(Erika,Accent,Dark2,Paired,Pastel1,Pastel2,Set1,Set2,Set3)
 names(qualpalettes) = c("Erika","Accent","Dark2","Paired","Pastel1","Pastel2","Set1","Set2","Set3")
 
+if (! dir.exists('www/images')) {
+ dir.create('www/images', showWarnings = F) 
+}
+
 drawmypalettes("Erika",Erika,"www/images",boxes =5)
 drawmypalettes("Accent",Accent,"www/images",boxes =5)
 drawmypalettes("Dark2",Dark2,"www/images",boxes =5)
