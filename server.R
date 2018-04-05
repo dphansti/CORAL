@@ -83,6 +83,9 @@ server <- function(input, output,session) {
   insertUI(selector = "#InfoBox",where = "afterEnd",ui = source(infoboxcode,local=TRUE)$value)
  } 
  
+ # Make the about page the default page
+ replaceinfobox("R/InfoAbout.R")
+ 
  # Load info box according to button click
  observeEvent(input$InfoBranchColorButton,{replaceinfobox("R/InfoBranchColor.R")})
  observeEvent(input$InfoNodeColorButton,{replaceinfobox("R/InfoNodeColor.R")})

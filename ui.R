@@ -10,11 +10,12 @@ ui <- dashboardPage(
          tags$style(".navbar {min-height:60px !important}")
  ) ),
  
+ 
  dashboardSidebar
  (
   sidebarMenu(id="sidebartabs",
-              menuItem("Visualize", tabName = "Visualize", icon = icon("eye")),
               menuItem("Info", tabName = "Info", icon = icon("info")),
+              menuItem("Visualize", tabName = "Visualize", icon = icon("eye")),
               tags$style(".left-side, .main-sidebar {padding-top: 60px}")
   ),
   collapsed = TRUE,
