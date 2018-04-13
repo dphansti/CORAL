@@ -390,6 +390,7 @@ server <- function(input, output,session) {
      }
      
      selkinasescoral = ""
+     tempdf$node.selected = -1
      if (length(selkinases) > 0)
      {
       # convert selected to coral ids
@@ -399,6 +400,9 @@ server <- function(input, output,session) {
       {
        selkinasescoral = selkinasesconverted[,1]
       }
+      
+      # note them as selected so we can add them to the top of the plot later
+      tempdf$node.selected[which(tempdf$id.coral %in% selkinasescoral)] = 1
      }
      
      # recolor based on selection

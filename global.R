@@ -65,8 +65,11 @@ orig_svginfo$title = ""
 # initilize legend
 orig_svginfo$legend = c()
 
-# add node opacitu
+# add node opacity
 orig_svginfo$dataframe$node.opacity = 1
+
+# add node order
+orig_svginfo$dataframe$node.selected = -1
 
 # make svginfo (leaving the original intact)
 svginfo = orig_svginfo
