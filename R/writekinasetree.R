@@ -55,7 +55,7 @@ build.node <- function(l)
                  "cx=\"",l["node.x"],
                  "\" cy=\"",gsub(" ","",l["node.y"]),
                  "\" r=\"",l["node.radius"],
-                 # "\" stroke=\"",l["node.strokecol"],
+                 "\" opacity=\"",l["node.opacity"],
                  "\" stroke=\"",l["node.strokecol"],
                  "\" stroke-width=\"",l["node.strokewidth"],
                  "\" fill=\"",l["node.col"],"\"/>",sep="")

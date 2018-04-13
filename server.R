@@ -550,6 +550,8 @@ server <- function(input, output,session) {
     
     # ------------------ ADVANCED OPTIONS ------------------ #
     
+    tempdf$node.opacity = input$Node_Opacity
+    
     # text color
     if (input$fontcolorselect == "Same as Branch")
     {

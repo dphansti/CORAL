@@ -109,6 +109,7 @@ binding.renderValue = function(el, data) {
         node.select("circle")
             .style("fill", function(d) { return d3.rgb(d.nodecol); })
             .attr("stroke-width", 1.0)
+            .attr("opacity",function(d) { return d.nodeopacity; })
             .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); });
       }
 

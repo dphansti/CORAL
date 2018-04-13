@@ -65,6 +65,9 @@ orig_svginfo$title = ""
 # initilize legend
 orig_svginfo$legend = c()
 
+# add node opacitu
+orig_svginfo$dataframe$node.opacity = 1
+
 # make svginfo (leaving the original intact)
 svginfo = orig_svginfo
 

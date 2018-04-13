@@ -530,7 +530,9 @@ ui <- dashboardPage(title="CORAL",
                                                            
                                                            colourInput("NodeStrokeSelect_BG", "Not Selected Color","#ffffff"),
                                                            colourInput("NodeStrokeSelect_FG", "Selected Color",HM_hi)
-                                          ) # end condition
+                                          ), # end condition
+                                          
+                                          sliderInput("Node_Opacity", "Node Opacity",value=1,min = 0,max=1,step = 0.01)
                                          )
                                      ) #end box
                            ), #end row
