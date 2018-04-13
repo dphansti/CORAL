@@ -1,6 +1,6 @@
 ## app.R ##
 
-ui <- dashboardPage(
+ui <- dashboardPage(title="CORAL",
  dashboardHeader(title = span(img(src="logos/coral-logo-white2.png",height=60,align="left")),titleWidth = 600,
 
  tags$li(class = "dropdown",
