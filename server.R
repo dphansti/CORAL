@@ -253,7 +253,7 @@ server <- function(input, output,session) {
      tempdf = tempdf[order(tempdf$id.coral %in% selkinasescoral, decreasing = FALSE),]
       
       # build legend for Branch Color (manual selection)
-      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c(input$branch_nonselect_label,input$branch_select_label),groupcolors=c(input$col_select_bg,input$col_select),elementtype = "Branch",fontfamily = input$fontfamilyselect)
+      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c(input$branch_select_label,input$branch_nonselect_label),groupcolors=c(input$col_select,input$col_select_bg),elementtype = "Branch",fontfamily = input$fontfamilyselect)
       lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
       legend = c(legend,lines)
@@ -409,7 +409,7 @@ server <- function(input, output,session) {
      tempdf$node.col =  color.by.selected(df = tempdf, sel = selkinasescoral, bg.col  = input$col_node_bg,  sel.col = input$col_sel_node)
 
       # # build legend for Node Color (Manual Selection)
-      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c(input$node_nonselect_label,input$node_select_label),groupcolors=c(input$col_node_bg,input$col_sel_node),elementtype = "Node",fontfamily = input$fontfamilyselect)
+      lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c(input$node_select_label,input$node_nonselect_label),groupcolors=c(input$col_sel_node,input$col_node_bg),elementtype = "Node",fontfamily = input$fontfamilyselect)
       lines = lines_and_offset[[1]]
       yoffset = lines_and_offset[[2]] + 14
       legend = c(legend,lines)
