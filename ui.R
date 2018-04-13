@@ -50,7 +50,6 @@ ui <- dashboardPage(title="CORAL",
            
            fluidRow(width=12,
                     column(width=3,
-                           
                            # choose between tabs
                            radioGroupButtons(
                             inputId = "dashboardchooser", label = NULL, 
