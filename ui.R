@@ -429,7 +429,7 @@ ui <- dashboardPage(title="CORAL",
                                          ), # end conditional 
 
                                          tags$br(),
-                                         div(prettyCheckbox(inputId="colorsubnodes",label="color intermediate nodes",value = FALSE,shape="round",status="primary"))
+                                         div(prettyCheckbox(inputId="colorsubnodes",label="color intermediate nodes",value = TRUE,shape="round",status="primary"))
                                      ), # end box   
                                      
                                      # ---- NODE SIZE ---- #
@@ -556,8 +556,6 @@ ui <- dashboardPage(title="CORAL",
                             condition = "input.tabboxselected == 'Force'",
                             tags$a(id="downloadforce", href="#", class="btn btn-default", "Download")
                            )
-                           
-                           
                     ), # end column
                     
                     tabBox

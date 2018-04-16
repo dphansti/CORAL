@@ -38,13 +38,14 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol=
     nodecol<-row$node.col 
     noderadius<-row$node.radius
     nodestrokecol<-row$node.strokecol
-    subnodestrokecol = BGstrolecol # only highlight the outer nodes
+    subnodestrokecol = row$node.strokecol
     nodeopacity<-row$node.opacity
     textsize<-row$text.size
     subnodecol=nodecol
     if (colsubnodes == FALSE)
     {
      subnodecol = BGcol
+     subnodestrokecol = BGstrolecol # only highlight the outer nodes
     }
 
     # Add Group if not already there

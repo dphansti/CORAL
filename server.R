@@ -362,6 +362,10 @@ server <- function(input, output,session) {
     if (input$nodecolortype == "None")
     {
       tempdf$node.col = "none"
+      if (input$tabboxselected != "Tree")
+      {
+       tempdf$node.col = input$col_node_single
+      }
     }
     
     # color nodes by single color
@@ -631,7 +635,7 @@ server <- function(input, output,session) {
    
    # replace none color for D3 plots
    allnodescoloreddf =  svginfo$dataframe
-   allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = BG_col1
+   # allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = BG_col1
    
    # modify color subnodes based on coloring options
    if (input$nodestrokecolselect == "Single Color")
@@ -671,7 +675,7 @@ server <- function(input, output,session) {
     # modify color subnodes based on coloring options
     if (input$nodestrokecolselect == "Single Color")
     {
-     BGstrolecol = "#ffffff"
+     BGstrolecol = input$nodestrokecol
     }
     if (input$nodestrokecolselect == "Selected")
     {
