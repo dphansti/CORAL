@@ -7,7 +7,7 @@ ui <- dashboardPage(title="CORAL",
          tags$style(".main-header {max-height: 60px}"),
          tags$style(".main-header .logo {height: 60px;}"),
          tags$style(".sidebar-toggle {height: 60px; padding-top: 10px !important;}"),
-         tags$style(".navbar {min-height:60px !important}")
+         tags$style(".navbar {min-height:0px !important}")
  ) ),
  
  
