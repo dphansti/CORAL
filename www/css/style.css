@@ -57,7 +57,7 @@ h4,.h4{
 
 h5,.h5{
   font-family: inherit;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 120%;
   letter-spacing: .25px;
   margin-top: 20px;
@@ -132,12 +132,24 @@ h6,.h6{
 }        
 
 /* slider bar */
-.irs-single, .irs-bar-edge, .irs-bar, .irs-from, .irs-to{
-  background: #333;
+.js-irs-0 .irs-single, .js-irs-0 .irs-bar-edge, .js-irs-0 .irs-bar, .js-irs-0 .irs-from, .js-irs-0 .irs-to,
+.js-irs-1 .irs-single, .js-irs-1 .irs-bar-edge, .js-irs-1 .irs-bar, .js-irs-1 .irs-from, .js-irs-1 .irs-to{
+  background: #3477b3;
 }
 
-.irs-bar, .irs-bar-edge{
-  border: #333;
+.js-irs-0 .irs-bar, .js-irs-0 .irs-bar-edge,
+.js-irs-1 .irs-bar, .js-irs-1 .irs-bar-edge{
+  border: #3477b3;
+}
+
+.js-irs-2 .irs-single, .js-irs-2 .irs-bar-edge, .js-irs-2 .irs-bar, .js-irs-2 .irs-from, .js-irs-2 .irs-to,
+.js-irs-3 .irs-single, .js-irs-3 .irs-bar-edge, .js-irs-3 .irs-bar, .js-irs-3 .irs-from, .js-irs-3 .irs-to{
+  background: #425e8c;
+}
+
+.js-irs-2 .irs-bar, .js-irs-2 .irs-bar-edge,
+.js-irs-3 .irs-bar, .js-irs-3 .irs-bar-edge{
+  border: #425e8c;
 }
 
 .irs-line{
@@ -332,7 +344,7 @@ h6,.h6{
 .box.box-solid.box-success>.box-header,
 #InfoNodeColorButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
-  background:#3889bf
+  background:#3889bf;
 }
 
 .box.box-solid.box-success{
@@ -346,7 +358,7 @@ h6,.h6{
 .box.box-solid.box-info>.box-header,
 #InfoNodeSizeButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
-  background:#3477b3
+  background:#3477b3;
 }
 
 .box.box-solid.box-info{
@@ -360,7 +372,7 @@ h6,.h6{
 .box.box-solid.box-warning>.box-header,
 #InfoAdvancedSettingsButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
-  background:#425e8c
+  background:#425e8c;
 }
 
 .box.box-solid.box-warning{
@@ -378,7 +390,7 @@ h6,.h6{
 .box.box-solid.box-danger>.box-header,
 #InfoAboutButton.btn.btn-default.action-button.shiny-bound-input{
   color:#fff;
-  background:#333
+  background:#333;
 }
 
 .box.box-solid.box-danger{
