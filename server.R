@@ -282,8 +282,16 @@ server <- function(input, output,session) {
       
       if (nrow(recolordf)>0)
       {
+        # check for user supplied groups
+        categories=NULL 
+        if (input$manualgroupcols_branch == TRUE)
+        {
+         categories = unlist(strsplit(input$ManualBranchCategories,split="\n"))
+         if (length(categories) == 0){categories=NULL }
+        }
+       
         # set colors based on group
-        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = branchgroupcolpalette)
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = branchgroupcolpalette,categories=categories)
         tempdf$branch.col = newcolors_and_colormapping[[1]]
         tempdf$branch.group = newcolors_and_colormapping[[2]]
         branch.group.colormapping = newcolors_and_colormapping[[3]]
@@ -438,8 +446,16 @@ server <- function(input, output,session) {
       
       if (nrow(recolordf)>0)
       {
+        # check for user supplied groups
+        categories=NULL 
+        if (input$manualgroupcols_node == TRUE)
+        {
+         categories = unlist(strsplit(input$ManualNodeCategories,split="\n"))
+         if (length(categories) == 0){categories=NULL }
+        } 
+       
         # set colors based on group
-        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = nodegroupcolpalette)
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = nodegroupcolpalette,categories=categories)
         tempdf$node.col = newcolors_and_colormapping[[1]]
         tempdf$node.group = newcolors_and_colormapping[[2]]
         node.group.colormapping = newcolors_and_colormapping[[3]]
