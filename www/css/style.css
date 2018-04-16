@@ -247,11 +247,6 @@ h6,.h6{
   padding-left: 10px;
 }
 
-#InfoAboutButton.btn.btn-default.action-button.shiny-bound-input{
-  margin-bottom: 18px;
-}
-
-
 /* plot button 1 */
 .box.box-solid.box-primary>.box-header,
 #InfoBranchColorButton.btn.btn-default.action-button.shiny-bound-input{
@@ -356,6 +351,14 @@ h6,.h6{
 #downloadforce.btn.btn-default:hover{
  background-color: #2b2b2b;
 }
+
+#downloadtree.btn.btn-default, 
+#downloadcircle.btn.btn-default, 
+#downloadforce.btn.btn-default,
+#InfoAboutButton.btn.btn-default.action-button.shiny-bound-input{
+  margin-bottom: 18px;
+}
+
 
 /* plot button +/- */
 .btn.btn-box-tool>.fa.fa-plus,
