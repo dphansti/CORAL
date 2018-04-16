@@ -651,7 +651,7 @@ server <- function(input, output,session) {
    if (! dir.exists('www/json')) {
      dir.create('www/json')
    }
-   makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes)
+   makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect)
    
    # Make this reactive to any change in input paramters
    x <- reactiveValuesToList(input)
@@ -683,7 +683,7 @@ server <- function(input, output,session) {
     }
     
     # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)
