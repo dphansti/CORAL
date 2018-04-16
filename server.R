@@ -362,10 +362,6 @@ server <- function(input, output,session) {
     if (input$nodecolortype == "None")
     {
       tempdf$node.col = "none"
-      if (input$tabboxselected != "Tree")
-      {
-       tempdf$node.col = input$col_node_single
-      }
     }
     
     # color nodes by single color
@@ -570,6 +566,8 @@ server <- function(input, output,session) {
     {
       tempdf$text.col = input$fontcolorchoose
     }
+    
+    # Node stroke color
     if (input$nodestrokecolselect == "Single Color")
     {
        tempdf$node.strokecol = input$nodestrokecol
@@ -637,6 +635,12 @@ server <- function(input, output,session) {
    allnodescoloreddf =  svginfo$dataframe
    # allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = BG_col1
    
+   # color nodes by single color
+   if (input$nodecolortype == "None")
+   {
+    allnodescoloreddf$node.col = input$col_node_single
+   }
+   
    # modify color subnodes based on coloring options
    if (input$nodestrokecolselect == "Single Color")
    {
@@ -648,6 +652,7 @@ server <- function(input, output,session) {
    }
    if (input$nodestrokecolselect == "Same as Node")
    {
+    allnodescoloreddf$node.strokecol = allnodescoloreddf$node.col
     BGstrolecol = "#ffffff"
    }
    
@@ -672,6 +677,12 @@ server <- function(input, output,session) {
     allnodescoloreddf =  svginfo$dataframe
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = BG_col1
     
+    # color nodes by single color
+    if (input$nodecolortype == "None")
+    {
+     allnodescoloreddf$node.col = input$col_node_single
+    }
+    
     # modify color subnodes based on coloring options
     if (input$nodestrokecolselect == "Single Color")
     {
@@ -683,6 +694,7 @@ server <- function(input, output,session) {
     }
     if (input$nodestrokecolselect == "Same as Node")
     {
+     allnodescoloreddf$node.strokecol = allnodescoloreddf$node.col
      BGstrolecol = "#ffffff"
     }
     
