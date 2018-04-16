@@ -236,6 +236,7 @@ h6,.h6{
   border-top-color:#eceff3;
   border-radius: 0px;
   padding-top: 7px;
+  height: 42px;
 }
 
 .btn.radiobtn.btn-primary:hover{
