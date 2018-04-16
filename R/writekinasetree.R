@@ -22,11 +22,21 @@ build.branch <- function(l)
 }
 
 # Define a function that make a label
-build.text <- function(l)
+build.text <- function(l,labelselect)
 {
-  label = paste("<a xlink:href=\"http://www.uniprot.org/uniprot/",l["id.uniprot"],"\" target=\"_blank\">",
+ 
+ # choose label type
+ label = ""
+ if (labelselect == "default"){label = l["text.label"]}
+ if (labelselect == "coralID"){label = l["id.coral"]}
+ if (labelselect == "uniprot"){label = l["id.uniprot"]}
+ if (labelselect == "ensembl"){label = l["id.ensembl"]}
+ if (labelselect == "entrez"){label = l["id.entrez"]}
+ if (labelselect == "HGNC"){label = l["id.HGNC"]}
+ 
+ label = paste("<a xlink:href=\"http://www.uniprot.org/uniprot/",l["id.uniprot"],"\" target=\"_blank\">",
                 "<text id=\"t_x5F_",l["id.coral"],"\" ",
-                "x=\"", l["text.x"],"\" ",
+                "x=\"",  l["text.x"],"\" ",
                 "y=\"", trimws(l["text.y"]),"\" ",
                 "font-weight=\"700\" ",
                 " font-size=\"",l["text.size"],"px\" ",
@@ -38,7 +48,7 @@ build.text <- function(l)
                 # " \nonmouseover=\"evt.target.setAttribute('font-size', '10');\"",
                 # " \nonmouseout=\"evt.target.setAttribute('font-size','",origfontsize,"');\"",
                 
-                ">",l["text.label"],"</text>","</a>",sep = "")
+                ">",label,"</text>","</a>",sep = "")
   return(label)
 }
 
@@ -63,7 +73,7 @@ build.node <- function(l)
 }
 
 # Define a function that writes an kinase tree svg file
-writekinasetree <- function(svginfo,destination,font)
+writekinasetree <- function(svginfo,destination,font,labelselect)
 {
   outputlines = c()
   
@@ -97,7 +107,7 @@ writekinasetree <- function(svginfo,destination,font)
   
   # add labels
   outputlines = c(outputlines,"<g id=\"LABELS\">")
-  outputlines = c(outputlines,unlist(apply(svginfo$dataframe,1, build.text)))
+  outputlines = c(outputlines,unlist(apply(svginfo$dataframe,1, build.text,labelselect=labelselect)))
   outputlines = c(outputlines,"</g>")
   
   # add tail

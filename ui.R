@@ -491,6 +491,11 @@ ui <- dashboardPage(title="CORAL",
                                          conditionalPanel(
                                           condition = "input.AdvancedSections == 'Font'",
                                           
+                                          # Choose Label
+                                          selectInput(inputId = "kinaselabelselect",label = "Choose Label",
+                                                      choices = c("default","coralID","uniprot","ensembl","entrez","HGNC"),
+                                                      multiple = FALSE,selected = "Helvetica",width = "100%"),
+                                      
                                           # Choose Font
                                           selectInput(inputId = "fontfamilyselect",label = "Choose Font",
                                                       choices = c("Helvetica","Arial","Verdana","Trebuchet MS","Times New Roman","Garamond"),

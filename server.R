@@ -617,7 +617,7 @@ server <- function(input, output,session) {
     }
     
     # Write SVG file
-    writekinasetree(svginfo,destination=svgoutfile,font=input$fontfamilyselect)
+    writekinasetree(svginfo,destination=svgoutfile,font=input$fontfamilyselect,labelselect=input$kinaselabelselect)
     
     # Render SVG
     svgPanZoom(svgoutfile,viewBox = F,controlIconsEnabled=F)
