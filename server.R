@@ -282,8 +282,16 @@ server <- function(input, output,session) {
       
       if (nrow(recolordf)>0)
       {
+        # check for user supplied groups
+        categories=NULL 
+        if (input$manualgroupcols_branch == TRUE)
+        {
+         categories = unlist(strsplit(input$ManualBranchCategories,split="\n"))
+         if (length(categories) == 0){categories=NULL }
+        }
+       
         # set colors based on group
-        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = branchgroupcolpalette)
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = branchgroupcolpalette,categories=categories)
         tempdf$branch.col = newcolors_and_colormapping[[1]]
         tempdf$branch.group = newcolors_and_colormapping[[2]]
         branch.group.colormapping = newcolors_and_colormapping[[3]]
@@ -438,8 +446,16 @@ server <- function(input, output,session) {
       
       if (nrow(recolordf)>0)
       {
+        # check for user supplied groups
+        categories=NULL 
+        if (input$manualgroupcols_node == TRUE)
+        {
+         categories = unlist(strsplit(input$ManualNodeCategories,split="\n"))
+         if (length(categories) == 0){categories=NULL }
+        } 
+       
         # set colors based on group
-        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = nodegroupcolpalette)
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = nodegroupcolpalette,categories=categories)
         tempdf$node.col = newcolors_and_colormapping[[1]]
         tempdf$node.group = newcolors_and_colormapping[[2]]
         node.group.colormapping = newcolors_and_colormapping[[3]]
@@ -566,6 +582,8 @@ server <- function(input, output,session) {
     {
       tempdf$text.col = input$fontcolorchoose
     }
+    
+    # Node stroke color
     if (input$nodestrokecolselect == "Single Color")
     {
        tempdf$node.strokecol = input$nodestrokecol
@@ -617,7 +635,7 @@ server <- function(input, output,session) {
     }
     
     # Write SVG file
-    writekinasetree(svginfo,destination=svgoutfile,font=input$fontfamilyselect)
+    writekinasetree(svginfo,destination=svgoutfile,font=input$fontfamilyselect,labelselect=input$kinaselabelselect)
     
     # Render SVG
     svgPanZoom(svgoutfile,viewBox = F,controlIconsEnabled=F)
@@ -631,7 +649,13 @@ server <- function(input, output,session) {
    
    # replace none color for D3 plots
    allnodescoloreddf =  svginfo$dataframe
-   allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = BG_col1
+   # allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = BG_col1
+   
+   # color nodes by single color
+   if (input$nodecolortype == "None")
+   {
+    allnodescoloreddf$node.col = input$col_node_single
+   }
    
    # modify color subnodes based on coloring options
    if (input$nodestrokecolselect == "Single Color")
@@ -644,6 +668,7 @@ server <- function(input, output,session) {
    }
    if (input$nodestrokecolselect == "Same as Node")
    {
+    allnodescoloreddf$node.strokecol = allnodescoloreddf$node.col
     BGstrolecol = "#ffffff"
    }
    
@@ -651,7 +676,7 @@ server <- function(input, output,session) {
    if (! dir.exists('www/json')) {
      dir.create('www/json')
    }
-   makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes)
+   makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect)
    
    # Make this reactive to any change in input paramters
    x <- reactiveValuesToList(input)
@@ -668,10 +693,16 @@ server <- function(input, output,session) {
     allnodescoloreddf =  svginfo$dataframe
     allnodescoloreddf$node.col[which(allnodescoloreddf$node.col == "none")] = BG_col1
     
+    # color nodes by single color
+    if (input$nodecolortype == "None")
+    {
+     allnodescoloreddf$node.col = input$col_node_single
+    }
+    
     # modify color subnodes based on coloring options
     if (input$nodestrokecolselect == "Single Color")
     {
-     BGstrolecol = "#ffffff"
+     BGstrolecol = input$nodestrokecol
     }
     if (input$nodestrokecolselect == "Selected")
     {
@@ -679,11 +710,12 @@ server <- function(input, output,session) {
     }
     if (input$nodestrokecolselect == "Same as Node")
     {
+     allnodescoloreddf$node.strokecol = allnodescoloreddf$node.col
      BGstrolecol = "#ffffff"
     }
     
     # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)

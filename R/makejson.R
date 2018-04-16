@@ -1,10 +1,19 @@
-makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol="#D3D3D3",BGstrolecol="#ffffff",colsubnodes=FALSE)
+makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol="#D3D3D3",BGstrolecol="#ffffff",colsubnodes=FALSE,labelselect)
 {
   # reorder so so that groups, families, and subfamilies are properly colored
   df<- df[seq(dim(df)[1],1),]
   
+  label = ""
+  if (labelselect == "default"){label = "text.label"}
+  if (labelselect == "coralID"){label = "id.coral"}
+  if (labelselect == "uniprot"){label = "id.uniprot"}
+  if (labelselect == "ensembl"){label = "id.ensembl"}
+  if (labelselect == "entrez"){label = "id.entrez"}
+  if (labelselect == "HGNC"){label = "id.HGNC"}
+  
+  
   # filter df
-  df = df[,c("id.coral","kinase.group","kinase.family","kinase.subfamily","branch.col","node.col","node.radius","text.size","node.strokecol","node.opacity")]
+  df = df[,c(label,"kinase.group","kinase.family","kinase.subfamily","branch.col","node.col","node.radius","text.size","node.strokecol","node.opacity")]
   
   # write df to file
   write_tsv(df,tmp,col_names = T)
@@ -24,18 +33,19 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol=
     family<-paste0(" ", row$kinase.family)
     family<-row$kinase.family
     subfamily<-paste0("  ", row$kinase.subfamily)
-    kinase<-paste0("   ", row$id.coral)
+    kinase<-paste0("   ", row[label])
     branchcol<-row$branch.col 
     nodecol<-row$node.col 
     noderadius<-row$node.radius
     nodestrokecol<-row$node.strokecol
-    subnodestrokecol = BGstrolecol # only highlight the outer nodes
+    subnodestrokecol = row$node.strokecol
     nodeopacity<-row$node.opacity
     textsize<-row$text.size
     subnodecol=nodecol
     if (colsubnodes == FALSE)
     {
      subnodecol = BGcol
+     subnodestrokecol = BGstrolecol # only highlight the outer nodes
     }
 
     # Add Group if not already there

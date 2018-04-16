@@ -123,6 +123,15 @@ ui <- dashboardPage(title="CORAL",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           
+                                          
+                                          # add option to manually pick groups
+                                          prettyCheckbox(inputId="manualgroupcols_branch","manual group entry",
+                                                         value = FALSE,shape="round",status="primary"),
+                                          conditionalPanel(
+                                           condition = "input.manualgroupcols_branch == true",
+                                           textAreaInput("ManualBranchCategories", "Categories", height = "100px",width = "100%",value =  "")
+                                          ),
+                                          
                                           fluidRow(width=12,
                                                    column(6,
                                                           radioButtons(inputId="branchgroupcolorpalettetype",label = "Color Range Type",
@@ -161,11 +170,6 @@ ui <- dashboardPage(title="CORAL",
                                                           ) # end conditional
                                                    ) # end col
                                           ) # end row
-                                          
-                                          # tags$hr(),
-                                          # 
-                                          # prettyCheckbox(inputId="manualgroupcols_branch","manual group entry",
-                                          #                value = FALSE,shape="round",status="primary")
                                          ),
                                          
                                          
@@ -309,6 +313,13 @@ ui <- dashboardPage(title="CORAL",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           
+                                          # add option to manually pick groups
+                                          prettyCheckbox(inputId="manualgroupcols_node","manual group entry",
+                                                         value = FALSE,shape="round",status="primary"),
+                                          conditionalPanel(
+                                           condition = "input.manualgroupcols_node == true",
+                                           textAreaInput("ManualNodeCategories", "Categories", height = "100px",width = "100%",value =  "")
+                                          ),
                                           
                                           fluidRow(width=12,
                                                    column(6,
@@ -349,11 +360,6 @@ ui <- dashboardPage(title="CORAL",
                                                           ) # end conditional
                                                    ) # end col
                                           ) # end row
-                                          
-                                          # tags$hr(),
-                                          # 
-                                          # prettyCheckbox(inputId="manualgroupcols_node","manual group entry",
-                                          #                value = FALSE,shape="round",status="primary")
                                          ),
                                          
                                          # if by value
@@ -429,7 +435,7 @@ ui <- dashboardPage(title="CORAL",
                                          ), # end conditional 
 
                                          tags$br(),
-                                         div(prettyCheckbox(inputId="colorsubnodes",label="color intermediate nodes",value = FALSE,shape="round",status="primary"))
+                                         div(prettyCheckbox(inputId="colorsubnodes",label="color intermediate nodes",value = TRUE,shape="round",status="primary"))
                                      ), # end box   
                                      
                                      # ---- NODE SIZE ---- #
@@ -491,6 +497,11 @@ ui <- dashboardPage(title="CORAL",
                                          conditionalPanel(
                                           condition = "input.AdvancedSections == 'Font'",
                                           
+                                          # Choose Label
+                                          selectInput(inputId = "kinaselabelselect",label = "Choose Label",
+                                                      choices = c("default","coralID","uniprot","ensembl","entrez","HGNC"),
+                                                      multiple = FALSE,selected = "Helvetica",width = "100%"),
+                                      
                                           # Choose Font
                                           selectInput(inputId = "fontfamilyselect",label = "Choose Font",
                                                       choices = c("Helvetica","Arial","Verdana","Trebuchet MS","Times New Roman","Garamond"),
@@ -551,8 +562,6 @@ ui <- dashboardPage(title="CORAL",
                             condition = "input.tabboxselected == 'Force'",
                             tags$a(id="downloadforce", href="#", class="btn btn-default", "Download")
                            )
-                           
-                           
                     ), # end column
                     
                     tabBox

@@ -17,7 +17,7 @@ color.by.selected <- function(df,sel,bg.col,sel.col)
 }
 
 # Define a function creates color vector from group
-color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
+color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3",categories=NULL)
 {
   # set background color
   color.vector = rep(bg.col,nrow(df))
@@ -27,6 +27,12 @@ color.by.group <- function(df,recolordf,colors,bg.col="#D3D3D3")
   
   # get group names
   group.names = names(table(recolordf[,2]))
+
+  # used user supplied groups
+  if (is.null(categories) == FALSE)
+  {
+   group.names = categories
+  }
   
   # Determine the number of groups
   numgroups = length(group.names)
