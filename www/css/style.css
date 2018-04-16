@@ -185,48 +185,7 @@ h6,.h6{
  background: #eceff3;
 }
 
-/* specific slider
-
-.js-irs-2 .irs-single, .js-irs-2 .irs-bar-edge, .js-irs-2 .irs-bar{
-  background: #ea7a6a;
-}
-
-.js-irs-2 .irs-bar, .js-irs-2 .irs-bar-edge {
-  border: #ea7a6a;
-} */
-
-/* tooltip button */
-.btn.action-button.btn-primary.btn-xs.shiny-bound-input{
- background: #c4c8cc;
- border: #fff;
-}
-
-.btn.action-button.btn-primary.btn-xs.shiny-bound-input>.fa.fa-question{
- color: #fff;
-}
-
-.btn.action-button.btn-primary.btn-xs.shiny-bound-input{
-  width: 14px;
-  height: 17px;
-  line-height: 16px;
-  min-height: 16px;
-  vertical-align: center;
-  font-size: 11px;
-  padding: 1.5px 1.25px 0px 1px;
-  margin: 0;
-}
-
-/* plot button +/- */
-.btn.btn-box-tool>.fa.fa-plus,
-.btn.btn-box-tool>.fa.fa-minus{
- color: #fff;
- padding: 5px 0px 0px 0px;
-}
-
-/* checkmarks */
-
-
-/* info-plot button */
+/* info-plot radio button */
 .btn.radiobtn.btn-primary{
   color:#eceff3;
   background: #a3b8cc;
@@ -237,6 +196,12 @@ h6,.h6{
   border-radius: 0px;
   padding-top: 7px;
   height: 42px;
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 110%;
+  line-height: 140%;
+  letter-spacing: .5px;
+  text-transform: uppercase;
 }
 
 .btn.radiobtn.btn-primary:hover{
@@ -262,46 +227,6 @@ h6,.h6{
    padding: 0px 0px 2px 0px;
 }
 
-/* download button */
-.btn.button-default{
- border-style: none;
-}
-
-#downloadtree.btn.btn-default, 
-#downloadcircle.btn.btn-default, 
-#downloadforce.btn.btn-default{
-  width: 100%; 
-  text-align: left; 
-  color: #fff; 
-  background-color: #333; 
-  height:43px; 
-  font-size: 120%; 
-  line-height: 190%; 
-  letter-spacing: .25px; 
-  border-radius: 0; 
-  border-color: #eceff3;
-  padding-top: 7px;
-}
-
-#downloadtree.btn.btn-default:hover, 
-#downloadcircle.btn.btn-default:hover, 
-#downloadforce.btn.btn-default:hover{
- background-color: #2b2b2b;
-}
-
-/* remove shadows */
-.box{
-  -webkit-box-shadow: none; 
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
-.nav-tabs-custom{
-  -webkit-box-shadow: none; 
-  -moz-box-shadow: none;
-  box-shadow: none;
-}
-
 /* info buttons*/
 #InfoBranchColorButton.btn.btn-default.action-button.shiny-bound-input,
 #InfoNodeColorButton.btn.btn-default.action-button.shiny-bound-input,
@@ -320,6 +245,10 @@ h6,.h6{
   margin-bottom: 2px;
   padding-top: 7px;
   padding-left: 10px;
+}
+
+#InfoAboutButton.btn.btn-default.action-button.shiny-bound-input{
+  margin-bottom: 18px;
 }
 
 
@@ -399,6 +328,74 @@ h6,.h6{
   border-left-color:#eceff3;
   border-right-color:#eceff3;
   border-top-color:#eceff3;
+}
+
+/* download button */
+.btn.button-default{
+ border-style: none;
+}
+
+#downloadtree.btn.btn-default, 
+#downloadcircle.btn.btn-default, 
+#downloadforce.btn.btn-default{
+  width: 100%; 
+  text-align: left; 
+  color: #fff; 
+  background-color: #333; 
+  height:43px; 
+  font-size: 120%; 
+  line-height: 190%; 
+  letter-spacing: .25px; 
+  border-radius: 0; 
+  border-color: #eceff3;
+  padding-top: 7px;
+}
+
+#downloadtree.btn.btn-default:hover, 
+#downloadcircle.btn.btn-default:hover, 
+#downloadforce.btn.btn-default:hover{
+ background-color: #2b2b2b;
+}
+
+/* plot button +/- */
+.btn.btn-box-tool>.fa.fa-plus,
+.btn.btn-box-tool>.fa.fa-minus{
+ color: #fff;
+ padding: 5px 0px 0px 0px;
+}
+
+/* tooltip button */
+.btn.action-button.btn-primary.btn-xs.shiny-bound-input{
+ background: #c4c8cc;
+ border: #fff;
+}
+
+.btn.action-button.btn-primary.btn-xs.shiny-bound-input>.fa.fa-question{
+ color: #fff;
+}
+
+.btn.action-button.btn-primary.btn-xs.shiny-bound-input{
+  width: 14px;
+  height: 17px;
+  line-height: 16px;
+  min-height: 16px;
+  vertical-align: center;
+  font-size: 11px;
+  padding: 1.5px 1.25px 0px 1px;
+  margin: 0;
+}
+
+/* remove shadows */
+.box{
+  -webkit-box-shadow: none; 
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.nav-tabs-custom{
+  -webkit-box-shadow: none; 
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 /* active tab */
