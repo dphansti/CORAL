@@ -140,7 +140,7 @@ server <- function(input, output,session) {
   updateTextInput(session, "nodeGroupBox", value = kinasegroupinfono)
  })
  
- # Load example data for branches color by value
+ # Load example data for branches color Quantitative
  observe({
   if (input$loadexamplebranchvalue == FALSE)
   {
@@ -155,7 +155,7 @@ server <- function(input, output,session) {
   updateTextInput(session, "branchValueBox", value = examplebranchvaluedata)
  })
  
- # Load example data for nodes color by value
+ # Load example data for nodes color Quantitative
  observe({
   if (input$loadexamplennodevalue == FALSE)
   {
@@ -170,7 +170,7 @@ server <- function(input, output,session) {
   updateTextInput(session, "nodeValueBox", value = examplenodevaluedata)
  })
  
- # Load example data for nodes size by value
+ # Load example data for nodes size Quantitative
  observe({
   if (input$loadexamplennodesizevalue == FALSE)
   {
@@ -215,7 +215,7 @@ server <- function(input, output,session) {
     tempdf$text.size = input$fontsize
     
     # Single branch color
-    if (input$branchcolortype == "As one color")
+    if (input$branchcolortype == "Uniform")
     {
       tempdf$branch.col = input$col_branch_single
     }
@@ -225,7 +225,7 @@ server <- function(input, output,session) {
     {
      # set colors based on selected ids
      selkinases = ""
-     if (input$branchmanuallyinputmethod == "select")
+     if (input$branchmanuallyinputmethod == "browse")
      {
       selkinases = input$KinasesManual
      }
@@ -260,7 +260,7 @@ server <- function(input, output,session) {
     }
     
     # color branches by group
-    if (input$branchcolortype == "by group")
+    if (input$branchcolortype == "Categorical")
     {
      # define color palette
      if (input$branchgroupcolorpalettetype == "prebuilt")
@@ -307,8 +307,8 @@ server <- function(input, output,session) {
       }
     }
     
-    # color branches by value
-    if (input$branchcolortype == "by value")
+    # color branches Quantitative
+    if (input$branchcolortype == "Quantitative")
     {
       # read in text area input
       recolordf = read.text.input(input$branchValueBox)
@@ -373,7 +373,7 @@ server <- function(input, output,session) {
     }
     
     # color nodes by single color
-    if (input$nodecolortype == "As one color")
+    if (input$nodecolortype == "Uniform")
     {
       tempdf$node.col = input$col_node_single
     }
@@ -388,7 +388,7 @@ server <- function(input, output,session) {
     {
      # set colors based on selected ids
      selkinases = ""
-     if (input$nodemanuallyinputmethod == "select")
+     if (input$nodemanuallyinputmethod == "browse")
      {
       selkinases = input$KinasesManualNode
      }
@@ -424,7 +424,7 @@ server <- function(input, output,session) {
     }
     
     # color nodes by group
-    if (input$nodecolortype == "by group")
+    if (input$nodecolortype == "Categorical")
     {
      # define color palette
      if (input$nodegroupcolorpalettetype == "prebuilt")
@@ -468,8 +468,8 @@ server <- function(input, output,session) {
       }
     }
     
-    # color nodes by value
-    if (input$nodecolortype == "by value")
+    # color nodes Quantitative
+    if (input$nodecolortype == "Quantitative")
     {
       # read in text area input
       recolordf = read.text.input(input$nodeValueBox)
@@ -532,7 +532,7 @@ server <- function(input, output,session) {
     }
     
     # color nodes by single color
-    if (input$nodesizetype == "by value")
+    if (input$nodesizetype == "Quantitative")
     {
       # read in text area input
       resizedf = read.text.input(input$nodesizeValueBox)
@@ -676,7 +676,7 @@ server <- function(input, output,session) {
    if (! dir.exists('www/json')) {
      dir.create('www/json')
    }
-   makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect)
+   makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect,defaultnoderadius=input$size_node_single)
    
    # Make this reactive to any change in input paramters
    x <- reactiveValuesToList(input)
@@ -715,7 +715,7 @@ server <- function(input, output,session) {
     }
     
     # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect,defaultnoderadius=input$size_node_single)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)

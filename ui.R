@@ -64,13 +64,13 @@ ui <- dashboardPage(title="CORAL",
                                          collapsible = TRUE,collapsed = TRUE,
                                          
                                          selectInput(inputId = "branchcolortype",label = "Color Scheme", 
-                                                     choices = c("As one color","Manually","by group","by value"),
-                                                     multiple = FALSE,selected = "As one color",width = "100%"),
+                                                     choices = c("Uniform","Manually","Categorical","Quantitative"),
+                                                     multiple = FALSE,selected = "Uniform",width = "100%"),
                                          
                                          # if single color
                                          conditionalPanel(
-                                          condition = "input.branchcolortype == 'As one color'",
-                                          colourInput("col_branch_single", "Branch Color",BG_col1,showColour = "both")
+                                          condition = "input.branchcolortype == 'Uniform'",
+                                          colourInput("col_branch_single", "Color",BG_col1,showColour = "both")
                                          ),
                                          
                                          # if manual selection
@@ -78,12 +78,12 @@ ui <- dashboardPage(title="CORAL",
                                           condition = "input.branchcolortype == 'Manually'",
                                           
                                           # choose between selecting and pasting in
-                                          radioButtons(inputId="branchmanuallyinputmethod",label = "Kinase Input Method",
-                                                       choices = c("select","paste"),inline = TRUE),
+                                          radioButtons(inputId="branchmanuallyinputmethod",label = "Input Method",
+                                                       choices = c("browse","paste"),inline = TRUE),
                                           
                                           # if select
                                           conditionalPanel(
-                                           condition = "input.branchmanuallyinputmethod == 'select'",
+                                           condition = "input.branchmanuallyinputmethod == 'browse'",
                                            selectInput(inputId = "KinasesManual",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%")
                                           ),
                                           # if paste
@@ -94,32 +94,32 @@ ui <- dashboardPage(title="CORAL",
                                            )
                                           ),
                                           
-                                          selectInput(inputId = "branchManualIDtype",label = "Identifier Type",
+                                          selectInput(inputId = "branchManualIDtype",label = "Identifier",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
 
                                           fluidRow( width=12,
-                                                    column(6,colourInput("col_select_bg", "BG Color", BG_col1,showColour = "both")),
-                                                    column(6,colourInput("col_select", "Color", HM_hi,showColour = "both"))
+                                                    column(6,colourInput("col_select_bg", "Default Color", BG_col1,showColour = "both")),
+                                                    column(6,colourInput("col_select", "Selected Color", HM_hi,showColour = "both"))
                                           ),
                                           fluidRow( width=12,
-                                                    column(6,textInput(inputId="branch_nonselect_label",label="nonselected label",value = "not selected")),
-                                                    column(6,textInput(inputId="branch_select_label",label="selected label",value = "selected"))
+                                                    column(6,textInput(inputId="branch_nonselect_label",label="Default label",value = "not selected")),
+                                                    column(6,textInput(inputId="branch_select_label",label="Selected label",value = "selected"))
                                           ),
                                           
                                           # add ability to reverse palette
                                           actionButton(inputId = "KinasesManualBranchRevPalette","Reverse Palette",width = "100%")
                                          ),
                                          
-                                         # if by group
+                                         # if Categorical
                                          conditionalPanel(
-                                          condition = "input.branchcolortype == 'by group'",
+                                          condition = "input.branchcolortype == 'Categorical'",
                                           prettyCheckbox(inputId="loadexamplebranchgroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
                                           
-                                          textAreaInput("branchGroupBox", "Kinases & Group", height = "100px",width = "100%",
+                                          textAreaInput("branchGroupBox", "Kinases & Category", height = "100px",width = "100%",
                                                         value = ""
                                           ),
-                                          selectInput(inputId = "branchGroupIDtype",label = "Identifier Type",
+                                          selectInput(inputId = "branchGroupIDtype",label = "Identifier",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           
@@ -173,16 +173,16 @@ ui <- dashboardPage(title="CORAL",
                                          ),
                                          
                                          
-                                         # if by value
+                                         # if Quantitative
                                          conditionalPanel(
-                                          condition = "input.branchcolortype == 'by value'",
+                                          condition = "input.branchcolortype == 'Quantitative'",
                                           prettyCheckbox(inputId="loadexamplebranchvalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           
                                           textAreaInput("branchValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                         value =  ""
                                           ),
                                           
-                                          selectInput(inputId = "branchValueIDtype",label = "Identifier Type",
+                                          selectInput(inputId = "branchValueIDtype",label = "Identifier",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           
@@ -254,13 +254,13 @@ ui <- dashboardPage(title="CORAL",
                                          collapsible = TRUE,collapsed = TRUE,
                                          
                                          selectInput(inputId = "nodecolortype",label = "Color Scheme",
-                                                     #  choices = c("None","Same as branches","As one color","Manually","by group","by value"),
-                                                     choices = c("None","As one color","Manually","by group","by value"),
+                                                     #  choices = c("None","Same as branches","Uniform","Manually","Categorical","Quantitative"),
+                                                     choices = c("None","Uniform","Manually","Categorical","Quantitative"),
                                                      multiple = FALSE,selected = "None",width = "100%"),
                                          
                                          # if single color
                                          conditionalPanel(
-                                          condition = "input.nodecolortype == 'As one color'",
+                                          condition = "input.nodecolortype == 'Uniform'",
                                           colourInput("col_node_single", "Node Color",BG_col1)
                                          ),
                                          
@@ -269,12 +269,12 @@ ui <- dashboardPage(title="CORAL",
                                           condition = "input.nodecolortype == 'Manually'",
                                            
                                            # choose between selecting and pasting in
-                                           radioButtons(inputId="nodemanuallyinputmethod",label = "Kinase Input Method",
-                                                        choices = c("select","paste"),inline = TRUE),
+                                           radioButtons(inputId="nodemanuallyinputmethod",label = "Input Method",
+                                                        choices = c("browse","paste"),inline = TRUE),
                                            
                                            # if select
                                            conditionalPanel(
-                                            condition = "input.nodemanuallyinputmethod == 'select'",
+                                            condition = "input.nodemanuallyinputmethod == 'browse'",
                                             selectInput(inputId = "KinasesManualNode",label = "Kinases",choices = svginfo$dataframe$id.coral,multiple = TRUE,width = "100%")
                                            ),
                                            # if paste
@@ -285,13 +285,13 @@ ui <- dashboardPage(title="CORAL",
                                             )
                                            ),
                                            
-                                           selectInput(inputId = "NodeManualIDtype",label = "Identifier Type",
+                                           selectInput(inputId = "NodeManualIDtype",label = "Identifier",
                                                        choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                        multiple = FALSE,selected = "coralID",width = "100%"),
                                            
                                            fluidRow( width=12,
-                                                     column(6,colourInput("col_node_bg", "BG Color", BG_col1,showColour = "both")),
-                                                     column(6,colourInput("col_sel_node", "Color", HM_hi,showColour = "both"))
+                                                     column(6,colourInput("col_node_bg", "Default Color", BG_col1,showColour = "both")),
+                                                     column(6,colourInput("col_sel_node", "Selected Color", HM_hi,showColour = "both"))
                                            ),
                                            fluidRow( width=12,
                                                      column(6,textInput(inputId="node_nonselect_label",label="nonselected label",value = "not selected")),
@@ -302,14 +302,14 @@ ui <- dashboardPage(title="CORAL",
                                            actionButton(inputId = "KinasesManualNodeRevPalette","Reverse Palette",width = "100%")
                                           ),
                                           
-                                         # if by group
+                                         # if Categorical
                                          conditionalPanel(
-                                          condition = "input.nodecolortype == 'by group'",
+                                          condition = "input.nodecolortype == 'Categorical'",
                                           prettyCheckbox(inputId="loadexamplennodegroup",label="load default kinase groups",value = FALSE,shape="round",status="primary"),
-                                          textAreaInput("nodeGroupBox", "Kinases & Group", height = "100px",width = "100%",
+                                          textAreaInput("nodeGroupBox", "Kinases & Category", height = "100px",width = "100%",
                                                         value =  ""
                                           ),
-                                          selectInput(inputId = "nodeGroupIDtype",label = "Identifier Type",
+                                          selectInput(inputId = "nodeGroupIDtype",label = "Identifier",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           
@@ -362,14 +362,14 @@ ui <- dashboardPage(title="CORAL",
                                           ) # end row
                                          ),
                                          
-                                         # if by value
+                                         # if Quantitative
                                          conditionalPanel(
-                                          condition = "input.nodecolortype == 'by value'",
+                                          condition = "input.nodecolortype == 'Quantitative'",
                                           prettyCheckbox(inputId="loadexamplennodevalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           textAreaInput("nodeValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                         value =  ""
                                           ),
-                                          selectInput(inputId = "nodeValueIDtype",label = "Identifier Type",
+                                          selectInput(inputId = "nodeValueIDtype",label = "Identifier",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           fluidRow( width=12,
@@ -444,7 +444,7 @@ ui <- dashboardPage(title="CORAL",
                                          collapsible = TRUE,collapsed = TRUE, 
                                          
                                          selectInput(inputId = "nodesizetype",label = "Size Node",
-                                                     choices = c("One Size","by value"),
+                                                     choices = c("One Size","Quantitative"),
                                                      multiple = FALSE,selected = "One Size",width = "100%"),
                                          
                                          # if single color
@@ -453,14 +453,14 @@ ui <- dashboardPage(title="CORAL",
                                           sliderInput("size_node_single", "Node Size",value=5,min = 0,max=20,step = 0.25)
                                          ),
                                          
-                                         # if by value
+                                         # if Quantitative
                                          conditionalPanel(
-                                          condition = "input.nodesizetype == 'by value'",
+                                          condition = "input.nodesizetype == 'Quantitative'",
                                           prettyCheckbox(inputId="loadexamplennodesizevalue",label="load example data",value = FALSE,shape="round",status="primary"),
                                           textAreaInput("nodesizeValueBox", "Kinases & Value", height = "100px",width = "100%",
                                                         value = ""
                                           ),
-                                          selectInput(inputId = "nodesizeValueIDtype",label = "Identifier Type",
+                                          selectInput(inputId = "nodesizeValueIDtype",label = "Identifier",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           sliderInput("nodesizeValueslider",label = "Size Range",value=c(3,9),min = 0, max = 20,step = 0.25),
@@ -535,7 +535,7 @@ ui <- dashboardPage(title="CORAL",
                                                            textAreaInput("NodeStrokeSelect", "Selected Kinases", height = "100px",width = "100%",
                                                                          value = ""
                                                            ),
-                                                           selectInput(inputId = "NodeStrokeSelectIDtype",label = "Identifier Type",
+                                                           selectInput(inputId = "NodeStrokeSelectIDtype",label = "Identifier",
                                                                        choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                                        multiple = FALSE,selected = "coralID",width = "100%"),
                                                            
