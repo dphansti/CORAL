@@ -89,10 +89,19 @@ svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
 # Default tree branch color
 BG_col1 = "#D3D3D3"
 
-# Default heatmap colors
-HM_low = "#07C9DE"
-HM_med = "#D3D3D3"
-HM_hi = "#F66049"
+# Default selected color
+Cor_col = "#FA6958"
+
+# 2-color heatmap colors
+HM2_low = "#1EA0F7"
+HM2_hi = "#FACE1E"
+
+# default heatmap colors
+HM_low = "#1b8ed1"
+HM_med = "#e0e0e0"
+HM_hi = "#FA6958"
+
+
 
 
 ### Qualtative Palettes ###
@@ -166,8 +175,7 @@ drawmypalettes("Purples",Purples,"www/images")
 
 ### Divergent Palettes ###
 
-divergent_palette_choices <- c('<img src="images/Aqua_Grey_Coral.png">' = 'Aqua_Grey_Coral',
-                               '<img src="images/Red_Grey_Blue.png">' = 'Red_Grey_Blue',
+divergent_palette_choices <- c('<img src="images/Blue_Grey_Coral.png">' = 'Blue_Grey_Coral',
                                '<img src="images/Bro_Grey_Tur.png">' = 'Bro_Grey_Tur',
                                '<img src="images/Pink_Grey_Gre.png">' = 'Pink_Grey_Gre',
                                '<img src="images/Pur_Grey_Gre.png">' = 'Pur_Grey_Gre',
@@ -175,19 +183,17 @@ divergent_palette_choices <- c('<img src="images/Aqua_Grey_Coral.png">' = 'Aqua_
                                '<img src="images/Red_Grey_Gre.png">' = 'Red_Grey_Gre')
 
 # my divergent palettes
-Aqua_Grey_Coral = c("#07C9DE","#e5e5e5","#F66049")
-Red_Grey_Blue = c("#CA0020","#e5e5e5","#0571B0")
+Blue_Grey_Coral = c("#1B8ED1","#e5e5e5","#FA6958")
 Bro_Grey_Tur = c("#A6611A","#e5e5e5", "#018571")
 Pink_Grey_Gre = c("#D01C8B","#e5e5e5", "#4DAC26")
 Pur_Grey_Gre = c("#7B3294","#e5e5e5", "#008837")
 Pur_Grey_Or = c("#E66101","#e5e5e5", "#5E3C99")
 Red_Grey_Gre = c("#CA0020","#e5e5e5", "#404040")
 
-divpalettes = list(Aqua_Grey_Coral,Red_Grey_Blue,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
-names(divpalettes) = c("Aqua_Grey_Coral","Red_Grey_Blue","Bro_Grey_Tur","Pink_Grey_Gre","Pur_Grey_Gre","Pur_Grey_Or","Red_Grey_Gre")
+divpalettes = list(Blue_Grey_Coral,Red_Grey_Blue,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
+names(divpalettes) = c("Blue_Grey_Coral","Bro_Grey_Tur","Pink_Grey_Gre","Pur_Grey_Gre","Pur_Grey_Or","Red_Grey_Gre")
 
-drawmypalettes("Aqua_Grey_Coral",Aqua_Grey_Coral,"www/images")
-drawmypalettes("Red_Grey_Blue",Red_Grey_Blue,"www/images")
+drawmypalettes("Blue_Grey_Coral",Blue_Grey_Coral,"www/images")
 drawmypalettes("Bro_Grey_Tur",Bro_Grey_Tur,"www/images")
 drawmypalettes("Pink_Grey_Gre",Pink_Grey_Gre,"www/images")
 drawmypalettes("Pur_Grey_Gre",Pur_Grey_Gre,"www/images")
