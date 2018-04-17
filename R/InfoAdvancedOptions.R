@@ -4,7 +4,7 @@ div(id="InfoAdvancedOptionsBox",
         fluidRow(width=12, 
                  column(8,   
                         div(
-                            h1 ("Advanced Settings"),
+                            h2 ("Advanced Settings", style="color:#425e8c; font-size:145%; font-weight:500; margin-bottom: 15px"),
                             "To further illuminate your data and personalize your tree, CORAL allows you to
                             add a title, change the font, color, and size of kinase labels, refine the appearance of nodes
                             with transparency and strokes, and outline specific nodes of interest."
@@ -32,7 +32,7 @@ div(id="InfoAdvancedOptionsBox",
         
 # FONT    
                         div(
-                            h2 (HTML("Font &nbsp;\u2609")),
+                            h2 (HTML("Labels &nbsp;\u2609")),
                             "This tab allows you to change global font settings as well as kinase label colors. Font style 
                             and color changes will only affect the Tree plot.",
                      
@@ -44,24 +44,27 @@ div(id="InfoAdvancedOptionsBox",
                                             )
                                      ),
                                      column(9,
-                                            div(  
-                                             h3 ("Choose Font"),
-                                             "Selects the font to use for all kinase labels, family labels, and titles in the Tree plot.",
+                                            div( 
+                                             h3 ("Label Identifier"),
+                                             ".",
+                                             
+                                             h3 ("Font"),
+                                             "Sets the fontfor all kinase labels, family labels, and titles in the Tree plot.",
                          
                                              h3 ("Label Font Size"),
                                              "Sets the font size for all kinase labels, family labels, and titles. 
                                              This setting will apply to all plots.",
                          
-                                             h3 ("Label Color"),
+                                             h3 ("Label Color Scheme"),
                                              "This option allows you to change the kinase label colors either uniformly or based on branch color.",
                          
                                              h4 (HTML("\u25be&nbsp;&nbsp; Single Color")),
-                                             "The default option is to use the same color font (black) for all kinase labels. 
+                                             "The default option is to use the same color (black) for all kinase labels. 
                                              You can change the color of all labels by using the color picker box 
                                              to find a color or enter a hex value.",
                          
                                              h4 (HTML("\u25be&nbsp;&nbsp; Same as Branch")),
-                                             "This option colors the kinase labels the same color as their branches. 
+                                             "This option colors the kinase labels the same as their branches. 
                                              This can work especially well when nodes are disabled and you are highlighting
                                              kinases in specific qualitative groups or quantitative extremes."
                                             )
@@ -185,7 +188,7 @@ div(id="InfoAdvancedOptionsBox",
                  ),
                  column(6,        
                         div(
-                            h3 (HTML("Manual &nbsp;&nbsp;\u25be")),
+                            h3 (HTML("Selected &nbsp;&nbsp;\u25be")),
                             "This option allows you to color the strokes of specific nodes of interest. This is useful for 
                             highlighting specific kinases when node and branch colors are already conveying important information.",
                       
@@ -210,7 +213,7 @@ div(id="InfoAdvancedOptionsBox",
                             In order to properly plot your selected branches, you must specify the identification used in the 
                             'Kinases' field",
                          
-                            h4 ("BG Color & Selected Color"),
+                            h4 ("Selected Color & Not Selected Color"),
                             "Here you can change node colors for both your selected and unselected kinases. The BG Color sets 
                             the color of kinases that are not listed in the above field, while Selected Color sets the color  
                             of the kinases you have identified. You can use the color picker box to find a color or enter a 

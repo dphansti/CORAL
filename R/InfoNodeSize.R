@@ -4,13 +4,17 @@ div(id="InfoNodeSizeBox",
         fluidRow(width=12, 
                  column(8,   
                         div(
-                            h1 ("Node Size Scheme"),
+                            h2 ("Node Size", style="color:#3477b3; font-size:145%; font-weight:500; margin-bottom: 15px"),
+                           
                             "CORAL also allows you to change node size depending on the desired look of your tree and 
-                            the data you intend to visualize. You can set all nodes to a single size using the Uniform 
-                            setting or scale nodes according to numerical data using the Quantitative setting.",
+                            the data you intend to visualize.",
+                            
+                            tags$blockquote(h2 ("Scaling Scheme"),
+                            "You can set all nodes to a single size using the Uniform 
+                            setting or scale nodes according to numerical data using the Quantitative setting."),
         
 # UNIFORM
-                            h2 (HTML("Uniform &nbsp;&nbsp;\u25be")),
+                            h2 (HTML("Uniform &nbsp;&nbsp;\u25be"), style="font-weight:500"),
                             "This option allows you to set all nodes in the tree to a single size of your choosing using 
                             the slider.",        
         
@@ -37,7 +41,7 @@ div(id="InfoNodeSizeBox",
         fluidRow(width=12, 
                  column(8, 
                         div(
-                            h2 (HTML("Quantitative &nbsp;&nbsp;\u25be")),
+                            h2 (HTML("Quantitative &nbsp;&nbsp;\u25be"), style="font-weight:500"),
                             "This option allows you to color kinase branches based on a range of qualitative values. It is a useful 
                             option when trying to visualize a range of values, such as fold change or signal data.",
                             tags$br(),tags$br(),

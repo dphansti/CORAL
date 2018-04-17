@@ -80,6 +80,29 @@ h6,.h6{
  ;
 }
 
+blockquote{
+  font-family: inherit;
+  font-size: 100%;
+  padding: 0px 0px 0px 13px;
+  margin-bottom: 0px;
+}
+
+#InfoBranchColorBox .box-body blockquote{
+   border-left: 4px solid #3da1cc;
+}
+
+#InfoNodeColorBox .box-body blockquote{
+   border-left: 4px solid #3889bf;
+}
+
+#InfoNodeSizeBox .box-body blockquote{
+   border-left: 4px solid #3477b3;
+}
+
+#InfoAdvancedOptionsBox .box-body blockquote{
+   border-left: 4px solid #425e8c;
+}
+
 /* plot button titles */
 .box.box-solid.box-primary>.box-header>h3.box-title,
 .box.box-solid.box-success>.box-header>h3.box-title,
