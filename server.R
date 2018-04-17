@@ -221,7 +221,7 @@ server <- function(input, output,session) {
     }
     
     # Manually select branches to color
-    if (input$branchcolortype == "Manually")
+    if (input$branchcolortype == "Manual")
     {
      # set colors based on selected ids
      selkinases = ""
@@ -384,7 +384,7 @@ server <- function(input, output,session) {
     }
     
     # Manually select nodes to color
-    if (input$nodecolortype == "Manually")
+    if (input$nodecolortype == "Manual")
     {
      # set colors based on selected ids
      selkinases = ""
