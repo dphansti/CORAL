@@ -103,8 +103,8 @@ ui <- dashboardPage(title="CORAL",
                                                     column(6,colourInput("col_select", "Selected Color", Cor_col,showColour = "both"))
                                           ),
                                           fluidRow( width=12,
-                                                    column(6,textInput(inputId="branch_nonselect_label",label="Default label",value = "not selected")),
-                                                    column(6,textInput(inputId="branch_select_label",label="Selected label",value = "selected"))
+                                                    column(6,textInput(inputId="branch_nonselect_label",label="Default Label",value = "not selected")),
+                                                    column(6,textInput(inputId="branch_select_label",label="Selected Label",value = "selected"))
                                           ),
                                           
                                           # add ability to reverse palette
@@ -141,7 +141,7 @@ ui <- dashboardPage(title="CORAL",
                                                    column(6,
                                                           conditionalPanel(
                                                            condition = "input.branchgroupcolorpalettetype == 'prebuilt'",
-                                                           radioButtons_withHTML('branchgroupcolorpalette_qaul', 'Choose Palette',choices = qualitative_palette_choices, inline = FALSE)
+                                                           radioButtons_withHTML('branchgroupcolorpalette_qaul', 'Palette',choices = qualitative_palette_choices, inline = FALSE)
                                                           ),
                                                           
                                                           conditionalPanel(
@@ -200,12 +200,12 @@ ui <- dashboardPage(title="CORAL",
                                           column(6,
                                                  conditionalPanel(
                                                   condition = "input.branchcolorpalettetype == 'sequential'",
-                                                  radioButtons_withHTML('branchcolorpalette_seq', 'Choose Palette',choices = sequential_palette_choices, inline = FALSE)
+                                                  radioButtons_withHTML('branchcolorpalette_seq', 'Palette',choices = sequential_palette_choices, inline = FALSE)
                                                  ),
                                                  
                                                  conditionalPanel(
                                                   condition = "input.branchcolorpalettetype == 'divergent'",
-                                                  radioButtons_withHTML('branchcolorpalette_div', 'Choose Palette',choices = divergent_palette_choices, inline = FALSE)
+                                                  radioButtons_withHTML('branchcolorpalette_div', 'Palette',choices = divergent_palette_choices, inline = FALSE)
                                                  ),
                                                  
                                                  conditionalPanel(
@@ -330,7 +330,7 @@ ui <- dashboardPage(title="CORAL",
                                                    column(6,
                                                           conditionalPanel(
                                                            condition = "input.nodegroupcolorpalettetype == 'prebuilt'",
-                                                           radioButtons_withHTML('nodegroupcolorpalette_qaul', 'Choose Palette',choices = qualitative_palette_choices, inline = FALSE)
+                                                           radioButtons_withHTML('nodegroupcolorpalette_qaul', 'Palette',choices = qualitative_palette_choices, inline = FALSE)
                                                           ),
                                                           
                                                           conditionalPanel(
@@ -386,12 +386,12 @@ ui <- dashboardPage(title="CORAL",
                                           column(6,
                                                  conditionalPanel(
                                                   condition = "input.nodecolorpalettetype == 'sequential'",
-                                                  radioButtons_withHTML('nodecolorpalette_seq', 'Choose Palette',choices = sequential_palette_choices, inline = FALSE)
+                                                  radioButtons_withHTML('nodecolorpalette_seq', 'Palette',choices = sequential_palette_choices, inline = FALSE)
                                                  ),
                                                  
                                                  conditionalPanel(
                                                   condition = "input.nodecolorpalettetype == 'divergent'",
-                                                  radioButtons_withHTML('nodecolorpalette_div', 'Choose Palette',choices = divergent_palette_choices, inline = FALSE)
+                                                  radioButtons_withHTML('nodecolorpalette_div', 'Palette',choices = divergent_palette_choices, inline = FALSE)
                                                  ),
                                                  
                                                  conditionalPanel(
