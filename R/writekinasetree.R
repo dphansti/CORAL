@@ -1,4 +1,3 @@
-svginfo$groups
 
 # Define a function that writes the group names
 build.group.labels <- function(l,font,groupcolor)
