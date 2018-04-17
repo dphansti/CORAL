@@ -4,7 +4,7 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol=
   df<- df[seq(dim(df)[1],1),]
   
   label = ""
-  if (labelselect == "default"){label = "text.label"}
+  if (labelselect == "Default"){label = "text.label"}
   if (labelselect == "coralID"){label = "id.coral"}
   if (labelselect == "uniprot"){label = "id.uniprot"}
   if (labelselect == "ensembl"){label = "id.ensembl"}

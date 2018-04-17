@@ -1,13 +1,22 @@
-
+svginfo$groups
 
 # Define a function that writes the group names
-build.group.labels <- function(l,font)
+build.group.labels <- function(l,font,groupcolor)
 {
+ 
+ # change color
+ colortag = paste(" fill=\"",groupcolor,"\" font-family",sep="")
+ l = gsub(pattern = "font-family",colortag,l)
+ 
  # use correct font
  grouplabel = gsub(pattern = "'Roboto-Bold'",font,l)
  
+
  # make bold
  grouplabel = gsub(pattern = "letter-spacing","font-weight=\"700\" letter-spacing",grouplabel)
+ 
+ 
+ 
  
  return(grouplabel)
 }
@@ -27,7 +36,7 @@ build.text <- function(l,labelselect)
  
  # choose label type
  label = ""
- if (labelselect == "default"){label = l["text.label"]}
+ if (labelselect == "Default"){label = l["text.label"]}
  if (labelselect == "coralID"){label = l["id.coral"]}
  if (labelselect == "uniprot"){label = l["id.uniprot"]}
  if (labelselect == "ensembl"){label = l["id.ensembl"]}
@@ -73,7 +82,7 @@ build.node <- function(l)
 }
 
 # Define a function that writes an kinase tree svg file
-writekinasetree <- function(svginfo,destination,font,labelselect)
+writekinasetree <- function(svginfo,destination,font,labelselect,groupcolor)
 {
   outputlines = c()
   
@@ -112,7 +121,7 @@ writekinasetree <- function(svginfo,destination,font,labelselect)
   
   # add tail
   outputlines = c(outputlines,"<g id=\"GROUPS\">")
-  outputlines = c(outputlines,unlist(lapply(svginfo$groups, build.group.labels, font=font)))
+  outputlines = c(outputlines,unlist(lapply(svginfo$groups, build.group.labels, font=font,groupcolor=groupcolor)))
   outputlines = c(outputlines,"</g>")
   outputlines = c(outputlines,"</svg>")
   

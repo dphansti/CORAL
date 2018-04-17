@@ -125,7 +125,7 @@ ui <- dashboardPage(title="CORAL",
                                           
                                           
                                           # add option to manually pick groups
-                                          prettyCheckbox(inputId="manualgroupcols_branch","manual group entry",
+                                          prettyCheckbox(inputId="manualgroupcols_branch","manual category entry",
                                                          value = FALSE,shape="round",status="primary"),
                                           conditionalPanel(
                                            condition = "input.manualgroupcols_branch == true",
@@ -134,7 +134,7 @@ ui <- dashboardPage(title="CORAL",
                                           
                                           fluidRow(width=12,
                                                    column(6,
-                                                          radioButtons(inputId="branchgroupcolorpalettetype",label = "Color Range Type",
+                                                          radioButtons(inputId="branchgroupcolorpalettetype",label = "Palette Type",
                                                                        choices = c("prebuilt","manual"),inline = FALSE)
                                                    ),
                                                    
@@ -193,7 +193,7 @@ ui <- dashboardPage(title="CORAL",
                                           
                                           fluidRow( width=12,
                                           column(6,
-                                                 radioButtons(inputId="branchcolorpalettetype",label = "Color Range Type",
+                                                 radioButtons(inputId="branchcolorpalettetype",label = "Palette Type",
                                                               choices = c("sequential","divergent","manual 2-color","manual 3-color"),inline = FALSE)
                                           ),
                                           
@@ -261,7 +261,7 @@ ui <- dashboardPage(title="CORAL",
                                          # if single color
                                          conditionalPanel(
                                           condition = "input.nodecolortype == 'Uniform'",
-                                          colourInput("col_node_single", "Node Color",BG_col1)
+                                          colourInput("col_node_single", "Color",BG_col1)
                                          ),
                                          
                                          # if manual selection
@@ -314,7 +314,7 @@ ui <- dashboardPage(title="CORAL",
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           
                                           # add option to manually pick groups
-                                          prettyCheckbox(inputId="manualgroupcols_node","manual group entry",
+                                          prettyCheckbox(inputId="manualgroupcols_node","manual category entry",
                                                          value = FALSE,shape="round",status="primary"),
                                           conditionalPanel(
                                            condition = "input.manualgroupcols_node == true",
@@ -323,7 +323,7 @@ ui <- dashboardPage(title="CORAL",
                                           
                                           fluidRow(width=12,
                                                    column(6,
-                                                          radioButtons(inputId="nodegroupcolorpalettetype",label = "Color Range Type",
+                                                          radioButtons(inputId="nodegroupcolorpalettetype",label = "Palette Type",
                                                                        choices = c("prebuilt","manual"),inline = FALSE)
                                                    ),
                                                    
@@ -379,7 +379,7 @@ ui <- dashboardPage(title="CORAL",
                                           
                                           fluidRow( width=12,
                                           column(6,
-                                                 radioButtons(inputId="nodecolorpalettetype",label = "Color Range Type",
+                                                 radioButtons(inputId="nodecolorpalettetype",label = "Palette Type",
                                                               choices = c("sequential","divergent","manual 2-color","manual 3-color"),inline = FALSE)
                                           ),
                                           
@@ -443,14 +443,14 @@ ui <- dashboardPage(title="CORAL",
                                      box(width=12,title = "Node Size",status = "info", solidHeader = TRUE,
                                          collapsible = TRUE,collapsed = TRUE, 
                                          
-                                         selectInput(inputId = "nodesizetype",label = "Size Node",
+                                         selectInput(inputId = "nodesizetype",label = "Scaling Scheme",
                                                      choices = c("One Size","Quantitative"),
                                                      multiple = FALSE,selected = "One Size",width = "100%"),
                                          
                                          # if single color
                                          conditionalPanel(
                                           condition = "input.nodesizetype == 'One Size'",
-                                          sliderInput("size_node_single", "Node Size",value=5,min = 0,max=20,step = 0.25)
+                                          sliderInput("size_node_single", "Size",value=5,min = 0,max=20,step = 0.25)
                                          ),
                                          
                                          # if Quantitative
@@ -485,7 +485,7 @@ ui <- dashboardPage(title="CORAL",
                                          collapsible = TRUE,collapsed = TRUE,
                                          
                                          prettyRadioButtons("AdvancedSections",label = "",
-                                                            choices = c("Title","Font","Node"),
+                                                            choices = c("Title","Labels","Node"),
                                                             selected = "Title",inline = TRUE),
                                          
                                          conditionalPanel(
@@ -495,15 +495,15 @@ ui <- dashboardPage(title="CORAL",
                                          ),
                                          
                                          conditionalPanel(
-                                          condition = "input.AdvancedSections == 'Font'",
+                                          condition = "input.AdvancedSections == 'Labels'",
                                           
                                           # Choose Label
-                                          selectInput(inputId = "kinaselabelselect",label = "Choose Label",
-                                                      choices = c("default","coralID","uniprot","ensembl","entrez","HGNC"),
+                                          selectInput(inputId = "kinaselabelselect",label = "Label Identifier",
+                                                      choices = c("Default","coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "Helvetica",width = "100%"),
                                       
                                           # Choose Font
-                                          selectInput(inputId = "fontfamilyselect",label = "Choose Font",
+                                          selectInput(inputId = "fontfamilyselect",label = "Font",
                                                       choices = c("Helvetica","Arial","Verdana","Trebuchet MS","Times New Roman","Garamond"),
                                                       multiple = FALSE,selected = "Helvetica",width = "100%"),
                                           
@@ -515,11 +515,16 @@ ui <- dashboardPage(title="CORAL",
                                                       multiple = FALSE,selected = "Single Color",width = "100%"),
                                           
                                           conditionalPanel(condition = "input.fontcolorselect == 'Single Color'",
-                                                           colourInput("fontcolorchoose", "Label Color","#000000"))
+                                                           colourInput("fontcolorchoose", "Label Color","#000000")),
+                                          
+                                          colourInput("groupcolorchoose", "Group Color","#000000")
                                          ),
                                          
                                          conditionalPanel(
                                           condition = "input.AdvancedSections == 'Node'",
+                                          
+                                          
+                                          sliderInput("Node_Opacity", "Opacity",value=1,min = 0,max=1,step = 0.01),
                                           
                                           # How to color stroke of node
                                           selectInput(inputId = "nodestrokecolselect",label = "Node Stroke Color Scheme",
@@ -541,9 +546,9 @@ ui <- dashboardPage(title="CORAL",
                                                            
                                                            colourInput("NodeStrokeSelect_BG", "Not Selected Color","#ffffff"),
                                                            colourInput("NodeStrokeSelect_FG", "Selected Color",HM_hi)
-                                          ), # end condition
+                                          ) # end condition
                                           
-                                          sliderInput("Node_Opacity", "Node Opacity",value=1,min = 0,max=1,step = 0.01)
+                                          
                                          )
                                      ) #end box
                            ), #end row
