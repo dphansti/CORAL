@@ -64,7 +64,7 @@ ui <- dashboardPage(title="CORAL",
                                          collapsible = TRUE,collapsed = TRUE,
                                          
                                          selectInput(inputId = "branchcolortype",label = "Color Scheme", 
-                                                     choices = c("Uniform","Manually","Categorical","Quantitative"),
+                                                     choices = c("Uniform","Manual","Categorical","Quantitative"),
                                                      multiple = FALSE,selected = "Uniform",width = "100%"),
                                          
                                          # if single color
@@ -75,7 +75,7 @@ ui <- dashboardPage(title="CORAL",
                                          
                                          # if manual selection
                                          conditionalPanel(
-                                          condition = "input.branchcolortype == 'Manually'",
+                                          condition = "input.branchcolortype == 'Manual'",
                                           
                                           # choose between selecting and pasting in
                                           radioButtons(inputId="branchmanuallyinputmethod",label = "Input Method",
@@ -100,7 +100,7 @@ ui <- dashboardPage(title="CORAL",
 
                                           fluidRow( width=12,
                                                     column(6,colourInput("col_select_bg", "Default Color", BG_col1,showColour = "both")),
-                                                    column(6,colourInput("col_select", "Selected Color", HM_hi,showColour = "both"))
+                                                    column(6,colourInput("col_select", "Selected Color", Cor_col,showColour = "both"))
                                           ),
                                           fluidRow( width=12,
                                                     column(6,textInput(inputId="branch_nonselect_label",label="Default label",value = "not selected")),
@@ -211,8 +211,8 @@ ui <- dashboardPage(title="CORAL",
                                                  conditionalPanel(
                                                   condition = "input.branchcolorpalettetype == 'manual 2-color'",
                                                   
-                                                  colourInput("branch2col_low", "Low", HM_low,showColour = "both"),
-                                                  colourInput("branch2col_hi", "High", HM_hi,showColour = "both")
+                                                  colourInput("branch2col_low", "Low", HM2_low,showColour = "both"),
+                                                  colourInput("branch2col_hi", "High", HM2_hi,showColour = "both")
                                                  ),
                                                  
                                                  conditionalPanel(
@@ -254,8 +254,8 @@ ui <- dashboardPage(title="CORAL",
                                          collapsible = TRUE,collapsed = TRUE,
                                          
                                          selectInput(inputId = "nodecolortype",label = "Color Scheme",
-                                                     #  choices = c("None","Same as branches","Uniform","Manually","Categorical","Quantitative"),
-                                                     choices = c("None","Uniform","Manually","Categorical","Quantitative"),
+                                                     #  choices = c("None","Same as branches","Uniform","Manual","Categorical","Quantitative"),
+                                                     choices = c("None","Uniform","Manual","Categorical","Quantitative"),
                                                      multiple = FALSE,selected = "None",width = "100%"),
                                          
                                          # if single color
@@ -266,7 +266,7 @@ ui <- dashboardPage(title="CORAL",
                                          
                                          # if manual selection
                                          conditionalPanel(
-                                          condition = "input.nodecolortype == 'Manually'",
+                                          condition = "input.nodecolortype == 'Manual'",
                                            
                                            # choose between selecting and pasting in
                                            radioButtons(inputId="nodemanuallyinputmethod",label = "Input Method",
@@ -291,7 +291,7 @@ ui <- dashboardPage(title="CORAL",
                                            
                                            fluidRow( width=12,
                                                      column(6,colourInput("col_node_bg", "Default Color", BG_col1,showColour = "both")),
-                                                     column(6,colourInput("col_sel_node", "Selected Color", HM_hi,showColour = "both"))
+                                                     column(6,colourInput("col_sel_node", "Selected Color", Cor_col,showColour = "both"))
                                            ),
                                            fluidRow( width=12,
                                                      column(6,textInput(inputId="node_nonselect_label",label="nonselected label",value = "not selected")),
@@ -397,8 +397,8 @@ ui <- dashboardPage(title="CORAL",
                                                  conditionalPanel(
                                                   condition = "input.nodecolorpalettetype == 'manual 2-color'",
                                                   
-                                                  colourInput("node2col_low", "Low", HM_low,showColour = "both"),
-                                                  colourInput("node2col_hi", "High", HM_hi,showColour = "both")
+                                                  colourInput("node2col_low", "Low", HM2_low,showColour = "both"),
+                                                  colourInput("node2col_hi", "High", HM2_hi,showColour = "both")
                                                  ),
                                                  
                                                  conditionalPanel(
@@ -545,7 +545,7 @@ ui <- dashboardPage(title="CORAL",
                                                                        multiple = FALSE,selected = "coralID",width = "100%"),
                                                            
                                                            colourInput("NodeStrokeSelect_BG", "Not Selected Color","#ffffff"),
-                                                           colourInput("NodeStrokeSelect_FG", "Selected Color",HM_hi)
+                                                           colourInput("NodeStrokeSelect_FG", "Selected Color",Cor_col)
                                           ) # end condition
                                           
                                           
