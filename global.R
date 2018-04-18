@@ -117,7 +117,7 @@ qualitative_palette_choices <- c('<img src="images/Erika.png">' = 'Erika',
                                '<img src="images/Set3.png">' = 'Set3')
 
 # my qualitative palettes
-Erika = c("#F05F37","#16CDDE","#EDC624","#B348A1","#7C64FF","#78C99B","#C2374A","#B0BE33","#CAE6A1","#3F9FFC","#F2987A","#BA8DB4")
+Erika = c("#FA6958","#3F9FFC","#FAD53F","#B0E6C2","#B348A1","#2CD1E0","#BEC956","#7C64FF","#C2374A","#70BD93","#FFBB99","#BA97F2")
 Accent = brewer.pal(8,"Accent")
 Dark2 = brewer.pal(8,"Dark2")
 Paired = brewer.pal(12,"Paired")
@@ -204,18 +204,18 @@ drawmypalettes("Red_Grey_Gre",Red_Grey_Gre,"www/images")
 
 # Default group color palette
 defaultpalette = colorRampPalette( c(
- "#F05F37",
- "#16CDDE",
- "#EDC624",
- "#B348A1",
- "#7C64FF",
- "#78C99B",
- "#C2374A",
- "#B0BE33",
- "#CAE6A1",
+ "#FA6958",
  "#3F9FFC",
- "#F2987A",
- "#BA8DB4"
+ "#FAD53F",
+ "#B0E6C2",
+ "#B348A1",
+ "#2CD1E0",
+ "#BEC956",
+ "#7C64FF",
+ "#C2374A",
+ "#70BD93",
+ "#FFBB99",
+ "#BA97F2"
 ))(12)
 
 # # Default group color palette
