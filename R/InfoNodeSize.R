@@ -67,7 +67,7 @@ div(id="InfoNodeSizeBox",
                                                 values will result in the branch being sized according to the last listed value. Identifiers 
                                                 not found within the tree will be ignored. Kinases that are not listed will lack a node entirely.",
                          
-                                                h3 ("Identifier Type"),
+                                                h3 ("Identifier"),
                                                 "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
                                                 In order to properly plot your selected branches, you must specify the identification used in the 
                                                 'Kinases & Group' space.",

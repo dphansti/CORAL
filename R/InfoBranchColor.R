@@ -146,7 +146,7 @@ div(id="InfoBranchColorBox",
                                              as well as Atypical and Others which fall outside of those group assignments.",
                          
                                              h3 ("Kinases & Category"),
-                                             "Here you can submit a two-column list of kinases and their group assignments. A space, 
+                                             "Here you can submit a two-column list of kinases and their category assignments. A space, 
                                              tab, or new line must separate each kinase from its corresponding category assignment. 
                                              Every kinase listed must have a category assignment, or plotting will fail. Including 
                                              kinases with more than one category assignment will result in that kinase being colored 
@@ -159,15 +159,26 @@ div(id="InfoBranchColorBox",
                                              identification used in the 'Kinases & Category' space.",
                                              
                                              h4 (HTML("\u25ce&nbsp; Manual category entry")),
-                                             ".",
+                                             "This option brings up a text field wherein you can enter your categories in the order in which you want them 
+                                             to appear in the legend, overriding the default alphabetical order. The order of the colors in the selected
+                                             palette will not change.",
                                              
                                              h3 ("Categories"),
-                                             ".",
+                                             "This is the field in which to list categories in your preferred order. Category names must be separated by
+                                             a new line.",
                          
                                              h3 ("Palette Type"),
-                                             "Here you can choose from several built-in color palettes or create your own. You can 
-                                             manually select up to 12 colors using the color picker boxes, and each palette will automatically 
-                                             expand to accommodate as many categories as you have identified in the 'Kinases & Category' field.",
+                                             "Your categories will be colored using a prebuilt palette, or you may create your own. Each palette will  
+                                             automatically expand to accommodate as many categories as you have identified in the 'Kinases & Category' field.",
+                                             
+                                             h4 (HTML("\u2609&nbsp; Prebuilt")),
+                                             "Here you can choose between CORAL's default colorblind-friendly 12-color palette and Color Brewer's eight qualitative 
+                                             palettes.",
+
+                                             h4 (HTML("\u2609&nbsp; Manual")),
+                                             "Here you can create a palette with up to twelve  colors using the color picker boxes. The hex values are not shown, 
+                                             but if you wish to enter a hex value you may still do so: Select a color box, double-click or press Command-A 
+                                             (or Ctrl-A), and enter the value.",
                          
                                              h3 ("Color Missing Kinases"),
                                              "This option allows you to select a color for kinases that were not listed in the 'Kinases & Category' field
@@ -227,7 +238,7 @@ div(id="InfoBranchColorBox",
                                                 and all values above the assigned Max Value will be colored as though they were the set maximum value.",
                          
                                                 h3 ("Palette Type"),
-                                                "These options allow you to choose between several pre-built sequential and divergent color palettes 
+                                                "These options allow you to choose between several prebuilt sequential and divergent color palettes 
                                                 or create your own 2- or 3-color gradient using color selectors. Sequential palettes are useful 
                                                 for continuously increasing data, such as raw signal from RNA-Seq. Divergent palettes are useful for 
                                                 depicting data with both positive and negative values, such as fold change. Manual 2-color gradients 

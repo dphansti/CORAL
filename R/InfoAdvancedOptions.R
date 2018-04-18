@@ -192,32 +192,18 @@ div(id="InfoAdvancedOptionsBox",
                             "This option allows you to color the strokes of specific nodes of interest. This is useful for 
                             highlighting specific kinases when node and branch colors are already conveying important information.",
                       
-                            h4 ("Kinase Input Method"),
-                            "Here you can select the method you would like to use to identify kinases of interest.",
-                         
-                            h5 (HTML("\u2609&nbsp; Select")),
-                            "This method reates a scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
-                            when highlighting a small number of kinases",
-                         
-                            h5 (HTML("\u2609&nbsp; Paste")),
-                            "This method creates a field into which you may type or paste a list of kinases, with each kinase on its own line. This feature 
-                            is useful when trying to highlight a larger number of kinases, or if you have a pre-existing list of kinases 
-                            from a spreadsheet or other document.",
-                         
                             h4 ("Kinases"),
-                            "This is the field where you may select or input your list of kinases to highlight, depending on your 
-                            chosen input method.",
+                            "In this field you can list kinases you wish to highlight with node strokes. Each kinase must be separated by a new line.",
                          
-                            h4 ("Identifier Type"),
+                            h4 ("Identifier"),
                             "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
                             In order to properly plot your selected branches, you must specify the identification used in the 
                             'Kinases' field",
                          
                             h4 ("Selected Color & Not Selected Color"),
-                            "Here you can change node colors for both your selected and unselected kinases. The BG Color sets 
-                            the color of kinases that are not listed in the above field, while Selected Color sets the color  
-                            of the kinases you have identified. You can use the color picker box to find a color or enter a 
-                            hex value.",
+                            "Here you can change the node stroke colors for both your selected and unselected kinases. Selected Color sets the stroke color  
+                            of the kinases you have identified in the above field; Not Selected Color sets the stroke color for all other nodes.
+                            You can use the color picker box to find a color or enter a hex value.",
                             tags$br(),
                             tags$br(),
                             tags$br()
