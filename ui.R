@@ -100,11 +100,11 @@ ui <- dashboardPage(title="CORAL",
 
                                           fluidRow( width=12,
                                                     column(6,colourInput("col_select_bg", "Default Color", BG_col1,showColour = "both")),
-                                                    column(6,colourInput("col_select", "Selected Color", Cor_col,showColour = "both"))
+                                                    column(6,colourInput("col_select", "Selection Color", Cor_col,showColour = "both"))
                                           ),
                                           fluidRow( width=12,
                                                     column(6,textInput(inputId="branch_nonselect_label",label="Default Label",value = "not selected")),
-                                                    column(6,textInput(inputId="branch_select_label",label="Selected Label",value = "selected"))
+                                                    column(6,textInput(inputId="branch_select_label",label="Selection Label",value = "selected"))
                                           ),
                                           
                                           # add ability to reverse palette
@@ -291,11 +291,11 @@ ui <- dashboardPage(title="CORAL",
                                            
                                            fluidRow( width=12,
                                                      column(6,colourInput("col_node_bg", "Default Color", BG_col1,showColour = "both")),
-                                                     column(6,colourInput("col_sel_node", "Selected Color", Cor_col,showColour = "both"))
+                                                     column(6,colourInput("col_sel_node", "Selection Color", Cor_col,showColour = "both"))
                                            ),
                                            fluidRow( width=12,
-                                                     column(6,textInput(inputId="node_nonselect_label",label="nonselected label",value = "not selected")),
-                                                     column(6,textInput(inputId="node_select_label",label="selected label",value = "selected"))
+                                                     column(6,textInput(inputId="node_nonselect_label",label="Default Label",value = "not selected")),
+                                                     column(6,textInput(inputId="node_select_label",label="Selection Label",value = "selected"))
                                            ),
                                            
                                            # add ability to reverse palette
