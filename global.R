@@ -190,7 +190,7 @@ Pur_Grey_Gre = c("#7B3294","#e5e5e5", "#008837")
 Pur_Grey_Or = c("#E66101","#e5e5e5", "#5E3C99")
 Red_Grey_Gre = c("#CA0020","#e5e5e5", "#404040")
 
-divpalettes = list(Blue_Grey_Coral,Red_Grey_Blue,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
+divpalettes = list(Blue_Grey_Coral,Bro_Grey_Tur,Pink_Grey_Gre,Pur_Grey_Gre,Pur_Grey_Or,Red_Grey_Gre)
 names(divpalettes) = c("Blue_Grey_Coral","Bro_Grey_Tur","Pink_Grey_Gre","Pur_Grey_Gre","Pur_Grey_Or","Red_Grey_Gre")
 
 drawmypalettes("Blue_Grey_Coral",Blue_Grey_Coral,"www/images")
