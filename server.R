@@ -291,7 +291,7 @@ server <- function(input, output,session) {
         }
        
         # set colors based on group
-        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = branchgroupcolpalette,categories=categories)
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, bg.col=input$defaultbranchcolor_categorical, colors  = branchgroupcolpalette,categories=categories)
         tempdf$branch.col = newcolors_and_colormapping[[1]]
         tempdf$branch.group = newcolors_and_colormapping[[2]]
         branch.group.colormapping = newcolors_and_colormapping[[3]]
@@ -458,7 +458,7 @@ server <- function(input, output,session) {
         } 
        
         # set colors based on group
-        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, colors  = nodegroupcolpalette,categories=categories)
+        newcolors_and_colormapping = color.by.group(df = tempdf, recolordf = recolordf, bg.col = input$defaultnodecolor_categorical, colors  = nodegroupcolpalette,categories=categories)
         tempdf$node.col = newcolors_and_colormapping[[1]]
         tempdf$node.group = newcolors_and_colormapping[[2]]
         node.group.colormapping = newcolors_and_colormapping[[3]]

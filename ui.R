@@ -169,7 +169,9 @@ ui <- dashboardPage(title="CORAL",
                                                            )
                                                           ) # end conditional
                                                    ) # end col
-                                          ) # end row
+                                          ), # end row
+                                          
+                                          colourInput("defaultbranchcolor_categorical", "Default Color",BG_col1,showColour = "both")
                                          ),
                                          
                                          
@@ -359,7 +361,9 @@ ui <- dashboardPage(title="CORAL",
                                                            )
                                                           ) # end conditional
                                                    ) # end col
-                                          ) # end row
+                                          ), # end row
+                                          
+                                          colourInput("defaultnodecolor_categorical", "Default Color",BG_col1,showColour = "both")
                                          ),
                                          
                                          # if Quantitative
