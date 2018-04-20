@@ -324,12 +324,24 @@ server <- function(input, output,session) {
         # establish palette
         if (input$branchcolorpalettetype == "sequential") 
         {
-          branchcolpalette = colorRampPalette(unlist(seqpalettes[input$branchcolorpalette_seq]))(11)
+         palettecolors = unlist(seqpalettes[input$branchcolorpalette_seq])
+         if(input$reversebranchpalettesequential == TRUE)
+         {
+          palettecolors = rev(palettecolors)
+         }
+         branchcolpalette = colorRampPalette(palettecolors)(11)
           bg.col = unlist(seqpalettes[input$branchcolorpalette_seq])[1]
          }
         if (input$branchcolorpalettetype == "divergent") 
          {
-         branchcolpalette = colorRampPalette(unlist(divpalettes[input$branchcolorpalette_div]))(11)
+
+         palettecolors = unlist(divpalettes[input$branchcolorpalette_div])
+         if(input$reversebranchpalettedivergent == TRUE)
+         {
+          palettecolors = rev(palettecolors)
+         }
+         branchcolpalette = colorRampPalette(palettecolors)(11)
+         
          bg.col = unlist(divpalettes[input$branchcolorpalette_div])[2]
          }
         if (input$branchcolorpalettetype == "manual 2-color")
@@ -485,12 +497,23 @@ server <- function(input, output,session) {
         # establish palette
        if (input$nodecolorpalettetype == "sequential") 
        {
-        nodecolpalette = colorRampPalette(unlist(seqpalettes[input$nodecolorpalette_seq]))(11)
+        palettecolors = unlist(seqpalettes[input$nodecolorpalette_seq])
+        if(input$reversenodepalettesequential == TRUE)
+        {
+         palettecolors = rev(palettecolors)
+        }
+        nodecolpalette = colorRampPalette(palettecolors)(11)
+
         bg.col = unlist(seqpalettes[input$nodecolorpalette_seq])[1]
         }
        if (input$nodecolorpalettetype == "divergent") 
        {
-        nodecolpalette = colorRampPalette(unlist(divpalettes[input$nodecolorpalette_div]))(11)
+        palettecolors = unlist(divpalettes[input$nodecolorpalette_div])
+        if(input$reversenodepalettedivergent == TRUE)
+        {
+         palettecolors = rev(palettecolors)
+        }
+        nodecolpalette = colorRampPalette(palettecolors)(11)
         bg.col = unlist(divpalettes[input$nodecolorpalette_div])[2]
         }
        if (input$nodecolorpalettetype == "manual 2-color") 

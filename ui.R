@@ -202,12 +202,14 @@ ui <- dashboardPage(title="CORAL",
                                           column(6,
                                                  conditionalPanel(
                                                   condition = "input.branchcolorpalettetype == 'sequential'",
-                                                  radioButtons_withHTML('branchcolorpalette_seq', 'Palette',choices = sequential_palette_choices, inline = FALSE)
+                                                  radioButtons_withHTML('branchcolorpalette_seq', 'Palette',choices = sequential_palette_choices, inline = FALSE),
+                                                  prettyCheckbox("reversebranchpalettesequential",label = "Reverse Palette",shape = "round")
                                                  ),
                                                  
                                                  conditionalPanel(
                                                   condition = "input.branchcolorpalettetype == 'divergent'",
-                                                  radioButtons_withHTML('branchcolorpalette_div', 'Palette',choices = divergent_palette_choices, inline = FALSE)
+                                                  radioButtons_withHTML('branchcolorpalette_div', 'Palette',choices = divergent_palette_choices, inline = FALSE),
+                                                  prettyCheckbox("reversebranchpalettedivergent",label = "Reverse Palette",shape = "round")
                                                  ),
                                                  
                                                  conditionalPanel(
@@ -390,12 +392,14 @@ ui <- dashboardPage(title="CORAL",
                                           column(6,
                                                  conditionalPanel(
                                                   condition = "input.nodecolorpalettetype == 'sequential'",
-                                                  radioButtons_withHTML('nodecolorpalette_seq', 'Palette',choices = sequential_palette_choices, inline = FALSE)
+                                                  radioButtons_withHTML('nodecolorpalette_seq', 'Palette',choices = sequential_palette_choices, inline = FALSE),
+                                                  prettyCheckbox("reversenodepalettesequential",label = "Reverse Palette",shape = "round")
                                                  ),
                                                  
                                                  conditionalPanel(
                                                   condition = "input.nodecolorpalettetype == 'divergent'",
-                                                  radioButtons_withHTML('nodecolorpalette_div', 'Palette',choices = divergent_palette_choices, inline = FALSE)
+                                                  radioButtons_withHTML('nodecolorpalette_div', 'Palette',choices = divergent_palette_choices, inline = FALSE),
+                                                  prettyCheckbox("reversenodepalettedivergent",label = "Reverse Palette",shape = "round")
                                                  ),
                                                  
                                                  conditionalPanel(
