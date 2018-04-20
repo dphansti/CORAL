@@ -279,7 +279,7 @@ server <- function(input, output,session) {
       
       # convert to coral id
       recolordf = convertID (tempdf,recolordf,inputtype=input$branchGroupIDtype)
-      
+
       if (nrow(recolordf)>0)
       {
         # check for user supplied groups
@@ -298,6 +298,9 @@ server <- function(input, output,session) {
         
         # reorder based on branch color 
         tempdf = tempdf[order(tempdf$branch.group),]
+        
+        # reorder based in whether kinase was in text box
+        tempdf = tempdf[order(tempdf$id.coral %in% recolordf[,1], decreasing = FALSE),]
 
         # build legend for Branch Color (by group)
         lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=names(branch.group.colormapping),groupcolors=branch.group.colormapping,elementtype = "Branch",fontfamily = input$fontfamilyselect)
