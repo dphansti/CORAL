@@ -230,7 +230,7 @@ ui <- dashboardPage(title="CORAL",
                                           ), # end row
                                           
                                           conditionalPanel(
-                                           condition = "input.branchcolorpalettetype == 'manual-2 color'",
+                                           condition = "input.branchcolorpalettetype == 'manual 2-color'",
                                            # add ability to reverse palette
                                            actionButton(inputId = "KinasesBranchValue2RevPalette","Reverse Palette",width = "100%")
                                           ),
