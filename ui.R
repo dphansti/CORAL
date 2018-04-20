@@ -24,6 +24,8 @@ ui <- dashboardPage(title="CORAL",
  dashboardBody(
   tags$head(
    
+   tags$head(tags$link(rel="shortcut icon", href="http://phanstiel-lab.med.unc.edu/CORAL/favicon.ico")),
+   
    #adds the d3 library needed to draw the plot
    tags$script(src="javascript/d3.v3.min.js"),
    
