@@ -1,8 +1,6 @@
 
 #---------------------- LOAD LIBRARIES ----------------------#
 
-library(pacman)
-
 # load basic libraries
 library(shiny)
 library(shinydashboard)
