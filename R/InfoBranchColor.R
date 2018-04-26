@@ -76,7 +76,8 @@ div(id="InfoBranchColorBox",
                               
                                              h4 (HTML("\u2609&nbsp; Browse")),
                                              "Creates a scrollable and searchable list of all kinases featured on the tree. 
-                                             This feature is most useful when highlighting a small number of kinases.",
+                                             This feature is most useful when highlighting a small number of kinases. Note, you can select between 
+                                             lists of several different identifiers using the 'Identifier' selector (see below).",
                               
                                              h4 (HTML("\u2609&nbsp; Paste")),
                                              "Creates a field into which you may type or paste a list of kinases, with each kinase on its own line. 

@@ -18,7 +18,7 @@ div(id="InfoNodeColorBox",
                             "You can either disable nodes altogether, color all nodes a single color using the Uniform setting, 
                             highlight specific kinases of interest using Manual, or color a selection of nodes according to a 
                             categorical or quantitative color palette. Categorical coloring allows you to assign kinases 
-                            to groups, each of which will be assigned a unique color from either a prebuilt or user-made palette. 
+                            to categories, each of which will be assigned a unique color from either a prebuilt or user-made palette. 
                             Quantitative coloring assigns numerical data to sequential, divergent or user-made color scales. 
                             Each method automatically generates a figure legend indicating the significance of the node color scheme."),
                             
@@ -37,7 +37,8 @@ div(id="InfoNodeColorBox",
                             h2 (HTML("Uniform &nbsp;&nbsp;\u25be"), style="font-weight:500"),
                             "This option allows you to color every node as a single uniform color. It is useful when 
                             you prefer the appearance of nodes for each kinase but do not wish to present any data on 
-                            the nodes themselves.",
+                            the nodes themselves or when ou wish to encode information in the size of the node itself using the 
+                            'Node Size' box",
 
                             fluidRow(width = 12,
                                 column(3, tags$br(), 
@@ -71,7 +72,7 @@ div(id="InfoNodeColorBox",
                         div(
                             h2 (HTML("Manual &nbsp;&nbsp;\u25be"), style="font-weight:500"),
                             "This option allows you to highlight the nodes of specific kinases of interest. It is useful 
-                            for finding and emphasizing a single group of kinases.",
+                            for finding and emphasizing a single subset of kinases.",
         
                             fluidRow(width=12,
                                      column(3, tags$br(), 
@@ -87,7 +88,8 @@ div(id="InfoNodeColorBox",
                        
                                              h4 (HTML("\u2609&nbsp; Browse")),
                                              "This method creates a scrollable and searchable list of all kinases featured on the tree. This feature is most useful 
-                                             when highlighting a small number of kinases.",
+                                             when highlighting a small number of kinases. Note, you can select between lists of several different identifiers using 
+                                             the 'Identifier' selector (see below).",
                       
                                              h4 (HTML("\u2609&nbsp; Paste")),
                                              "This method creates a field into which you may type or paste a list of kinases, with each kinase on its own line. 
@@ -103,13 +105,13 @@ div(id="InfoNodeColorBox",
                                              In order to properly plot your selected nodes, you must specify the identification used in the 
                                              'Kinases' field.",
                       
-                                             h3 ("Default Color & Selected Color"),
+                                             h3 ("Default Color & Selection Color"),
                                              "Here you can change node colors for both your selected and unselected kinases. Default Color sets 
-                                             the color of kinases that were not listed, while Selected Color sets the color of the kinases you 
+                                             the color of kinases that were not listed, while Selection Color sets the color of the kinases you 
                                              have identified and wish to highlight. You can use the color picker box to find a color or enter 
                                              a hex value.",
                       
-                                             h3 ("Default Label & Selected Label"),
+                                             h3 ("Default Label & Selection Label"),
                                              "A figure legend will automatically be generated indicating the colors of the selected and unselected 
                                              kinases. By default, the legend will refer to these two categories as 'selected' and 'not selected'. 
                                              These text boxes can be used to change the legend labels.",
@@ -139,7 +141,7 @@ div(id="InfoNodeColorBox",
                             kinases families.",
                             tags$br(),tags$br(),
                             "The Categorical option will automatically generate a figure legend showing the color and category name for each 
-                            category listed. categories will be listed in alphabetical order, and colors will be assigned accordingly.",
+                            category listed. Categories will be listed in alphabetical order, and colors will be assigned accordingly.",
         
                             fluidRow(width=12,
                                      column(3, tags$br(), 
@@ -171,7 +173,9 @@ div(id="InfoNodeColorBox",
                                                 h4 (HTML("\u25ce&nbsp; Manual category entry")),
                                                 "This option brings up a text field wherein you can enter your categories in the order in which you want them 
                                                 to appear in the legend, overriding the default alphabetical order. The order of the colors in the selected
-                                                palette will not change.",
+                                                palette will not change.
+                                                
+                                                Note - This option is valuable for keeping the color/category assignments consistent between mutliple plots.",
                                                 
                                                 h3 ("Categories"),
                                                 "This is the field in which to list categories in your preferred order. Category names must be separated by
@@ -242,7 +246,7 @@ div(id="InfoNodeColorBox",
                                                 h3 ("Identifier"),
                                                 "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
                                                 In order to properly plot your selected nodes, you must specify the identification used in 
-                                                the 'Kinases & Category' field",
+                                                the 'Kinases & Category' field.",
                          
                                                 h3 ("Min Value & Max Value"),
                                                 "This option allows you to set the values that will represent either end of the color spectrum. 
