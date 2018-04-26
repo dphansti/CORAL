@@ -372,7 +372,7 @@ server <- function(input, output,session) {
         tempdf = tempdf[order(abs(tempdf$branch.val), decreasing = FALSE,na.last = FALSE),]
         
         # add legend info
-        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$minheat,maxval=input$maxheat, palette=branchcolpalette,elementtype = "Branch",fontfamily = input$fontfamilyselect)
+        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$minheat,maxval=input$maxheat, palette=branchcolpalette,elementtype = "Branch",fontfamily = input$fontfamilyselect,subtitle = input$quantvaluenamebranchcolor)
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
@@ -542,7 +542,7 @@ server <- function(input, output,session) {
         tempdf = tempdf[order(abs(tempdf$node.val), decreasing = FALSE,na.last = FALSE),]
         
         # add legend info
-        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$nodeminheat,maxval=input$nodemaxheat, palette=nodecolpalette,elementtype = "Node",fontfamily = input$fontfamilyselect)
+        lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$nodeminheat,maxval=input$nodemaxheat, palette=nodecolpalette,elementtype = "Node",fontfamily = input$fontfamilyselect,subtitle = input$quantvaluenamenodecolor)
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)
@@ -587,7 +587,7 @@ server <- function(input, output,session) {
         tempdf$node.val.radius = radii_and_mapping[[2]]
         
         # add legend info
-        lines_and_offset = build.nodesize.legend (yoffset=yoffset,minval=minvalforlegend,maxval=maxvalforlegend,minsize = input$nodesizeValueslider[1] ,maxsize = input$nodesizeValueslider[2],fontfamily = input$fontfamilyselect)
+        lines_and_offset = build.nodesize.legend (yoffset=yoffset,minval=minvalforlegend,maxval=maxvalforlegend,minsize = input$nodesizeValueslider[1] ,maxsize = input$nodesizeValueslider[2],fontfamily = input$fontfamilyselect, subtitle= input$quantvaluenamenodesize)
         lines = lines_and_offset[[1]]
         yoffset = lines_and_offset[[2]] + 14
         legend = c(legend,lines)

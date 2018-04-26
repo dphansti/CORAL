@@ -190,6 +190,8 @@ ui <- dashboardPage(title="CORAL",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
                                           
+                                          textInput(inputId = "quantvaluenamebranchcolor", label = "Legend Subtitle"),
+                                          
                                           fluidRow( width=12,
                                                     column(6,                numericInput(inputId = "minheat",label = "Min Value",value = -3 )),
                                                     column(6,                  numericInput(inputId = "maxheat",label = "Max Value",value =  3 ))
@@ -380,6 +382,9 @@ ui <- dashboardPage(title="CORAL",
                                           selectInput(inputId = "nodeValueIDtype",label = "Identifier",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
+                                          
+                                          textInput(inputId = "quantvaluenamenodecolor", label = "Legend Subtitle"),
+                                          
                                           fluidRow( width=12,
                                                     column(6,                numericInput(inputId = "nodeminheat",label = "Min Value",value = -3 )),
                                                     column(6,                  numericInput(inputId = "nodemaxheat",label = "Max Value",value =  3 ))
@@ -473,6 +478,9 @@ ui <- dashboardPage(title="CORAL",
                                           selectInput(inputId = "nodesizeValueIDtype",label = "Identifier",
                                                       choices = c("coralID","uniprot","ensembl","entrez","HGNC"),
                                                       multiple = FALSE,selected = "coralID",width = "100%"),
+                                          
+                                          textInput(inputId = "quantvaluenamenodesize", label = "Legend Subtitle"),
+                                          
                                           sliderInput("nodesizeValueslider",label = "Size Range",value=c(3,9),min = 0, max = 20,step = 0.25),
                                           
                                           prettyCheckbox("Manuallysetdatarange","manually set data range",value = FALSE,shape="round",status="primary"),

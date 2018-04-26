@@ -103,7 +103,7 @@ drawrect <- function(x,y,fill,width=6.584,height=11.27)
 
 
 # Define a function that builds a legend for values
-build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "Branch",fontfamily="'AvenirNext-Bold'")
+build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "Branch",fontfamily="'AvenirNext-Bold'",subtitle="test")
 {
   # write the header
   header = paste("<text x=\"98.8075\"",
@@ -113,14 +113,30 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
                  " font-size=\"9px\">", elementtype," Color</text>",
                  sep="")
   
+  subtitle.height = 0
+  if (subtitle != ""){subtitle.height = 8.8451}
+  
   # write the grey line
-  greylineheight = 41.58
+  greylineheight = 41.58 + subtitle.height
   greyline       = paste("<rect x=\"", 89.807,"\"",
                          " y=\"", yoffset, "\"",
                          " fill=\"", "#D3D3D3", "\"",
                          " width=\"", 2.333, "\"",
                          " height=\"", greylineheight,"\"/>",
                          sep="")
+  
+  # add the subtitle
+  if (subtitle != ""){
+   
+   yoffset = yoffset + 8.8451
+   
+   subtitleline = paste("<text x=\"98.8075\"",
+         " y=\"", yoffset + 8.8451*1.5, "\"",
+         " font-family=\"", fontfamily, "\" ",
+         " font-weight=\"700\" ",
+         " font-size=\"7px\">", subtitle,"</text>",
+         sep="")
+   }
   
   # add the gradient
   heatrange = seq(minval,maxval,length.out = 11)
@@ -159,6 +175,11 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
   
   # assemble output
   output = c(header, greyline, rects, text.min, text.mid, text.max)
+  if (subtitle != "")
+  {
+    output = c(header, subtitleline, greyline, rects, text.min, text.mid, text.max)
+  }
+  
   yoffset = yoffset + 41.58
   return(list(output,yoffset))
 }
@@ -168,7 +189,7 @@ build.value.legend  <- function(yoffset=0,minval,maxval, palette,elementtype = "
 
 
 # Define a function that builds a legend for values
-build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize,fontfamily="'AvenirNext-Bold'")
+build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize,fontfamily="'AvenirNext-Bold'",subtitle="test")
 {
   extrayoff = 0
  
@@ -185,14 +206,31 @@ build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize,font
                  " font-size=\"9px\">","Node Size</text>",
                  sep="")
 
+  subtitle.height = 0
+  if (subtitle != ""){subtitle.height = 8.8451}
+  
   # write the grey line
-  greylineheight = 41.58 + 2 * extrayoff
+  greylineheight = 41.58 + 2 * extrayoff + subtitle.height
   greyline       = paste("<rect x=\"", 89.807,"\"",
                          " y=\"", yoffset, "\"",
                          " fill=\"", "#D3D3D3", "\"",
                          " width=\"", 2.333, "\"",
                          " height=\"", greylineheight,"\"/>",
                          sep="")
+  
+  # add the subtitle
+  if (subtitle != ""){
+   
+   yoffset = yoffset + 8.8451
+   
+   subtitleline = paste("<text x=\"98.8075\"",
+                    " y=\"", yoffset + 8.8451*1.5, "\"",
+                    " font-family=\"", fontfamily, "\" ",
+                    " font-weight=\"700\" ",
+                    " font-size=\"7px\">", subtitle,"</text>",
+                    sep="")
+  }
+  
   # Make circles
   circles = c()
   
@@ -231,6 +269,10 @@ build.nodesize.legend  <- function(yoffset=0,minval,maxval,minsize ,maxsize,font
   
   # asssemble output
   output = c(header, greyline, circles, text.min, text.max)
+  if (subtitle != "")
+  {
+   output = c(header, greyline,subtitleline,  circles, text.min, text.max)
+  }
   yoffset = yoffset + 41.58 + extrayoff
   return(list(output,yoffset))
 }
