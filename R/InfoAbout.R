@@ -16,11 +16,10 @@ div(id="InfoAboutBox",
         fluidRow(width=12, 
                  column(8,
                         div(
-                        
                             h2 ("Highly-customizable visualizations of qualitative and quantitative kinase attributes", 
                                 style="color:#eceff3; font-weight: 500; font-size: 150%; letter-spacing:.4px"),
                             tags$br(),
-                            h6 ("CORAL is an R Shiny app that allows flexible and highly customizable visualization of kinase attributes.",
+                            h6 ("CORAL is an R Shiny web app that allows flexible and highly customizable visualization of kinase attributes.",
                                 style="color:#eceff3; font-weight:400; font-size: 110%; letter-spacing:.4px"),
                             h6 ("At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque
                             corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt 
@@ -35,14 +34,43 @@ div(id="InfoAboutBox",
                             
                             tags$br(), tags$br(), tags$br(),
                             
-                            h4 ("Citation",
+                            h4 ("Code",
                                 style="font-weight: 400"),
-                            "CORAL was initially described in the following publication:",
+                            "The code is available at ", tags$a(href="https://github.com/dphansti/CORAL", "Github"),
                             tags$br(),
-                            "asdfsaf et al, 2018",
+                            
+                            h4 ("Credit",
+                                style="font-weight: 400"),
+                            "CORAL was developed in the ",  tags$a(href="http://phanstiel-lab.med.unc.edu/", "Phanstiel Lab"),
+                            " at UNC by:",tags$br(),
+                            "Katie Metz,   ", #tags$br(),
+                            "Erika Deoudes,   ",#tags$br(),
+                            "Matt Berginski,   ",#tags$br(),
+                            "Ivan Ruiz Jimenez,   ",#tags$br(),
+                            "Doug Phanstiel",
+                            tags$br(),
+                            
+                            "CORAL is written in R and relies on the following packages:",tags$br(),
+                            "shiny, shinydashboard, shinyBS, readr, rsvg, shinyWidgets, RColorBrewer",
+                            
+                            "Circle and Force Layouts are written in javascript using the amazing ",
+                            tags$a(href="https://d3js.org/", "D3 library"),
+                            tags$br(),
+                            
+                            h4 ("Contact",
+                                style="font-weight: 400"),
+                            "To report issues or make requests please post an issue on our ", tags$a(href="https://github.com/dphansti/CORAL", "Github repo"),
+                            " or ", tags$a(href="mailto:douglas_phanstiel@med.unc.edu", "email us directy."),
+                            tags$br(),
+                            
+                            h4 ("Citation",
+                             style="font-weight: 400"),
+                            "CORAL was initially described in by Metz et al, 2018",
                             tags$br(),
                             "CORAL makes use of phyolgenetic information derived from Manning et al, Science, 2002", style="color:#abbed1; font-weight:300; letter-spacing:.4px",
-                            
+                            tags$br(),
+                            "The Tree plots made by CORAL were modified from those created by Cell Signaling Technology ",
+                            tags$a(href="https://www.cellsignal.com/", "www.cellsignal.com"),
                             tags$br(), tags$br(), tags$br()
                         )
                  )
