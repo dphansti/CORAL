@@ -14,7 +14,7 @@ div(id="InfoBranchColorBox",
                             "You can either color the entire tree a single color using the Uniform setting, 
                             highlight specific kinase branches of interest using Manual, or color a selection of branches 
                             according to a categorical or quantitative color palette. Categorical coloring allows
-                            you to assign kinases to groups, each of which will be assigned a unique color from 
+                            you to assign kinases to categories, each of which will be assigned a unique color from 
                             either a prebuilt or user-made palette. Quantitative coloring assigns numerical 
                             data to sequential, divergent or user-made color scales. Each method automatically 
                             generates a figure legend indicating the significance of the branch color scheme.")
@@ -59,7 +59,7 @@ div(id="InfoBranchColorBox",
                         div(
                             h2 (HTML("Manual &nbsp;&nbsp;\u25be"), style="font-weight:500"),
                             "This option allows you to highlight branches to specific kinases of interest. 
-                            It is useful for finding and emphasizing a single group of kinases.",
+                            It is useful for finding and emphasizing a single subset of kinases.",
                        
         
                             fluidRow(width=12,
@@ -92,13 +92,13 @@ div(id="InfoBranchColorBox",
                                              or HGNC ID. In order to properly plot your selected branches, you must specify the 
                                              identification used in the 'Kinases' field.",
                             
-                                             h3 ("Default Color & Selected Color"),
+                                             h3 ("Default Color & Selection Color"),
                                              "Here you can change branch colors for both your selected and unselected kinases. 
-                                             Default Color sets the color of kinases that were not listed, while Selected Color 
+                                             Default Color sets the color of kinases that were not listed, while Selection Color 
                                              sets the color of the kinases you have identified and wish to highlight. 
                                              You can use the color picker box to find a color or enter a hex value.",
                               
-                                             h3 ("Default Label & Selected Label"),
+                                             h3 ("Default Label & Selection Label"),
                                              "A figure legend will automatically be generated indicating the colors of the 
                                              selected and unselected kinases. By default, the legend will refer to these two 
                                              categories as 'selected' and 'not selected'. These text boxes can be used to change the legend labels.",
@@ -125,7 +125,7 @@ div(id="InfoBranchColorBox",
                         div(
                             h2 (HTML("Categorical &nbsp;&nbsp;\u25be"), style="font-weight:500"),
                             "This option allows you to color kinase branches different colors according to user-defined 
-                            group assignments. It is a useful option when trying to differentiate between multiple categories 
+                            category assignments. It is a useful option when trying to differentiate between multiple categories 
                             such as kinase families.",
                             tags$br(),tags$br(),
                             "The Categorical option will automatically generate a figure legend showing the color and group name for each 
@@ -151,7 +151,8 @@ div(id="InfoBranchColorBox",
                                              Every kinase listed must have a category assignment, or plotting will fail. Including 
                                              kinases with more than one category assignment will result in that kinase being colored 
                                              according to the last category listed alphabetically. Identifiers not found within the tree 
-                                             will be ignored. Kinases that are not listed will be colored gray and excluded from the figure legend.",
+                                             will be ignored. Kinases that are not listed will be colored the accoring to Default Color 
+                                             (see below) and excluded from the figure legend.",
                          
                                              h3 ("Identifier"),
                                              "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, 
@@ -161,7 +162,9 @@ div(id="InfoBranchColorBox",
                                              h4 (HTML("\u25ce&nbsp; Manual category entry")),
                                              "This option brings up a text field wherein you can enter your categories in the order in which you want them 
                                              to appear in the legend, overriding the default alphabetical order. The order of the colors in the selected
-                                             palette will not change.",
+                                             palette will not change.
+                                             
+                                             Note - This option is valuable for keeping the color/category assignments consistent between mutliple plots.",
                                              
                                              h3 ("Categories"),
                                              "This is the field in which to list categories in your preferred order. Category names must be separated by
@@ -180,7 +183,7 @@ div(id="InfoBranchColorBox",
                                              but if you wish to enter a hex value you may still do so: Select a color box, double-click or press Command-A 
                                              (or Ctrl-A), and enter the value.",
                          
-                                             h3 ("Color Missing Kinases"),
+                                             h3 ("Default Color"),
                                              "This option allows you to select a color for kinases that were not listed in the 'Kinases & Category' field
                                              by using the color picker box to find a color or enter a hex value. This color defaults to light gray. 
                                              This color will not be included in the figure legend."
