@@ -43,7 +43,8 @@ div(id="InfoNodeSizeBox",
                         div(
                             h2 (HTML("Quantitative &nbsp;&nbsp;\u25be"), style="font-weight:500"),
                             "This option allows you to color kinase branches based on a range of qualitative values. It is a useful 
-                            option when trying to visualize a range of values, such as fold change or signal data.",
+                            option when trying to visualize a range of values, such as fold change or signal data. Note, only the 
+                            terminal nodes in the Circle and Force layouts will be resized.",
                             tags$br(),tags$br(),
                             "This option will automatically create a figure legend showing six nodes in the full range of 
                             node sizes and indicating the corresponding minimum and maximum values.",
@@ -71,6 +72,9 @@ div(id="InfoNodeSizeBox",
                                                 "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
                                                 In order to properly plot your selected branches, you must specify the identification used in the 
                                                 'Kinases & Group' space.",
+                                                
+                                                h3 ("Legend Subtitle"),
+                                                "This text box allows you to provide a subtitle for the Node Size legend",
                          
                                                 h3 ("Size Range"),
                                                 "This slider allows you to select a range of node sizes to plot. The values entered under 

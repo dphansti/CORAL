@@ -247,6 +247,9 @@ div(id="InfoNodeColorBox",
                                                 "Kinases can be listed or selected by either their coralID, uniprot, ensemble, entrez, or HGNC ID. 
                                                 In order to properly plot your selected nodes, you must specify the identification used in 
                                                 the 'Kinases & Category' field.",
+                                                
+                                                h3 ("Legend Subtitle"),
+                                                "This text box allows you to provide a subtitle for the Node Color legend",
                          
                                                 h3 ("Min Value & Max Value"),
                                                 "This option allows you to set the values that will represent either end of the color spectrum. 

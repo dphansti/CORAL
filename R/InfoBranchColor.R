@@ -236,6 +236,9 @@ div(id="InfoBranchColorBox",
                                                 In order to properly plot your selected branches, you must specify the identification used in the 
                                                 'Kinases & Group' space.",
                          
+                                                h3 ("Legend Subtitle"),
+                                                "This text box allows you to provide a subtitle for the Branch Color legend",
+                                                
                                                 h3 ("Min Value & Max Value"),
                                                 "This option allows you to set the values that will represent either end of the color spectrum. 
                                                 All values below the assigned Min Value will be colored as though they were the set minimum value, 

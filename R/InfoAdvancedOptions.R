@@ -46,10 +46,11 @@ div(id="InfoAdvancedOptionsBox",
                                      column(9,
                                             div( 
                                              h3 ("Label Identifier"),
-                                             ".",
+                                             "This option allows users to speciff if Kinases are labeled by coralID, uniprot, ensemble, entrez, 
+                                             or HGNC ID.",
                                              
                                              h3 ("Font"),
-                                             "Sets the fontfor all kinase labels, family labels, and titles in the Tree plot.",
+                                             "Sets the font for all kinase labels, family labels, and titles in the Tree plot. ",
                          
                                              h3 ("Label Font Size"),
                                              "Sets the font size for all kinase labels, family labels, and titles. 
@@ -66,7 +67,10 @@ div(id="InfoAdvancedOptionsBox",
                                              h4 (HTML("\u25be&nbsp;&nbsp; Same as Branch")),
                                              "This option colors the kinase labels the same as their branches. 
                                              This can work especially well when nodes are disabled and you are highlighting
-                                             kinases in specific qualitative groups or quantitative extremes."
+                                             kinases in specific qualitative groups or quantitative extremes.",
+                                             
+                                             h3 ("Group Color"),
+                                             "This option allows you to change colors of the group labels."
                                             )
                                      )
                             )
