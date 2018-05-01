@@ -94,10 +94,11 @@ color.by.value <- function(df ,recolordf ,colors  ,heatrange , bg.col="#D3D3D3")
 
 
 # Define a function creates radius vector from values
-resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, minvalue=0, maxvalue = 5)
+resizes.by.value <- function(df, resizedf, sizerange, controlledrange = FALSE, minvalue=0, maxvalue = 5,showall="show")
 {
-  # set background color
+  # set values for non supplied kinases
   radius.vector = rep(0,nrow(df))
+  if (showall == "show"){radius.vector = rep(sizerange[1],nrow(df))}
   
   # keep track of group labels
   value.vector = rep(NA,nrow(df))

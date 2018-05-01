@@ -483,6 +483,10 @@ ui <- dashboardPage(title="CORAL",
                                           
                                           sliderInput("nodesizeValueslider",label = "Size Range",value=c(3,9),min = 0, max = 20,step = 0.25),
                                           
+                                          # how to handle for values not provides
+                                          prettyRadioButtons(inputId = "nodesizefornotprovidedquantitative", label = "Missing Kinases",
+                                                             choices = c("show","hide")),
+                                          
                                           prettyCheckbox("Manuallysetdatarange","manually set data range",value = FALSE,shape="round",status="primary"),
                                           
                                           conditionalPanel(

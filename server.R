@@ -590,7 +590,7 @@ server <- function(input, output,session) {
       if (nrow(resizedf)>0)
       {
         radii_and_mapping = resizes.by.value(df = tempdf, resizedf = resizedf, sizerange = input$nodesizeValueslider,
-                                             controlledrange = input$Manuallysetdatarange, minvalue=input$nodesizevaluemin, maxvalue = input$nodesizevaluemax)
+                                             controlledrange = input$Manuallysetdatarange, minvalue=input$nodesizevaluemin, maxvalue = input$nodesizevaluemax,showall=input$nodesizefornotprovidedquantitative)
        
         # Get correct limits for legend
         if (input$Manuallysetdatarange == FALSE)
