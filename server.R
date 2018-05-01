@@ -17,12 +17,7 @@ server <- function(input, output,session) {
  # ----------------- DELETE TEMP FILES WHEN SESSION ENDS ---------------- #
  
  session$onSessionEnded(function() {
-  print (outputjson)
-  if (file.exists(outputjson))
-   {
-   print ("in") 
-   file.remove(outputjson)
-   }
+  if (file.exists(outputjson)){file.remove(outputjson)}
   if (file.exists(subdffile)){file.remove(subdffile)}
   if (file.exists(svgoutfile)){file.remove(svgoutfile)}
  })
