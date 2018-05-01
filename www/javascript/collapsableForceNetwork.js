@@ -51,7 +51,7 @@ binding.renderValue = function(el, data) {
       d3.select(this).select("circle").transition()
            .attr("r", function(d) { return (d.noderadius * 1.5); })
       d3.select(this).select("text").transition()
-          .attr("font-size", function(d) { return (d.textsize * 2.0 + "px"); })
+          .attr("font-size", function(d) { return (d.textsize * 1.5 + "px"); })
       d3.select(this).moveToFront();
     }
 
@@ -104,7 +104,7 @@ binding.renderValue = function(el, data) {
             .attr("font-family","Helvetica")
             .attr("text-anchor","middle")
             .text(function(d) { return d.name; })
-            .attr("font-size", function(d) { return ((d.textsize * 2) + "px"); });
+            .attr("font-size", function(d) { return ((d.textsize * 1.5) + "px"); });
 
         node.select("circle")
             .style("fill", function(d) { return d3.rgb(d.nodecol); })
