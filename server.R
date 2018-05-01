@@ -2,6 +2,19 @@
 # server business
 server <- function(input, output,session) {
  
+ # ----------------- MAKE DIVS & USER FILES FOR TREE, CIRCLE, AND FORCE ---------------- #
+ 
+ # set all of the temp files
+ outputjson = tempfile(pattern="kinome_tree",tmpdir="www/json",fileext = ".json")
+ outputjsonshort =paste("json/",strsplit(outputjson,split = "/")[[1]][3],sep="")
+ subdffile = tempfile(pattern="subdf",tmpdir="tempfiles",fileext = ".txt")
+ svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
+ 
+ insertUI(selector = "#treediv",where = "afterEnd",ui = source("R/renderTree.R",local=TRUE)$value)
+ insertUI(selector = "#circlediv",where = "afterEnd",ui = source("R/renderCircle.R",local=TRUE)$value)
+ insertUI(selector = "#forcediv",where = "afterEnd",ui = source("R/renderForce.R",local=TRUE)$value)
+ 
+ 
  # ----------------- UPDATE MANUAL KINASE SELECTION ---------------- #
  
  # branch color
@@ -82,6 +95,7 @@ server <- function(input, output,session) {
   # load code to insert selected info box
   insertUI(selector = "#InfoBox",where = "afterEnd",ui = source(infoboxcode,local=TRUE)$value)
  } 
+
  
  # Make the about page the default page
  replaceinfobox("R/InfoAbout.R")

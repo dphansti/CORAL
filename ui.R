@@ -592,24 +592,27 @@ ui <- dashboardPage(title="CORAL",
                      tabPanel
                      ("Tree",
                       width=12,
-                      svgPanZoomOutput('plot1',height=940), class = 'leftAlign'
+                      div(id="treediv")
+                      # svgPanZoomOutput('plot1',height=940), class = 'leftAlign'
                      ),
                      tabPanel
                      ("Circle",
                       width=12,
                       shinyjs::useShinyjs(),
-                      
+                      div(id="circlediv")
                       #this div will hold the final graph
-                      div(id="circlelayout", class="circleNetwork",jsonfilename=outputjsonshort)
+                      # div(id="circlelayout", class="circleNetwork",jsonfilename=outputjsonshort)
                      ),
                      
                      tabPanel
                      ("Force",
                       width=12,
                       shinyjs::useShinyjs(),
-                      
+                      div(id="forcediv"
+                      #    ,
                       #this div will hold the final graph
-                      div(id="forcelayout", class="collapsableForceNetwork",jsonfilename=outputjsonshort)
+                      #div(id="forcelayout", class="collapsableForceNetwork",jsonfilename=outputjsonshort)
+                     )
                      )
                     )
            ),

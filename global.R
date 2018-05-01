@@ -76,12 +76,6 @@ svginfo = orig_svginfo
 rna_data     = paste(readLines("Data/RNAdata.txt"),collapse="\n")
 rna_abs_data = paste(readLines("Data/RNAdata_pluripotent.txt"),collapse="\n")
 
-# set all of the temp files
-outputjson = tempfile(pattern="kinome_tree",tmpdir="www/json",fileext = ".json")
-outputjsonshort =paste("json/",strsplit(outputjson,split = "/")[[1]][3],sep="")
-subdffile = tempfile(pattern="subdf",tmpdir="tempfiles",fileext = ".txt")
-svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
-
 #---------------------- DEFAULT COLORS ----------------------#
 
 # Default tree branch color
