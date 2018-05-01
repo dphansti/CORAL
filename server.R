@@ -1,7 +1,7 @@
 
 # server business
 server <- function(input, output,session) {
- 
+
  # ----------------- MAKE DIVS & USER FILES FOR TREE, CIRCLE, AND FORCE ---------------- #
  
  # set all of the temp files
@@ -14,7 +14,14 @@ server <- function(input, output,session) {
  insertUI(selector = "#circlediv",where = "afterEnd",ui = source("R/renderCircle.R",local=TRUE)$value)
  insertUI(selector = "#forcediv",where = "afterEnd",ui = source("R/renderForce.R",local=TRUE)$value)
  
+ # ----------------- DELETE TEMP FILES WHEN SESSION ENDS ---------------- #
  
+ session$onSessionEnded(function() {
+  users_data$END <- Sys.time()
+  if (file.exists(outputjson)){file.remove(outputjson)}
+  if (file.exists(subdffile)){file.remove(subdffile)}
+  if (file.exists(svgoutfile)){file.remove(svgoutfile)}
+ })
  # ----------------- UPDATE MANUAL KINASE SELECTION ---------------- #
  
  # branch color
