@@ -17,11 +17,12 @@ server <- function(input, output,session) {
  # ----------------- DELETE TEMP FILES WHEN SESSION ENDS ---------------- #
  
  session$onSessionEnded(function() {
-  users_data$END <- Sys.time()
   if (file.exists(outputjson)){file.remove(outputjson)}
   if (file.exists(subdffile)){file.remove(subdffile)}
   if (file.exists(svgoutfile)){file.remove(svgoutfile)}
  })
+ 
+
  # ----------------- UPDATE MANUAL KINASE SELECTION ---------------- #
  
  # branch color
