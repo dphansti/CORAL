@@ -22,7 +22,6 @@ server <- function(input, output,session) {
   if (file.exists(svgoutfile)){file.remove(svgoutfile)}
  })
  
-
  # ----------------- UPDATE MANUAL KINASE SELECTION ---------------- #
  
  # branch color
