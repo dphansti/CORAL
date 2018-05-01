@@ -599,7 +599,7 @@ ui <- dashboardPage(title="CORAL",
                      ("Circle",
                       width=12,
                       shinyjs::useShinyjs(),
-                      div(id="circlediv")
+                       div(id="circlediv")
                       #this div will hold the final graph
                       # div(id="circlelayout", class="circleNetwork",jsonfilename=outputjsonshort)
                      ),
