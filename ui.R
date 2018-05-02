@@ -579,16 +579,13 @@ ui <- dashboardPage(title="CORAL",
                            
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Tree'",
-                            downloadButton(outputId = "downloadtree",label= "Download")
-                           ),
+                            div(id="downloadtreediv")),
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Circle'",
-                            tags$a(id="downloadcircle", href="#", class="btn btn-default", "Download")
-                           ),
+                            div(id="downloadcirclediv")),
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Force'",
-                            tags$a(id="downloadforce", href="#", class="btn btn-default", "Download")
-                           )
+                            div(id="downloadforcediv"))
                     ), # end column
                     
                     tabBox
@@ -597,26 +594,19 @@ ui <- dashboardPage(title="CORAL",
                      ("Tree",
                       width=12,
                       div(id="treediv")
-                      # svgPanZoomOutput('plot1',height=940), class = 'leftAlign'
                      ),
                      tabPanel
                      ("Circle",
                       width=12,
                       shinyjs::useShinyjs(),
-                       div(id="circlediv")
-                      #this div will hold the final graph
-                      # div(id="circlelayout", class="circleNetwork",jsonfilename=outputjsonshort)
+                      div(id="circlediv")
                      ),
                      
                      tabPanel
                      ("Force",
                       width=12,
                       shinyjs::useShinyjs(),
-                      div(id="forcediv"
-                      #    ,
-                      #this div will hold the final graph
-                      #div(id="forcelayout", class="collapsableForceNetwork",jsonfilename=outputjsonshort)
-                     )
+                      div(id="forcediv")
                      )
                     )
            ),

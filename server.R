@@ -5,14 +5,25 @@ server <- function(input, output,session) {
  # ----------------- MAKE DIVS & USER FILES FOR TREE, CIRCLE, AND FORCE ---------------- #
  
  # set all of the temp files
- outputjson = tempfile(pattern="kinome_tree",tmpdir="www/json",fileext = ".json")
- outputjsonshort =paste("json/",strsplit(outputjson,split = "/")[[1]][3],sep="")
- subdffile = tempfile(pattern="subdf",tmpdir="tempfiles",fileext = ".txt")
- svgoutfile = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg")
+ outputjson      = tempfile(pattern="kinome_tree",tmpdir="www/json",fileext = ".json") # session specific json file describing network
+ outputjsonshort = paste("json/",strsplit(outputjson,split = "/")[[1]][3],sep="") # used to communicate to js
+ subdffile       = tempfile(pattern="subdf",tmpdir="tempfiles",fileext = ".txt") # temp file used to make json file
+ svgoutfile      = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg") # session specific tree svg file
  
+ # these plots need to be created here (in server) rather that in UI so that they are unique to each session.  Otherwise there will
+ # be cross talk between multiple people using the web server at once
  insertUI(selector = "#treediv",where = "afterEnd",ui = source("R/renderTree.R",local=TRUE)$value)
- insertUI(selector = "#circlediv",where = "afterEnd",ui = source("R/renderCircle.R",local=TRUE)$value)
- insertUI(selector = "#forcediv",where = "afterEnd",ui = source("R/renderForce.R",local=TRUE)$value)
+ insertUI(selector = "#circlediv",where = "afterEnd",ui = div(id="circlelayout", class="circleNetwork",jsonfilename=outputjsonshort))
+ insertUI(selector = "#forcediv",where = "afterEnd",ui = div(id="forcelayout", class="collapsableForceNetwork",jsonfilename=outputjsonshort))
+           
+ # ----------------- CREATE DOWNLOAD BUTTONS ---------------- #
+ 
+ insertUI(selector = "#downloadtreediv",where = "afterEnd",ui =
+           downloadButton(outputId = "downloadtree",label= "Download"))
+ insertUI(selector = "#downloadcirclediv",where = "afterEnd",ui =
+           tags$a(id="downloadcircle", class="btn btn-default", "Download"))
+ insertUI(selector = "#downloadforcediv",where = "afterEnd",ui =
+           tags$a(id="downloadforce", class="btn btn-default", "Download"))
  
  # ----------------- DELETE TEMP FILES WHEN SESSION ENDS ---------------- #
  
