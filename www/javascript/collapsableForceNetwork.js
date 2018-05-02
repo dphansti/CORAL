@@ -1,3 +1,4 @@
+
 //shiny output binding
 var binding = new Shiny.OutputBinding();
 
@@ -51,7 +52,7 @@ binding.renderValue = function(el, data) {
       d3.select(this).select("circle").transition()
            .attr("r", function(d) { return (d.noderadius * 1.5); })
       d3.select(this).select("text").transition()
-          .attr("font-size", function(d) { return (d.textsize * 1.5 + "px"); })
+          .attr("font-size", function(d) { return (d.textsize * 1.75 + "px"); })
       d3.select(this).moveToFront();
     }
 
@@ -104,7 +105,7 @@ binding.renderValue = function(el, data) {
             .attr("font-family","Helvetica")
             .attr("text-anchor","middle")
             .text(function(d) { return d.name; })
-            .attr("font-size", function(d) { return ((d.textsize * 1.5) + "px"); });
+            .attr("font-size", function(d) { return ((d.textsize * 1.75) + "px"); });
 
         node.select("circle")
             .style("fill", function(d) { return d3.rgb(d.nodecol); })
@@ -166,3 +167,4 @@ binding.renderValue = function(el, data) {
 
 //register the output binding
 Shiny.outputBindings.register(binding, "collapsableForceNetwork");
+
