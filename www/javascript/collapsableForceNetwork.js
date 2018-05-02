@@ -8,7 +8,7 @@ binding.find = function(scope) {
 
 binding.renderValue = function(el, data) {
   //empty the div so that it removes the graph when you change data
-  $(el).empty()
+  $(el).empty();
   
   if(data!=null){
 
@@ -17,9 +17,9 @@ binding.renderValue = function(el, data) {
           root;
 
       var force = d3.layout.force()
-          .linkDistance(.25)
+          .linkDistance(0.25)
           .charge(-40)
-          .gravity(.2)
+          .gravity(0.2)
           .size([width, height])
           .on("tick", tick);
 
@@ -29,7 +29,7 @@ binding.renderValue = function(el, data) {
           .attr("xmlns","http://www.w3.org/2000/svg")
           .call(d3.behavior.zoom().on("zoom", redraw));
 
-      var link = svg.selectAll(".link")
+      var link = svg.selectAll(".link");
           node = svg.selectAll(".node");
 
       d3.json($(el).attr('jsonfilename'), function(error, json) {
@@ -42,27 +42,29 @@ binding.renderValue = function(el, data) {
       
     function mouseover() {
       d3.select(this).select("circle").transition()
-           .attr("r", function(d) { return (d.noderadius * 5); })
+           .attr("r", function(d) { return (d.noderadius * 5); });
       d3.select(this).select("text").transition()
-          .attr("font-size", function(d) { return (d.textsize * 10.0 + "px"); })
+          .attr("font-size", function(d) { return (d.textsize * 10.0 + "px"); });
       d3.select(this).moveToFront();
     }
 
     function mouseout() {
       d3.select(this).select("circle").transition()
-           .attr("r", function(d) { return (d.noderadius * 1.5); })
+           .attr("r", function(d) { return (d.noderadius * 1.5); });
       d3.select(this).select("text").transition()
-          .attr("font-size", function(d) { return (d.textsize * 1.75 + "px"); })
+          .attr("font-size", function(d) { return (d.textsize * 1.75 + "px"); });
       d3.select(this).moveToFront();
     }
 
 
       // Code to download svg
      d3.select("#downloadforce").on("click", function(){
+       // alert(d3.select("#forcelayout")) //this shows that it can detect both the click and the circle layout div
+       // alert(d3.select("fakediv")) //it is not detecting a div that is not there
        d3.select(this)
         .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#forcelayout").html()))
-        .attr("download", "CORAL.force.svg") 
-    })
+        .attr("download", "CORAL.force.svg") ;
+    });
 
       function update() {
         var nodes = flatten(root),
@@ -98,7 +100,7 @@ binding.renderValue = function(el, data) {
             .on("mouseout", mouseout);
 
         node.append("circle")
-            .attr("r", function(d) { return (d.noderadius * 1.5); })
+            .attr("r", function(d) { return (d.noderadius * 1.5); });
             
         node.append("text")
             .attr("dy", ".35em")

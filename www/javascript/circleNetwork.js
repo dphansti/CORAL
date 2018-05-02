@@ -7,11 +7,11 @@ binding.find = function(scope) {
 
 binding.renderValue = function(el, data) {
   //empty the div so that it removes the graph when you change data
-  $(el).empty()
+  $(el).empty();
   
   if(data!=null){
     //////////.JS//////////
-    var radius = 450
+    var radius = 450;
       width = 940,
       height = 940;
   
@@ -26,7 +26,7 @@ binding.renderValue = function(el, data) {
       .attr("height", height)
       .attr("xmlns","http://www.w3.org/2000/svg")
       .call(d3.behavior.zoom().on("zoom", function () {
-          svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")")
+          svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
       }))
       .append("g")
       .attr("transform", "translate(" + radius + "," + radius + ")");
@@ -76,14 +76,14 @@ binding.renderValue = function(el, data) {
 
     function mouseover() {
       d3.select(this).select("circle").transition()
-          .attr("r", 20)
+          .attr("r", 20);
       d3.select(this).select("text").transition()
           .attr("font-size", "40px");
     }
 
     function mouseout() {
       d3.select(this).select("circle").transition()
-          .attr("r", function(d) { return d.noderadius; })
+          .attr("r", function(d) { return d.noderadius; });
       d3.select(this).select("text").transition()
           .attr("font-size", function(d) { return d.textsize; });
     }
@@ -92,11 +92,14 @@ binding.renderValue = function(el, data) {
     d3.select(self.frameElement).style("height", radius * 2 + "px");
     
     // Code to download svg
+    // Code taken from Mark MacKay's exaple found here (http://bl.ocks.org/duopixel/3831266)
      d3.select("#downloadcircle").on("click", function(){
+       //alert(d3.select("#circlelayout")); //this shows that it can detect both the click and the circle layout div
+       //alert(d3.select("fakediv")); //it is not detecting a div that is not there
        d3.select(this)
         .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#circlelayout").html()))
-        .attr("download", "CORAL.circle.svg") 
-    })
+        .attr("download", "CORAL.circle.svg") ;
+    });
 
     //////////.JS//////////
 
