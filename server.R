@@ -200,7 +200,10 @@ server <- function(input, output,session) {
  # ----------------- MAIN REACTIVE FUNCTION ---------------- #
  
   newdf <- reactive({ 
-   
+    
+    # refresh when refresh button is clicked
+    input$refreshForcePlot
+    
     # get current values
     tempdf = svginfo$dataframe
     
@@ -842,6 +845,24 @@ server <- function(input, output,session) {
    if (file.exists(subdffile)){file.remove(subdffile)}
    if (file.exists(svgoutfile)){file.remove(svgoutfile)}
   })
+  
+  # ----------------- ADD FORCE NETWORK REFRESH BUTTON ---------------- #
+  
+  insertUI(selector = "#forcedisclaimer",where = "afterEnd",
+           ui = box(width=12,
+                    
+                     "Note - The force network plots are memory intensive and may exhibit glitchy behavior.  The frequency on this 
+                      unwanted behavior varies depending on computer and browser, and it may be exacerbated by multiple changes
+                      to plotting paramters while the force network is running.  Simply refreshing the plot with the button below
+                      should fix any issues.",
+                    
+                    tags$br(),
+                    tags$br(),
+                    
+                    actionButton(inputId = "refreshForcePlot",label = "Refresh Plot")
+                    )) # end refesh box
+  
+
   
   
 }

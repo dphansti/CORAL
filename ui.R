@@ -586,10 +586,13 @@ ui <- dashboardPage(title="CORAL",
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Force'",
                             div(id="downloadforcediv"))
+                           
+                           
                     ), # end column
                     
+                    column(width=9,
                     tabBox
-                    (id = "tabboxselected",width=9,height=1000,
+                    (id = "tabboxselected",width=12,height=1000,
                      tabPanel
                      ("Tree",
                       width=12,
@@ -608,7 +611,14 @@ ui <- dashboardPage(title="CORAL",
                       shinyjs::useShinyjs(),
                       div(id="forcediv")
                      )
+                    ),
+                    
+                    conditionalPanel(
+                     condition = "input.tabboxselected == 'Force'",
+                     div(id="forcedisclaimer",width=12))
+                    
                     )
+                    
            ),
            
            fluidRow(width=12,
