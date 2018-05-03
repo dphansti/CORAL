@@ -60,7 +60,7 @@ binding.renderValue = function(el, data) {
           .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); })
           .attr("stroke-width", 0.5)
           .attr("opacity",function(d) { return d.nodeopacity; })
-          .style("fill", function(d) { return d3.rgb(d.nodecol); });
+          .attr("fill", function(d) { return d3.rgb(d.nodecol); });
           
 
       node.append("text")

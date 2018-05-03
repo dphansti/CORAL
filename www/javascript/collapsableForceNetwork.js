@@ -108,7 +108,7 @@ binding.renderValue = function(el, data) {
             .attr("font-size", function(d) { return ((d.textsize * 1.75) + "px"); });
 
         node.select("circle")
-            .style("fill", function(d) { return d3.rgb(d.nodecol); })
+            .attr("fill", function(d) { return d3.rgb(d.nodecol); })
             .attr("stroke-width", 1.0)
             .attr("opacity",function(d) { return d.nodeopacity; })
             .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); });
