@@ -59,10 +59,8 @@ binding.renderValue = function(el, data) {
 
       // Code to download svg
      d3.select("#downloadforce").on("click", function(){
-       // alert(d3.select("#forcelayout")) //this shows that it can detect both the click and the circle layout div
-       // alert(d3.select("fakediv")) //it is not detecting a div that is not there
        d3.select(this)
-        .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#forcelayout").html()))
+        .attr("href", 'data:application/octet-stream;base64,' + btoa(unescape(encodeURIComponent(d3.select("#forcelayout").html().replace("&nbsp;", "")))))
         .attr("download", "CORAL.force.svg") ;
     });
 

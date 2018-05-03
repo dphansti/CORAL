@@ -92,12 +92,10 @@ binding.renderValue = function(el, data) {
     d3.select(self.frameElement).style("height", radius * 2 + "px");
     
     // Code to download svg
-    // Code taken from Mark MacKay's exaple found here (http://bl.ocks.org/duopixel/3831266)
+    // Code adapted from (http://bl.ocks.org/duopixel/3831266)
      d3.select("#downloadcircle").on("click", function(){
-       //alert(d3.select("#circlelayout")); //this shows that it can detect both the click and the circle layout div
-       //alert(d3.select("fakediv")); //it is not detecting a div that is not there
        d3.select(this)
-        .attr("href", 'data:application/octet-stream;base64,' + btoa(d3.select("#circlelayout").html()))
+        .attr("href", 'data:application/octet-stream;base64,' + btoa(unescape(encodeURIComponent(d3.select("#circlelayout").html().replace("&nbsp;", "")))))
         .attr("download", "CORAL.circle.svg") ;
     });
 
