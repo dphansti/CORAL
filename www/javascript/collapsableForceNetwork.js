@@ -9,7 +9,7 @@ binding.find = function(scope) {
 binding.renderValue = function(el, data) {
   //empty the div so that it removes the graph when you change data
   $(el).empty();
-  
+
   if(data!=null){
 
       var width = 940,
@@ -36,10 +36,10 @@ binding.renderValue = function(el, data) {
         if (error) throw error;
 
         root = json;
-        update();  
-    
+        update();
+
       });
-      
+
     function mouseover() {
       d3.select(this).select("circle").transition()
            .attr("r", function(d) { return (d.noderadius * 5); });
@@ -73,7 +73,7 @@ binding.renderValue = function(el, data) {
             .nodes(nodes)
             .links(links)
             .start();
-        
+
         // Update links.
         link = link.data(links, function(d) { return d.target.id; });
 
@@ -97,17 +97,17 @@ binding.renderValue = function(el, data) {
             .on("mouseover", mouseover)
             .on("mouseout", mouseout);
 
-        node.append("circle")
+        nodeEnter.append("circle")
             .attr("r", function(d) { return (d.noderadius * 1.5); });
-            
-        node.append("text")
+
+        nodeEnter.append("text")
             .attr("dy", ".35em")
             .attr("font-family","Helvetica")
             .attr("text-anchor","middle")
             .text(function(d) { return d.name; })
             .attr("font-size", function(d) { return ((d.textsize * 1.75) + "px"); });
 
-        node.select("circle")
+        nodeEnter.select("circle")
             .attr("fill", function(d) { return d3.rgb(d.nodecol); })
             .attr("stroke-width", 1.0)
             .attr("opacity",function(d) { return d.nodeopacity; })
@@ -158,13 +158,12 @@ binding.renderValue = function(el, data) {
 
       function redraw() {
         console.log("here", d3.event.translate, d3.event.scale); svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
-        
+
       }
   //closing if statement
   }
-//closing binding  
+//closing binding
 };
 
 //register the output binding
 Shiny.outputBindings.register(binding, "collapsableForceNetwork");
-
