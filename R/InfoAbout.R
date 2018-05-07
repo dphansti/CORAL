@@ -1,5 +1,5 @@
 div(id="InfoAboutBox",
-    box(width="100%", style = "background-image: url('logos/bgtest2.png'); 
+    box(width="100%", style = "background-image: url('logos/about-bg.png'); 
                                background-size: cover; background-repeat: no-repeat",
         
         fluidRow(width=12, 
@@ -35,14 +35,14 @@ div(id="InfoAboutBox",
                             tags$br(), tags$br(), tags$br(),
                             
                             h4 ("Code",
-                                style="font-weight: 400"),
-                            "The code is available at ", tags$a(href="https://github.com/dphansti/CORAL", "Github"),
+                                style="font-weight: 400;"),
+                            "The code is available at ", tags$a(href="https://github.com/dphansti/CORAL", "Github."),
                             tags$br(),
                             
                             h4 ("Credit",
                                 style="font-weight: 400"),
                             "CORAL was developed in the ",  tags$a(href="http://phanstiel-lab.med.unc.edu/", "Phanstiel Lab"),
-                            " at UNC by:",tags$br(),
+                            " at UNC by",tags$br(),
                             "Katie Metz,   ", #tags$br(),
                             "Erika Deoudes,   ",#tags$br(),
                             "Matt Berginski,   ",#tags$br(),
@@ -51,25 +51,25 @@ div(id="InfoAboutBox",
                             tags$br(),
                             
                             "CORAL is written in R and relies on the following packages:",tags$br(),
-                            "shiny, shinydashboard, shinyBS, readr, rsvg, shinyWidgets, RColorBrewer",
+                            "shiny, shinydashboard, shinyBS, readr, rsvg, shinyWidgets, RColorBrewer.",
                             
                             "Circle and Force Layouts are written in javascript using the amazing ",
-                            tags$a(href="https://d3js.org/", "D3 library"),
+                            tags$a(href="https://d3js.org/", "D3 library."),
                             tags$br(),
                             
                             h4 ("Contact",
                                 style="font-weight: 400"),
-                            "To report issues or make requests please post an issue on our ", tags$a(href="https://github.com/dphansti/CORAL", "Github repo"),
-                            " or ", tags$a(href="mailto:douglas_phanstiel@med.unc.edu", "email us directy."),
+                            "To report issues or make requests, please post an issue on our ", tags$a(href="https://github.com/dphansti/CORAL", "Github repo"),
+                            " or ", tags$a(href="mailto:douglas_phanstiel@med.unc.edu", "email us directly."),
                             tags$br(),
                             
                             h4 ("Citation",
                              style="font-weight: 400"),
-                            "CORAL was initially described in by Metz et al, 2018",
+                            "CORAL was initially described in by Metz et al, 2018.",
                             tags$br(),
-                            "CORAL makes use of phyolgenetic information derived from Manning et al, Science, 2002", style="color:#abbed1; font-weight:300; letter-spacing:.4px",
+                            "CORAL makes use of phylogenetic information derived from Manning et al, Science, 2002.", style="color:#abbed1; font-weight:300; letter-spacing:.4px",
                             tags$br(),
-                            "The Tree plots made by CORAL were modified from those created by Cell Signaling Technology ",
+                            "The Tree plots made by CORAL were modified from those created by Cell Signaling Technology: ",
                             tags$a(href="https://www.cellsignal.com/", "www.cellsignal.com"),
                             tags$br(), tags$br(), tags$br()
                         )

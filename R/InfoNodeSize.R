@@ -79,6 +79,9 @@ div(id="InfoNodeSizeBox",
                                                 h3 ("Size Range"),
                                                 "This slider allows you to select a range of node sizes to plot. The values entered under 
                                                 'Kinases & Group' will be scaled to these minimum and maximum sizes.",
+                                                
+                                                h3 ("Missing Kinases"),
+                                                ".",
                          
                                                 h3 (HTML("\u25ce&nbsp; Manually set data range")),
                                                 "By default, the smallest value will be set to the smallest node size, and the largest value 
