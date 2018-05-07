@@ -19,6 +19,10 @@ body {
 textarea {
   font-family: inherit;
 }
+
+a {
+ color: #43bbef;
+}
    
 h1,.h1{
   font-family: inherit;
