@@ -798,9 +798,9 @@ server <- function(input, output,session) {
  
   output$downloadtree <- downloadHandler(
    
-   filename <- function(file) { paste("CORAL",".","tree",".","pdf",sep="")},
+   filename <- function(file) { paste("CORAL",".","tree",".","svg",sep="")},
    content <- function(file) {
-    rsvg_pdf(svgoutfile, file)
+    rsvg_svg(svgoutfile, file)
    }
     
     # content <- function(file) {
