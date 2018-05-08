@@ -77,8 +77,8 @@ div(id="InfoAdvancedOptionsBox",
                         )
                  ),
                  column(4, 
-                        div(img(src="info/AS-2b.png",width="100%",align="left",
-                                tags$style("img[src='info/AS-2b.png'] {padding-top: 4px}")
+                        div(img(src="info/AS-1b.png",width="100%",align="left",
+                                tags$style("img[src='info/AS-1b.png'] {padding-top: 4px}")
                         )
                         )
                  )
@@ -95,8 +95,8 @@ div(id="InfoAdvancedOptionsBox",
                     
                          fluidRow(width=12,
                                   column(3, tags$br(), 
-                                         div(img(src="info/.png",width="100%",align="left",
-                                                 tags$style("img[src='info/.png'] {padding-top: 4px}")
+                                         div(img(src="info/AS-3a.png",width="100%",align="left",
+                                                 tags$style("img[src='info/AS-3a.png'] {padding-top: 4px}")
                                          )
                                          )
                                   ),
@@ -110,43 +110,32 @@ div(id="InfoAdvancedOptionsBox",
                                          )
                                   )
                          )
-                        )
-                 ),
-                 column(4, 
-                        div(img(src="info/.png",width="100%",align="left",
-                                tags$style("img[src='info/AS-3b.png'] {padding-top: 4px}")
-                        )
-                        )
-                 )
-        ),
-
-        fluidRow(width=12, 
-                 column(8,    
+                        ),
                         div(
-                            h2 (HTML("Node Stroke Color Scheme")),
-                            "This setting allows you to change the color of node outlines depending on the desired look of your 
-                            tree and the data you intend to visualize. You can keep the strokes the same color as the nodes
-                            themselves, assign a single stroke color to all nodes, or manually color the strokes of specific 
-                            nodes of interest",
-                             
-                            
-        
-                            fluidRow(width=12,
-                                     column(3, tags$br(), 
-                                            div(img(src="info/AS-3a.png",width="100%",align="left",
-                                                    tags$style("img[src='info/AS-3a.png'] {padding-top: 4px}")
-                                            )
-                                            )
-                                     ),
-                                     column(9,
-                                            div(  
-                                             h3 (HTML("Same as Node &nbsp;&nbsp;\u25be")),
-                                             "This default option matches the node stroke color to the color of the node itself, as determined 
-                                             by the Node Color settings."
-                                            )
-                                     )
-                            )
-                        )
+                         h2 (HTML("Node Stroke Color Scheme")),
+                         "This setting allows you to change the color of node outlines depending on the desired look of your 
+                         tree and the data you intend to visualize. You can keep the strokes the same color as the nodes
+                         themselves, assign a single stroke color to all nodes, or manually color the strokes of specific 
+                         nodes of interest",
+                         
+                         
+                         
+                         fluidRow(width=12,
+                                  column(3, tags$br(), 
+                                         div(img(src="info/AS-3a.png",width="100%",align="left",
+                                                 tags$style("img[src='info/AS-3a.png'] {padding-top: 4px}")
+                                         )
+                                         )
+                                  ),
+                                  column(9,
+                                         div(  
+                                          h3 (HTML("Same as Node &nbsp;&nbsp;\u25be")),
+                                          "This default option matches the node stroke color to the color of the node itself, as determined 
+                                          by the Node Color settings."
+                                         )
+                                         )
+                                  )
+                         )
                  ),
                  column(4, 
                         div(img(src="info/AS-3b.png",width="100%",align="left",
@@ -155,6 +144,7 @@ div(id="InfoAdvancedOptionsBox",
                         )
                  )
         ),
+
         
         fluidRow(width=12,
                  column(2, tags$br(), 

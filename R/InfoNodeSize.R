@@ -59,7 +59,7 @@ div(id="InfoNodeSizeBox",
                                      column(9,        
                                             div(
                                                 h4 (HTML("\u25ce&nbsp; Load example data")),
-                                                "This button will load sample data into the 'Kinases & Value' tab.",
+                                                "This button will load sample data into the 'Kinases & Value' field",
            
                                                 h3 ("Kinases & Value"),
                                                 "Here you can submit a two-column list of kinases and their associated values. A space, tab, 
@@ -81,7 +81,8 @@ div(id="InfoNodeSizeBox",
                                                 'Kinases & Group' will be scaled to these minimum and maximum sizes.",
                                                 
                                                 h3 ("Missing Kinases"),
-                                                ".",
+                                                "Nodes for kinases that are not listed in the 'Kinases & Value' field are automatically included
+                                                in the plot at the smallest size. You may also choose to hide these nodes.",
                          
                                                 h3 (HTML("\u25ce&nbsp; Manually set data range")),
                                                 "By default, the smallest value will be set to the smallest node size, and the largest value 

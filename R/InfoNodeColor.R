@@ -43,7 +43,7 @@ div(id="InfoNodeColorBox",
                             fluidRow(width = 12,
                                 column(3, tags$br(), 
                                    div(img(src="info/NC-2a.png",width="100%",align="left",
-                                       tags$style("img[src='info/NC-21.png'] {padding-top: 4px}")
+                                       tags$style("img[src='info/NC-2a.png'] {padding-top: 4px}")
                                       )
                                    )
                                 ),
@@ -195,7 +195,7 @@ div(id="InfoNodeColorBox",
                                                 (or Ctrl-A), and enter the value.",
                          
                                                 h3 ("Color Missing Kinases"),
-                                                "This option allows you to select a color for kinases that were not listed in the 'Kinases & Value' 
+                                                "This option allows you to select a color for kinases that are not listed in the 'Kinases & Value' field
                                                 by using the color picker box to find a color or enter a hex value. This color defaults to light gray. 
                                                 This color will not be included in the figure legend."
                                                 
