@@ -80,6 +80,34 @@ h6,.h6{
    h1 - 280%, h2 - 230%, h3 - 185%, h4 - 140%, h5 - 110%, h6 - 90% 
    font weight: 500 */
 
+#InfoAboutBox .box-body h4{
+ font-size: 97%;
+ font-weight: 400;
+ margin-top: 7px;
+ margin-bottom: 8px;
+ color: #abbed1;
+ letter-spacing: .4px;
+ line-height: 140%;
+}
+   
+#InfoAboutBox .box-body h6{
+ font-size: 97%;
+ font-weight: 300;
+ margin-top: 7px;
+ margin-bottom: 0px;
+ line-height: 140%;
+ color:#b5c7d8; 
+ letter-spacing: .4px;
+}
+
+#InfoAboutBox .box-body {
+ font-size: 97%;
+ font-weight: 300;
+ line-height: 140%;
+ color:#b5c7d8; 
+ letter-spacing: .4px;
+}
+
 .col-sm-5{
  ;
 }
