@@ -8,6 +8,8 @@ div(id="InfoNodeColorBox",
                             
                             "CORAL allows you to choose between several methods of node color assignment, depending on 
                             the desired look of your tree and the data you intend to visualize.",
+                            tags$br(),tags$br(),
+                            "Additional node color options are available in Advanced Settings.",
                             
                             h4 (HTML("\u25ce&nbsp; Color intermediate nodes")),
                             "This option dictates whether the nodes for kinase families and sub-families on the Circle 
@@ -20,7 +22,8 @@ div(id="InfoNodeColorBox",
                             categorical or quantitative color palette. Categorical coloring allows you to assign kinases 
                             to categories, each of which will be assigned a unique color from either a prebuilt or user-made palette. 
                             Quantitative coloring assigns numerical data to sequential, divergent or user-made color scales. 
-                            Each method automatically generates a figure legend indicating the significance of the node color scheme."),
+                            Each method automatically generates a figure legend indicating the significance of the node color scheme."
+                            ),
                             
                            
                        
