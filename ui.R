@@ -622,7 +622,7 @@ ui <- dashboardPage(title="CORAL",
            ),
            
            fluidRow(width=12,
-                    box(width=12,
+                    box(width=12, style = "margin-bottom: 45px",
                         DT::dataTableOutput("KinaseTable")
                     )
            )
@@ -673,12 +673,25 @@ ui <- dashboardPage(title="CORAL",
                     ), # end column
                     
                     column
-                    (  width=9,   
+                    (width=9, style="margin-bottom: 40px",
                      
                      div(id= "InfoBox")
                     )
            ) # end row
    )
+  ), # /tabItems
+  tags$footer(tags$a(span(img(src="logos/PhanstielLab.png",height=16,align="left", style="")), href="http://phanstiel-lab.med.unc.edu/"), align = "left", style = "
+              position: absolute;
+              bottom:0;
+              width:101%;
+              height:40px;
+              color: #eceff3;
+              padding: 12px 25px 0px 20px;
+              margin-left: -20px;
+              background-color: #b8c2cc;
+              z-index: 1000;",
+              tags$ul("© 2018 Phanstiel Lab", align="right", style="font-weight:300") # c4c8cc
   )
- ) # /tabItems
+ )
 )
+
