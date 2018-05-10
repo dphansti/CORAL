@@ -6,14 +6,14 @@ div(id="InfoNodeColorBox",
                         div(
                             h2 ("Node Color", style="color:#3889bf; font-size:145%; font-weight:500; margin-bottom: 15px"),
                             
-                            "CORAL allows you to choose between several methods of node color assignment, depending on 
+                            "Coral allows you to choose between several methods of node color assignment, depending on 
                             the desired look of your tree and the data you intend to visualize.",
                             tags$br(),tags$br(),
                             "Additional node color options are available in Advanced Settings.",
                             
                             h4 (HTML("\u25ce&nbsp; Color intermediate nodes")),
                             "This option dictates whether the nodes for kinase families and sub-families on the Circle 
-                            and Force plots should also be colored according to the chosen color scheme. If selected, CORAL 
+                            and Force plots should also be colored according to the chosen color scheme. If selected, Coral 
                             colors these nodes based on the most extreme value within its sub-nodes.",
                             
                             tags$blockquote(h2 ("Color Scheme"),
@@ -189,7 +189,7 @@ div(id="InfoNodeColorBox",
                                                 automatically expand to accommodate as many categories as you have identified in the 'Kinases & Category' field.",
                                                 
                                                 h4 (HTML("\u2609&nbsp; Prebuilt")),
-                                                "Here you can choose between CORAL's default colorblind-friendly 12-color palette and Color Brewer's eight qualitative 
+                                                "Here you can choose between Coral's default colorblind-friendly 12-color palette and Color Brewer's eight qualitative 
                                                 palettes.",
                                                 
                                                 h4 (HTML("\u2609&nbsp; Manual")),

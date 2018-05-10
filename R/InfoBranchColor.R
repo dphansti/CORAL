@@ -6,7 +6,7 @@ div(id="InfoBranchColorBox",
                         div(
                             h2 ("Branch Color", style="color:#3da1cc; font-size:145%; font-weight:500; margin-bottom: 15px"),
                           
-                            "CORAL allows you to choose between several methods of branch color assignment, 
+                            "Coral allows you to choose between several methods of branch color assignment, 
                             depending on the desired look of your tree and the data you intend to visualize.",
                             
                             tags$blockquote(h2 ("Color Scheme"),
@@ -176,7 +176,7 @@ div(id="InfoBranchColorBox",
                                              automatically expand to accommodate as many categories as you have identified in the 'Kinases & Category' field.",
                                              
                                              h4 (HTML("\u2609&nbsp; Prebuilt")),
-                                             "Here you can choose between CORAL's default colorblind-friendly 12-color palette and Color Brewer's eight qualitative 
+                                             "Here you can choose between Coral's default colorblind-friendly 12-color palette and Color Brewer's eight qualitative 
                                              palettes.",
 
                                              h4 (HTML("\u2609&nbsp; Manual")),
