@@ -614,6 +614,14 @@ ui <- dashboardPage(title="CORAL",
                     ),
                     
                     conditionalPanel(
+                     condition = "input.tabboxselected == 'Tree'",
+                     div(id="treedisclaimer",width=12)),
+                    
+                    conditionalPanel(
+                     condition = "input.tabboxselected == 'Circle'",
+                     div(id="circledisclaimer",width=12)),
+                    
+                    conditionalPanel(
                      condition = "input.tabboxselected == 'Force'",
                      div(id="forcedisclaimer",width=12))
                     
