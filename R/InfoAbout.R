@@ -49,7 +49,7 @@ div(id="InfoAboutBox",
                  ),
                  column(10,
                             h6 ("Coral was developed in the ", tags$a(href="http://phanstiel-lab.med.unc.edu/", "Phanstiel Lab"),
-                            " at UNC by Katie Metz, Erika Deoudes, Matt Berginski, Ivan Ruiz Jimenez, and Doug Phanstiel."),
+                            " at UNC by Katie Metz, Erika Deoudes, Matt Berginski, Ivan Jimenez-Ruiz, and Doug Phanstiel."),
                             h6 ("Coral is written in R and relies on the following packages: shiny, shinydashboard, shinyBS, readr, rsvg, shinyWidgets, RColorBrewer."), 
                             h6 ("Circle and Force Layouts are written in javascript using the amazing ",
                             tags$a(href="https://d3js.org/", "D3 library."))
