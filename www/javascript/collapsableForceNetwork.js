@@ -45,7 +45,6 @@ binding.renderValue = function(el, data) {
            .attr("r", function(d) { return (d.noderadius * 5); });
       d3.select(this).select("text").transition()
           .attr("font-size", function(d) { return (d.textsize * 10.0 + "px"); });
-      d3.select(this).moveToFront();
     }
 
     function mouseout() {
@@ -53,7 +52,6 @@ binding.renderValue = function(el, data) {
            .attr("r", function(d) { return (d.noderadius * 1.5); });
       d3.select(this).select("text").transition()
           .attr("font-size", function(d) { return (d.textsize * 1.75 + "px"); });
-      d3.select(this).moveToFront();
     }
 
 
