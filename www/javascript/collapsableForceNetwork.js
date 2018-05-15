@@ -112,6 +112,11 @@ binding.renderValue = function(el, data) {
             .attr("stroke-width", 1.0)
             .attr("opacity",function(d) { return d.nodeopacity; })
             .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); });
+
+        $("div#forcelayout svg")
+          .append(
+            $("div#plot1 svg g#LEGEND").clone()
+          );
       }
 
       function tick() {

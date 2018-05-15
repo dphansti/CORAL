@@ -8,13 +8,13 @@ binding.find = function(scope) {
 binding.renderValue = function(el, data) {
   //empty the div so that it removes the graph when you change data
   $(el).empty();
-  
+
   if(data!=null){
     //////////.JS//////////
     var radius = 450;
       width = 940,
       height = 940;
-  
+
     var cluster = d3.layout.cluster()
         .size([360, radius - 60]);
 
@@ -54,14 +54,14 @@ binding.renderValue = function(el, data) {
           .attr("transform", function(d) { return "rotate(" + (d.x - 90) + ")translate(" + d.y + ")"; })
           .on("mouseover", mouseover)
           .on("mouseout", mouseout);
-      
+
       node.append("circle")
           .attr("r", function(d) { return d.noderadius; })
           .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); })
           .attr("stroke-width", 0.5)
           .attr("opacity",function(d) { return d.nodeopacity; })
           .attr("fill", function(d) { return d3.rgb(d.nodecol); });
-          
+
 
       node.append("text")
           .attr("dy", ".31em")
@@ -90,7 +90,7 @@ binding.renderValue = function(el, data) {
 
 
     d3.select(self.frameElement).style("height", radius * 2 + "px");
-    
+
     // Code to download svg
     // Code adapted from (http://bl.ocks.org/duopixel/3831266)
      d3.select("#downloadcircle").on("click", function(){
@@ -99,14 +99,17 @@ binding.renderValue = function(el, data) {
         .attr("download", "CORAL.circle.svg") ;
     });
 
+    $("div#circlelayout svg")
+      .append(
+        $("div#plot1 svg g#LEGEND").clone()
+      );
     //////////.JS//////////
 
     //closing if statement
   }
-  //closing binding  
+  //closing binding
 };
 
 //Identify the class that this js modifies below in ....(binding, "CLASSNAME");....
 //register the output binding
 Shiny.outputBindings.register(binding, "circleNetwork");
-
