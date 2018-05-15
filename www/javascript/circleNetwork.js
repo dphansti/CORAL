@@ -11,7 +11,7 @@ binding.renderValue = function(el, data) {
 
   if(data!=null){
     //////////.JS//////////
-    var radius = 450;
+    var radius = 400;
       width = 940,
       height = 940;
 
@@ -29,7 +29,7 @@ binding.renderValue = function(el, data) {
           svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
       }))
       .append("g")
-      .attr("transform", "translate(" + radius + "," + radius + ")");
+      .attr("transform", "translate(" + (radius + 150) + "," + radius + ")");
 
     d3.json($(el).attr('jsonfilename'), function(error, root) {
 
