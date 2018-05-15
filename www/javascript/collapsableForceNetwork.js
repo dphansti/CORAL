@@ -17,7 +17,7 @@ binding.renderValue = function(el, data) {
           root;
 
       var force = d3.layout.force()
-          .linkDistance(0.25)
+          .linkDistance(0.20)
           .charge(-40)
           .gravity(0.2)
           .size([width, height])
