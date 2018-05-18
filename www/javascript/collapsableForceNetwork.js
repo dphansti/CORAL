@@ -111,10 +111,15 @@ binding.renderValue = function(el, data) {
             .attr("opacity",function(d) { return d.nodeopacity; })
             .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); });
 
-        $("div#forcelayout svg")
-          .append(
-            $("div#plot1 svg g#LEGEND").clone()
-          );
+        // Create pseudo-element with the legend and add it to the SVG
+        var pseudoSVG = $(
+          '<div>' +
+          '<svg xmlns="http://www.w3.org/2000/svg">' +
+          '<g>'+ root.legend + '</g>' + 
+          '</svg>' +
+          '</div>'
+        );
+        $("div#forcelayout svg").append(pseudoSVG.find('svg g'));
       }
 
       function tick() {
