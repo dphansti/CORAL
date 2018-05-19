@@ -25,9 +25,7 @@ binding.renderValue = function(el, data) {
       .attr("width", width)
       .attr("height", height)
       .attr("xmlns","http://www.w3.org/2000/svg")
-      .call(d3.behavior.zoom().on("zoom", function () {
-          svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
-      }))
+      .call(d3.behavior.zoom().on("zoom", redraw))
       .append("g")
       .attr("transform", "translate(" + (radius + 150) + "," + radius + ")");
 
@@ -83,7 +81,7 @@ binding.renderValue = function(el, data) {
           '</svg>' +
           '</div>'
         );
-	$(el).find('svg').append(pseudoSVG.find('svg g'));
+        $(el).find('svg').append(pseudoSVG.find('svg g'));
       }
     });
 
@@ -101,6 +99,9 @@ binding.renderValue = function(el, data) {
           .attr("font-size", function(d) { return d.textsize; });
     }
 
+    function redraw() {
+      svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
+    }
 
     d3.select(self.frameElement).style("height", radius * 2 + "px");
 

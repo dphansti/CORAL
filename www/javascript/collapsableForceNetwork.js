@@ -96,7 +96,7 @@ binding.renderValue = function(el, data) {
             .on("mouseout", mouseout);
 
         nodeEnter.append("circle")
-            .attr("r", function(d) { return (d.noderadius * 1.5); });
+            .attr("r", function(d) { return d.noderadius; });
 
         nodeEnter.append("text")
             .attr("dy", ".35em")
@@ -112,7 +112,7 @@ binding.renderValue = function(el, data) {
             .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); });
 
         // Create pseudo-element with the legend and add it to the SVG
-	$(el).find('svg #forcelegend').remove();
+        $(el).find('svg #forcelegend').remove();
         var pseudoSVG = $(
           '<div>' +
           '<svg xmlns="http://www.w3.org/2000/svg">' +
@@ -166,8 +166,7 @@ binding.renderValue = function(el, data) {
       }
 
       function redraw() {
-        console.log("here", d3.event.translate, d3.event.scale); svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
-
+        svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
       }
   //closing if statement
   }
