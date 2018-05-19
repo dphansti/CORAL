@@ -72,6 +72,19 @@ binding.renderValue = function(el, data) {
           .attr("text-anchor", function(d) { return d.x < 180 ? "start" : "end"; })
           .attr("transform", function(d) { return d.x < 180 ? "translate(8)" : "rotate(180)translate(-8)"; })
           .text(function(d) { return d.name; });
+
+      // Create pseudo-element with the legend and add it to the SVG
+      $(el).find('svg #circlelegend').remove();
+      if(root.legend) {
+        var pseudoSVG = $(
+          '<div>' +
+          '<svg xmlns="http://www.w3.org/2000/svg">' +
+          '<g id="circlelegend">'+ root.legend + '</g>' + 
+          '</svg>' +
+          '</div>'
+        );
+	$(el).find('svg').append(pseudoSVG.find('svg g'));
+      }
     });
 
     function mouseover() {
@@ -99,15 +112,6 @@ binding.renderValue = function(el, data) {
         .attr("download", "CORAL.circle.svg") ;
     });
 
-    // Create pseudo-element with the legend and add it to the SVG
-    var pseudoSVG = $(
-      '<div>' +
-      '<svg xmlns="http://www.w3.org/2000/svg">' +
-      '<g>'+ root.legend + '</g>' + 
-      '</svg>' +
-      '</div>'
-    );
-    $("div#forcelayout svg").append(pseudoSVG.find('svg g'));
     //////////.JS//////////
 
     //closing if statement

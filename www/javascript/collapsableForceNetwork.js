@@ -112,14 +112,15 @@ binding.renderValue = function(el, data) {
             .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); });
 
         // Create pseudo-element with the legend and add it to the SVG
+	$(el).find('svg #forcelegend').remove();
         var pseudoSVG = $(
           '<div>' +
           '<svg xmlns="http://www.w3.org/2000/svg">' +
-          '<g>'+ root.legend + '</g>' + 
+          '<g id="forcelegend">'+ root.legend + '</g>' + 
           '</svg>' +
           '</div>'
         );
-        $("div#forcelayout svg").append(pseudoSVG.find('svg g'));
+        $(el).find('svg').append(pseudoSVG.find('svg g'));
       }
 
       function tick() {
