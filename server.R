@@ -699,6 +699,7 @@ server <- function(input, output,session) {
    # recolor the official matrix
    dfandlegend = newdf()
    svginfo$dataframe = dfandlegend[[1]]
+   svginfo$legend = dfandlegend[[2]]
    
    # replace none color for D3 plots
    allnodescoloreddf =  svginfo$dataframe
@@ -741,6 +742,7 @@ server <- function(input, output,session) {
     # recolor the official matrix
     dfandlegend = newdf()
     svginfo$dataframe = dfandlegend[[1]]
+    svginfo$legend = dfandlegend[[2]]
     
     # replace none color for D3 plots
     allnodescoloreddf =  svginfo$dataframe
