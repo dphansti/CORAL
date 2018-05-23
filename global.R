@@ -38,6 +38,14 @@ source("R/radiobuttonswithimages.R")
 # read RDS
 orig_svginfo = readRDS("Data/kintree.RDS")
 
+# remove NAs from subfamilies
+NAs = which(is.na(orig_svginfo$dataframe$kinase.subfamily))
+orig_svginfo$dataframe$kinase.subfamily[NAs] = ""
+
+# remove NAs from HGNCs
+NAs = which(is.na(orig_svginfo$dataframe$id.HGNC))
+orig_svginfo$dataframe$id.HGNC[NAs] = ""
+
 # names(orig_svginfo$dataframe)[1] = "id.coral"
 # write_rds(orig_svginfo,path = "Data/kintree.RDS")
 
