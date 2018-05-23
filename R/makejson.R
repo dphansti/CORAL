@@ -68,10 +68,6 @@ shiftlegend <- function (legend,xshift=0,yshift=0,noderadiusexpansion)
      newvalue  = as.numeric(origvalue) + extraspace
      newentry  = paste("cy=\"",newvalue,"\"",sep="")
      legendsplit[i] = newentry
-     print("---")
-     print(origvalue)
-     print(newvalue)
-     print(newentry)
     }
     
     # increase the height of the grey bar
