@@ -31,13 +31,6 @@ convertID <- function(df,recolordf,inputtype)
   {
    otherid  = recolordf[i,1]
    quantval = recolordf[i,2]
-   print (" ")
-   print (i)
-   print ("otherid")
-   print(otherid)
-   print ("quantval")
-   print(quantval)
-   print ("----")
    coralids = as.character(df[which(as.character(df[,inputtype]) == otherid),1])
    for (coralid in coralids)
    {
