@@ -29,7 +29,7 @@ binding.renderValue = function(el, data) {
 
     var svg = mainsvg
       .append("g")
-      .attr("transform", "translate(" + (radius + 150) + "," + radius + ")");
+      .attr("transform", "translate(" + (radius + 50) + "," + radius + ")");
 
     d3.json($(el).attr('jsonfilename'), function(error, root) {
 

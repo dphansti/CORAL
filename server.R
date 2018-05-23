@@ -732,7 +732,7 @@ server <- function(input, output,session) {
    }
    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,
             labelselect=input$kinaselabelselect,defaultnoderadius=input$size_node_single,legend=svginfo$legend,
-            xshift=30,yshift=50)
+            xshift=80,yshift=50)
    
    # Make this reactive to any change in input paramters
    x <- reactiveValuesToList(input)
