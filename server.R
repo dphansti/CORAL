@@ -730,7 +730,9 @@ server <- function(input, output,session) {
    if (! dir.exists('www/json')) {
      dir.create('www/json')
    }
-   makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect,defaultnoderadius=input$size_node_single,legend=svginfo$legend)
+   makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,
+            labelselect=input$kinaselabelselect,defaultnoderadius=input$size_node_single,legend=svginfo$legend,
+            xshift=30,yshift=50)
    
    # Make this reactive to any change in input paramters
    x <- reactiveValuesToList(input)
@@ -770,7 +772,10 @@ server <- function(input, output,session) {
     }
     
     # Write kinome_tree.json (based on current dataframe)
-    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect,defaultnoderadius=input$size_node_single,legend=svginfo$legend)
+    makejson(allnodescoloreddf,tmp=subdffile,output=outputjson,BGcol=BG_col1,BGstrolecol=BGstrolecol,
+             colsubnodes=input$colorsubnodes,labelselect=input$kinaselabelselect,
+             defaultnoderadius=input$size_node_single,legend=svginfo$legend,
+             xshift=85,yshift=25,noderadiusexpansion=1.5)
     
     # Make this reactive to any change in input paramters
     x <- reactiveValuesToList(input)

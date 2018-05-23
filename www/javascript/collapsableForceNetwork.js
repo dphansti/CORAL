@@ -17,7 +17,7 @@ binding.renderValue = function(el, data) {
           root;
 
       var force = d3.layout.force()
-          .linkDistance(0.20)
+          .linkDistance(0.25)
           .charge(-40)
           .gravity(0.2)
           .size([width, height])
@@ -96,7 +96,7 @@ binding.renderValue = function(el, data) {
             .on("mouseout", mouseout);
 
         nodeEnter.append("circle")
-            .attr("r", function(d) { return d.noderadius; });
+            .attr("r", function(d) { return d.noderadius * 1.5; });
 
         nodeEnter.append("text")
             .attr("dy", ".35em")

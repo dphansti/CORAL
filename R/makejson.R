@@ -1,6 +1,113 @@
-makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol="#D3D3D3",BGstrolecol="#ffffff",colsubnodes=FALSE,legend="",labelselect,defaultnoderadius)
+
+# Define a function that shifts a leged in the x direction
+shiftlegend <- function (legend,xshift=0,yshift=0,noderadiusexpansion)
 {
-  # reorder so so that groups, families, and subfamilies are properly colored
+ NodeSizeSection = FALSE
+ 
+ newlegend = c()
+ for (legendtext in legend)
+ {
+  if (grepl(">Node Size<",legendtext)==TRUE)
+  {
+   NodeSizeSection = TRUE
+  }
+  
+  # split legend by space
+  legendsplit = unlist(strsplit(x=legendtext,split=" "))
+  
+  # perform the shift
+  for (i in 1:length(legendsplit))
+  {
+   entry = legendsplit[i]
+   
+   if (startsWith(entry,"x="))
+   {
+    origvalue = as.numeric(substr(entry,4,nchar(entry)-1))
+    newvalue  = origvalue - xshift
+    newentry  = paste("x=\"",newvalue,"\"",sep="")
+    legendsplit[i] = newentry
+   }
+   if (startsWith(entry,"y="))
+   {
+    origvalue = as.numeric(substr(entry,4,nchar(entry)-1))
+    newvalue  = origvalue - yshift
+    newentry  = paste("y=\"",newvalue,"\"",sep="")
+    legendsplit[i] = newentry
+   }
+   if (startsWith(entry,"cx="))
+   {
+    origvalue = as.numeric(substr(entry,5,nchar(entry)-1))
+    newvalue  = origvalue - xshift
+    newentry  = paste("cx=\"",newvalue,"\"",sep="")
+    legendsplit[i] = newentry
+   }
+   if (startsWith(entry,"cy="))
+   {
+    origvalue = as.numeric(substr(entry,5,nchar(entry)-1))
+    newvalue  = origvalue - yshift
+    newentry  = paste("cy=\"",newvalue,"\"",sep="")
+    legendsplit[i] = newentry
+   }
+   
+   if (  NodeSizeSection == TRUE)
+   {
+    # scale the node (for force plots)
+    if (startsWith(entry,"r="))
+    {
+     origvalue = substr(entry,4,nchar(entry)-3)
+     newvalue  = as.numeric(origvalue) * noderadiusexpansion
+     newentry  = paste("r=\"",newvalue,"\"/>",sep="")
+     legendsplit[i] = newentry
+    }
+    
+    # move the cirle down just a little
+    if (startsWith(legendsplit[i],"cy="))
+    {
+     extraspace = (noderadiusexpansion-1) * 16
+     origvalue = substr(legendsplit[i],5,nchar(legendsplit[i])-1)
+     newvalue  = as.numeric(origvalue) + extraspace
+     newentry  = paste("cy=\"",newvalue,"\"",sep="")
+     legendsplit[i] = newentry
+     print("---")
+     print(origvalue)
+     print(newvalue)
+     print(newentry)
+    }
+    
+    # increase the height of the grey bar
+    if (startsWith(legendsplit[i],"height="))
+    {
+     extraspace = (noderadiusexpansion-1) * 16
+     origvalue = substr(legendsplit[i],9,nchar(legendsplit[i])-3)
+     newvalue  = as.numeric(origvalue) + extraspace
+     newentry  = paste("height=\"",newvalue,"\"/>",sep="")
+     legendsplit[i] = newentry
+    }
+    
+   }
+
+  }
+  
+  # recombine
+  newlegendtext = paste(legendsplit,collapse=" ")
+  
+  newlegend = c(newlegend,newlegendtext)
+ }
+
+ # return shifted legend
+ return(newlegend)
+}
+
+makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol="#D3D3D3",
+                     BGstrolecol="#ffffff",colsubnodes=FALSE,legend="",
+                     labelselect,defaultnoderadius,
+                     xshift=85,yshift=50,noderadiusexpansion=1)
+{
+  
+ # shift legend to the left
+ legend = shiftlegend(legend,xshift=xshift,yshift=yshift,noderadiusexpansion=noderadiusexpansion)
+ 
+ # reorder so so that groups, families, and subfamilies are properly colored
   df<- df[seq(dim(df)[1],1),]
   
   label = ""
@@ -21,6 +128,8 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol=
   data<-read.delim(tmp, stringsAsFactors=F)
   root<-list("name"=list("    "), "nodecol"=list(BGcol),"noderadius"=list(defaultnoderadius), nodestrokecol= BGcol,"children"=list(),"legend"=legend)
   i = 1
+  
+  # print (legend)
   
   for(i in 1:nrow(data)) {
     
