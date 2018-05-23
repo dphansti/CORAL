@@ -17,7 +17,7 @@ binding.renderValue = function(el, data) {
           root;
 
       var force = d3.layout.force()
-          .linkDistance(0.25)
+          .linkDistance(0.20)
           .charge(-40)
           .gravity(0.2)
           .size([width, height])
@@ -45,7 +45,6 @@ binding.renderValue = function(el, data) {
            .attr("r", function(d) { return (d.noderadius * 5); });
       d3.select(this).select("text").transition()
           .attr("font-size", function(d) { return (d.textsize * 10.0 + "px"); });
-      d3.select(this).moveToFront();
     }
 
     function mouseout() {
@@ -53,7 +52,6 @@ binding.renderValue = function(el, data) {
            .attr("r", function(d) { return (d.noderadius * 1.5); });
       d3.select(this).select("text").transition()
           .attr("font-size", function(d) { return (d.textsize * 1.75 + "px"); });
-      d3.select(this).moveToFront();
     }
 
 
@@ -98,7 +96,7 @@ binding.renderValue = function(el, data) {
             .on("mouseout", mouseout);
 
         nodeEnter.append("circle")
-            .attr("r", function(d) { return (d.noderadius * 1.5); });
+            .attr("r", function(d) { return d.noderadius; });
 
         nodeEnter.append("text")
             .attr("dy", ".35em")
@@ -112,6 +110,17 @@ binding.renderValue = function(el, data) {
             .attr("stroke-width", 1.0)
             .attr("opacity",function(d) { return d.nodeopacity; })
             .attr("stroke",function(d) { return d3.rgb(d.nodestrokecol); });
+
+        // Create pseudo-element with the legend and add it to the SVG
+        $(el).find('svg #forcelegend').remove();
+        var pseudoSVG = $(
+          '<div>' +
+          '<svg xmlns="http://www.w3.org/2000/svg">' +
+          '<g id="forcelegend">'+ root.legend + '</g>' + 
+          '</svg>' +
+          '</div>'
+        );
+        $(el).find('svg').append(pseudoSVG.find('svg g'));
       }
 
       function tick() {
@@ -157,8 +166,7 @@ binding.renderValue = function(el, data) {
       }
 
       function redraw() {
-        console.log("here", d3.event.translate, d3.event.scale); svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
-
+        svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
       }
   //closing if statement
   }

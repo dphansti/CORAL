@@ -1,4 +1,4 @@
-makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol="#D3D3D3",BGstrolecol="#ffffff",colsubnodes=FALSE,labelselect,defaultnoderadius)
+makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol="#D3D3D3",BGstrolecol="#ffffff",colsubnodes=FALSE,legend="",labelselect,defaultnoderadius)
 {
   # reorder so so that groups, families, and subfamilies are properly colored
   df<- df[seq(dim(df)[1],1),]
@@ -19,7 +19,7 @@ makejson <- function(df,tmp="www/subdf.txt",output="www/kinome_tree.json",BGcol=
 
   # read json file
   data<-read.delim(tmp, stringsAsFactors=F)
-  root<-list("name"=list("    "), "nodecol"=list(BGcol),"noderadius"=list(defaultnoderadius), nodestrokecol= BGcol,"children"=list())
+  root<-list("name"=list("    "), "nodecol"=list(BGcol),"noderadius"=list(defaultnoderadius), nodestrokecol= BGcol,"children"=list(),"legend"=legend)
   i = 1
   
   for(i in 1:nrow(data)) {
