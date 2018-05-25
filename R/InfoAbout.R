@@ -16,18 +16,11 @@ div(id="InfoAboutBox",
         fluidRow(width=12, 
                  column(9,
                         div(
-                            h2 ("Interactive, customizable, high-resolution visualization of the human kinome", 
+                            h2 ("Clear and customizable visualization of human kinome data", 
                                 style="color:#eceff3; font-weight: 500; font-size: 150%; letter-spacing:.4px"),
                             tags$br(),
                            
-                            h6 ("The human kinome comprises over 500 protein kinases which regulate a wide array of cellular 
-                                processes; they have become attractive drug targets and are increasingly studied using genomic,
-                                proteomic, and kinase profiling approaches. Coral is an open source web application that facilitates
-                                interactive, customizable visualization of kinase attributes and experimental data. Qualitative and 
-                                quantitative kinase attributes are encoded in edge colors, node colors, and node sizes of the human 
-                                kinome network, which can be represented in a tree format, a circular radial network, and a dynamic 
-                                force-directed network. Due to its ease of use, interactivity, and broad selection of features, we envision 
-                                that Coral plots will become a staple of publications describing high-throughput studies of the human kinome.",
+                            h6 ("Coral is a user-friendly interactive web application for visualizing both quantitative and qualitative data. Unlike previous tools, Coral can encode data in three features (node color, node size, and branch color), allows three modes of kinome visualization (the traditional kinome tree as well as radial and dynamic-force networks) and generates high-resolution scalable vector graphic files suitable for publication without the need for refinement in graphic editing software. Due to its user-friendly, interactive, and highly customizable design, Coral is broadly applicable to high-throughput studies of the human kinome.",
                             style="color:#eceff3; font-weight:300; font-size: 110%; line-height: 150%; letter-spacing:.4px")
                         )
                  )
