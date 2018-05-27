@@ -9,6 +9,5 @@ tempfiles/kintreeout.svg
 tempfiles/subdf.txt
 tempfiles/
 www/json/*json
-www/images/*png
 www/*png
 www/*json
