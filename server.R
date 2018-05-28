@@ -30,9 +30,10 @@ server <- function(input, output,session) {
  # branch color
  observe({
   idtype = paste("id.",input$branchManualIDtype,sep="")
+  print(idtype)
   if (idtype == "id.coralID"){idtype = "id.coral"}
-  idstodisplay = svginfo$dataframe[,which(names(svginfo$dataframe) == idtype)] 
-  idstodisplay = idstodisplay[unique(idstodisplay)]
+  idstodisplay = svginfo$dataframe[,which(names(svginfo$dataframe) == idtype)]
+  idstodisplay = unique(idstodisplay)
   idstodisplay = idstodisplay[which(idstodisplay != "NA")]
   updateSelectInput(session,inputId = "KinasesManual",choices = idstodisplay)
  })
@@ -42,7 +43,7 @@ server <- function(input, output,session) {
   idtype = paste("id.",input$NodeManualIDtype,sep="")
   if (idtype == "id.coralID"){idtype = "id.coral"}
   idstodisplay = svginfo$dataframe[,which(names(svginfo$dataframe) == idtype)] 
-  idstodisplay = idstodisplay[unique(idstodisplay)]
+  idstodisplay = unique(idstodisplay)
   idstodisplay = idstodisplay[which(idstodisplay != "NA")]
   updateSelectInput(session,inputId = "KinasesManualNode",choices = idstodisplay)
  })
