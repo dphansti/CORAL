@@ -37,7 +37,7 @@ div(id="InfoAboutBox",
         
         fluidRow(width=12, style="padding-top:20px",
                  column(4,
-                        tags$a(href="http://phanstiel-lab.med.unc.edu/images/videos/coral.mp4",
+                        tags$a(href="http://phanstiel-lab.med.unc.edu/images/videos/coral.mp4",target="_blank",
                                h2 ("WATCH THE VIDEO", width="100%",
                                    style="font-size: 130%; font-weight: 500; letter-spacing: .65px; text-align: left; padding: 12px 12px 11px 12px; border-width: 2px; border-style: solid; border-color: #3da1cc")
                         )
