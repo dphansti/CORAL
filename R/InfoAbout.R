@@ -82,8 +82,10 @@ div(id="InfoAboutBox",
                         h4 ("Citation")
                  ),
                  column(10, 
-                        h6 ("Coral was initially described in by Metz et al, 2018."),
-                        h6 ("Coral makes use of phylogenetic information derived from Manning et al, Science, 2002."),
+                        h6 ("Coral was initially described in a preprint by Metz & Deoudes et al available at ", 
+                            tags$a(href="https://www.biorxiv.org/content/early/2018/05/25/330274", "bioRxiv",target="_blank")),
+                        h6 ("Coral makes use of phylogenetic information derived from ",
+                            tags$a(href="http://science.sciencemag.org/content/298/5600/1912.long","Manning et al, Science, 2002.",target="_blank")),
                         h6 ("The Tree plots made by Coral were modified from those created by Cell Signaling Technology: ",
                             tags$a(href="https://www.cellsignal.com/", "www.cellsignal.com")),
                         tags$br(), tags$br(), tags$br()
