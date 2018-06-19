@@ -458,6 +458,17 @@ ui <- dashboardPage(title="CORAL",
                                      box(width=12,title = "Node Size",status = "info", solidHeader = TRUE,
                                          collapsible = TRUE,collapsed = TRUE, 
                                          
+                                         # only allow node size modification if nodes are colored
+                                         
+                                         conditionalPanel(
+                                          condition = "input.nodecolortype == 'None'",
+                                          tags$b("Node Size disabled when Node Color Set to 'None'."),
+                                          tags$br(),
+                                          "In order to set node size please adust node color options in the box above."
+                                         ),
+                                         conditionalPanel(
+                                          condition = "input.nodecolortype != 'None'",
+                                          
                                          selectInput(inputId = "nodesizetype",label = "Scaling Scheme",
                                                      choices = c("One Size","Quantitative"),
                                                      multiple = FALSE,selected = "One Size",width = "100%"),
@@ -497,6 +508,7 @@ ui <- dashboardPage(title="CORAL",
                                            )
                                           )
                                          ) # end box  
+                                      ) # end conditional
                                      ),
                                      
                                      # ---- ADVANCED SETTINGS ---- #
