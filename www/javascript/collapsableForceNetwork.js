@@ -27,7 +27,20 @@ binding.renderValue = function(el, data) {
           .attr("width", width)
           .attr("height", height)
           .attr("xmlns","http://www.w3.org/2000/svg")
-          .call(d3.behavior.zoom().on("zoom", redraw));
+          .call(
+            d3.behavior.zoom()
+            .scaleExtent([1, 5])
+            .on("zoom", function() {
+              svg.attr(
+                "transform",
+                "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")"
+              );
+            })
+	  );
+
+      function redraw() {
+        svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
+      }
 
       var link = svg.selectAll(".link");
           node = svg.selectAll(".node");
@@ -165,9 +178,6 @@ binding.renderValue = function(el, data) {
         return nodes;
       }
 
-      function redraw() {
-        svg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
-      }
   //closing if statement
   }
 //closing binding

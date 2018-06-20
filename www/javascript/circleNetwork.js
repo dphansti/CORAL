@@ -24,12 +24,29 @@ binding.renderValue = function(el, data) {
     var mainsvg = d3.select("#" + $(el).attr('id')).append("svg")
       .attr("width", width)
       .attr("height", height)
-      .attr("xmlns","http://www.w3.org/2000/svg")
-      .call(d3.behavior.zoom().on("zoom", redraw))
+      .attr("xmlns","http://www.w3.org/2000/svg");
+
+    var rtx = radius + 70,
+        rty = radius;
 
     var svg = mainsvg
       .append("g")
-      .attr("transform", "translate(" + (radius + 70) + "," + radius + ")");
+      .attr("transform", "translate(" + rtx + "," + rty + ")");	
+
+    var zoom = d3.behavior.zoom()
+      .scaleExtent([1, 10])
+      .translate([rtx, rty])
+      .on("zoom", function() {
+        var e = d3.event,
+            tx = e.translate[0]
+            ty = e.translate[1];
+        zoom.translate([tx, ty]);
+        svg.attr(
+          "transform",
+          "translate(" + [tx, ty] + ")" + " scale(" + e.scale + ")"
+        );
+    });
+    mainsvg.call(zoom);
 
     d3.json($(el).attr('jsonfilename'), function(error, root) {
 
@@ -101,9 +118,6 @@ binding.renderValue = function(el, data) {
           .attr("font-size", function(d) { return d.textsize; });
     }
 
-    function redraw() {
-      mainsvg.attr("transform", "translate(" + d3.event.translate + ")" + " scale(" + d3.event.scale + ")");
-    }
 
     d3.select(self.frameElement).style("height", radius * 2 + "px");
 

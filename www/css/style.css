@@ -511,8 +511,6 @@ background-color: #eceff3;
  border-top-color: #eceff3;
 }
 
-/*
-.form-control:focus {
-        border-color: #36c9da;
-    }
-
+.tab-pane.active {
+ overflow: hidden;
+}
