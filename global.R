@@ -58,7 +58,9 @@ orig_svginfo$dataframe$id.HGNC[NAs] = ""
 # orig_svginfo$dataframe = rbind(orig_svginfo$dataframe,readintofixEEF2K[which(readintofixEEF2K$id.coral == "eEF2K"),])
 
 # add correct header
-orig_svginfo$header = "<svg viewBox=\"50 -10 800 640\"  preserveAspectRatio=\"xMidYMid meet\"\n
+# orig_svginfo$header = "<svg viewBox=\"50 -10 800 640\"  preserveAspectRatio=\"xMidYMid meet\"\n
+orig_svginfo$header = "<svg width=\"940\" height=\"940\"\n
+
 xmlns=\"http://www.w3.org/2000/svg\"\n
 xmlns:xlink=\"http://www.w3.org/1999/xlink\" >\n"
 
