@@ -16,15 +16,6 @@ server <- function(input, output,session) {
  insertUI(selector = "#circlediv",where = "afterEnd",ui = div(id="circlelayout", class="circleNetwork",jsonfilename=outputjsonshort))
  insertUI(selector = "#forcediv",where = "afterEnd",ui = div(id="forcelayout", class="collapsableForceNetwork",jsonfilename=outputjsonshort))
  
- # ----------------- CREATE DOWNLOAD BUTTONS ---------------- #
- 
- insertUI(selector = "#downloadtreediv",where = "afterEnd",ui =
-           downloadButton(outputId = "downloadtree",label= "Download"))
- insertUI(selector = "#downloadcirclediv",where = "afterEnd",ui =
-           tags$a(id="downloadcircle", class="btn btn-default", "Download"))
- insertUI(selector = "#downloadforcediv",where = "afterEnd",ui =
-           tags$a(id="downloadforce", class="btn btn-default", "Download"))
- 
  # ----------------- UPDATE MANUAL KINASE SELECTION ---------------- #
  
  # branch color

@@ -591,15 +591,22 @@ ui <- dashboardPage(title="CORAL",
                            
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Tree'",
-                            div(id="downloadtreediv")),
+                            tipify(downloadButton(outputId = "downloadtree",label= "Download"),
+                                                  title = "Plots download in SVG vector format, which can be opened in web browsers and graphics software. To easily convert to PDF, we recommend opening the SVG in Safari and selecting File > Export to PDF. To convert using another browser, choose the Save as PDF option in the Print menu.",
+                                   placement = "bottom",trigger = "hover")
+                            ),
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Circle'",
-                            div(id="downloadcirclediv")),
+                            tipify(tags$a(id="downloadcircle", class="btn btn-default", "Download"),
+                                   title = "Plots download in SVG vector format, which can be opened in web browsers and graphics software. To easily convert to PDF, we recommend opening the SVG in Safari and selecting File > Export to PDF. To convert using another browser, choose the Save as PDF option in the Print menu.",
+                                   placement = "bottom",trigger = "hover")
+                            ),
                            conditionalPanel(
                             condition = "input.tabboxselected == 'Force'",
-                            div(id="downloadforcediv"))
-                           
-                           
+                            tipify(tags$a(id="downloadforce", class="btn btn-default", "Download"),
+                                   title = "Plots download in SVG vector format, which can be opened in web browsers and graphics software. To easily convert to PDF, we recommend opening the SVG in Safari and selecting File > Export to PDF. To convert using another browser, choose the Save as PDF option in the Print menu.",
+                                   placement = "bottom",trigger = "hover")
+                            )
                     ), # end column
                     
                     column(width=9,
