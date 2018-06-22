@@ -34,7 +34,14 @@ drawmypalettes <- function(paletteName="RdBu",palette=c("white","blue"),outdir="
  plot(1,type="n",xlim = c(0,boxes*15),ylim=c(0,15),xaxs="i",yaxs="i",bty="n",xaxt="n",yaxt="n")
  
  # add squares
- cols = colorRampPalette(palette)(boxes)
+ if (length(cols) > boxes)
+ {
+   cols = colorRampPalette(palette)(boxes)
+ }
+ if (length(cols) <= boxes)
+ {
+  cols = palette[1:boxes]
+ }
  for (i in 1:boxes)
  {
   rect(xleft = (i-1) * 15,xright = i*15,ybottom = 0 , ytop = 15,border = NA,col = cols[i])
