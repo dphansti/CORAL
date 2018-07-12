@@ -98,19 +98,25 @@ writekinasetree <- function(svginfo,destination,font,labelselect,groupcolor)
   outputlines = c(outputlines,svginfo$legend)
   outputlines = c(outputlines,"</g>")
     
+  # reorder branches by branch order
+  branchorderesDF = svginfo$dataframe[svginfo$dataframe$branchorder,]
+  
   # add branches
   outputlines = c(outputlines,"<g id=\"BRANCHES\">")
-  outputlines = c(outputlines,unlist(     apply(svginfo$dataframe,1, build.branch)       ))
+  outputlines = c(outputlines,unlist(     apply(branchorderesDF,1, build.branch)       ))
   outputlines = c(outputlines,"</g>")
   
   # add circles
   outputlines = c(outputlines,"<g id=\"CIRCLES\">")
   
-  # reorder circles by size
-  svginfo$dataframe = svginfo$dataframe[order(svginfo$dataframe$node.radius,decreasing = TRUE),]
-  svginfo$dataframe = svginfo$dataframe[order(svginfo$dataframe$node.selected,decreasing = FALSE),]
+  # reorder by node order
+  nodeorderesDF = svginfo$dataframe[svginfo$dataframe$nodeorder,]
   
-  outputlines = c(outputlines,unlist(apply(svginfo$dataframe,1, build.node )))
+  # reorder circles by size
+  nodeorderesDF = nodeorderesDF[order(nodeorderesDF$node.radius,decreasing = TRUE),]
+  nodeorderesDF = nodeorderesDF[order(nodeorderesDF$node.selected,decreasing = FALSE),]
+  
+  outputlines = c(outputlines,unlist(apply(nodeorderesDF,1, build.node )))
   outputlines = c(outputlines,"</g>")
   
   # add labels

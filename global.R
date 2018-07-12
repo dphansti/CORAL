@@ -83,6 +83,10 @@ orig_svginfo$dataframe$node.selected = -1
 # make svginfo (leaving the original intact)
 svginfo = orig_svginfo
 
+# assign node and branch orders
+svginfo$dataframe$nodeorder = 1:nrow(svginfo$dataframe)
+svginfo$dataframe$branchorder = 1:nrow(svginfo$dataframe)
+
 # get example RNA data
 rna_data     = paste(readLines("Data/RNAdata.txt"),collapse="\n")
 rna_abs_data = paste(readLines("Data/RNAdata_pluripotent.txt"),collapse="\n")

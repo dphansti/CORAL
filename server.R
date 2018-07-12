@@ -269,8 +269,9 @@ server <- function(input, output,session) {
      tempdf$branch.col =  color.by.selected(df = tempdf, sel = selkinasescoral, bg.col  = input$col_select_bg,  sel.col = input$col_select)
      
      # reorder based on selected ids
-     tempdf = tempdf[order(tempdf$id.coral %in% selkinasescoral, decreasing = FALSE),]
-      
+     #tempdf = tempdf[order(tempdf$id.coral %in% selkinasescoral, decreasing = FALSE),]
+     tempdf$branchorder = order(tempdf$id.coral %in% selkinasescoral, decreasing = FALSE)
+     
       # build legend for Branch Color (manual selection)
       lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=c(input$branch_select_label,input$branch_nonselect_label),groupcolors=c(input$col_select,input$col_select_bg),elementtype = "Branch",fontfamily = input$fontfamilyselect)
       lines = lines_and_offset[[1]]
@@ -316,11 +317,12 @@ server <- function(input, output,session) {
         branch.group.colormapping = newcolors_and_colormapping[[3]]
         
         # reorder based on branch color 
-        tempdf = tempdf[order(tempdf$branch.group),]
-        
+        # tempdf = tempdf[order(tempdf$branch.group),]
+       
         # reorder based in whether kinase was in text box
-        tempdf = tempdf[order(tempdf$id.coral %in% recolordf[,1], decreasing = FALSE),]
-
+        # tempdf = tempdf[order(tempdf$id.coral %in% recolordf[,1], decreasing = FALSE),]
+        tempdf$branchorder = order(tempdf$id.coral %in% recolordf[,1], decreasing = FALSE)
+        
         # build legend for Branch Color (by group)
         lines_and_offset = build.group.legend(yoffset=yoffset,groupslabels=names(branch.group.colormapping),groupcolors=branch.group.colormapping,elementtype = "Branch",fontfamily = input$fontfamilyselect)
         lines = lines_and_offset[[1]]
@@ -387,9 +389,10 @@ server <- function(input, output,session) {
         tempdf$branch.col = newcolors_and_colormapping[[1]]
         tempdf$branch.val = newcolors_and_colormapping[[2]]
         
-        # reorder based on branch color
-        tempdf = tempdf[order(abs(tempdf$branch.val), decreasing = FALSE,na.last = FALSE),]
-        
+        # reorder based on branch value
+        #tempdf = tempdf[order(abs(tempdf$branch.val), decreasing = FALSE,na.last = FALSE),]
+        tempdf$branchorder = order(abs(tempdf$branch.val), decreasing = FALSE,na.last = FALSE)
+
         # add legend info
         lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$minheat,maxval=input$maxheat, palette=branchcolpalette,elementtype = "Branch",fontfamily = input$fontfamilyselect,subtitle = input$quantvaluenamebranchcolor)
         lines = lines_and_offset[[1]]
@@ -552,13 +555,14 @@ server <- function(input, output,session) {
         bg.col = input$NodeValueMissingKinaseColor
        }
         
-        # set colors based on group
+        # set colors based on value
         newcolors_and_colormapping = color.by.value(df = tempdf, recolordf = recolordf, colors  = nodecolpalette, heatrange = c(input$nodeminheat,input$nodemaxheat),bg.col = bg.col)
         tempdf$node.col = newcolors_and_colormapping[[1]]
         tempdf$node.val = newcolors_and_colormapping[[2]]
         
         # reorder based on branch color
-        tempdf = tempdf[order(abs(tempdf$node.val), decreasing = FALSE,na.last = FALSE),]
+        # tempdf = tempdf[order(abs(tempdf$node.val), decreasing = FALSE,na.last = FALSE),]
+        tempdf$nodeorder = order(abs(tempdf$node.val), decreasing = FALSE,na.last = FALSE)
         
         # add legend info
         lines_and_offset = build.value.legend(yoffset=yoffset,minval=input$nodeminheat,maxval=input$nodemaxheat, palette=nodecolpalette,elementtype = "Node",fontfamily = input$fontfamilyselect,subtitle = input$quantvaluenamenodecolor)
