@@ -541,12 +541,16 @@ ui <- dashboardPage(title="CORAL",
                                                       choices = c("Helvetica","Arial","Verdana","Trebuchet MS","Times New Roman","Garamond"),
                                                       multiple = FALSE,selected = "Helvetica",width = "100%"),
                                           
-                                          # Slider for font size 
-                                          sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 4,step = 0.05,ticks=F),
-                                          
                                           selectInput(inputId = "fontcolorselect",label = "Label Color Scheme",
-                                                      choices = c("Same as Branch","Single Color"),
+                                                      choices = c("Same as Branch","Single Color","Manual"),
                                                       multiple = FALSE,selected = "Single Color",width = "100%"),
+                                          
+                                          
+                                          conditionalPanel(condition = "input.fontcolorselect == 'Single Color'|| input.fontcolorselect == 'Same as Branch'",
+                                            # Slider for font size 
+                                            sliderInput("fontsize", "Label Font Size",min = 0, max = 8,value = 4,step = 0.05,ticks=F)),
+                                          
+                                          
                                           
                                           conditionalPanel(condition = "input.fontcolorselect == 'Single Color'",
                                                            colourInput("fontcolorchoose", "Label Color","#000000")),
