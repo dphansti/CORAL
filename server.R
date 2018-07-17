@@ -632,6 +632,34 @@ server <- function(input, output,session) {
       tempdf$text.col = input$fontcolorchoose
     }
     
+    # Change Color and Size of Font for Selected kinases
+    if (input$fontcolorselect == "Manual")
+    {
+     selkinases = unlist(strsplit(split = "\n",x=input$KinasesManualLabelsText))
+     
+     selkinasescoral = ""
+     if (length(selkinases) > 0)
+     {
+      # convert selected to coral ids
+      kinasestoconvert = data.frame(kin1=selkinases,kin2=selkinases)
+      selkinasesconverted = convertID (tempdf,kinasestoconvert,inputtype=input$labelsManualIDtype)
+      if (nrow(selkinasesconverted) > 0)
+      {
+       selkinasescoral = selkinasesconverted[,1]
+      }
+     }
+     
+     # set background color and font size
+     tempdf$text.col = input$fontcolorbackground
+     tempdf$text.size = input$fontsizebackground
+     
+     # set selected font color and size
+     tempdf$text.col[which(tempdf$id.coral %in% selkinasescoral)]  = input$fontcolorselection
+     tempdf$text.size[which(tempdf$id.coral %in% selkinasescoral)] = input$fontsizeselection
+    }
+    
+    
+    
     # Node stroke color
     if (input$nodestrokecolselect == "Single Color")
     {
