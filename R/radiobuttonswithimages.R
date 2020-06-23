@@ -18,7 +18,10 @@ radioButtons_withHTML <- function (inputId, label, choices, selected = NULL, inl
   divClass <- paste(divClass, "shiny-input-container-inline")
  tags$div(id = inputId, style = if (!is.null(width)) 
   paste0("width: ", validateCssUnit(width), ";"), class = divClass, 
-  shiny:::controlLabel(inputId, label), options)
+  ifelse(utils::compareVersion(as.character(packageVersion("shiny")), "1.2.0"), 
+    shiny:::shinyInputLabel(inputId, label), 
+    shiny:::controlLabel(inputId, label))
+  , options)
 }
 
 generateOptions_withHTML <- function (inputId, choices, selected, inline, type = "checkbox") 
