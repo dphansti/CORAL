@@ -226,11 +226,5 @@ defaultpalette = colorRampPalette( c(
 
 CurrentInfoPage = "About"
 
-
-
-
-
-
-
-
-
+ outputjson      = tempfile(pattern="kinome_tree",tmpdir="www/json",fileext = ".json") # session specific json file describing network
+ outputjsonshort = paste("json/",strsplit(outputjson,split = "/")[[1]][3],sep="") # used to communicate to js
