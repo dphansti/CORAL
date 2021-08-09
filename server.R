@@ -5,6 +5,8 @@ server <- function(input, output,session) {
  # ----------------- MAKE DIVS & USER FILES FOR TREE, CIRCLE, AND FORCE ---------------- #
  
  # set all of the temp files
+ outputjson      = tempfile(pattern="kinome_tree",tmpdir="www/json",fileext = ".json") # session specific json file describing network
+ outputjsonshort = paste("json/",strsplit(outputjson,split = "/")[[1]][3],sep="") # used to communicate to js
  subdffile       = tempfile(pattern="subdf",tmpdir="tempfiles",fileext = ".txt") # temp file used to make json file
  svgoutfile      = tempfile(pattern="kintreeout",tmpdir="tempfiles",fileext = ".svg") # session specific tree svg file
  
