@@ -1,20 +1,25 @@
-# install basic libraries
-# TODO: use R profile to set mirrors
-# install.packages("shiny", repos = "http://cran.us.r-project.org")
-# install.packages("shinydashboard", repos = "http://cran.us.r-project.org")
-# install.packages("shinyBS", repos = "http://cran.us.r-project.org")
-# install.packages("readr", repos = "http://cran.us.r-project.org")
-# install.packages("rsvg", repos = "http://cran.us.r-project.org")
-# install.packages("shinyWidgets", repos = "http://cran.us.r-project.org")
-# install.packages("RColorBrewer", repos = "http://cran.us.r-project.org")
+#!/usr/bin/env Rscript
 
-# # install Manning-related libraries
-# install.packages("svgPanZoom", repos = "http://cran.us.r-project.org")
+# to find all the library commands run:
+#  grep -Rh library * | sort | uniq
+# 
+# then reformat the library calls to use p_load as below, plus dealing with the github only packages
 
-# # install ui-related libraries
-# install.packages("colourpicker", repos = "http://cran.us.r-project.org")
-# install.packages("DT", repos = "http://cran.us.r-project.org")
+if("pacman" %in% rownames(installed.packages()) == FALSE) {
+ install.packages("pacman")
+}
 
-# # install other network libraries
-# install.packages("data.tree", repos = "http://cran.us.r-project.org")
-install.packages("jsonlite", repos = "http://cran.us.r-project.org")
+library(pacman)
+
+p_load(colourpicker)
+p_load(data.tree)
+p_load(DT)
+p_load(jsonlite)
+p_load(RColorBrewer)
+p_load(readr)
+p_load(rsvg)
+p_load(shiny)
+p_load(shinyBS)
+p_load(shinydashboard)
+p_load(shinyWidgets)
+p_load(svgPanZoom)
